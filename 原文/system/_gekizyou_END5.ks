@@ -1,7 +1,0 @@
-[preload  storage="./data/fgimage/chara/15/dagya7.png"  ]
-[preload  storage="./data/fgimage/chara/15/dagya28.png"  ]
-[preload  storage="./data/fgimage/chara/15/dagya27.png"  ]
-[preload  storage="./data/fgimage/chara/15/dagya20.png"  ]
-[preload  storage="./data/fgimage/chara/15/dagya24.png"  ]
-[preload  storage="./data/fgimage/chara/15/dagya15.png"  ]
-[return]
