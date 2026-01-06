@@ -10,3 +10,6 @@
 - 不得声称拥有相似的设计或创意
 
 详见：[原作者许可](https://bayachao.com/devil-connection/guideline.html)
+
+## 许可证
+本项目采用 [Creative Commons Attribution Non Commercial ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 许可证。
