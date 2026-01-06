@@ -1,0 +1,1439 @@
+[_tb_system_call storage=system/_scenario_Almaz.ks]
+
+[cm  ]
+[tb_image_hide  time="1000"  ]
+[tb_ptext_hide  time="0"  ]
+[bg  time="0"  method="crossfade"  storage="haikei2.webp"  ]
+[call  storage="mp.ks"  target="*show"  ]
+[call  storage="phase.ks"  target="*show_top"  ]
+[jump  storage="scenario_Almaz.ks"  target="*osu"  cond="f.seibetu==1"  ]
+[chara_show  name="プレイヤー"  zindex="2"  layer="1"  time="0"  wait="false"  storage="chara/2/te.png"  width="1280"  height="960"  ]
+[chara_show  name="アルマース"  time="0"  wait="false"  storage="chara/43/2.png"  width="704"  height="820"  left="267"  top="11"  reflect="false"  ]
+[lbgm str="3_connection_communication.ogg" vol="50" loop="true" time="0" buf="0"]
+
+[layermode_movie  mode="screen"  speed="1"  volume="100"  loop="false"  time="0"  wait="false"  video="kiri2.mp4"  ]
+[call  storage="maku.ks"  target="*open"  ]
+[bg_layermode  name="mahou"  folder="bgimage"  storage="haikei_mahou2.webp"  mode="color-dodge"]
+
+[wait  time="700"  ]
+[free_bg_layermode  name="mahou"  time="5000"  ]
+
+*x
+
+[tb_start_text mode=1 ]
+#アルマース
+[_tb_end_text]
+
+[fadein_window  time="300"  ]
+[playse  volume="100"  time="0"  buf="3"  storage="kawaii2.ogg"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="KaiseiDecol-Bold"][font size=70]かわいいこちゅわァーん♥[resetfont][p]
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#でびるん
+
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[play_apng name="debi_fuki_show" layer="0" x="7" y="308" width="384" height="400"]
+[_tb_end_tyrano_code]
+
+[wait  time="350"  ]
+[chara_show  name="コマでび"  layer="0"  zindex="2"  time="0"  wait="false"  storage="chara/10/85.png"  width="383"  height="400"  left="7"  top="308"  ]
+[tb_start_tyrano_code]
+[free_apng name="debi_fuki_show" ]
+[_tb_end_tyrano_code]
+
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" x="0"]
+[frame p="50%" x="3"]
+[frame p="100%" x="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="100" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[playse  volume="100"  time="0"  buf="4"  storage="gimon.ogg"  ]
+[jump  storage="scenario_Almaz.ks"  target="*hutanari"  cond="f.hutanari==1"  ]
+[tb_start_text mode=1 ]
+#でびるん
+は？ え…ちょ、なんだこやつ…[r]とてつもなく嫌な予感がするぞ[p]
+[_tb_end_text]
+
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/3.png"  ]
+[playse  volume="100"  time="0"  buf="3"  storage="kira.ogg"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="KaiseiDecol-Bold"]そこのレディ…ボクをお家に呼んでくれたってことは[r]つまりそういう事だよね？[resetfont][p]
+
+[_tb_end_text]
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/73.png"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[playse  volume="100"  time="0"  buf="3"  storage="aseru.ogg"  ]
+[tb_start_text mode=1 ]
+#でびるん
+お、おぉ…あー[r]オレサマはちょっくら昼寝でも…[p]
+
+[_tb_end_text]
+
+[flash  time="80"  effect="fadeIn"  color="0x000000"  ]
+
+[tb_eval  exp="f.photoPose=0"  name="photoPose"  cmd="="  op="t"  val="0"  val_2="undefined"  ]
+[chara_hide  name="プレイヤー"  layer="1"  time="0"  wait="false"  pos_mode="false"  ]
+[chara_hide  name="アルマース"  time="0"  wait="false"  pos_mode="false"  ]
+[tb_filter_blur  layer="base"  blur="10"  ]
+[chara_show  name="アルマース"  time="0"  wait="false"  storage="chara/43/4.png"  width="1280"  height="960"  ]
+[playse  volume="100"  time="0"  buf="3"  storage="Horror.ogg"  ]
+[flash_off  time="20"  effect="fadeOut"  ]
+
+[camera  time="30000"  zoom="1.2"  wait="false"  ease_type="ease"  layer="layer_camera"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="KaiseiDecol-Bold"]キミの心はぽっかりと穴が空いているように見える。[r]大丈夫。ボクで満たしてあげるから[delay speed=100]・・・[resetdelay][resetfont][p]
+[_tb_end_text]
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/106.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+あ～やぁ。寝室…だめか。えーどっか！[r]どっかいってるわ！じゃーな[p]
+
+[_tb_end_text]
+
+[stopse  time="0"  buf="5"  ]
+[ending no="6"]
+
+*osu
+
+[chara_show  name="プレイヤー"  zindex="2"  layer="1"  time="0"  wait="false"  storage="chara/2/te.png"  width="1280"  height="960"  ]
+[chara_show  name="アルマース"  time="0"  wait="false"  storage="chara/43/3.png"  width="704"  height="820"  left="267"  top="11"  reflect="false"  ]
+[lbgm str="3_connection_communication.ogg" vol="50" loop="true" time="0" buf="0"]
+
+[layermode_movie  mode="screen"  speed="1"  volume="100"  loop="false"  time="0"  wait="false"  video="kiri2.mp4"  ]
+[call  storage="maku.ks"  target="*open"  ]
+[wait  time="700"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[_tb_end_text]
+
+[fadein_window  time="300"  ]
+[playse  volume="100"  time="0"  buf="3"  storage="kira.ogg"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="KaiseiDecol-Bold"]素敵な召喚魔法だね…ボクのこと自室に呼んで[r]いったい何の用かな？かわいこちゃ…[resetfont][p]
+
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/7.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="DZUYOKU"][font size=70]って[font color=0xEC6FC5 bold=true]男[font color=0xFFFFFF bold=true]かテメェー[p]
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#でびるん
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[play_apng name="debi_fuki_show" layer="0" x="7" y="308" width="384" height="400"]
+[_tb_end_tyrano_code]
+
+[wait  time="350"  ]
+[chara_show  name="コマでび"  layer="0"  zindex="2"  time="0"  wait="false"  storage="chara/10/85.png"  width="383"  height="400"  left="7"  top="308"  ]
+[tb_start_tyrano_code]
+[free_apng name="debi_fuki_show" ]
+[_tb_end_tyrano_code]
+
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="-10"]
+[frame p="50%" y="0"]
+[frame p="100%" y="-1"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="400" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[playse  volume="100"  time="0"  buf="3"  storage="sasu2.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[tb_start_text mode=1 ]
+#でびるん
+な、なんだこやつ！？[r]急になにキレてやがるんだ[p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#アルマース
+男ごときがこのオレを呼び出しやがって…[r][font size=50]ぶっ飛ばす[resetfont][p]
+
+
+
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="3"  storage="aseru.ogg"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/81.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+男と分かったとたん血気盛んすぎるだろ！[r]なんか繰り出してくるぞ！防げ！[p]
+
+[_tb_end_text]
+
+[chara_mod  name="プレイヤー"  time="100"  cross="false"  storage="chara/2/fu_te2.png"  ]
+[tb_hide_message_window  ]
+[eval exp="f.zyagan_count = 0"]
+
+*zyagan1_modoru
+
+[choice2 text1="バリア魔法" target1="ba" text2="耳栓魔法" target2="*mi"]
+
+[zyagan target="*zyagan1" borders="65, 95, 105, 135"]
+
+[s  ]
+*zyagan1
+
+[mp_check]
+
+[s  cond="!f.mp_check_pass"  ]
+[call  storage="zyagan.ks"  target=""  ]
+[tb_start_text mode=1 ]
+#アルマース
+
+[_tb_end_text]
+
+[chara_mod  name="プレイヤー"  time="0"  cross="false"  storage="chara/2/fu_te.png"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/10.png"  ]
+[bg  time="0"  method="crossfade"  storage="haikei_zyagan.webp"  ]
+[call  storage="me.ks"  target="*meopen"  ]
+[fadein_window  time="300"  ]
+[tb_start_text mode=1 ]
+#アルマース
+くそーっ稽古の成果を見せてやる！[p]
+
+
+[_tb_end_text]
+
+[call  storage="me.ks"  target="*me_ENDtozi"  ]
+[chara_mod  name="プレイヤー"  time="100"  cross="false"  storage="chara/2/fu_te2.png"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/7.png"  ]
+[bg  time="0"  method="crossfade"  storage="haikei2.webp"  ]
+[chara_show  name="コマでび"  layer="0"  zindex="2"  time="0"  wait="false"  storage="chara/10/82.png"  width="383"  height="400"  left="7"  top="308"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[call  storage="me.ks"  target="*me_ENDake"  ]
+[jump  storage="scenario_Almaz.ks"  target="*zyagan1_modoru"  ]
+*ba
+
+[wait  time="200"  ]
+[playse  volume="100"  time="0"  buf="3"  storage="barrier2.ogg"  ]
+[layermode_movie  mode="screen"  speed="1"  volume="100"  loop="true"  time="1000"  wait="false"  video="baria_gaku.mp4"  ]
+[chara_hide  name="プレイヤー"  layer="1"  time="80"  wait="false"  pos_mode="false"  ]
+[wait  time="1000"  ]
+[tb_show_message_window  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[playse  volume="100"  time="0"  buf="1"  storage="aseru.ogg"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/82.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+くっ…頼りねぇバリアだがいけるか[p]
+[_tb_end_text]
+
+[chara_mod  name="アルマース"  time="30"  cross="false"  storage="chara/43/9.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+ふん、そんな薄っぺらいバリアを張って[r]一体何を防ぐつもりだ？[p]
+[_tb_end_text]
+
+[tb_eval  exp="f.photoDeviPose=0"  name="photoDeviPose"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" x="0"]
+[frame p="50%" x="3"]
+[frame p="100%" x="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="100" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[bg  time="100"  method="crossfade"  storage="haikei_music.webp"  ]
+[tb_hide_message_window  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/8.png"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/107.png"  ]
+[layermode_movie  mode="screen"  speed="1"  volume="100"  loop="false"  time="0"  wait="false"  video="oto.mp4"  ]
+[playse  volume="100"  time="0"  buf="3"  storage="aruma.ogg"  ]
+[wait  time="3000"  ]
+[free_layermode  time="1000"  wait="false"  ]
+[bg  time="1000"  method="crossfade"  storage="haikei2.webp"  ]
+[stopse  time="1000"  buf="3"  fadeout="true"  ]
+[tb_show_message_window  ]
+[playse  volume="100"  time="0"  buf="3"  storage="sasu2.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="-10"]
+[frame p="50%" y="0"]
+[frame p="100%" y="-1"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="400" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/25.png"  ]
+[chara_show  name="プレイヤー"  zindex="2"  layer="1"  time="0"  wait="false"  storage="chara/2/te.png"  width="1280"  height="960"  ]
+[tb_eval  exp="f.photoDeviPose=1"  name="photoDeviPose"  cmd="="  op="t"  val="0"  val_2="undefined"  ]
+[tb_start_text mode=1 ]
+#でびるん
+[font face="DZUYOKU"][font size=50]うるせーッ！[resetfont]ピアノを弾いてたから[r]そんな気はしたがこやつ、音魔法使いか！[p]
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="4"  storage="AURA_NG.ogg"  ]
+[chara_show  name="感情オーラ1"  time="1000"  wait="false"  storage="chara/11/moya1-1.png"  width="460"  height="200"  left="279"  top="51"  reflect="false"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[chara_mod  name="アルマース"  time="30"  cross="false"  storage="chara/43/9.png"  ]
+[chara_show  name="プレイヤー"  zindex="2"  layer="1"  time="0"  wait="false"  storage="chara/2/te.png"  width="1280"  height="960"  ]
+[tb_start_text mode=1 ]
+#アルマース
+ふん、つまらんな。もしかして[r]手加減してんのか？隠したって無駄だぞ[p]
+[_tb_end_text]
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/1.png"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="sasu.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[camera  time="800"  zoom="1.15"  wait="false"  y="30"  layer="base"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.3"  wait="false"  y="30"  layer="0"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.3"  wait="false"  y="30"  layer="1"  ease_type="ease"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/7.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font size=50]どうせその高度な召喚魔法で[wait time=200][p]
+
+[_tb_end_text]
+
+[jump  storage="scenario_Almaz.ks"  target="*ba_jump"  ]
+*mi
+
+[tb_eval  exp="f.photoDeviPose=0"  name="photoDeviPose"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="hazikeru.ogg"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[tb_start_tyrano_code]
+[play_apng name="kemuri2" layer="1" x="0" y="0" width="1280" height="960" mode="screen" free="true"]
+[_tb_end_tyrano_code]
+
+[chara_mod  name="アルマース"  time="30"  cross="false"  storage="chara/43/8.png"  ]
+[layermode_movie  mode="screen"  speed="1"  volume="100"  loop="false"  time="0"  wait="false"  video="oto.mp4"  ]
+[playse  volume="100"  time="0"  buf="3"  storage="aruma2.ogg"  ]
+[wait  time="200"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/108.png"  ]
+[l  ]
+[stopse  time="1000"  buf="3"  fadeout="true"  ]
+[free_layermode  time="1000"  wait="false"  ]
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+#でびるん
+ピアノを弾いてたからそんな気はしたが…[r]やはりこやつ、音魔法使いか！[p]
+
+[_tb_end_text]
+
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/9.png"  ]
+[playse  volume="100"  time="0"  buf="4"  storage="AURA_OK.ogg"  ]
+[chara_show  name="感情オーラ1"  time="1000"  wait="false"  storage="chara/11/moya1.png"  width="412"  height="179"  left="279"  top="51"  reflect="false"  ]
+[tb_start_text mode=1 ]
+#アルマース
+ふん、しっかり防いだか…[r]楽しませてくれるじゃないか[p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#アルマース
+今のでよ～くわかったぞ[r]お前、優秀な魔術師のようだな[p]
+
+
+
+[_tb_end_text]
+
+[tb_eval  exp="f.photoDeviPose=1"  name="photoDeviPose"  cmd="="  op="t"  val="0"  val_2="undefined"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/1.png"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="sasu.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[camera  time="800"  zoom="1.15"  wait="false"  y="30"  layer="base"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.3"  wait="false"  y="30"  layer="0"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.3"  wait="false"  y="30"  layer="1"  ease_type="ease"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/7.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font size=50]その高度な召喚魔法で[wait time=200][p]
+
+
+
+[_tb_end_text]
+
+*ba_jump
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu2.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[camera  time="800"  zoom="1.4"  wait="false"  y="70"  layer="base"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.6"  wait="false"  y="70"  layer="0"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.6"  wait="false"  y="70"  layer="1"  ease_type="ease"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font size=50]レディを召喚してェ！[wait time=200][p]
+
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu3.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[camera  time="700"  zoom="1.6"  wait="false"  y="90"  layer="base"  ease_type="ease"  ]
+[camera  time="700"  zoom="1.8"  wait="false"  y="90"  layer="0"  ease_type="ease"  ]
+[camera  time="700"  zoom="1.8"  wait="false"  y="90"  layer="1"  ease_type="ease"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font size=50]イチャイチャしてるんだるォ！？[resetfont][wait time=200][p]
+
+
+[_tb_end_text]
+
+[reset_camera  time="500"  wait="false"  layer="base"  ]
+[reset_camera  time="500"  wait="false"  layer="0"  ]
+[reset_camera  time="500"  wait="false"  layer="1"  ]
+[tb_start_text mode=1 ]
+#アルマース
+そこのスケベな目ェした[r]悪魔とも契約しやがって！[p]
+
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu2.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="-10"]
+[frame p="50%" y="0"]
+[frame p="100%" y="-1"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="400" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/103.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+[font face="DZUYOKU"][font size=50]オレサマはスケベな目してねーよ！[resetfont][p]
+
+
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/91.png"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="sasu.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[camera  time="800"  zoom="1.15"  wait="false"  y="30"  layer="base"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.3"  wait="false"  y="30"  layer="0"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.3"  wait="false"  y="30"  layer="1"  ease_type="ease"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/11.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="DZUYOKU"][font size=80]オレも[delay speed=100]・・・[resetdelay][resetfont][wait time=200][p]
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu2.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[camera  time="800"  zoom="1.4"  wait="false"  y="70"  layer="base"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.6"  wait="false"  y="70"  layer="0"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.6"  wait="false"  y="70"  layer="1"  ease_type="ease"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="DZUYOKU"][font size=80]オレだってェ[delay speed=100]・・・[resetdelay]！[resetfont][wait time=200][p]
+
+[_tb_end_text]
+
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/7.png"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="sasu3.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[camera  time="700"  zoom="1.6"  wait="false"  y="90"  layer="base"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.8"  wait="false"  y="70"  layer="0"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.8"  wait="false"  y="70"  layer="1"  ease_type="ease"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="DZUYOKU"][font size=80]レディとイチャイチャしてぇよ！[resetfont][wait time=200][p]
+
+
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="-10"]
+[frame p="50%" y="0"]
+[frame p="100%" y="-1"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="400" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[reset_camera  time="500"  wait="false"  layer="base"  ]
+[reset_camera  time="500"  wait="false"  layer="0"  ]
+[reset_camera  time="500"  wait="false"  layer="1"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="sasu2.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/103.png"  ]
+[jump  storage="scenario_Almaz.ks"  target="*Alice"  cond="f.Alice_nabe==1"  ]
+[tb_start_text mode=1 ]
+#でびるん
+[font size=50]だからぁんなこたぁしてねーよ！[resetfont][r][font size=25]もうこのくだりやめろぉ！[resetfont][p]
+
+
+[_tb_end_text]
+
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="gauru3.ogg"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/12.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+嘘をつくなァ！ ひとつ屋根の下でやることと[r]言ったらそれ以外考えられねぇだろォ！[p]
+
+
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/84.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+はぁ…話にならねぇ…[r]おい、[emb exp="f.name"][p]
+
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="-10"]
+[frame p="50%" y="0"]
+[frame p="100%" y="-1"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="400" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/63.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+[font size=50]この状況なんとかしろォ！[resetfont][p]
+[_tb_end_text]
+
+[jump  storage="scenario_Almaz.ks"  target="*Alice_jump"  ]
+*Alice
+
+[tb_start_text mode=1 ]
+#でびるん
+[font size=50]だからぁんなこたぁしてねーよ！[resetfont][p]
+
+
+[_tb_end_text]
+
+[quake  time="600"  count="10"  hmax="3"  wait="false"  vmax="0"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="gimon.ogg"  ]
+[stopbgm  time="0"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/92.png"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/25.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="DZUYOKU"][font size=80]嘘だッ！！！[resetfont][wait time=500][p]
+[_tb_end_text]
+
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/13.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+・[wait time=300]・[wait time=300]・[wait time=300]なぜなら貴様からは[r][ruby text="かす"]微かなレディの香りがする[p]
+
+
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/84.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+…あー、もしかしてオレサマがぬいぐるみになって[r]抱かれたときの残り香か？[font size=25][font face="KaiseiDecol-Bold"] こやつの嗅覚異常だろ…[resetfont][p]
+
+
+[_tb_end_text]
+
+[lbgm str="3_connection_communication.ogg" vol="50" loop="true" time="0" buf="0"]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu2.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/12.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font size=50]やっぱりそうなんだな！ずるい！[r]ずるいぞぉ…許さねぇ！！！！[resetfont][p]
+
+
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="-10"]
+[frame p="50%" y="0"]
+[frame p="100%" y="-1"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="400" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/63.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+だーもう！[emb exp="f.name"][r][font size=50]この状況なんとかしろォ！[resetfont][p]
+[_tb_end_text]
+
+*Alice_jump
+
+[eval exp="f.zyagan_count = 0"]
+
+*zyagan2_modoru
+
+[tb_hide_message_window  ]
+[choice2 text1="ふりふり魔法" target1="*hu" text2="エロ本を渡す" target2="*ero"]
+
+[zyagan target="*zyagan2" borders="55, 70, 80, 95"]
+
+[s  ]
+*zyagan2
+
+[mp_check]
+
+[s  cond="!f.mp_check_pass"  ]
+[call  storage="zyagan.ks"  target=""  ]
+[tb_start_text mode=1 ]
+#アルマース
+[_tb_end_text]
+
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/10.png"  ]
+[chara_mod  name="プレイヤー"  time="0"  cross="false"  storage="chara/2/fu_te.png"  ]
+[bg  time="0"  method="crossfade"  storage="haikei_zyagan.webp"  ]
+[call  storage="me.ks"  target="*meopen"  ]
+[fadein_window  time="300"  ]
+[tb_start_text mode=1 ]
+#アルマース
+クッソー！[r]むしゃくしゃするぜ！[p]
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#アルマース
+こんな野郎じゃなくてかわいいレディに[r]召喚されたかったァ！！！！！[p]
+[_tb_end_text]
+
+[call  storage="me.ks"  target="*me_ENDtozi"  ]
+[chara_mod  name="プレイヤー"  time="100"  cross="false"  storage="chara/2/te.png"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/7.png"  ]
+[chara_show  name="コマでび"  layer="0"  zindex="2"  time="0"  wait="false"  storage="chara/10/84.png"  width="383"  height="400"  left="7"  top="308"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[bg  time="0"  method="crossfade"  storage="haikei2.webp"  ]
+[call  storage="me.ks"  target="*me_ENDake"  ]
+[jump  storage="scenario_Almaz.ks"  target="*zyagan2_modoru"  ]
+[s  ]
+*hu
+
+[achieve_sticker no="51"]
+
+[tb_eval  exp="f.photoDeviPose=0"  name="photoDeviPose"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="hazikeru.ogg"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[tb_start_tyrano_code]
+[play_apng name="kemuri2" layer="1" x="0" y="0" width="1280" height="960" mode="screen" free="true"]
+[_tb_end_tyrano_code]
+
+[wait  time="200"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="aseru.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/129.png"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="-10"]
+[frame p="50%" y="0"]
+[frame p="100%" y="-1"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="400" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+#でびるん
+[font size=50]だぎゃ！？オレサマかよ！[resetfont][p]
+
+
+
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" x="0"]
+[frame p="50%" x="3"]
+[frame p="100%" x="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="100" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/109.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+ぐぬぬ…どうにかしろとは言ったがなんで[r]オレサマがこんなリボン付けなきゃ[p]
+[_tb_end_text]
+
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/1.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[delay speed=100]・・・[resetdelay]オレがそんな魔法に[r]引っかかるとでも思ってるのか？[p]
+
+
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/110.png"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="sasu.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[camera  time="800"  zoom="1.15"  wait="false"  y="30"  layer="base"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.3"  wait="false"  y="30"  layer="0"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.3"  wait="false"  y="30"  layer="1"  ease_type="ease"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/11.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="DZUYOKU"][font size=80]男だろ男！[r]いくら男が着飾ろうと[resetfont][p]
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu2.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[camera  time="800"  zoom="1.4"  wait="false"  y="70"  layer="base"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.6"  wait="false"  y="70"  layer="0"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.6"  wait="false"  y="70"  layer="1"  ease_type="ease"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/7.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="DZUYOKU"][font size=80]男は男なんだよおぉおぉおぉ！[resetfont][wait time=200][p]
+
+
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="4"  storage="AURA_OK.ogg"  ]
+[chara_show  name="感情オーラ2"  time="1000"  wait="false"  storage="chara/12/moya2.png"  width="368"  height="184"  left="712"  top="270"  reflect="false"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/12.png"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="sasu3.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[camera  time="700"  zoom="1.6"  wait="false"  y="90"  layer="base"  ease_type="ease"  ]
+[camera  time="700"  zoom="1.8"  wait="false"  y="90"  layer="0"  ease_type="ease"  ]
+[camera  time="700"  zoom="1.8"  wait="false"  y="90"  layer="1"  ease_type="ease"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font size=65]オレは絶対に認めないぞおぉおぉ[r]ぬおぉおぉおぉおぉっ[resetfont][wait time=200][p]
+
+
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="-10"]
+[frame p="50%" y="0"]
+[frame p="100%" y="-1"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="400" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[reset_camera  time="500"  wait="false"  layer="base"  ]
+[reset_camera  time="500"  wait="false"  layer="0"  ]
+[reset_camera  time="500"  wait="false"  layer="1"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/111.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+うぉっ、すごい怒りのオーラッ[r]うーむ、いいぞ！[p]
+
+
+[_tb_end_text]
+
+[tb_eval  exp="f.photoDeviPose=1"  name="photoDeviPose"  cmd="="  op="t"  val="0"  val_2="undefined"  ]
+[chara_mod  name="コマでび"  time="50"  cross="false"  storage="chara/10/8.png"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[tb_start_text mode=1 ]
+#でびるん
+あ、このリボンは外すぜボケがよ[r]んなもんオレサマにつけんなやカスが[p]
+
+[_tb_end_text]
+
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/13.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+ったく…稽古の時間を削ってまで[r]ここに来てやってるんだ[p]
+[_tb_end_text]
+
+[jump  storage="scenario_Almaz.ks"  target="*hu_jump"  ]
+*ero
+
+[achieve_sticker no="7"]
+
+[tb_eval  exp="f.HANYOU=1"  name="HANYOU"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[flash  time="80"  effect="fadeIn"  color="0x000000"  ]
+
+[playse  volume="100"  time="0"  buf="3"  storage="idou.ogg"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/12.png"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/14.png"  ]
+[wait  time="100"  ]
+[flash_off  time="20"  effect="fadeOut"  ]
+
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+#アルマース
+[delay speed=100]・・・[resetdelay]オレをなんだと思ってるんだ？[p]
+
+
+
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="-10"]
+[frame p="50%" y="0"]
+[frame p="100%" y="-1"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="400" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/74.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+[font size=50]ヘンタイ[resetfont][p]
+
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/12.png"  ]
+[camera  time="800"  zoom="1.15"  wait="false"  y="30"  layer="base"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.3"  wait="false"  y="30"  layer="0"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.3"  wait="false"  y="30"  layer="1"  ease_type="ease"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/11.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font size=50]こんな紙切れに[r]興味があるわけないだろ[resetfont][wait time=200][p]
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu2.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[camera  time="800"  zoom="1.4"  wait="false"  y="70"  layer="base"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.6"  wait="false"  y="70"  layer="0"  ease_type="ease"  ]
+[camera  time="800"  zoom="1.6"  wait="false"  y="70"  layer="1"  ease_type="ease"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font size=50]目の前にレディがいなきゃだめだ[resetfont][wait time=200][p]
+
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="4"  storage="AURA_NG.ogg"  ]
+[chara_show  name="感情オーラ2"  time="1000"  wait="false"  storage="chara/12/moya2-2.png"  width="460"  height="200"  left="712"  top="270"  reflect="false"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/7.png"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="sasu3.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[camera  time="700"  zoom="1.6"  wait="false"  y="90"  layer="base"  ease_type="ease"  ]
+[camera  time="700"  zoom="1.8"  wait="false"  y="90"  layer="0"  ease_type="ease"  ]
+[camera  time="700"  zoom="1.8"  wait="false"  y="90"  layer="1"  ease_type="ease"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font size=50]こんな本、今まで1度も[r]読んだことないね[resetfont][wait time=200][p]
+
+
+[_tb_end_text]
+
+[reset_camera  time="500"  wait="false"  layer="base"  ]
+[reset_camera  time="500"  wait="false"  layer="0"  ]
+[reset_camera  time="500"  wait="false"  layer="1"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/1.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+芯のあるヘンタイだな。[r]もはや気高さすら感じる[p]
+
+
+[_tb_end_text]
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/84.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+ところでよぉおみゃーその本どっから[r]出してきたんだ…ま、話はあとで聞こうか[p]
+
+[_tb_end_text]
+
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/13.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+んなこたぁはどうでもいい！稽古の時間を[r]削ってまでここに来てやってるんだ[p]
+[_tb_end_text]
+
+*hu_jump
+
+[tb_start_text mode=1 ]
+#アルマース
+もう少しそのお得意の魔法で[r]このオレを楽しませてみせろ[p]
+
+
+
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="1"  storage="gauru3.ogg"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/15.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+そうだ！モテモテ魔法！[r]モテモテ魔法とかかけてくれよ！ほら！[p]
+
+
+
+[_tb_end_text]
+
+[tb_hide_message_window  ]
+[chara_mod  name="プレイヤー"  time="0"  cross="false"  storage="chara/2/fu_te2.png"  ]
+[eval exp="f.zyagan_count = 0"]
+
+*zyagan3_modoru
+
+[choice2 text1="モテモテ魔法" target1="*mote" text2="モチモチ魔法" target2="*mochi"]
+
+[zyagan target="*zyagan3" borders="120, 135, 145, 160"]
+
+[s  ]
+*zyagan3
+
+[mp_check]
+
+[s  cond="!f.mp_check_pass"  ]
+[call  storage="zyagan.ks"  target=""  ]
+[tb_start_text mode=1 ]
+#アルマース
+[_tb_end_text]
+
+[chara_mod  name="プレイヤー"  time="0"  cross="false"  storage="chara/2/fu_te.png"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/20.png"  ]
+[bg  time="0"  method="crossfade"  storage="haikei_zyagan.webp"  ]
+[call  storage="me.ks"  target="*meopen"  ]
+[fadein_window  time="300"  ]
+[tb_start_text mode=1 ]
+#アルマース
+普段手入れはしっかりしてんだ！[r]心掛けたいのは毛並みツヤツヤ、肌モチモチ…[p]
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/21.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font size=50]全てはレディにモテるためッ！[resetfont][p]
+[_tb_end_text]
+
+[call  storage="me.ks"  target="*me_ENDtozi"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[chara_mod  name="プレイヤー"  time="0"  cross="false"  storage="chara/2/fu_te2.png"  ]
+[bg  time="0"  method="crossfade"  storage="haikei2.webp"  ]
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/15.png"  ]
+[chara_show  name="コマでび"  layer="0"  zindex="2"  time="0"  wait="false"  storage="chara/10/12.png"  width="383"  height="400"  left="7"  top="308"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[call  storage="me.ks"  target="*me_ENDake"  ]
+[jump  storage="scenario_Almaz.ks"  target="*zyagan3_modoru"  ]
+*mote
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/1.png"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[playse  volume="100"  time="0"  buf="0"  storage="hazikeru.ogg"  ]
+[tb_start_tyrano_code]
+[play_apng name="kemuri" layer="1" x="0" y="0" width="1280" height="960" mode="screen" free="true"]
+[_tb_end_tyrano_code]
+
+[wait  time="300"  ]
+[chara_mod  name="プレイヤー"  time="0"  cross="false"  storage="chara/2/te.png"  ]
+[chara_mod  name="アルマース"  time="60"  cross="false"  storage="chara/43/1.png"  ]
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+#アルマース
+ん？なんだ？[r]なんも変わってないけど[p]
+
+
+
+[_tb_end_text]
+
+[tb_eval  exp="f.photoDeviPose=0"  name="photoDeviPose"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
+[playse  volume="100"  time="0"  buf="0"  storage="saimin.ogg"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/94.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+だぎゃ…？[r]な、なんか…おみゃ…[p]
+
+
+[_tb_end_text]
+
+[flash  time="80"  effect="fadeIn"  color="0x000000"  ]
+
+[chara_hide  name="コマでび"  time="0"  wait="false"  pos_mode="false"  ]
+[playse  volume="100"  time="0"  buf="3"  storage="idou.ogg"  ]
+[chara_mod  name="アルマース"  time="60"  cross="false"  storage="chara/43/17.png"  ]
+[flash_off  time="20"  effect="fadeOut"  ]
+
+[tb_start_text mode=1 ]
+#でびるん
+[font size=75]好きだ♥ぎゃ～[resetfont][p]
+
+
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[chara_mod  name="アルマース"  time="60"  cross="false"  storage="chara/43/16.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="DZUYOKU"][font size=60]うおぉおぉオスガキ悪魔ァ！[r]くっつくなァ！！！！[resetfont][p]
+
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu2.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="DZUYOKU"][font size=60]やめっ！[r]やめ・・・・・・[resetfont][p]
+
+[_tb_end_text]
+
+[flash  time="80"  effect="fadeIn"  color="0x000000"  ]
+
+[chara_mod  name="アルマース"  time="60"  cross="false"  storage="chara/43/18.png"  ]
+[flash_off  time="20"  effect="fadeOut"  ]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu3.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[chara_show  name="感情オーラ3"  time="1000"  wait="false"  storage="chara/13/moya3-3.png"  width="460"  height="200"  left="234"  top="469"  reflect="false"  ]
+[playse  volume="100"  time="0"  buf="4"  storage="AURA_NG.ogg"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="DZUYOKU"][font size=80]やめろァ！！！！！[resetfont][p]
+
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[play_apng name="debi_fuki_show" layer="0" x="7" y="308" width="384" height="400"]
+[_tb_end_tyrano_code]
+
+[wait  time="350"  ]
+[chara_show  name="コマでび"  layer="0"  zindex="2"  time="0"  wait="false"  storage="chara/10/113.png"  width="383"  height="400"  left="7"  top="308"  ]
+[tb_start_tyrano_code]
+[free_apng name="debi_fuki_show" ]
+[_tb_end_tyrano_code]
+
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" x="0"]
+[frame p="50%" x="3"]
+[frame p="100%" x="0"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="100" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[tb_eval  exp="f.kansou3=1"  name="kansou3"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
+[tb_start_text mode=1 ]
+#でびるん
+あ、あぎゃ…おみゃ…なにをひた…[r]もう二度とヘンなまほーかけるな…[p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#でびるん
+ひとまずまりょく…[r]まりょくかいひゅうだ[p]
+[_tb_end_text]
+
+[tb_eval  exp="f.photoDeviPose=1"  name="photoDeviPose"  cmd="="  op="t"  val="0"  val_2="undefined"  ]
+[jump  storage="scenario_Almaz.ks"  target="*mote_jump"  ]
+*mochi
+
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[playse  volume="100"  time="0"  buf="0"  storage="hazikeru.ogg"  ]
+[tb_start_tyrano_code]
+[play_apng name="kemuri" layer="1" x="0" y="0" width="1280" height="960" mode="screen" free="true"]
+[_tb_end_tyrano_code]
+
+[wait  time="300"  ]
+[chara_mod  name="プレイヤー"  time="0"  cross="false"  storage="chara/2/te.png"  ]
+[chara_mod  name="アルマース"  time="60"  cross="false"  storage="chara/43/19.png"  ]
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+#アルマース
+おぉ、肌がモチモチに…！普段手入れは欠かさないが[r]更に毛並みもつややかになっていい感じだ[p]
+
+[_tb_end_text]
+
+[chara_show  name="感情オーラ3"  time="1000"  wait="false"  storage="chara/13/moya3.png"  width="390"  height="195"  left="277"  top="480"  reflect="false"  ]
+[playse  volume="100"  time="0"  buf="4"  storage="AURA_OK.ogg"  ]
+[tb_start_text mode=1 ]
+#アルマース
+たしかにこれならもっとモテるな[r]ありがとよ！[p]
+
+
+
+[_tb_end_text]
+
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/21.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+な、何が変わったのかようわからんが…[r]まぁ満足したのならいいか、魔力回収だ！[p]
+
+[_tb_end_text]
+
+*mote_jump
+
+[kyushu]
+
+[tb_show_message_window  ]
+[tb_start_tyrano_code]
+[anim layer="message0" time="300" opacity="255"]
+[anim name="fixlayer" time="300" opacity="255"]
+[wait time="300"]
+[_tb_end_tyrano_code]
+
+[chara_mod  name="アルマース"  time="60"  cross="false"  storage="chara/43/13.png"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[if exp="f.kansou3 == 1]ふん、おとといきやがれ[else]今度はレディ専用召喚魔法も教えろよな[endif][p]
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="1"  storage="sasu.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/103.png"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwakoma"]
+[frame p="0%" y="-10"]
+[frame p="50%" y="0"]
+[frame p="100%" y="-1"]
+[endkeyframe]
+[kanim name="コマでび" keyframe="fuwakoma" count="infinite" time="400" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[tb_start_text mode=1 ]
+#でびるん
+[font size=50][if exp="f.kansou3 == 1]それはこっちのセリフだよ！[else]んなもんねぇよ！[endif][resetfont][p]
+[_tb_end_text]
+
+[tb_hide_message_window  ]
+[stopse  time="0"  buf="5"  ]
+[call  storage="maku.ks"  target="*close"  ]
+[chara_hide_all  time="0"  wait="false"  ]
+[bg  time="0"  method="crossfade"  storage="haikei2.webp"  ]
+[chara_show  name="でびるん"  time="0"  wait="false"  storage="chara/1/5.png"  width="1280"  height="960"  ]
+[tb_start_tyrano_code]
+[keyframe name="fuwa"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-50"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="でびるん" keyframe="fuwa" count="infinite" time="2000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[flash_off  time="0"  effect="fadeOut"  ]
+
+[playbgm  volume="50"  time="0"  loop="true"  storage="1_debirun_no_theme.ogg"  ]
+[tb_eval  exp="f.photoDeviPose=0"  name="photoDeviPose"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
+[call  storage="maku.ks"  target="*open"  ]
+[wait  time="1000"  ]
+[fadein_window  time="1000"  ]
+[tb_start_text mode=1 ]
+#でびるん
+だぎゃあ…[r]とんでもねぇ野郎だったな…[p]
+[_tb_end_text]
+
+[jump  storage="scenario_Almaz.ks"  target="*erohon"  cond="f.HANYOU==1"  ]
+[chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/8.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+それにしてもてみゃー[r]初日からなんだこの有様は？[p]
+[_tb_end_text]
+
+[chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/33.png"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="sasu.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[tb_start_text mode=1 ]
+#でびるん
+[if exp="f.kansou3 == 1]ふりふりだのモテモテだの…[r]オレサマに変な魔法をかけるのはやめろ！[else]ふりふり魔法ってなんだよ！[r]オレサマに変な魔法をかけるのはやめろ！[endif][p]
+[_tb_end_text]
+
+[chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/53.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+ったく…なぁんか妙に手馴れてるというか、[r]馴れ馴れしいんだよなぁ[p]
+
+
+[_tb_end_text]
+
+[camera  time="1000"  zoom="1.5"  wait="false"  x="0"  y="50"  rotate="0"  layer="0"  ease_type="ease"  ]
+[chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/44.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+オレサマじゃなくて、[r]召喚した目の前のザコ共に集中しろー！[p]
+
+
+[_tb_end_text]
+
+[jump  storage="scenario_Almaz.ks"  target="*jump"  ]
+*erohon
+
+[chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/20.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+ところでよ、なんだなんだぁ？[r]あのエロ本はぁ[p]
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#でびるん
+おみゃーのか？[r]それとも誰かから借りたのかぁ？[p]
+
+
+[_tb_end_text]
+
+[camera  time="1000"  zoom="1.5"  wait="false"  x="0"  y="50"  rotate="0"  layer="0"  ease_type="ease"  ]
+[chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/10.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+クフフ、顔には出さんくせに[r]そーいうコトには興味あるんだなぁ[p]
+
+
+[_tb_end_text]
+
+[chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/11.png"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="sasu.ogg"  ]
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[tb_start_text mode=1 ]
+#でびるん
+[font size=50]握っちまったぜぇ[r]おみゃーの弱みィ！[resetfont][p]
+
+[_tb_end_text]
+
+[camera  time="1000"  zoom="1.7"  wait="false"  x="0"  y="50"  rotate="0"  layer="0"  ease_type="ease"  ]
+[chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/7.png"  ]
+[tb_start_text mode=1 ]
+#でびるん
+誰かにバラされたくなきゃちゃーんと使い魔として[r]オレサマの言うことを聞くんだなっ♥[p]
+
+[_tb_end_text]
+
+*jump
+
+[iscript]
+// 全部見たら記録する（初回だけ）
+if (f.chara && !f.finished.includes(f.chara.name)) {
+f.finished = [...f.finished, f.chara.name];
+}
+[endscript]
+
+[tb_hide_message_window  ]
+[call  storage="maku.ks"  target="*close"  ]
+[chara_hide  name="でびるん"  time="0"  wait="false"  pos_mode="false"  ]
+[chara_hide  name="プレイヤー"  layer="1"  time="0"  wait="false"  pos_mode="false"  ]
+[free_layermode  time="0"  wait="false"  ]
+[jump  storage="syoukan.ks"  target=""  ]
+[s  ]
+*hutanari
+
+[tb_start_text mode=1 ]
+#でびるん
+は？ え…ちょ、なんだ…？[r]こ、こやつには気をつけろ[p]
+[_tb_end_text]
+
+[chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/3.png"  ]
+[playse  volume="100"  time="0"  buf="3"  storage="kira.ogg"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="KaiseiDecol-Bold"]そこのレディ…ボクをお家に呼んでくれたってことは[r]つまりそういう事だよね？[resetfont][p]
+
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="4"  storage="aseru.ogg"  ]
+[tb_start_text mode=1 ]
+#でびるん
+だから気をつけろつってんだろ！[p]
+[_tb_end_text]
+
+[flash  time="80"  effect="fadeIn"  color="0x000000"  ]
+
+[tb_eval  exp="f.photoPose=0"  name="photoPose"  cmd="="  op="t"  val="0"  val_2="undefined"  ]
+[playse  volume="100"  time="0"  buf="4"  storage="idou.ogg"  ]
+[chara_move  name="コマでび"  anim="false"  time="0"  effect="linear"  wait="false"  left="40"  top="308"  width="383"  height="400"  ]
+[chara_hide  name="プレイヤー"  layer="1"  time="0"  wait="false"  pos_mode="false"  ]
+[chara_hide  name="アルマース"  time="0"  wait="false"  pos_mode="false"  ]
+[tb_filter_blur  layer="base"  blur="2"  ]
+[chara_show  name="アルマース"  time="0"  wait="false"  storage="chara/43/22.png"  width="1280"  height="960"  ]
+[camera  time="1"  zoom="1.2"  wait="false"  ease_type="ease"  layer="layer_camera"  ]
+[wait  time="300"  ]
+[flash_off  time="20"  effect="fadeOut"  ]
+
+[reset_camera  time="30000"  wait="false"  layer="layer_camera"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="KaiseiDecol-Bold"]キミの心はぽっかりと穴が空いているように見える。[r]大丈夫。ボクで満たしてあげるから[delay speed=100]・・・[resetdelay][resetfont][p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#でびるん
+オレサマはもう知らんぞ。[r]忠告したからな、あばよ！[p]
+
+[_tb_end_text]
+
+[playse  volume="100"  time="0"  buf="3"  storage="nigeru.ogg"  ]
+[chara_mod  name="アルマース"  time="0"  cross="true"  storage="chara/43/23.png"  ]
+[chara_hide  name="コマでび"  time="80"  wait="false"  pos_mode="false"  ]
+[tb_start_text mode=1 ]
+#アルマース
+さっきからなんなんだあの悪魔？[r]すんすん…ってあれ、なんだこの匂い[p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#アルマース
+[delay speed=300]・・・[resetdelay][p]
+[_tb_end_text]
+
+[stopbgm  time="0"  fadeout="true"  ]
+[chara_mod  name="アルマース"  time="0"  cross="true"  storage="chara/43/24.png"  ]
+[playse  volume="100"  time="0"  buf="3"  storage="Horror.ogg"  ]
+[tb_start_text mode=1 ]
+#アルマース
+[font face="kowai"]まさか[delay speed=100]・・・[resetdelay]おま[delay speed=100]・・・[resetdelay][resetfont][p]
+[_tb_end_text]
+
+[stopse  time="0"  buf="5"  ]
+[ending no="32"]
+
+[wait  time="3000"  ]

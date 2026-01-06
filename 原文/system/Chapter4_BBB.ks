@@ -1,0 +1,804 @@
+[_tb_system_call storage=system/_Chapter4_BBB.ks]
+
+[eval exp="f.previousEnding=30"]
+
+[quake  time="300"  count="5"  hmax="3"  wait="false"  ]
+[stopbgm  time="0"  ]
+[playse  volume="100"  time="1000"  buf="4"  storage="syougeki.ogg"  ]
+[flash  time="80"  effect="fadeIn"  color="0xFFFFFF"  ]
+
+[free_bg_loop]
+
+[wait  time="300"  ]
+[layopt layer=4 visible="true"]
+
+[image name="shiro" layer=4 folder="fgimage" storage="default/shiro.webp" time="0"  wait="false"  ]
+
+[flash_off  time="0"  effect="fadeOut"  ]
+
+[tb_show_message_window  ]
+*x
+
+[tb_start_text mode=1 ]
+#ネオでびるん
+[quake_text][font face="DZUYOKU"][font size=95]ぐわぁあぁあぁあぁあぁッ！[resetfont][free_quake_text][p]
+
+
+[_tb_end_text]
+
+[tb_hide_message_window  ]
+[wait  time="8000"  ]
+[tb_start_tyrano_code]
+[position layer="message0" frame="Message3.png"  height="258"  ]
+[_tb_end_tyrano_code]
+
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+#？？？②
+[delay speed=100]却下だ。[resetdelay][p]
+
+[_tb_end_text]
+
+[camera  time="10"  zoom="1.15"  wait="false"  ]
+[tb_hide_message_window  ]
+[flash  time="0"  effect="fadeIn"  color="0xFFFFFF"  ]
+
+[free layer=4 name="shiro"]
+
+[chara_hide  name="ネオでび"  time="0"  wait="false"  pos_mode="false"  ]
+[chara_hide  name="コマえる"  time="0"  wait="false"  pos_mode="false"  ]
+[chara_hide  name="ネオでび邪眼"  time="0"  wait="false"  pos_mode="false"  ]
+[bg  time="0"  method="crossfade"  storage="medama_.webp"  ]
+[layermode  mode="multiply"  color="0xffffff"  time="0"  wait="false"  graphic="bb2.png"  ]
+[chara_show  name="BBB"  time="0"  wait="false"  storage="chara/64/2.png"  width="794"  height="625"  left="292"  top="25"  reflect="false"  ]
+[chara_show  name="プレイヤー"  zindex="2"  layer="1"  time="0"  wait="false"  storage="chara/2/te.png"  width="1280"  height="960"  ]
+[playse  volume="100"  time="5000"  buf="5"  storage="taida2.ogg"  fadein="true"  loop="true"  ]
+[reset_camera  time="9000"  wait="false"  ]
+[flash_off  time="3000"  effect="fadeOut"  ]
+
+[wait  time="1000"  ]
+[l  ]
+[tb_show_message_window  ]
+[chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/3.png"  ]
+[tb_start_text mode=1 ]
+#？？？②
+[delay speed=100]トモダチとはなんだ、悪魔のベルと本契約を結び[r][ruby text="しん"]真[ruby text="めい]名の力を行使して生涯こき使うつもりか？[resetdelay][p]
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[play_apng name="kupya_fuki2_show" layer="0" x="7" y="308" width="384" height="400"]
+[_tb_end_tyrano_code]
+
+[wait  time="350"  ]
+[tb_start_tyrano_code]
+[if exp="f.BBB_kidoku == 1"]
+[_tb_end_tyrano_code]
+
+[chara_show  name="コマえる"  layer="0"  zindex="2"  time="0"  wait="false"  storage="chara/21/10.png"  width="383"  height="400"  left="7"  top="308"  reflect="false"  ]
+[tb_start_tyrano_code]
+[free_apng name="kupya_fuki2_show" ]
+[_tb_end_tyrano_code]
+
+[tb_start_tyrano_code]
+[keyframe name="erukoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマえる" keyframe="erukoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[emb exp="f.name"]さんはずっとでびくんのために[r]頑張ってきたんですよぅ！[p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]・・・分からぬ。[resetdelay][p]
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]たった3、4日過ごして、ベルのことを[r]わかった気でいるのは何故だ[resetdelay][p]
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]地上の民とはつくづく浅はかだ、[r]これも寿命が短く脆いからか？[resetdelay][p]
+
+
+[_tb_end_text]
+
+[chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/5.png"  ]
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]・・・貴様らにはわからぬだろうな[resetdelay][p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]このまま魔界に帰ることが、ベルにとって・・・[r]消滅を望む程の屈辱であることを[resetdelay][p]
+
+
+[_tb_end_text]
+
+[playse  volume="40"  time="1000"  buf="0"  storage="gauru1.ogg"  ]
+[chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/6.png"  ]
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]・・・今、解放してやるからな[resetdelay][p]
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]ベル・・・ワシを[resetdelay][p]
+
+
+[_tb_end_text]
+
+[chara_mod  name="コマえる"  time="0"  cross="false"  storage="chara/21/10.png"  ]
+[tb_start_tyrano_code]
+[keyframe name="erukoma"]
+[frame p="0%" x="0"]
+[frame p="50%" x="3"]
+[frame p="100%" x="0"]
+[endkeyframe]
+[kanim name="コマえる" keyframe="erukoma" count="infinite" time="100" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[font size=50]やめてください！[r]嫌、嫌ぁあぁあぁ！[resetfont][p]
+
+[_tb_end_text]
+
+[layopt layer=4 visible="true"]
+
+[image name="kuro" layer=4 folder="fgimage" storage="default/kuro.webp" time="100"  wait="false"  ]
+
+[playse  volume="60"  time="1000"  buf="0"  storage="BBB.ogg"  ]
+[stopse  time="500"  buf="5"  fadeout="true"  ]
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]お主をここまで追い詰めてしまった[r][ruby text="⠀"]このワシを[wait time=500]、[ruby text="ゆる"]赦してくれ[resetdelay][p]
+
+
+[_tb_end_text]
+
+[tb_hide_message_window  ]
+[wait  time="3000"  ]
+[chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/7.png"  ]
+[free_layermode  time="0"  wait="false"  ]
+[layermode  mode="hard-light"  color="0xffffff"  time="0"  wait="true"  graphic="bb.png"  ]
+[chara_mod  name="プレイヤー"  time="0"  cross="false"  storage="chara/2/te_hurue.png"  ]
+[chara_mod  name="コマえる"  time="0"  cross="false"  storage="chara/21/14.png"  ]
+[free layer=4 name="kuro" time="1000"  ]
+
+[l  ]
+[tb_start_tyrano_code]
+[position layer="message0" frame="Message_black.png" height="265"]
+[_tb_end_tyrano_code]
+
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+#BBB
+[font size=25 color=0xEA0F18 bold=true][delay speed=120]あまじょっぱい[resetdelay][resetfont][p]
+
+
+
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[else]
+[_tb_end_tyrano_code]
+
+[chara_show  name="コマえる"  layer="0"  zindex="2"  time="0"  wait="false"  storage="chara/21/13.png"  width="383"  height="400"  left="7"  top="308"  reflect="false"  ]
+[tb_start_tyrano_code]
+[free_apng name="kupya_fuki2_show" ]
+[_tb_end_tyrano_code]
+
+[tb_start_tyrano_code]
+[keyframe name="erukoma"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-5"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="コマえる" keyframe="erukoma" count="infinite" time="1000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+あなたは・・・[p]
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[ruby text="⠀"][delay speed=100]我が名は[ruby text="ビー"]B[ruby text="ス"]B[ruby text="リー"]B。[wait time=300][r]こやつとは上司と部下といったような間柄だ。[resetdelay][p]
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]ベルは覚醒し魔力を蓄える能力は十二分にあった。[wait time=500][r]だがそれを使いこなせるかはまた別の問題。[resetdelay][p]
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]先天的な大悪魔のように[r]邪神化するというのは難しかった[resetdelay][p]
+
+
+[_tb_end_text]
+
+[chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/5.png"  ]
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]お主に真の名を呼ばれず、[r]邪眼の力に呑まれていたらば・・・[resetdelay][p]
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]いや、きっと邪眼すらも魔力量に耐えられず[r]身体は朽ち果て異形の神と成していただろう[resetdelay][p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]その方がベルにとっての幸せだったかも[r]しれない・・・が・・・[resetdelay][p]
+
+
+[_tb_end_text]
+
+[chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/4.png"  ]
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]魔界に連れて帰ろうとも考えた。[wait time=500][r][ruby text="⠀"]だがこやつにとってそれは大いなる[ruby text="くつ"]屈[ruby text="じょく"]辱である[resetdelay][p]
+
+[_tb_end_text]
+
+[chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/3.png"  ]
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]しかし地上で貴様らの玩具にされるのは困る[resetdelay][p]
+
+
+[_tb_end_text]
+
+[chara_mod  name="コマえる"  time="0"  cross="false"  storage="chara/21/10.png"  ]
+[tb_start_text mode=1 ]
+#クピャドエル
+そ、そんなことするわけないですぅ！[p]
+
+
+
+
+[_tb_end_text]
+
+[chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/4.png"  ]
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]散々嫌がるベルを追い回しておいて[r][ruby text="⠀"]よく言えたものだな、[wait time=200][ruby text="ひ"]卑[ruby text="ぞく"]俗な天使よ[resetdelay][p]
+
+
+[_tb_end_text]
+
+[chara_mod  name="コマえる"  time="0"  cross="false"  storage="chara/21/9.png"  ]
+[tb_start_text mode=1 ]
+#クピャドエル
+それは・・・それはっ・・・[r]うぅ・・・っ！[p]
+
+
+
+[_tb_end_text]
+
+[playse  volume="40"  time="1000"  buf="0"  storage="gauru1.ogg"  ]
+[chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/6.png"  ]
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]・・・ベル[resetdelay][p]
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]このワシを[resetdelay][p]
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[delay speed=100]お主をここまで追い詰めてしまった[r]愚かしきこのワシを[resetdelay][p]
+
+
+[_tb_end_text]
+
+[layopt layer=4 visible="true"]
+
+[image name="kuro" layer=4 folder="fgimage" storage="default/kuro.webp" time="100"  wait="false"  ]
+
+[playse  volume="60"  time="1000"  buf="0"  storage="BBB.ogg"  ]
+[stopse  time="500"  buf="5"  fadeout="true"  ]
+[tb_start_text mode=1 ]
+#BBB
+[font size=25][delay speed=100][ruby text="ゆる"]赦してくれ[resetdelay][resetfont][p]
+
+
+[_tb_end_text]
+
+[tb_hide_message_window  ]
+[wait  time="3000"  ]
+[chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/7.png"  ]
+[free_layermode  time="0"  wait="false"  ]
+[layermode  mode="hard-light"  color="0xffffff"  time="0"  wait="true"  graphic="bb.png"  ]
+[chara_mod  name="プレイヤー"  time="0"  cross="false"  storage="chara/2/te_hurue.png"  ]
+[chara_mod  name="コマえる"  time="0"  cross="false"  storage="chara/21/19.png"  ]
+[tb_start_tyrano_code]
+[keyframe name="erukoma"]
+[frame p="0%" x="0"]
+[frame p="50%" x="3"]
+[frame p="100%" x="0"]
+[endkeyframe]
+[kanim name="コマえる" keyframe="erukoma" count="infinite" time="100" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[free layer=4 name="kuro" time="1000"  ]
+
+[l  ]
+[tb_start_tyrano_code]
+[position layer="message0" frame="Message_black.png" height="265"]
+[_tb_end_tyrano_code]
+
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+#BBB
+[font size=25 color=0xEA0F18 bold=true][delay speed=120]あまじょっぱい[resetdelay][resetfont][p]
+
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[font size=25]い、今・・・何を・・・[resetfont][p]
+
+
+
+
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[endif]
+[_tb_end_tyrano_code]
+
+[tb_start_text mode=1 ]
+#BBB
+[_tb_end_text]
+
+[playbgm  volume="50"  time="0"  loop="true"  storage="shinnona.ogg"  fadein="false"  ]
+[tb_start_text mode=1 ]
+#BBB
+[font color=0xEA0F18 bold=true][delay speed=120]安心しろ。[wait time=300][r]記憶ごと肉体を抹消しただけだ。[resetdelay][resetfont][p]
+
+
+
+
+
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[font color=0xEA0F18 bold=true][delay speed=120]本来彷徨える魂となれば、[wait time=200]肉体の復活には[r]数百年と時間を要する。[resetdelay][resetfont][p]
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[font color=0xEA0F18 bold=true][delay speed=120]だが魂に最低限肉体を復活できる程の魔力を授けた[resetdelay][resetfont][p]
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[font color=0xEA0F18 bold=true][delay speed=120]名も劣等感も・・・その全てをきれいさっぱり忘れ[r]元の下級悪魔として平穏な日々を歩むはずだろう[resetdelay][resetfont][p]
+
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[font color=0xEA0F18 bold=true][delay speed=120]彼がこうなったのはワシのせいなのだ。[wait time=500][r]だからこのワシが責任を取らねばならない。[resetdelay][resetfont][p]
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[font color=0xEA0F18 bold=true][delay speed=120]このまま見過ごせば、[wait time=100]また彼を苦しませてしまうだけだ[resetdelay][resetfont][p]
+
+
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[font color=0xEA0F18 bold=true][delay speed=120]・・・これでいいのだ[resetdelay][resetfont][p]
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[font color=0xEA0F18 bold=true][delay speed=120]これで・・・よかった[resetdelay][resetfont][p]
+
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#BBB
+[font color=0xEA0F18 bold=true][delay speed=120]及第点といった所か。[resetdelay][resetfont][p]
+
+
+
+[_tb_end_text]
+
+[flash  time="0"  effect="fadeIn"  color="0x000000"  ]
+
+[layopt layer=4 visible="true"]
+
+[free_layermode  time="0"  wait="false"  ]
+[image name="kuro" layer=4 folder="fgimage" storage="default/kuro.webp" time="0"  wait="false"  ]
+
+[stopbgm  time="0"  fadeout="true"  ]
+[wait  time="1000"  ]
+[flash_off  time="0"  effect="fadeOut"  ]
+
+[tb_start_text mode=1 ]
+#BBB
+[font color=0xEA0F18 bold=true][delay speed=120]いや、最適解だ。[resetdelay][resetfont][p]
+
+
+
+[_tb_end_text]
+
+[tb_hide_message_window  ]
+[flash  time="0"  effect="fadeIn"  color="0x000000"  ]
+
+[chara_hide  name="BBB"  time="0"  wait="false"  pos_mode="false"  ]
+[chara_hide  name="コマえる"  time="0"  wait="false"  pos_mode="false"  ]
+[chara_show  name="クピャドエル"  time="0"  wait="false"  storage="chara/14/12.png"  width="1015"  height="761"  left="125"  top="-44"  reflect="false"  ]
+[layermode  mode="multiply"  color="0xffffff"  time="0"  wait="false"  graphic="bb2.png"  ]
+[tb_start_tyrano_code]
+[keyframe name="kupya"]
+[frame p="0%" y="0"]
+[frame p="50%" y="-30"]
+[frame p="100%" y="0"]
+[endkeyframe]
+[kanim name="クピャドエル" keyframe="kupya" count="infinite" time="4000" direction="alternate" easing="linear"]
+[_tb_end_tyrano_code]
+
+[bg  time="0"  method="crossfade"  storage="haikei_black.webp"  ]
+[free layer=4 name="kuro" time="0"  ]
+
+[wait  time="3000"  ]
+[flash_off  time="1000"  effect="fadeOut"  ]
+
+[tb_start_tyrano_code]
+[position layer="message0" frame="Message3.png"  height="258"  ]
+[_tb_end_tyrano_code]
+
+[wait  time="1000"  ]
+[tb_show_message_window  ]
+[jump  storage="Chapter4_BBB.ks"  target="*30"  cond="dc.endCount()>=dc.totalEndings()"  ]
+[tb_start_tyrano_code]
+[if exp="f.BBB_kidoku == 1"]
+[_tb_end_tyrano_code]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[delay speed=120][font size=25]・・・結局こうなってしまうのですね[resetfont][resetdelay][p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[delay speed=120][font size=25]・・・・・・[resetfont][resetdelay][p]
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[delay speed=120][font size=25]早く！早くやり直してほしいです[resetfont][resetdelay][p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[delay speed=120][font size=25]やり直して・・・ください。[resetfont][resetdelay][p]
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[else]
+[_tb_end_tyrano_code]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[delay speed=120][font size=25]天使であるワタクシが、[emb exp="f.name"]さんのこと・・・[r]でびくんのことを救えなくてごめんなさい。[resetfont][resetdelay][p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[delay speed=120][font size=25]でも、でびくんは与えてくださいました[wait time=200][r][emb exp="f.name"]さんが望んできた、おトモダチ を。[resetfont][resetdelay][p]
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[delay speed=120][font size=25]でも、それだけじゃだめですよね・・・[resetfont][resetdelay][p]
+[_tb_end_text]
+
+[tb_start_tyrano_code]
+[endif]
+[_tb_end_tyrano_code]
+
+[jump  storage="Chapter4_BBB.ks"  target="*BBB_jump"  ]
+*30
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[delay speed=120][font size=25]・・・ネオでびくんの所では助けられませんでしたね[resetfont][resetdelay][p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[delay speed=120][font size=25]・・・[resetfont][resetdelay][p]
+
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[delay speed=120][font size=25]・・・・・・あれ[resetfont][resetdelay][p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#クピャドエル
+[delay speed=120][font size=25]・・・・・・何も、見えない[resetfont][resetdelay][p]
+[_tb_end_text]
+
+*BBB_jump
+
+[tb_hide_message_window  ]
+[stopbgm  time="5000"  fadeout="true"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="beru.ogg"  ]
+[wait  time="2500"  ]
+[jump  storage="Chapter4_BBB.ks"  target="*deru"  cond="f.BBB_kidoku==0"  ]
+[choice2 text1="玄関に出る" target1="*deru" text2="玄関に出ない" target2="*denai" ]
+
+[s  ]
+*deru
+
+[tb_start_text mode=1 ]
+#ミーティア
+[_tb_end_text]
+
+[flash  time="600"  effect="fadeIn"  color="0x000000"  ]
+
+[wait  time="1000"  ]
+[stopbgm  time="1000"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="doa1.ogg"  ]
+[flash  time="600"  effect="fadeIn"  color="0xFFFFFF"  ]
+
+[free_layermode  time="0"  wait="true"  ]
+[wait  time="1000"  ]
+[chara_hide  name="クピャドエル"  time="0"  wait="false"  pos_mode="false"  ]
+[chara_mod  name="プレイヤー"  time="0"  cross="false"  storage="chara/2/te.png"  ]
+[bg  time="0"  method="crossfade"  storage="kupya_10.webp"  ]
+[chara_show  name="ミーティア"  time="0"  wait="false"  storage="chara/39/14.png"  width="632"  height="648"  left="318"  top="145"  reflect="false"  ]
+[wait  time="500"  ]
+[playse  volume="100"  time="0"  buf="5"  storage="tyun.ogg"  loop="true"  ]
+[flash_off  time="800"  effect="fadeOut"  ]
+
+[wait  time="1500"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="hirameki.ogg"  ]
+[chara_mod  name="ミーティア"  time="0"  cross="false"  storage="chara/39/2.png"  ]
+[tb_start_tyrano_code]
+[position layer="message0" frame="Message.png"  height="258"  ]
+[_tb_end_tyrano_code]
+
+[fadein_window  time="1000"  ]
+[tb_start_text mode=1 ]
+#ミーティア
+おはようございマース！[p]
+
+[_tb_end_text]
+
+[chara_mod  name="ミーティア"  time="0"  cross="false"  storage="chara/39/1.png"  ]
+[tb_start_text mode=1 ]
+#ミーティア
+[emb exp="f.name"]サンと登校できるなんて…[r]ミーの夢が叶って嬉しいデース！[p]
+[_tb_end_text]
+
+[chara_mod  name="ミーティア"  time="0"  cross="false"  storage="chara/39/8.png"  ]
+[tb_start_text mode=1 ]
+#ミーティア
+さぁさぁ！行きまショー！[p]
+[_tb_end_text]
+
+[tb_hide_message_window  ]
+[layopt layer=4 visible="true"]
+
+[image name="shiro" layer=4 folder="fgimage" storage="default/shiro.webp" time="1000"  wait="false"  ]
+
+[playse  volume="100"  time="0"  buf="0"  storage="ashi.ogg"  ]
+[wait  time="3000"  ]
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+#ミーティア
+・・・なんだか元気がないように見えマース[r]気分が優れなかったら、あまり無理はしちゃだめデスよ[p]
+[_tb_end_text]
+
+[chara_hide  name="プレイヤー"  layer="1"  time="0"  wait="false"  pos_mode="false"  ]
+[chara_hide  name="ミーティア"  time="0"  wait="false"  pos_mode="false"  ]
+[bg  time="0"  method="crossfade"  wait="false"  storage="BBB1.webp"  ]
+[camera  time="10"  zoom="1.1"  wait="false"  ]
+[tb_start_text mode=1 ]
+#ミーティア
+久々の登校デスからね・・・[r]そりゃあ緊張するのは当たり前デース[p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#ミーティア
+今度は遠慮せず！おトモダチの悪魔サンも[r]連れてきていいんデスからね！[p]
+[_tb_end_text]
+
+[stopse  time="1000"  buf="5"  fadeout="true"  ]
+[tb_start_text mode=1 ]
+#ミーティア
+実は[if exp="f.meteor== 1]悪魔サンにまた会いたかったのデス[else]夢で見た悪魔サンにまた会いたかったのデス[endif][r]だから今度はみんなで登校しまショー！[p]
+[_tb_end_text]
+
+[tb_hide_message_window  ]
+[reset_camera  time="12000"  wait="false"  ]
+[playse  volume="40"  time="1000"  buf="5"  storage="tori2.ogg"  loop="true"  fadein="true"  ]
+[free layer=4 name="shiro" time="1000"  ]
+
+[l  ]
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+#ミーティア
+ミャ、見てくだサイ！小さなコウモリサン！[r][if exp="f.meteor == 1"]ツノが生えてるから…きっと悪魔サンデース[endif][p]
+[_tb_end_text]
+
+[tb_start_text mode=1 ]
+#ミーティア
+[font face="KaiseiDecol-Bold"]木苺[resetfont]にはトゲがあるから気をつけてくだサイね！[p]
+[_tb_end_text]
+
+[tb_hide_message_window  ]
+[bg  time="1000"  method="crossfade"  wait="true"  storage="shiro.webp"  ]
+[camera  time="10"  zoom="1.5"  wait="false"  layer="layer_camera"  ]
+[skipstop]
+
+[disable_skip_button visible="true"]
+
+[bg  time="0"  method="crossfade"  wait="false"  storage="BBB2.webp"  ]
+[playse  volume="100"  time="0"  buf="1"  storage="iya.ogg"  loop="false"  fadein="false"  ]
+[flash_off  time="20"  effect="fadeOut"  ]
+
+[reset_camera  time="10000"  wait="false"  layer="layer_camera"  ]
+[wait  time="4800"  ]
+[layopt layer=4 visible="true"]
+
+[open_omake  category="gallery"  name="BBB_2"  ]
+[image name="kuro" layer=4 folder="fgimage" storage="default/kuro.webp" time="0"  wait="false"  ]
+
+[bg  time="0"  method="crossfade"  storage="kuro.webp"  wait="false"  ]
+[tb_show_message_window  ]
+[tb_start_text mode=1 ]
+#？？？
+だぎゃ・・・？[p]
+[_tb_end_text]
+
+[tb_hide_message_window  ]
+[memory name="BBB_kidoku" val="1"]
+
+[l  ]
+[stopse  time="1000"  buf="5"  fadeout="false"  ]
+[free layer=4 name="kuro" time="0"]
+
+[wait  time="5000"  ]
+[collect_ending no="30"]
+
+[steam_achievement_activate name="OMAKE"]
+
+[playse  volume="100"  time="1000"  buf="0"  storage="maki.ogg"  ]
+[wait  time="2000"  ]
+[jump  storage="loop_to_scene1.ks"  target=""  ]
+[s  ]
+*denai
+
+[tb_hide_message_window  ]
+[tb_start_tyrano_code]
+[position layer="message0" frame="Message.png"  height="258"  ]
+[_tb_end_tyrano_code]
+
+[comment  c="タイトル"  ]
+[chara_move  name="プレイヤー"  anim="true"  time="7000"  effect="easeInQuad"  wait="true"  left="0"  top="500"  width="1280"  height="960"  ]
+[wait  time="5000"  ]
+[tb_clear_images]
+
+[tb_autosave  title="b"  ]
+[preload  storage="./data/image/menu_Title/hon_title_koukai.png"  ]
+
+[wait  time="100"  ]
+[chara_show  time="500"  wait="false"  name="TAP"  storage="chara/18/TAP_title.png"  width="400"  height="200"  left="433"  top="523"  reflect="false"  ]
+[clickable  storage=""  x="0"  y="0"  width="1280"  height="960"  target="*title"  _clickable_img=""  ]
+[s  ]
+*title
+
+[chara_hide  name="TAP"  time="200"  wait="false"  pos_mode="true"  ]
+[playse  volume="100"  time="1000"  buf="0"  storage="hon_ake.ogg"  ]
+[play_apng name="hon_title" layer="fix" x="0" y="0" width="1280" height="960" zindex="100"]
+
+[wait  time="300"  ]
+[image name="title_menu_bg"  x="0"  y="0"  width="1280"  height="960"  folder="image"  storage="menu_Title/hon_title_koukai.png" layer="fix" zindex="101"]
+
+[glink  name="title_menu"  target="*start"  x="58"  y="483"  width="320"  height="80"  size="0"  graphic="menu_Title/hazimekara_.png"  enterimg="menu_Title/hazimekara.png"  enterse="tap.ogg"  ]
+[glink  name="title_menu"  target="*load"  x="43"  y="592"  width="307"  height="80"  size="0"  graphic="menu_Title/tudukikara_.png"  enterimg="menu_Title/tudukikara.png"  enterse="tap.ogg"  clickse="OK.ogg"  ]
+[glink  name="title_menu"  target="*option"  x="19"  y="699"  width="318"  height="75"  size="0"  graphic="menu_Title/option_.png"  enterimg="menu_Title/option.png"  enterse="tap.ogg"  clickse="OK.ogg"  ]
+[image  name="title_menu"  layer=fix zindex=101 folder="image" storage="menu_Title/collection__.png"  x="4"  y="805"  width="346"  height="75"  ]
+
+[free_apng name="hon_title"]
+
+[s  ]
+*start
+
+[chara_hide  name="クピャドエル"  time="0"  wait="true"  pos_mode="true"  ]
+[bg  time="0"  method="crossfade"  storage="kuro.webp"  ]
+[playse  volume="100"  time="1000"  buf="0"  storage="maki.ogg"  ]
+[free layer="fix" name="title_menu"]
+
+[free layer="fix" name="title_menu_bg"]
+
+[free_title_loop]
+
+[wait  time="3000"  ]
+[jump  storage="loop_to_scene1.ks"  target=""  ]
+[s  ]
+*load
+
+[free layer="fix" name="title_menu"]
+
+[free layer="fix" name="title_menu_bg"]
+
+[showload]
+
+[jump  storage="Chapter4_BBB.ks"  target="*title"  ]
+*option
+
+[free layer="fix" name="title_menu"]
+
+[free layer="fix" name="title_menu_bg"]
+
+[eval exp="f.configFromTitle=1"]
+
+[eval exp="f.backFromConfigTo='Chapter4_BBB'"]
+
+[jump  storage="config.ks"  target=""  ]
+[s  ]
