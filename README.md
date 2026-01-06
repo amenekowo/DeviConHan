@@ -9,4 +9,4 @@
 - 任何衍生作品需采用相同 CC BY-NC-SA 4.0 license
 - 不得声称拥有相似的设计或创意
 
-详见：[原作者许可]([游戏官网链接](https://bayachao.com/devil-connection/guideline.html))
+详见：[原作者许可](https://bayachao.com/devil-connection/guideline.html)
