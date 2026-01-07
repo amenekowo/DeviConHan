@@ -34,6 +34,7 @@ echo ------------------------------------------
 :: --- 打包命令核心修改 ---
 :: 语法说明: --add-data "本地源文件夹;打包内的目标文件夹"
 :: 这里直接把本地的 "补丁" 映射为程序内部的 "patch_data"
+:: name可改为你喜欢的名字
 pyinstaller -F ^
     --add-data "tools;tools" ^
     --add-data "补丁;patch_data" ^
@@ -69,6 +70,7 @@ if exist "patch_data" (
     echo  - 已删除旧的 patch_data 缓存目录
 )
 
+::.exe名字改为你喜欢的名字
 echo.
 echo ==========================================
 echo [3/3] 打包完成！
