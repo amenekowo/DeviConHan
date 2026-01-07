@@ -34,7 +34,7 @@
 
 ## 🛠️ 技术与构建说明 (Development)
 
-如果你是开发者或希望从源码运行本项目，请阅读本节。普通玩家请直接下载 Releases。
+如果你是开发者或希望自己构建自己的汉化补丁，请阅读本节。普通玩家请直接下载 Releases。
 
 **技术栈声明：**
 本项目基于 Python 编写，并集成了以下工具链：
@@ -46,7 +46,8 @@
 2. 安装 Python 依赖：
    ```bash
    pip install pyinstaller
-3. 运行根目录下的打包脚本（打包.cmd），即可在 dist/ 文件夹生成最新的汉化程序。
+3. (可选）将补丁文件夹内的内容替换为你自己的汉化补丁文件
+4. 运行根目录下的打包脚本（打包.cmd），即可在 dist/ 文件夹生成最新的汉化程序。
 
 ## 许可证
 本项目采用 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 许可证。
