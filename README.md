@@ -3,7 +3,7 @@
 ![Status](https://img.shields.io/badge/Status-Beta-yellow)
 ![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey)
 
-本项目是 《恶魔链接（でびコネ）》游戏的非营利性个人汉化补丁。
+本项目是 《恶魔链接（でびるコネクション）》游戏的非营利性个人汉化补丁。
 
 ## ⚠️ 版权与许可说明
 
