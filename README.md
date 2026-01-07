@@ -54,8 +54,8 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
 2. **下载补丁**：下载本项目的最新 [Releases](../../releases) 版本。
 3. **安装**：
     - 将解压后的文件复制到游戏根目录（即包含 `DevilConnection.exe` 的文件夹）。
-    - 运行汉化补丁程序。
-4. **开始游戏**：从汉化后的启动器进入游戏。
+    - 运行汉化补丁程序，可能需要根据提示选择几个选项。等待补丁完成操作。
+4. **开始游戏**：从Steam启动，或者在Steam运行时直接从DevilConnection.exe启动游戏。
 
 ## 📝 汉化进度
 - [x] 剧情文本
