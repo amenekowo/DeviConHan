@@ -58,19 +58,19 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
 ### 🇨🇳 中文
 这是一个非官方的粉丝汉化项目。
 - **请支持正版**：使用本补丁前，请务必先购买/下载原版游戏。
-- **风险提示**：使用本补丁产生的任何游戏报错、存档损坏等问题，本项目不承担责任。建议在使用前备份 `Save` 文件夹。
+- **风险提示**：使用本补丁产生的任何游戏报错、存档损坏等问题，本项目不承担责任。建议在使用前备份 `_storage` 文件夹。
 - **社区规则**：分享截图时请遵守原作者的 Hashtag 规则（涉及剧透内容请务必使用 `#でびコネタバレ`）。
 
 ### 🇺🇸 English
 This is an UNOFFICIAL fan translation project.
 - **Support the Author**: Please ensure you have downloaded/purchased the original game before using this patch.
-- **Liability**: The developers utilize this patch at their own risk. We are not responsible for any game errors or save data corruption. Backing up your save data is highly recommended.
+- **Liability**: The developers utilize this patch at their own risk. We are not responsible for any game errors or save data corruption. Backing up your save data (_storage) is highly recommended.
 - **Community**: When posting screenshots, please respect the official hashtag rules (use `#でびコネタバレ` for spoilers).
 
 ### 🇯🇵 日本語
 本パッチは非公式のファン活動によるものです。
 - **原作者様への支援**: 本パッチを使用する前に、必ず正規版のゲームを入手してください。
-- **免責**: 本パッチの使用によって生じたゲームの不具合やセーブデータの破損等について、製作者は一切の責任を負いません。使用前にセーブデータのバックアップを推奨します。
+- **免責**: 本パッチの使用によって生じたゲームの不具合やセーブデータの破損等について、製作者は一切の責任を負いません。使用前にセーブデータ(_storage)のバックアップを推奨します。
 - **マナー**: スクリーンショット等を投稿する際は、公式のハッシュタグ・ルールを遵守してください（ネタバレを含む場合は `#でびコネタバレ` を使用してください）。
 
 ---
