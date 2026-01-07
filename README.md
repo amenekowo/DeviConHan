@@ -122,8 +122,8 @@ This is an UNOFFICIAL fan translation project.
 **如何从源码构建：**
 1. 克隆本仓库到本地。
 2. 安装 Python 依赖：`pip install pyinstaller`
-3. (可选）将补丁文件夹内的内容替换为你自己的汉化补丁文件。
-4. 运行根目录下的打包脚本（`打包.cmd`），即可在 `dist/` 文件夹生成最新的汉化程序。
+3. (可选）将`Patch`文件夹内的内容替换为你自己的汉化补丁文件。
+4. 运行根目录下的打包脚本（`Pack.cmd`），即可在 `dist/` 文件夹生成最新的汉化程序。
 
 ### 🇺🇸 English
 If you are a developer or wish to build the patch yourself, please read this section. Regular players should simply download the Releases.
@@ -137,7 +137,7 @@ This project is written in Python and integrates the following toolchain:
 1. Clone this repository.
 2. Install Python dependencies: `pip install pyinstaller`
 3. (Optional) Replace the content in the patch folder with your own translation files.
-4. Run the packaging script (`打包.cmd`) in the root directory. The generated executable will appear in the `dist/` folder.
+4. Run the packaging script (`Pack.cmd`) in the root directory. The generated executable will appear in the `dist/` folder.
 
 ### 🇯🇵 日本語
 開発者の方、またはご自身でパッチをビルドしたい方は本セクションをお読みください。一般のプレイヤーの方は Releases からダウンロードしてください。
@@ -151,7 +151,7 @@ This project is written in Python and integrates the following toolchain:
 1. リポジトリをクローンします。
 2. Python の依存関係をインストールします：`pip install pyinstaller`
 3. （任意）パッチフォルダ内のコンテンツを独自の翻訳ファイルに置き換えます。
-4. ルートディレクトリにあるパッケージ化スクリプト（`打包.cmd`）を実行すると、`dist/` フォルダに最新のパッチプログラムが生成されます。
+4. ルートディレクトリにあるパッケージ化スクリプト（`Pack.cmd`）を実行すると、`dist/` フォルダに最新のパッチプログラムが生成されます。
 
 ---
 

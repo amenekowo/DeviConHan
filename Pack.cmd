@@ -8,10 +8,10 @@ echo       恶魔链接汉化包 - 一键打包工具
 echo ==========================================
 
 :: 1. 检查“补丁”文件夹是否存在
-if not exist "补丁" (
+if not exist "Patch" (
     echo.
-    echo [错误] 当前目录下未找到“补丁”文件夹！
-    echo 请将汉化文件放在名为“补丁”的文件夹中。
+    echo [错误] 当前目录下未找到“Patch”文件夹！
+    echo 请将汉化文件放在名为“Patch”的文件夹中。
     echo.
     pause
     exit
@@ -28,16 +28,16 @@ if %errorlevel% neq 0 (
 )
 
 echo.
-echo [1/3] 正在打包 EXE (包含“tools”和“补丁”)...
+echo [1/3] 正在打包 EXE (包含“tools”和“Patch”)...
 echo ------------------------------------------
 
 :: --- 打包命令核心修改 ---
 :: 语法说明: --add-data "本地源文件夹;打包内的目标文件夹"
-:: 这里直接把本地的 "补丁" 映射为程序内部的 "patch_data"
+:: 这里直接把本地的 "Patch" 映射为程序内部的 "patch_data"
 :: name可改为你喜欢的名字
 pyinstaller -F ^
     --add-data "tools;tools" ^
-    --add-data "补丁;patch_data" ^
+    --add-data "Patch;patch_data" ^
     --name "恶魔链接呜咪个人汉化包" ^
     TyranoV8_Patcher.py
 
