@@ -5,18 +5,21 @@
 
 ### 🇨🇳 中文
 本项目是《恶魔链接（でびるコネクション）》游戏的非营利性个人汉化补丁。
-核心为基于 Python 的全自动打包脚本，可傻瓜式创建一键汉化补丁文件。
+核心为基于 Python 的全自动打包脚本，可傻瓜式创建一键汉化补丁程序。
 玩家可以选择直接下载使用已发布的汉化补丁，开发者也可以基于本工具制作自己的补丁安装包。
+**注意：目前仅支持 Windows 平台的 Steam 版本，不支持 Mac 或其它平台。**
 
 ### 🇺🇸 English
 **DeviConHan** is a non-profit, fan-made localization patch for the game *Devil Connection*.
 At its core, it features a fully automated Python script that generates a user-friendly, one-click patch installer.
 Players can simply download the pre-built patch, while developers can use the tool to create their own custom patch packages.
+**Note: Currently, only the Windows Steam version is supported. Mac and other platforms are not supported.**
 
 ### 🇯🇵 日本語
 本プロジェクトは、ゲーム『でびるコネクション』の非営利・個人制作による中国語化パッチ（漢化パッチ）です。
 Pythonベースの自動化スクリプトを使用しており、ワンクリックで適用できるパッチファイルを誰でも簡単に作成可能です。
 プレイヤーは配布済みのパッチをダウンロードして利用できるほか、開発者はこのツールを使用して独自のパッチインストーラーを作成することもできます。
+**注意：現在は Windows 版（Steam）のみ対応しています。Mac やその他のプラットフォームには対応していません。**
 
 ---
 
@@ -48,19 +51,39 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
 
 ---
 
-## 📥 安装说明（玩家必读）
+## 📥 Installation / インストール方法 / 安装说明
 
+### 🇨🇳 中文
 1. **准备游戏**：确保你已经拥有原版游戏（且能正常运行）。请支持原作者，购买或下载正版。
 2. **下载补丁**：下载本项目的最新 [Releases](../../releases) 版本。
 3. **安装**：
     - 将解压后的文件复制到游戏根目录（即包含 `DevilConnection.exe` 的文件夹）。
     - 运行汉化补丁程序，可能需要根据提示选择几个选项。等待补丁完成操作。
-4. **开始游戏**：从Steam启动，或者在Steam运行时直接从DevilConnection.exe启动游戏。
+4. **开始游戏**：从 Steam 启动，或者在 Steam 运行时直接从 `DevilConnection.exe` 启动游戏。
 
-## 📝 汉化进度
-- [x] 剧情文本
-- [ ] UI 界面
-- [ ] 图片资源
+### 🇺🇸 English
+1. **Prerequisite**: Ensure you own the original game and it runs correctly. Please support the original author by purchasing/downloading the official release.
+2. **Download**: Get the latest version from [Releases](../../releases).
+3. **Install**:
+    - Copy the extracted files to the game's root directory (where `DevilConnection.exe` is located).
+    - Run the patcher program. You may need to select a few options when prompted. Wait for the process to complete.
+4. **Launch**: Start the game via Steam, or run `DevilConnection.exe` directly while Steam is running.
+
+### 🇯🇵 日本語
+1. **準備**: 正規版のゲームを所持しており、正常に動作することを確認してください。
+2. **ダウンロード**: [Releases](../../releases) から最新バージョンをダウンロードします。
+3. **インストール**:
+    - 解凍したファイルをゲームのルートフォルダ（`DevilConnection.exe` がある場所）にコピーします。
+    - パッチプログラムを実行します。画面の指示に従ってオプションを選択してください。完了まで待ちます。
+4. **起動**: Steam から起動するか、Steam が起動している状態で `DevilConnection.exe` を直接実行してください。
+
+---
+
+## 📝 Progress / 進捗状況 / 汉化进度
+
+- [x] Story Text / シナリオテキスト / 剧情文本
+- [ ] UI Interface / UI インターフェース / UI 界面
+- [ ] Image Assets / 画像リソース / 图片资源
 
 ---
 
@@ -86,11 +109,9 @@ This is an UNOFFICIAL fan translation project.
 
 ---
 
-## 🛠️ 技术与构建说明 (Development)
+## 🛠️ Development / 開発者向け情報 / 技术与构建说明
 
-> **Note for Developers:**
-> This section explains how to build the patch from source using Python and Node.js. If you are interested in the technical details or adapting this tool for other languages, please feel free to open an issue for English support.
-
+### 🇨🇳 中文
 如果你是开发者或希望自己构建自己的汉化补丁，请阅读本节。普通玩家请直接下载 Releases。
 
 **技术栈声明：**
@@ -99,13 +120,41 @@ This is an UNOFFICIAL fan translation project.
 * **PyInstaller**: 用于将 Python 脚本、Node.js 环境及补丁资源打包为独立的 `.exe` 文件。
 
 **如何从源码构建：**
-
 1. 克隆本仓库到本地。
-2. 安装 Python 依赖：
-   ```bash
-   pip install pyinstaller
-3. (可选）将补丁文件夹内的内容替换为你自己的汉化补丁文件
-4. 运行根目录下的打包脚本（打包.cmd），即可在 dist/ 文件夹生成最新的汉化程序。
+2. 安装 Python 依赖：`pip install pyinstaller`
+3. (可选）将补丁文件夹内的内容替换为你自己的汉化补丁文件。
+4. 运行根目录下的打包脚本（`打包.cmd`），即可在 `dist/` 文件夹生成最新的汉化程序。
 
-## 许可证
-本项目采用 [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh) 许可证。
+### 🇺🇸 English
+If you are a developer or wish to build the patch yourself, please read this section. Regular players should simply download the Releases.
+
+**Tech Stack:**
+This project is written in Python and integrates the following toolchain:
+* **Node.js**: Handles low-level data unpacking and repacking (Runtime `node.exe` is built into the `tools/` directory; no extra installation needed).
+* **PyInstaller**: Packages the Python script, Node.js environment, and patch resources into a standalone `.exe`.
+
+**How to Build from Source:**
+1. Clone this repository.
+2. Install Python dependencies: `pip install pyinstaller`
+3. (Optional) Replace the content in the patch folder with your own translation files.
+4. Run the packaging script (`打包.cmd`) in the root directory. The generated executable will appear in the `dist/` folder.
+
+### 🇯🇵 日本語
+開発者の方、またはご自身でパッチをビルドしたい方は本セクションをお読みください。一般のプレイヤーの方は Releases からダウンロードしてください。
+
+**技術スタック:**
+本プロジェクトは Python で記述されており、以下のツールチェーンを統合しています：
+* **Node.js**: 低レイヤーデータの解凍および再パック処理に使用（ランタイム `node.exe` は `tools/` ディレクトリに内蔵されているため、別途インストールは不要です）。
+* **PyInstaller**: Python スクリプト、Node.js 環境、およびパッチリソースを独立した `.exe` ファイルにパッケージ化するために使用します。
+
+**ソースコードからのビルド方法:**
+1. リポジトリをクローンします。
+2. Python の依存関係をインストールします：`pip install pyinstaller`
+3. （任意）パッチフォルダ内のコンテンツを独自の翻訳ファイルに置き換えます。
+4. ルートディレクトリにあるパッケージ化スクリプト（`打包.cmd`）を実行すると、`dist/` フォルダに最新のパッチプログラムが生成されます。
+
+---
+
+## 📄 License / ライセンス / 许可证
+本项目采用 / This project is licensed under / 本プロジェクトは以下のライセンスの下で提供されています：
+[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)
