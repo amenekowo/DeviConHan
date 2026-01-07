@@ -3,9 +3,20 @@
 ![Status](https://img.shields.io/badge/Status-Beta-yellow)
 ![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-lightgrey)
 
-本项目是 《恶魔链接（でびるコネクション）》游戏的非营利性个人汉化补丁。
+### 🇨🇳 中文
+本项目是《恶魔链接（でびるコネクション）》游戏的非营利性个人汉化补丁。
 核心为基于 Python 的全自动打包脚本，可傻瓜式创建一键汉化补丁文件。
 玩家可以选择直接下载使用已发布的汉化补丁，开发者也可以基于本工具制作自己的补丁安装包。
+
+### 🇺🇸 English
+**DeviConHan** is a non-profit, fan-made localization patch for the game *Devil Connection*.
+At its core, it features a fully automated Python script that generates a user-friendly, one-click patch installer.
+Players can simply download the pre-built patch, while developers can use the tool to create their own custom patch packages.
+
+### 🇯🇵 日本語
+本プロジェクトは、ゲーム『でびるコネクション』の非営利・個人制作による中国語化パッチ（漢化パッチ）です。
+Pythonベースの自動化スクリプトを使用しており、ワンクリックで適用できるパッチファイルを誰でも簡単に作成可能です。
+プレイヤーは配布済みのパッチをダウンロードして利用できるほか、開発者はこのツールを使用して独自のパッチインストーラーを作成することもできます。
 
 ---
 
@@ -64,13 +75,13 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
 ### 🇺🇸 English
 This is an UNOFFICIAL fan translation project.
 - **Support the Author**: Please ensure you have downloaded/purchased the original game before using this patch.
-- **Liability**: The developers utilize this patch at their own risk. We are not responsible for any game errors or save data corruption. Backing up your save data (_storage) is highly recommended.
+- **Liability**: The developers utilize this patch at their own risk. We are not responsible for any game errors or save data corruption. Backing up your save data (`_storage`) is highly recommended.
 - **Community**: When posting screenshots, please respect the official hashtag rules (use `#でびコネタバレ` for spoilers).
 
 ### 🇯🇵 日本語
 本パッチは非公式のファン活動によるものです。
 - **原作者様への支援**: 本パッチを使用する前に、必ず正規版のゲームを入手してください。
-- **免責**: 本パッチの使用によって生じたゲームの不具合やセーブデータの破損等について、製作者は一切の責任を負いません。使用前にセーブデータ(_storage)のバックアップを推奨します。
+- **免責**: 本パッチの使用によって生じたゲームの不具合やセーブデータの破損等について、製作者は一切の責任を負いません。使用前にセーブデータ（`_storage`）のバックアップを推奨します。
 - **マナー**: スクリーンショット等を投稿する際は、公式のハッシュタグ・ルールを遵守してください（ネタバレを含む場合は `#でびコネタバレ` を使用してください）。
 
 ---
