@@ -42,7 +42,7 @@ def remove_readonly(func, path, excinfo):
 
 class AsarTool:
     """
-    ASAR 工具包装类 (V14 防弹版)
+    ASAR 工具包装类，
     负责调用底层的 asar 命令进行解包和打包。
     """
     def __init__(self):
