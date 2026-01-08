@@ -28,7 +28,7 @@
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-喵嘎——好像有点累了…[r]嗯嘛，这次就不进行MP判定了！[p]
+喵嘎——总觉得有点累了呢……[r]算了，这次的MP判定就免了吧！[p]
 
 [_tb_end_text]
 
@@ -36,14 +36,14 @@
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-为什么？那当然是因为魔力已经[r]完全聚集了呀。[p]
+问我为什么？那当然是因为魔力[r]已经收集得十二分充足了啊！[p]
 [_tb_end_text]
 
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/1.png"  ]
 [tb_autosave  title="b"  ]
 [tb_start_text mode=4 ]
 #贝尔菲戈尔
-话说，你愿意听听[r]本大爷的请求吗？[wait time=500]
+话说回来，本大爷的请求[r]你会听的吧？[wait time=500]
 [_tb_end_text]
 
 [choice2 text1="点头" target1="*u" text2="・・・" graphic2="disabled" color2="0x989898" disabled2="true"  y="500"]
@@ -56,7 +56,7 @@
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-不过，你这家伙一定会听本大爷的话，对吧♥[p]
+嘛，如果是你的话，不管什么都会听本大爷的吧♥[p]
 [_tb_end_text]
 
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/8.png"  ]
@@ -81,7 +81,7 @@
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-[font size=50]灵魂、交出来吧！[resetfont][p]
+[font size=50]灵魂、交出来！[resetfont][p]
 [_tb_end_text]
 
 [playbgm  volume="50"  time="1000"  loop="true"  storage="16_the_devil_s_power.ogg"  ]
@@ -89,14 +89,14 @@
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-[delay speed=100]・・・[resetdelay]本来，我是计划用这巨大的魔力[r]变成神的样子的[p]
+[delay speed=100]・・・[resetdelay]本来啊，我是打算用这股庞大的魔力[r]变成神一般的姿态的[p]
 [_tb_end_text]
 
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/11.png"  ]
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-不过，我突然想到一个更好的办法，[r]能让魔界那帮家伙惊讶不已！[p]
+但是，我我想到了一个，[r]能让魔界那帮家伙目瞪口呆的更好的计策！[p]
 
 [_tb_end_text]
 
@@ -104,7 +104,7 @@
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-名为[delay speed=100]・・・[resetdelay][r][font size=40]"[emb exp="f.name"]恶魔转生大作战"！[resetfont][p]
+那就是[delay speed=100]・・・[resetdelay][r][font size=40]"[emb exp="f.name"]恶魔转生大作战"！[resetfont][p]
 
 
 [_tb_end_text]
@@ -113,7 +113,7 @@
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-[delay speed=300]・・・[resetdelay]身为恶魔狂信者，应该知道恶魔的诞生方式吧？[p]
+[delay speed=300]・・・[resetdelay]既然是恶魔狂信者， 恶魔是如何诞生的，你这家伙应该知道吧？[p]
 
 
 [_tb_end_text]
@@ -121,27 +121,27 @@
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-将在灵魂之颅中收集的灵魂浸入魔界中的魔力之泉[p]
+将用灵魂骷髅回收的灵魂， 浸泡在位于魔界的魔力之泉中[p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-这样经过时间的磨合，与魔力融合的灵魂[r]便会将生前想象的理想反映在自己的形态上[delay speed=100]・・・[resetdelay][p]
+这样一来，花费时间与魔力融合的灵魂[r]就会将其生前描绘的理想反映在形态上[delay speed=100]・・・[resetdelay][p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/11.png"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-因此，恶魔受到的信仰越多，[r]就会诞生出更多外貌相似的手下[p]
+也就是说，恶魔是一种越被信仰，[r]就越会诞生出外貌相似的部下的机制。[p]
 
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-所以开心吧！因此你这家伙[r]可以变成像本大爷一样帅气的蝙蝠哦！[p]
+所以高兴吧！因此你这家伙[r]就能变成像本大爷一样帅气的蝙蝠了哦！[p]
 [_tb_end_text]
 
 [layopt layer=4 visible="true"]
@@ -157,7 +157,7 @@
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-所以呀[p]
+所以来吧[p]
 [_tb_end_text]
 
 [flash  time="0"  effect="fadeIn"  color="0x000000"  ]
@@ -179,32 +179,32 @@
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-[font face="kowai"]只要有你这家伙的灵魂，本大爷就能[r]被魔界的那些家伙认可[resetfont][wait time=500][p]
+[font face="kowai"]只要有了你这家伙的灵魂，本大爷[r]就能获得魔界那些家伙的认可[resetfont][wait time=500][p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-[font face="kowai"]如果你这家伙也成为恶魔，[r]就能永远和本大爷在一起[resetfont][wait time=500][p]
+[font face="kowai"]如果你这家伙也变成恶魔，[r]就能永远和本大爷在一起了[resetfont][wait time=500][p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-[font face="kowai"]这不是绝妙的好主意吗？[resetfont][wait time=500][p]
+[font face="kowai"]这主意简直绝妙透顶了吧？[resetfont][wait time=500][p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-[font face="kowai"]这全都归功于你这家伙向本大爷证明了忠诚[delay speed=300]・・・[resetdelay][resetfont][wait time=500][p]
+[font face="kowai"]这也是多亏了你用行动展示了对本大爷的忠诚心[delay speed=300]・・・[resetdelay][resetfont][wait time=500][p]
 [_tb_end_text]
 
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/87.png"  ]
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-[font face="kowai"]你这家伙是本大爷值得纪念的第一个部下[resetfont][p]
+[font face="kowai"]你这家伙可是本大爷值得纪念的、最初的部下啊[resetfont][p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
@@ -232,7 +232,7 @@
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-[delay speed=100][font face="kowai"]真是好孩子・・・[r]亲爱的[emb exp="f.name"]哟[resetfont][resetdelay][p]
+[delay speed=100][font face="kowai"]真是个好孩子……[r]亲爱的[emb exp="f.name"]啊[resetfont][resetdelay][p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
@@ -300,7 +300,7 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]・・・就算可以用我的力量重新来过[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]・・・就因为靠我的力量可以重来[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/6.png"  ]
@@ -322,14 +322,14 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]连我的存在都一无所知[r]还干出这种愚蠢行径[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]既然连我的存在都一无所知[r]却还做出这种愚蠢的行径[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/13.png"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]・・・还是说你明知道我的存在[r]才做了这种事？[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]・・・或者是说，你知道我的事情[r]才特意这么做的？[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
@@ -344,7 +344,7 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]以为重来一遍就能把一切恢复原样[r]若是抱着这样的念头去行动，未免太浅薄了[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]如果以为只要重来就能让一切恢复原状[r]抱着这种想法行动，那未免太浅薄了[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/6.png"  ]
@@ -361,7 +361,7 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]那时候的你，总带着几分悲伤[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]那时候的你，看起来总有些悲伤[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="ネオ"  time="0"  cross="false"  storage="chara/63/5.png"  ]
@@ -369,7 +369,7 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]一直为没能拯救恶魔而懊悔不已[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]一直为了没能拯救恶魔而感到后悔[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [jump  storage="mp_kill.ks"  target="*medama"  cond="f.koukai_kidoku!=1"  ]
@@ -377,13 +377,13 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]要是能在最后再重来一次就好了之类的[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]说着“要是最后能再重来一次就好了”之类的话[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]你也像那个眼球家伙一样在恳求着同样的事[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]明明像那个眼球家伙一样恳求着[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 *medama
@@ -398,20 +398,20 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100][if exp="dc.aibou()"]好不容易抓住的真结局都化为乌有[r]竟然还想把我出卖给恶魔[else]竟然还想把我出卖给恶魔[endif][resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100][if exp="dc.aibou()"]明明好不容易才抓住了那个真结局， 却将其化为乌有[r]甚至想要把我也卖给恶魔吗[else]甚至想要把我也卖给恶魔吗[endif][resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]啊啊・・・果然你已经[r]不是我所认识的那个你了呢[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]啊啊・・・果然你已经[r]不再是我认识的那个你了呢[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/9.png"  ]
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]别玷污了当时你下定的那个觉悟[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]不要践踏那个时候你的觉悟啊[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
@@ -429,7 +429,7 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]从今往后 我也一直都[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]从今往后 我也一直[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [stopse  time="0"  buf="5"  ]
@@ -439,7 +439,7 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text]绝[wait time=200]对[wait time=200]不[wait time=200]会[wait time=200]忘[wait time=200]记[wait time=200]你[wait time=200]所[wait time=200]作[wait time=200]所[wait time=200]为[wait time=200]的[wait time=200][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text]绝[wait time=200]对[wait time=200]不[wait time=200]会[wait time=200]忘[wait time=200]记[wait time=200]你[wait time=200]的[wait time=200]所[wait time=200]作[wait time=200]所[wait time=200]为[wait time=200][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [jump  storage="mp_kill.ks"  target="*kill_END"  ]
@@ -449,7 +449,7 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]不会让你得逞的[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]我不会让你得逞的[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -467,12 +467,12 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]为何要做这种事[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]为什么要这么做[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]把那时的你还给我吧[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]把那时的你还给我啊[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/10.png"  ]
@@ -491,14 +491,14 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]你这家伙这样做的话，我会作何反应・・・[r]只是出于好奇心在行动吗[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]你这家伙　是为了看我会作何反应・・・[r]仅仅是出于兴趣才行动的吗[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/4.png"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]那就什么反应都不做就好了[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]既然如此　那不做任何反应就好了[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
@@ -513,14 +513,14 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]对那种无谓的垂死挣扎、对当时自己的选择・・・[r]我逐渐感到一阵空虚[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]对于无谓的挣扎　对于那时的自己的选择・・・[r]我感到了一阵空虚[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/9.png"  ]
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]记住吧[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]记住了[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [stopse  time="0"  buf="5"  ]
@@ -530,7 +530,7 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=4 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]我[wait time=200]绝[wait time=200]对[wait time=200]不[wait time=200]会[wait time=200]原[wait time=200]谅[wait time=200]你[resetdelay][free_quake_text][resetfont]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]我[wait time=200]绝[wait time=200]对[wait time=200]不[wait time=200]会[wait time=200]宽[wait time=200]恕[wait time=200]你[resetdelay][free_quake_text][resetfont]
 [_tb_end_text]
 
 [wait  time="3000"  ]
@@ -547,7 +547,7 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]那就 太好了呢[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]那真是　太好了呢[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/8.png"  ]
@@ -561,7 +561,7 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100][if exp="dc.aibou()"]亲手把那个孩子毁掉，肯定让你爽到不行吧[else]亲手把那个孩子毁掉，感觉很爽吧？[endif][resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100][if exp="dc.aibou()"]亲手把那个孩子毁掉肯定让你爽到不行吧[else]亲手把那个孩子毁掉感觉很爽吧？[endif][resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/10.png"  ]
@@ -586,7 +586,7 @@ TG.layer.getLayer('message0').find('img').remove()
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]把当时的你还给我吧[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]把那时的你还给我啊[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/10.png"  ]
@@ -605,14 +605,14 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]你只是纯粹出于好奇心在行动[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]你只是纯粹　出于好奇心在行动[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/4.png"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]所以我只要不再对任何事作出反应就好了[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]那我只要不再对任何事作出反应就好了[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/10.png"  ]
@@ -628,7 +628,7 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]对那时自己无谓的垂死挣扎，还有那个选择・・・[r]我开始感到一阵空虚[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]对于无谓的挣扎　对于那时的自己的选择・・・[r]我感到了一阵空虚[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/9.png"  ]
@@ -671,7 +671,7 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]若是还能在这里再次相遇的话，到那时就…[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]若是还能在这里再次相遇的话　到那时就…[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [jump  storage="mp_kill.ks"  target="*kill_END"  ]
@@ -688,7 +688,7 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]明明已经迎来了幸福的结局[r]你是为了做出这种行为才回来的？[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]明明已经迎来了幸福的结局[r]你就是为了做出这种事才回来的吗？[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/9.png"  ]
@@ -701,7 +701,7 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]好奇心？收集癖？[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]单纯的好奇心？收集癖？[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]
@@ -804,12 +804,12 @@ dc.aibou() && dc.writeNEO('kill')
 
 [tb_start_text mode=4 ]
 #⑦
-[delay speed=30]没想到会迎来这样的结局[wait time=2000][er]
+[delay speed=30]没想到竟然迎来了这样的结局[wait time=2000][er]
 [_tb_end_text]
 
 [tb_start_text mode=4 ]
 #⑦
-[delay speed=30]我由衷地感到悲伤[wait time=2000][er]
+[delay speed=30]我打从心底感到悲伤[wait time=2000][er]
 
 [_tb_end_text]
 
@@ -820,18 +820,18 @@ dc.aibou() && dc.writeNEO('kill')
 
 [tb_start_text mode=4 ]
 #⑦
-[delay speed=30]那边那个野兽的躯壳[wait time=2000][er]
+[delay speed=30]那边的野兽容器[wait time=2000][er]
 [_tb_end_text]
 
 [tb_start_text mode=4 ]
 #⑦
-[delay speed=30]绝不让你享受死亡的救赎[wait time=2000][er]
+[delay speed=30]我绝不会赐予你死亡的救赎[wait time=2000][er]
 
 [_tb_end_text]
 
 [tb_start_text mode=4 ]
 #⑦
-[delay speed=30]就让你永远反复经历活生生的地狱吧[resetdelay][wait time=2500][er]
+[delay speed=30]就让你见识一下永远循环的活地狱吧[resetdelay][wait time=2500][er]
 [_tb_end_text]
 
 [layopt layer=4 visible="true"]
@@ -883,29 +883,29 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_show_message_window  hide_log="true"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]呀，刚才好险呢[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]呀　真是危险呢[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]差点就要被我的狂信者[r]施加永恒的痛苦了呢[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]差点就要被我的狂信者[r]施加永恒的痛苦了[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/8.png"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]我还以为你已经[r]成了恶魔的狂信者了呢・・・[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]我本以为你已经[r]变成了恶魔狂信者・・・[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/4.png"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]看起来你也和那孩子一样，是我的狂信者！[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]看来你也和那孩子一样　是我的狂信者啊！[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]毕竟你现在就是[r]为了见到我而行动的，对吧？[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]因为现在的你[r]是为了见我才行动的　对吧？[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/6.png"  ]
@@ -916,114 +916,114 @@ TG.layer.getLayer('message0').find('img').remove()
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]我一直执着于[r]最初相遇时的你[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]我一直都　只固执地[r]看着最初相遇时的那个你[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="ネオ"  time="0"  cross="false"  storage="chara/63/6.png"  ]
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/10.png"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]那时的你怀着要重新来过、[r]拯救恶魔、拯救所有人的坚定觉悟[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]那个时候的你，[r]拥有着想要重来一切　拯救恶魔、拯救大家的强烈觉悟[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100][if exp="dc.aibou()"]就连你也把拯救了所有人的结局化为虚无[r]堕落为恶魔，拿他人的性命来献祭[else]就连你也堕落成了本该去拯救的恶魔，[r]以他人的性命为代价[endif][resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100][if exp="dc.aibou()"]这样的你　竟然将拯救了大家的结局化为乌有[r]也要堕落为恶魔　牺牲他人的性命[else]但现在的你却堕落成了本该去拯救的恶魔　[r]甚至以他人的性命为代价[endif][resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="ネオ"  time="0"  cross="false"  storage="chara/63/5.png"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]我一直满怀愤怒，心想别践踏[r]当时你下定的觉悟！什么的・・・[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]我曾感到愤怒　觉得这践踏了[r]那个时候你的觉悟・・・[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [jump  storage="mp_kill.ks"  target="*Lamia_no"  cond="f.Lamia_kill==0"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]・・・不过是你让我醒悟了[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]・・・但是是你让我察觉到了[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]被你反复奴役的恶魔，被[c]杀[_c]时那扭曲的脸[r]近距离一看・・・我感到无比强烈的背德感[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]近距离看着那个一直被肆意奴役的恶魔[r]在被[c]杀[_c]时的那张扭曲的脸・・・我感受到了一种强烈的背德感[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]过去的在下从没这么想过・・・[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]以前的我，是不会有这种想法的・・・[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]所以当时的你和现在的你也不一样[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]所以，那时候的你，和现在的你也是不同的[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]价值观和想法这类东西[r]人人都会很快就改变掉・・・[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]无论是谁　价值观和想法这种东西[r]都是马上就会改变的啊[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 *Lamia_no
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]说到底，你已经不是和我一同度过[r]那段时光的那个你了[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]说到底　你并不是和我[r]共度时光的那个时候的你[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]是和我相遇之前的・・・有器量的你[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]你是在与我相遇之前　拥有容器的你[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/9.png"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]阻止邪神化的恶魔失败，魔神与庞大的魔力[r]融合的结果，诞生了我这样的神[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]没能成功阻止邪神化的恶魔　导致魔神与庞大的魔力融合　结果诞生了“我”这个神[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]不去抗拒那样的命运[r]彼此接受就好了[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]如果能不违抗那样的命运　彼此接受就好了[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [jump  storage="mp_kill.ks"  target="*gauru"  cond="sf.gauru_neo!=1"  ]
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/12.png"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]某处的面具狼也说过吧，任何人一旦获得强大的[r]力量，就会被邪念吞噬[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]那只面具狼也说过呢　无论是谁[r]一旦获得了强大的力量，就会被邪念所吞噬。[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 *gauru
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]一开始你就不该承载我的神之力・・・[r]也不该宿有所谓的读档之能[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]你从一开始　就不应该寄宿我的神之力・・・[r]也就是读档的能力[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="邪眼"  time="0"  cross="false"  storage="chara/62/13.png"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]我和你对这世界而言[r]一定是不该存在的漏洞般的存在[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]一定是因为我和你对于这个世界来说[r]是像不该存在的BUG一样的东西[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]所以把你变成现在这样是我的错[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]所以把你变成这个样子是我的错[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]你是让我诞生的那位与恶魔缔约之人[r]所以即便置身那场超新星爆炸之中也能活下来[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]因为你是作为我的源头的恶魔的契约者[r]所以才能在那场超新星爆炸中幸存下来。[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]・・・后来因冲击容器还是彻底朽败了[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]・・・虽然在那之后，容器因为冲击而朽坏了[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]但像你这样的家伙・・・一定[r]也能想办法解决我的问题[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]但是如果是这样的你・・・一定[r]也能对我的事情做个了断吧。[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [stopse  time="0"  buf="5"  ]
@@ -1031,29 +1031,28 @@ TG.layer.getLayer('message0').find('img').remove()
 [wait  time="3000"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]我们一起[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]让我们一起[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]让这场悲剧的物语[r]走向终焉吧[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100][ruby text="‎‎‎ "]将这个悲剧的故事[ruby text="重置"]终结吧[resetdelay][free_quake_text][resetfont][p][_tb_end_text]
+
+[tb_start_text mode=1 ]
+#⑥
+[font color=0xab0009 bold=true][quake_text][delay speed=100]看来　已经到了凭我的力量[r]无法再重来的地步了[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]看来已经到了[r]连我也无法再重来的地步了[resetdelay][free_quake_text][resetfont][p]
-[_tb_end_text]
-
-[tb_start_text mode=1 ]
-#⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]・・・最后[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]・・・在最后[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [chara_hide  name="ネオ"  time="0"  wait="false"  pos_mode="false"  ]
 [chara_hide  name="邪眼"  time="0"  wait="false"  pos_mode="false"  ]
 [tb_start_text mode=1 ]
 #⑥
-[font color=0xab0009 bold=true][quake_text][delay speed=100]我有一个请求・・・可以听听吗[resetdelay][free_quake_text][resetfont][p]
+[font color=0xab0009 bold=true][quake_text][delay speed=100]我的愿望　可以听听吗[resetdelay][free_quake_text][resetfont][p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
@@ -1065,25 +1064,25 @@ TG.layer.getLayer('message0').find('img').remove()
 [bg  time="0"  method="crossfade"  wait="false"  storage="neo3.webp"  ]
 [wait  time="4000"  ]
 [l  ]
-[tb_ptext_show  x="464"  y="95"  size="34"  color="0x5da3ad"  time="500"  text="可以・・・抱抱我吗"  anim="true"  face="Yawamin"  edge="0xffffff"  shadow="undefined"  fadeout="false"  wait="true"  in_effect="fadeInDown"  out_effect="fadeOutDown"  ]
+[tb_ptext_show  x="464"  y="95"  size="34"  color="0x5da3ad"  time="500"  text="想要你・・・紧紧抱着我"  anim="true"  face="Yawamin"  edge="0xffffff"  shadow="undefined"  fadeout="false"  wait="true"  in_effect="fadeInDown"  out_effect="fadeOutDown"  ]
 [l  ]
 [tb_ptext_hide  time="100"  ]
-[tb_ptext_show  x="300"  y="95"  size="34"  color="0x5da3ad"  time="500"  text="那时的你眼里满是&nbsp;没能拯救的恶魔的事情"  anim="true"  face="Yawamin"  edge="0xffffff"  shadow="undefined"  fadeout="false"  wait="true"  in_effect="fadeInDown"  out_effect="fadeOutDown"  ]
+[tb_ptext_show  x="300"  y="95"  size="34"  color="0x5da3ad"  time="500"  text="那个时候的你，明明对&nbsp;一直没能拯救的恶魔的事情念念不忘"  anim="true"  face="Yawamin"  edge="0xffffff"  shadow="undefined"  fadeout="false"  wait="true"  in_effect="fadeInDown"  out_effect="fadeOutDown"  ]
 [l  ]
 [tb_ptext_hide  time="100"  ]
 [bg  time="0"  method="crossfade"  wait="false"  storage="neo.webp"  ]
-[tb_ptext_show  x="300"  y="95"  size="34"  color="0x5da3ad"  time="500"  text="最靠近你的我&nbsp;你却完全不理会"  anim="true"  face="Yawamin"  edge="0xffffff"  shadow="undefined"  fadeout="false"  wait="true"  in_effect="fadeInDown"  out_effect="fadeOutDown"  ]
+[tb_ptext_show  x="300"  y="95"  size="34"  color="0x5da3ad"  time="500"  text="对近在咫尺的我&nbsp;明明看都不看一眼"  anim="true"  face="Yawamin"  edge="0xffffff"  shadow="undefined"  fadeout="false"  wait="true"  in_effect="fadeInDown"  out_effect="fadeOutDown"  ]
 [l  ]
 [tb_ptext_hide  time="100"  ]
 [bg  time="0"  method="crossfade"  wait="false"  storage="neo2.webp"  ]
-[tb_ptext_show  x="615"  y="95"  size="34"  color="0x5da3ad"  time="500"  text="然而现在"  anim="true"  face="Yawamin"  edge="0xffffff"  shadow="undefined"  fadeout="false"  wait="true"  in_effect="fadeInDown"  out_effect="fadeOutDown"  ]
+[tb_ptext_show  x="615"  y="95"  size="34"  color="0x5da3ad"  time="500"  text="但是现在"  anim="true"  face="Yawamin"  edge="0xffffff"  shadow="undefined"  fadeout="false"  wait="true"  in_effect="fadeInDown"  out_effect="fadeOutDown"  ]
 [l  ]
 [tb_ptext_hide  time="100"  ]
-[tb_ptext_show  x="343"  y="95"  size="34"  color="0x5da3ad"  time="500"  text="我感觉 你正认真地看着我"  anim="true"  face="Yawamin"  edge="0xffffff"  shadow="undefined"  fadeout="false"  wait="true"  in_effect="fadeInDown"  out_effect="fadeOutDown"  ]
+[tb_ptext_show  x="343"  y="95"  size="34"  color="0x5da3ad"  time="500"  text="我感觉你终于肯正眼看我了"  anim="true"  face="Yawamin"  edge="0xffffff"  shadow="undefined"  fadeout="false"  wait="true"  in_effect="fadeInDown"  out_effect="fadeOutDown"  ]
 [l  ]
 [tb_ptext_hide  time="100"  ]
 [bg  time="0"  method="crossfade"  wait="false"  storage="neo3.webp"  ]
-[tb_ptext_show  x="355"  y="95"  size="34"  color="0x5da3ad"  time="500"  text="啊，这样的结局・・・我真的好幸福啊"  anim="true"  face="Yawamin"  edge="0xffffff"  shadow="undefined"  fadeout="false"  wait="true"  in_effect="fadeInDown"  out_effect="fadeOutDown"  ]
+[tb_ptext_show  x="355"  y="95"  size="34"  color="0x5da3ad"  time="500"  text="啊啊，这样的临终　我・・・感到非常幸福哦"  anim="true"  face="Yawamin"  edge="0xffffff"  shadow="undefined"  fadeout="false"  wait="true"  in_effect="fadeInDown"  out_effect="fadeOutDown"  ]
 [l  ]
 [tb_ptext_hide  time="100"  ]
 [bg  time="8000"  method="crossfade"  wait="true"  storage="neo4.webp"  ]
@@ -1108,4 +1107,3 @@ TG.layer.getLayer('message0').find('img').remove()
 [tb_start_tyrano_code]
 [close ask=false]
 [_tb_end_tyrano_code]
-

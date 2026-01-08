@@ -168,7 +168,7 @@
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/67.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-哦哦竟然把我叫作邪神・・・[r]你是要把本大爷这个恶魔当成神来看待吗喵？[p]
+哦哦，竟然称本大爷为邪神…[r]你这家伙也想信仰本大爷这唯一的神吗ー？[p]
 
 
 
@@ -286,7 +286,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-为何你这家伙不是魔神却能认出来？[r]你到底做了什么[p]
+这可真是麻烦…为什么不是魔神的[r]你这家伙能认出来？你到底做了什么[p]
 
 
 
@@ -439,7 +439,7 @@
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #德比伦
-[font face="kowai"]接下来就慎言吧[resetfont][p]
+[font face="kowai"]装什么驱魔师啊[resetfont][p]
 
 [_tb_end_text]
 
@@ -557,7 +557,7 @@
 [tb_eval  exp="f.kansou1=1"  name="kansou1"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
 [tb_start_text mode=4 ]
 #彼得
-也是[delay speed=100]・・・[resetdelay]在渴望和平的吧？[wait time=500]
+你也[delay speed=100]・・・[resetdelay]渴望和平吧？[wait time=500]
 [_tb_end_text]
 
 [jump  storage="kill_Peter.ks"  target="*zyagan1_modoru"  ]

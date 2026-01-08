@@ -27,7 +27,7 @@
 [fadein_window  time="300"  ]
 [tb_start_text mode=1 ]
 #萨菲尔
-呵呵呵…今天的我依然美丽[p]
+呼呼呼…今天的我依然美丽[p]
 
 
 [_tb_end_text]
@@ -55,7 +55,7 @@
 [playse  volume="100"  time="0"  buf="3"  storage="sasu.ogg"  ]
 [tb_start_text mode=1 ]
 #德比伦
-[if exp="f.Alice_nabe >= 1]继昨天的锅之后连浴缸都整过来了！？[r]你这家伙的召唤术到底怎么回事・・・[else]连浴缸都整过来了！？[r]你这家伙的召唤术到底怎么回事・・・[endif][p]
+[if exp="f.Alice_nabe >= 1]继昨天的锅之后连浴缸都整过来了！？[r]你这家伙的召唤术到底怎么回事…[else]连浴缸都整过来了！？[r]你这家伙的召唤术到底怎么回事…[endif][p]
 
 [_tb_end_text]
 
@@ -77,7 +77,7 @@
 [chara_mod  name="サフィール"  time="0"  cross="false"  storage="chara/38/3.png"  ]
 [tb_start_text mode=1 ]
 #萨菲尔
-什么！？[wait time=300]居然不知道我…[r]真是个特别的人呢[p]
+什么！？[wait time=300]居然不知道我…[r]真是与众不同呢[p]
 
 
 [_tb_end_text]
@@ -138,7 +138,7 @@
 [chara_mod  name="サフィール"  time="300"  cross="false"  storage="chara/38/5.png"  ]
 [tb_start_text mode=1 ]
 #萨菲尔
-差不多该告辞了[p]
+差不多该出来了[p]
 
 [_tb_end_text]
 
@@ -242,7 +242,7 @@
 [quake  time="300"  count="5"  hmax="3"  wait="false"  ]
 [tb_start_text mode=1 ]
 #德比伦
-[font face="DZUYOKU"][font size=50]说你恶心啊！[wait time=300][r]让[wait time=100]・人[wait time=100]・不[wait time=100]・爽[wait time=100]・啊！[resetfont][p]
+[font face="DZUYOKU"][font size=50]说你恶心啊！[wait time=300][r]恶[wait time=100]・心[wait time=100]・死[wait time=100]・了[wait time=100]・啊！[resetfont][p]
 
 
 [_tb_end_text]
@@ -250,7 +250,7 @@
 [chara_mod  name="サフィール"  time="0"  cross="false"  storage="chara/38/15.png"  ]
 [tb_start_text mode=1 ]
 #萨菲尔
-是这样吗？[r][wait time=300]居然敢对我这样大喊大叫…[p]
+是这样吗？[r][wait time=300]居然敢这样骂我…[p]
 
 [_tb_end_text]
 
@@ -294,7 +294,7 @@
 
 *zyagan1_modoru
 
-[choice2 text1="请求签名" target1="*sa" text2="热风魔法" target2="*ne"]
+[choice2 text1="讨要签名" target1="*sa" text2="热风魔法" target2="*ne"]
 
 [zyagan target="*zyagan1,*zyagan1_2serihu" borders="95, 125, 140, 170"]
 
@@ -464,7 +464,7 @@
 [chara_mod  name="プレイヤー"  time="100"  cross="false"  storage="chara/2/sign2.png"  ]
 [tb_start_text mode=1 ]
 #萨菲尔
-好，完成了。如果你正为钱发愁的话[r]就把这个高价转卖出去吧[p]
+好，完成了。如果你正为钱发愁的话[r]不妨高价转卖出去[p]
 
 [_tb_end_text]
 
@@ -915,7 +915,7 @@
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/85.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-辱、辱骂你…？[r]真是的，我该说点什么才好呢？[p]
+要、要骂你吗…？[r]真是的，我该说点什么才好呢？[p]
 
 
 
@@ -1381,7 +1381,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-人见人爱的大恶魔，德比伦★[p]
+魅力型男大恶魔，德比伦★[p]
 [_tb_end_text]
 
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/11.png"  ]

@@ -57,7 +57,7 @@
 [playse  volume="100"  time="1000"  buf="3"  storage="aseru.ogg"  ]
 [tb_start_text mode=1 ]
 #德比伦
-哎呀哎呀，咱们可绝对不是啥可疑的人物哦？[r]喵嘎哈哈…[p]
+哎呀哎呀，本大爷们可绝对不是啥可疑的人物哦？[r]喵嘎哈哈…[p]
 [_tb_end_text]
 
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/16.png"  ]
@@ -386,7 +386,7 @@
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/67.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-别嘴硬啦～乖乖听话就行了哦？[r]那样的话就告诉你一些你不知道的事！[p]
+别嘴硬啦～乖乖听话就行了哦？[r]那样的话就告诉你这家伙一些不知道的事！[p]
 [_tb_end_text]
 
 [chara_mod  name="ティング"  time="0"  cross="false"  storage="chara/9/10.png"  ]
