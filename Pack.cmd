@@ -81,4 +81,4 @@ echo.
 :: 可选：打包完直接打开 dist 文件夹
 :: start dist
 
-pause
+:: pause
