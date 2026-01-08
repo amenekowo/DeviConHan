@@ -55,26 +55,26 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
 
 ### 🇨🇳 中文
 1. **准备游戏**：确保你已经拥有原版游戏（且能正常运行）。请支持原作者，购买或下载正版。
-2. **下载补丁**：下载本项目的最新 [Releases](../../releases) 版本。
+2. **下载补丁**：下载本项目的最新 [Releases](../../releases) 版本（通常为 `.exe` 文件）。
 3. **安装**：
-    - 将解压后的文件复制到游戏根目录（即包含 `DevilConnection.exe` 的文件夹）。
-    - 运行汉化补丁程序，可能需要根据提示选择几个选项。等待补丁完成操作。
+    - 将下载的 `.exe` 文件直接放入游戏根目录（即包含 `DevilConnection.exe` 的文件夹）。
+    - 双击运行该程序（无需解压）。根据提示选择选项并等待操作完成。
 4. **开始游戏**：从 Steam 启动，或者在 Steam 运行时直接从 `DevilConnection.exe` 启动游戏。
 
 ### 🇺🇸 English
 1. **Prerequisite**: Ensure you own the original game and it runs correctly. Please support the original author by purchasing/downloading the official release.
-2. **Download**: Get the latest version from [Releases](../../releases).
+2. **Download**: Get the latest version from [Releases](../../releases) (usually an `.exe` file).
 3. **Install**:
-    - Copy the extracted files to the game's root directory (where `DevilConnection.exe` is located).
-    - Run the patcher program. You may need to select a few options when prompted. Wait for the process to complete.
+    - Place the downloaded `.exe` file directly into the game's root directory (where `DevilConnection.exe` is located).
+    - Run the executable directly (no extraction required). Follow the prompts and wait for the process to complete.
 4. **Launch**: Start the game via Steam, or run `DevilConnection.exe` directly while Steam is running.
 
 ### 🇯🇵 日本語
 1. **準備**: 正規版のゲームを所持しており、正常に動作することを確認してください。
-2. **ダウンロード**: [Releases](../../releases) から最新バージョンをダウンロードします。
+2. **ダウンロード**: [Releases](../../releases) から最新バージョンをダウンロードします（`.exe` ファイルです）。
 3. **インストール**:
-    - 解凍したファイルをゲームのルートフォルダ（`DevilConnection.exe` がある場所）にコピーします。
-    - パッチプログラムを実行します。画面の指示に従ってオプションを選択してください。完了まで待ちます。
+    - ダウンロードした `.exe` ファイルをそのままゲームのルートフォルダ（`DevilConnection.exe` がある場所）に配置してください。
+    - プログラムを直接実行します（解凍は不要です）。画面の指示に従って完了までお待ちください。
 4. **起動**: Steam から起動するか、Steam が起動している状態で `DevilConnection.exe` を直接実行してください。
 
 ---
