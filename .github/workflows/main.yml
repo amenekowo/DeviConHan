@@ -1,53 +1,56 @@
-name: Build and Release Patch
+name: Auto Build (Nightly)
 
 on:
-  # 方式1：当你推送形如 v1.0, v0.2 这样的 tag 时触发
   push:
-    branches: [ "main" ] 
-  # 方式2：允许在网页端手动点击按钮触发（用于测试）
-  workflow_dispatch:
+    branches: [ "main" ] # 只要推送到 main 分支就触发
+  workflow_dispatch:      # 允许手动触发
 
 permissions:
-  contents: write # 必须给予写权限，否则无法创建 Release
+  contents: write # 【重要】必须给写权限，否则无法强制更新 Tag 和 Release
 
 jobs:
   build-and-release:
-    runs-on: windows-latest # 因为是 .cmd 且生成 exe，必须用 Windows 环境
+    runs-on: windows-latest
 
     steps:
       # 1. 拉取代码
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. 配置 Python 环境
+      # 2. 准备环境
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11' # 根据你的实际需求调整版本
+          python-version: '3.11'
 
-      # 3. 安装 PyInstaller (假设你的 cmd 里没有pip install步骤)
       - name: Install PyInstaller
-        run: |
-          pip install pyinstaller
-          # 如果有其他依赖，也可以在这里 pip install -r requirements.txt
+        run: pip install pyinstaller
 
-      # 4. 执行你的打包脚本
+      # 3. 打包
       - name: Run Pack.cmd
         shell: cmd
-        run: |
-          call Pack.cmd
-        # 注意：确保 Pack.cmd 里不要有 'pause'，否则会卡死！
+        run: call Pack.cmd
 
-      # 5. 上传 Release
-      - name: Release
+      # 4. 【核心步骤】强制更新 Tag
+      # 这步的作用是把 "nightly" 这个标签强行挪到你最新的这次提交上
+      - name: Update Nightly Tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # 先删除本地（如果存在），再创建新 tag，最后强制推送到远程
+          git tag -f nightly
+          git push -f origin nightly
+
+      # 5. 发布/更新 Release
+      - name: Release Nightly
         uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/') # 只有打 tag 时才发布，手动触发不发布
         with:
-          # 这里配置你要发布的文件路径
-          # 假设 Pack.cmd 用 PyInstaller 生成的文件在 dist 文件夹下
-          files: |
-            dist/*.exe
-            # 或者如果你打包成了 zip，就写 dist/*.zip
-          
-          # 自动生成 Release 标题和说明
-          generate_release_notes: true
+          tag_name: nightly            # 永远针对这个 tag 发布
+          name: "最新测试补丁 (Nightly)" # Release 的标题
+          body: |
+            自动构建版本。
+            提交哈希: ${{ github.sha }}
+            构建时间: ${{ github.event.head_commit.timestamp }}
+          files: dist/*.exe            # 上传文件
+          prerelease: true             # 标记为预发布
+          overwrite: true              # 允许覆盖同名文件
