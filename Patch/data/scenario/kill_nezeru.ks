@@ -18,7 +18,7 @@
 
 [tb_start_text mode=1 ]
 #内泽鲁
-打扰了[p]
+打扰啦[p]
 
 [_tb_end_text]
 
@@ -61,7 +61,7 @@
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/82.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-住、住在附近吗这家伙！[r]什么担心之类的多此一举[p]
+住、住在附近吗这家伙！[r]担心什么的真是多管闲事[p]
 
 [_tb_end_text]
 
@@ -129,7 +129,7 @@
 [tb_eval  exp="f.HANYOU=1"  name="HANYOU"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
 [tb_start_text mode=1 ]
 #内泽鲁
-展开屏障的话[r]就连我也没办法应对啊[p]
+如果被展开屏障的话[r]就连我也没办法应对啊[p]
 
 [_tb_end_text]
 
@@ -197,7 +197,7 @@
 
 [tb_start_text mode=1 ]
 #内泽鲁
-今天又和你在路上擦肩而过时，[r]目光对上了，不过看来你早就注意到了吧[p]
+之前每次和你擦肩而过时，[r]目光总是对上了，看来你果然很在意呢
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -277,7 +277,7 @@
 [playse  volume="100"  time="0"  buf="3"  storage="aseru.ogg"  ]
 [tb_start_text mode=1 ]
 #德比伦
-本来想躲开[r]但法杖还是被抢走了！这是什么啊！？[p]
+本来想躲开[r]但法杖还是被抢走了！到底是什么人！？
 
 
 
@@ -331,7 +331,7 @@
 [playse  volume="100"  time="0"  buf="3"  storage="aseru.ogg"  ]
 [tb_start_text mode=1 ]
 #德比伦
-这、这个家伙邪眼[r]居然知道邪眼探查的事…！？[p]
+这、这个家伙[r]居然知道邪眼探查的事…！？[p]
 
 
 
@@ -431,7 +431,7 @@
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/65.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-…啊啊没错，所以[emb exp="f.name"]就是在为本大爷行动的意思啦[r][p]
+…啊啊没错，所以[emb exp="f.name"]就是为本大爷效力的意思啦[p]
 
 [_tb_end_text]
 
@@ -543,7 +543,7 @@
 [chara_mod  name="ネゼル"  time="0"  cross="false"  storage="chara/37/4.png"  ]
 [tb_start_text mode=1 ]
 #内泽鲁
-这次轮到你啦。[r]有什么都可以问我哦[p]
+跟我说说吧[r]我想…了解你的事[p]
 [_tb_end_text]
 
 [jump  storage="kill_nezeru.ks"  target="*zyagan2_modoru2"  ]

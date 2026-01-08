@@ -490,7 +490,7 @@
 [fadein_window  time="300"  ]
 [tb_start_text mode=1 ]
 #潘普提
-[if exp="f.hutanari == 1"]姐姐君[else][if exp="f.seibetu == 1]大哥哥[else]大姐姐[endif][endif]和小恶魔君之间的关系啊[r]潘普才不想知道呢—哼[p]
+[if exp="f.hutanari == 1"]姐姐君[else][if exp="f.seibetu == 1]大哥哥[else]大姐姐[endif][endif]和恶魔君之间的关系啊[r]潘普才不想知道呢—哼[p]
 
 
 [_tb_end_text]
@@ -607,7 +607,7 @@
 [chara_mod  name="パンプティ"  time="0"  cross="false"  storage="chara/34/5.png"  ]
 [tb_start_text mode=1 ]
 #潘普提
-嘎[delay speed=100]・・・[resetdelay][p]
+啊[delay speed=100]・・・[resetdelay][p]
 
 
 
@@ -678,7 +678,7 @@
 [fadein_window  time="300"  ]
 [tb_start_text mode=1 ]
 #潘普提
-我才不想要你们俩[r]亲亲密密地紧紧抱在一起呢噗～[r][p]
+我才不想要你们俩[r]亲亲密密地紧紧抱在一起呢噗～[p]
 
 [_tb_end_text]
 
@@ -1033,7 +1033,7 @@
 [chara_mod  name="サブでび"  time="30"  cross="false"  storage="chara/30/panpu7.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-不、不要…[r]住手！啊嘎呀啊啊…[p]
+不、不要…[r]住手！快住手…[p]
 [_tb_end_text]
 
 [playse  volume="100"  time="0"  buf="4"  storage="AURA_OK.ogg"  ]

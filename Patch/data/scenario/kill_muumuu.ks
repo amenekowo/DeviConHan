@@ -156,7 +156,7 @@
 
 [tb_start_text mode=1 ]
 #穆穆
-那时候也是在拼命地苦苦央求想从魔石中吸取魔力，[r]现在把我召唤到这里是不是也…[p]
+那时候也是在拼命地苦苦央求想吸取魔石的魔力，[r]现在把我召唤到这里是不是也…[p]
 
 
 
@@ -320,18 +320,18 @@
 [fadein_window  time="300"  ]
 [tb_start_text mode=1 ]
 #穆穆
-那只恶魔，居然能聚拢到[r]足以拥有信徒的信仰啊[p]
+那只恶魔，居然能聚集到[r]足以拥有信徒的信仰啊[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #穆穆
-穆最喜欢的漂亮瞳孔！[r]真是让人无法自拔！太棒了啊！[p]
+穆最喜欢的漂亮瞳孔！[r]真是让人受不了！太棒了啊！[p]
 
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #穆穆
-继承自恶魔的魔眼…[r]还想…还想多看几次ー[p]
+继承自恶魔的魔眼…[r]还想…还想再多看几次啊ー[p]
 [_tb_end_text]
 
 [call  storage="me.ks"  target="*me_ENDtozi_player"  ]
