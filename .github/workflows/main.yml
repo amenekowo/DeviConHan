@@ -53,4 +53,3 @@ jobs:
             构建时间: ${{ github.event.head_commit.timestamp }}
           files: dist/*.exe            # 上传文件
           prerelease: true             # 标记为预发布
-          overwrite: true              # 允许覆盖同名文件
