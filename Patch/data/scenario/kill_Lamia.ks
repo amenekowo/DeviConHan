@@ -33,7 +33,7 @@
 [fadein_window  time="300"  ]
 [tb_start_text mode=1 ]
 #拉弥亚
-呀哈，还在想被看见了呢[r]果然就召唤我了！[p]
+呀哈，还在想是不是被发现了呢[r]果然就把我召唤出来了！[p]
 
 [_tb_end_text]
 
@@ -100,7 +100,7 @@
 [chara_mod  name="ラミア"  time="0"  cross="false"  storage="chara/52/1.png"  ]
 [tb_start_text mode=1 ]
 #拉弥亚
-能不能把搞怪留在脸上就好？[p]
+能不能只在你脸上耍宝就好？[p]
 
 [_tb_end_text]
 
@@ -183,7 +183,7 @@
 [layermode  mode="overlay"  color="0xf08865"  time="1000"  wait="false"  ]
 [tb_start_text mode=1 ]
 #拉弥亚
-所以就从你们几位开始当开头吧！[p]
+所以就拿你们几个开刀吧！[p]
 [_tb_end_text]
 
 [tb_eval  exp="f.photoDeviPose=0"  name="photoDeviPose"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
@@ -211,10 +211,10 @@
 [tb_start_text mode=1 ]
 #拉弥亚
 这诅咒啊，平时是封存在心里的，[r]但那堆积已久的负面情感越多，威力就会越强。[p]
-是不是已经对那个总是单方面[r]发号施令的恶魔感到厌烦啦～？[p]
+是不是已经烦透那个总是单方面[r]发号施令的恶魔啦～？[p]
 任由诅咒驱使你吧，[r]尽情地发泄出来就好啦♥[p]
 那么，那个只会发号施令的[r]那边的恶魔，要让他做点什么好呢[p]
-对啊！去捉弄那恶魔看看吧！[r]你可是信徒啊…该知道他最讨厌什么吧？[p]
+对啊！去找那恶魔的麻烦吧！[r]你可是信徒啊…该知道他最讨厌什么吧？[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
@@ -392,7 +392,7 @@
 [tb_autosave  title="b"  ]
 [tb_start_text mode=1 ]
 #①拉弥亚①
-[delay speed="100"]什么都听话的[r]方便的信徒，被你过度信赖了・・・[resetdelay][p]
+[delay speed="100"]什么都听话的[r]好用的信徒，被你过度信赖了・・・[resetdelay][p]
 [_tb_end_text]
 
 [tb_autosave  title="b"  ]

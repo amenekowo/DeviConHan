@@ -648,7 +648,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-我一直在支持[emb exp="f.name"][r]就因为是恶魔就带偏见，不太好吧ー[p]
+一直都在支持[emb exp="f.name"]啊[r]就因为是恶魔就带有偏见，不太好吧ー[p]
 
 
 [_tb_end_text]
@@ -847,7 +847,7 @@
 [quake  time="300"  count="5"  hmax="3"  wait="false"  ]
 [tb_start_text mode=1 ]
 #玛耳斯
-我知道[emb exp="f.name"][if exp="f.seibetu == 1]君[else]桑[endif]不是这么冷酷的人[r][p]
+我知道的，[emb exp="f.name"][if exp="f.seibetu == 1]君[else]桑[endif]不是这么冷酷的人[r][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -889,7 +889,7 @@
 
 [tb_start_text mode=1 ]
 #玛耳斯
-[font size=50]呜哦哦哦哦我这当班主任的真是失格了呜呜呜[resetfont][p]
+[font size=50]呜哦哦哦哦我这当班主任的真是不合格啊呜呜呜[resetfont][p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]

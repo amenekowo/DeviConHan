@@ -14,7 +14,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-呼～好久没靠魔力吃饱啦～[r][wait time=300]和用食物填饱肚子完全不一样的满足感[p]
+呼～好久没靠魔力吃饱喝足啦～[r][wait time=300]跟用吃的填饱肚子完全不一样的饱腹感啊！[p]
 
 [_tb_end_text]
 
@@ -63,8 +63,8 @@
 [fadein_window  time="1000"  ]
 [tb_start_text mode=1 ]
 #①玛耳斯①
-晚、晚上好。[emb exp="f.name"][if exp="f.seibetu == 1]君[else]桑[endif]…[r]这么晚打扰真是抱歉。[p]
-我是索尔希艾尔魔法学校的班主任，玛耳斯。[r][wait time=300]那个…您可能已经不记得我了…[p]
+晚、晚上好。[emb exp="f.name"][if exp="f.seibetu == 1]君[else]桑[endif]…[r]这么晚来打扰真是抱歉。[p]
+我是索尔希艾尔魔法学校的班主任，玛耳斯。[r][wait time=100]那个…您可能已经不记得我了…[p]
 [_tb_end_text]
 
 [chara_mod  name="マルス"  time="0"  cross="false"  storage="chara/20/3.png"  ]
@@ -137,7 +137,7 @@
 [chara_mod  name="ベッド"  time="30"  cross="false"  storage="chara/19/7.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-不过嘛，我都听说啦！[r][font size=63]你这家伙是不去上学的啊！[p]
+不过嘛，我可都听说了！[r][font size=63]你这家伙居然是不去上学的啊！[p]
 
 
 [_tb_end_text]
@@ -147,7 +147,7 @@
 [chara_mod  name="ベッド"  time="30"  cross="false"  storage="chara/19/13.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-那当然啦，像恶魔狂信者这种人，[r]怎么可能融入这个社会呢。真是不巧啊[p]
+那当然啦，像恶魔狂信者这种人，[r]怎么可能融入这个社会嘛。真是不巧啊[p]
 [_tb_end_text]
 
 [chara_mod  name="ベッド"  time="0"  cross="false"  storage="chara/19/6.png"  ]
@@ -187,7 +187,7 @@
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #德比伦
-什么啊[delay speed=100]・・・[resetdelay]别碰我[r]你这家伙睡地板。[p]
+什么啊[delay speed=100]・・・[resetdelay]别碰[r]你这家伙睡地板。[p]
 
 [_tb_end_text]
 
@@ -209,7 +209,7 @@
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #德比伦
-真是不敬啊，都说了别碰我。[p]
+真是不敬啊，都说了别碰。[p]
 [_tb_end_text]
 
 [chara_mod  name="ベッド"  time="0"  cross="false"  storage="chara/19/8.png"  ]
@@ -258,7 +258,7 @@
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/11.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-早上好！虽然说是早上，其实已经昼夜颠倒成傍晚了！[r]今天也要元气满满地回收魔力啦！哒呀～哈～哈！[p]
+早上好！虽然说是早上，其实已经昼夜颠倒成傍晚了！[r]今天也要元气满满地回收魔力啦！嘎～哈～哈！[p]
 
 
 [_tb_end_text]

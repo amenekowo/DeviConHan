@@ -84,7 +84,7 @@
 [chara_mod  name="あもあも"  time="0"  cross="false"  storage="chara/48/6.png"  ]
 [tb_start_text mode=1 ]
 #阿莫阿莫
-懒得动弹的贝尔波居然和这位狂信徒[if exp="f.seibetu == 1]君[else]酱[endif]联手，[r]在整个魔吉利西亚到处掠夺魔力——是这孩子告诉我的哦～[p]
+懒鬼贝尔波居然和这位狂信徒[if exp="f.seibetu == 1]君[else]酱[endif]联手，[r]在整个魔吉利西亚到处掠夺魔力——是这孩子告诉我的哦～[p]
 [_tb_end_text]
 
 [chara_mod  name="TAP"  time="0"  cross="false"  storage="chara/18/ku2.png"  ]
@@ -106,7 +106,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-切…平时都在那种地方啊[r]真是脑袋开满花，羡慕得很呢[p]
+切…平时都在那种地方啊[r]真是天真烂漫，羡慕得很呢[p]
 
 [_tb_end_text]
 
@@ -350,7 +350,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-[font face="kowai"]荒唐可笑…什么七大恶魔啊[r]你这家伙们根本不是什么同伴。都是本大爷的敌人。[resetfont][p]
+[font face="kowai"]荒唐可笑…什么七大恶魔啊[r]你们这些家伙根本不是什么同伴。都是本大爷的敌人。[resetfont][p]
 					   
 [_tb_end_text]
 
@@ -378,7 +378,7 @@
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/118.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-[font face="kowai"]既然这么挂念本大爷，[r]那就用更直观的行动来证明吧[resetfont][p]
+[font face="kowai"]既然这么在意本大爷，[r]那就用更直观的行动来证明吧[resetfont][p]
 					   
 [_tb_end_text]
 
@@ -586,7 +586,7 @@
 [camera  time="30000"  zoom="1.3"  wait="false"  layer="0"  ]
 [tb_start_text mode=1 ]
 #阿莫阿莫
-逃不了…哦[p]
+不会放你走的…哦[p]
 [_tb_end_text]
 
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/152.png"  ]

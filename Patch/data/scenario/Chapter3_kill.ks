@@ -24,7 +24,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-从明天起，本大爷的邪眼就不再共享感知了，[r]要用你你自己的眼睛了呢[p]
+从明天起，本大爷的邪眼就不再共享感知了，[r]要用你自己的眼睛了呢[p]
 [_tb_end_text]
 
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/11.png"  ]
@@ -62,7 +62,7 @@
 [fadein_window  time="1000"  ]
 [tb_start_text mode=1 ]
 #德比伦
-本大爷觉得我们彼此互相利用、利害一致，[r]是一种对等的关系，不是吗？[r][p]
+本大爷觉得我们彼此互相利用、利害一致，[r]是一种对等的关系，不是吗？[p]
 
 [_tb_end_text]
 
@@ -79,7 +79,7 @@
 [chara_mod  name="ベッド"  time="0"  cross="false"  storage="chara/19/6.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-你这家伙在这世上哪儿都没有容身之处，所以才渴望毁灭吧？[r][p]
+你这家伙在这世上哪儿都没有容身之处，[r]所以才渴望毁灭吧？[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -195,7 +195,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-还想着要是把心交给邪念，在心情上[r]多少会轻松一点[p]
+还想着要是把心交给邪念，[r]心情上多少会轻松一点[p]
 
 [_tb_end_text]
 
@@ -216,7 +216,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-[font face="kowai"][font size=25]咕呵呵呵，总有一天给我看着吧[r]魔界的民众们啊・・・[resetfont][p]
+[font face="kowai"][font size=25]咕呵呵呵，等着瞧吧[r]魔界的民众们啊・・・[resetfont][p]
 
 
 [_tb_end_text]
@@ -226,7 +226,7 @@
 [quake  time="300"  count="10"  hmax="5"  wait="false"  ]
 [tb_start_text mode=1 ]
 #德比伦
-[font color=0xFF0000 font face="kowai"][font size=50]我要把你们全都一并复仇个痛快啊！！！[resetfont][p]
+[font color=0xFF0000 font face="kowai"][font size=50]我要把你们全都一并报复个痛快啊！！！[resetfont][p]
 
 [_tb_end_text]
 

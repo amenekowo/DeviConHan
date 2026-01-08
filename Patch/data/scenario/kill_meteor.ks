@@ -193,7 +193,7 @@
 [chara_show  name="感情オーラ1"  time="1000"  wait="false"  storage="chara/11/moya1.png"  width="363"  height="158"  left="278"  top="97"  reflect="false"  ]
 [tb_start_text mode=1 ]
 #咪蒂尔
-超棒的命名创意[r]文字游戏满分！[p]
+超棒的命名创意[r]文字游戏满分的说！[p]
 
 
 [_tb_end_text]
@@ -227,7 +227,7 @@
 [camera  time="6000"  zoom="1.3"  wait="false"  layer="layer_camera"  ease_type="ease"  y="60"  ]
 [tb_start_text mode=1 ]
 #咪蒂尔
-小喵喵药水[delay speed=100]・・・・・・[resetdelay][p]
+小喵喵药哦[delay speed=100]・・・・・・[resetdelay][p]
 [_tb_end_text]
 
 [flash  time="80"  effect="fadeIn"  color="0x000000"  ]
@@ -243,7 +243,7 @@
 [chara_show  name="感情オーラ1"  time="1000"  wait="false"  storage="chara/11/moya1.png"  width="363"  height="158"  left="278"  top="97"  reflect="false"  ]
 [tb_start_text mode=1 ]
 #咪蒂尔
-好可爱的命名创意！[r]文字游戏满分！[p]
+好可爱的命名创意！[r]文字游戏满分的说！[p]
 
 
 [_tb_end_text]
@@ -262,7 +262,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-不，这个命名创意太糟糕了吧[r]有点[if exp="f.seibetu == 1]像个老头似的[else]像个老太太似的[endif][p]
+不，这个命名创意太糟糕了吧[r]有点[if exp="f.hutanari == 1]老土死了[else][if exp="f.seibetu == 1]像个老头似的[else]像个老太太似的[endif][endif][p]
 
 
 [_tb_end_text]
@@ -298,7 +298,7 @@
 [chara_mod  name="ミーティア"  time="0"  cross="false"  storage="chara/39/5.png"  ]
 [tb_start_text mode=1 ]
 #咪蒂尔
-所以我非常担心[p]
+所以我非常担心的说[p]
 [_tb_end_text]
 
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/8.png"  ]
@@ -373,7 +373,7 @@
 
 [tb_start_text mode=1 ]
 #咪蒂尔
-那个！其实咪・・・一直想和[emb exp="f.name"]桑[r]成为朋友！[p]
+那个！其实咪・・・一直想和[emb exp="f.name"]桑[r]成为朋友的说！[p]
 [_tb_end_text]
 
 [tb_start_tyrano_code]
@@ -471,12 +471,12 @@
 [chara_mod  name="ミーティア"  time="0"  cross="false"  storage="chara/39/7.png"  ]
 [tb_start_text mode=1 ]
 #咪蒂尔
-如果是这样的话！我这个交到的朋友[r]就要让学校生活变得更有趣！[p]
+如果是这样的话！我这个交到的朋友[r]就要让学校生活变得更有趣的说！[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #咪蒂尔
-咪・・・咪想成为[r]照亮[emb exp="f.name"]桑的一道光！[p]
+咪・・・咪想成为[r]照亮[emb exp="f.name"]桑的一道光的说！[p]
 [_tb_end_text]
 
 *zyagan2_modoru2
@@ -546,7 +546,7 @@
 
 [tb_start_text mode=1 ]
 #咪蒂尔
-咪一直相信[emb exp="f.name"]桑一定会和咪成为朋友的！[p]
+咪一直相信[emb exp="f.name"]桑一定会和咪成为朋友的说！[p]
 [_tb_end_text]
 
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/21.png"  ]
@@ -590,7 +590,7 @@
 
 [tb_start_text mode=1 ]
 #咪蒂尔
-咪一直相信[emb exp="f.name"]桑绝对会成为咪的[r]朋友的！[p]
+咪一直相信[emb exp="f.name"]桑绝对会成为咪的[r]朋友的说！[p]
 [_tb_end_text]
 
 [tb_start_text mode=4 ]
@@ -617,7 +617,7 @@
 
 [tb_start_text mode=1 ]
 #咪蒂尔
-[emb exp="f.name"]桑用魔法让大家惊叹的样子[r]对我来说就像是最闪亮的明星一样耀眼。[p]
+[emb exp="f.name"]桑用魔法让大家惊叹的样子[r]对我来说就像是最闪亮的明星一样耀眼的说。[p]
 [_tb_end_text]
 
 [chara_mod  name="ミーティア"  time="0"  cross="false"  storage="chara/39/4.png"  ]
@@ -661,14 +661,14 @@
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #咪蒂尔
-咪能好好使用的咒语只有这个。[r]就是从法杖中变出星星的魔法・・・[p]
+咪能好好使用的咒语只有这个的说。[r]就是从法杖中变出星星的魔法・・・[p]
 
 [_tb_end_text]
 
 [chara_mod  name="ミーティア"  time="0"  cross="false"  storage="chara/39/3.png"  ]
 [tb_start_text mode=1 ]
 #咪蒂尔
-咪也想像[emb exp="f.name"]桑那样，[r]成为可以照亮四周的一流魔法师！[p]
+咪也想像[emb exp="f.name"]桑那样，[r]成为可以照亮四周的一流魔法师的说！[p]
 
 
 [_tb_end_text]
@@ -731,17 +731,17 @@
 [fadein_window  time="300"  ]
 [tb_start_text mode=1 ]
 #咪蒂尔
-呜呜，不能这么泄气[p]
+呜呜，不能这么泄气的说[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #咪蒂尔
-咪决定了，不管什么时候都要保持积极乐观！[p]
+咪决定了，不管什么时候都要保持积极乐观的说！[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #咪蒂尔
-不能被今早的梦惑住了[p]
+不能被今早的梦惑住了的说[p]
 [_tb_end_text]
 
 [call  storage="me.ks"  target="*me_ENDtozi"  ]
@@ -785,7 +785,7 @@
 
 [tb_start_text mode=1 ]
 #咪蒂尔
-刚才是咪的错[r]都是咪不好[p]
+刚才是咪的错的说[r]都是咪不好[p]
 [_tb_end_text]
 
 [playse  volume="100"  time="0"  buf="4"  storage="AURA_NG.ogg"  ]
@@ -811,7 +811,7 @@
 [chara_mod  name="ミーティア"  time="0"  cross="false"  storage="chara/39/15.png"  ]
 [tb_start_text mode=1 ]
 #咪蒂尔
-但是但是！这可不是我所祈求的[r]所以，像这种事还是、是第一次[delay speed=100]・・・[resetdelay][p]
+但是但是！这可不是我所祈求的说[r]所以，像这种事还是、是第一次[delay speed=100]・・・[resetdelay][p]
 
 [_tb_end_text]
 
@@ -824,7 +824,7 @@
 
 [tb_start_text mode=1 ]
 #咪蒂尔
-所以，虽然不清楚那个梦在暗示什么[r]但我还是希望你务必小心[p]
+所以，虽然不清楚那个梦在暗示什么[r]但我还是希望你务必小心的说[p]
 
 [_tb_end_text]
 

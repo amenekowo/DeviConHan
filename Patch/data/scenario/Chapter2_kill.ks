@@ -45,12 +45,12 @@
 
 [tb_start_text mode=1 ]
 #①
-[font color=0xFF0000 face="kowai" bold=true]恶魔会将于魔吉利西亚与人间界获得的灵魂浸入魔界的[r]魔力之泉，经过漫长岁月方才成形[resetfont][p]
+[font color=0xFF0000 face="kowai" bold=true]恶魔会将从魔吉利西亚和人间界获得的灵魂浸入魔界的[r]魔力之泉，经过漫长岁月才成形[resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #①
-[font color=0xFF0000 face="kowai" bold=true]恶魔是欲望的具现化，若在生前[r]对恶魔有深切的信仰，便会更接近那名恶魔的姿态[resetfont][p]
+[font color=0xFF0000 face="kowai" bold=true]恶魔是欲望的具现化，若在生前[r]对某恶魔有深切的信仰，死后便会更接近其姿态[resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -98,13 +98,13 @@
 [chara_mod  name="ベッド"  time="0"  cross="false"  storage="chara/19/15.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-这样一来，本大爷只要躺着睡就能把魔力给咕啵地[r]大把收下！咯嘿嘿，明天真让人期待啊…[p]
+这样一来，本大爷只要躺着睡就能把魔力哗啦啦地[r]大把收下！咯嘿嘿，明天真让人期待啊…[p]
 [_tb_end_text]
 
 [chara_mod  name="ベッド"  time="0"  cross="false"  storage="chara/19/2.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-好——咱赶紧睡觉吧—[p]
+好ー了、赶紧睡觉吧ー[p]
 
 [_tb_end_text]
 

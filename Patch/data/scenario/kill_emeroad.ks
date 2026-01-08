@@ -54,7 +54,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-你这家伙在那里干嘛，当跟踪狂吗？[p]
+你这家伙在干嘛，当跟踪狂吗？[p]
 [_tb_end_text]
 
 [playse  volume="100"  time="0"  buf="3"  storage="aseru.ogg"  ]
@@ -102,7 +102,7 @@
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/65.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-哦？怎么，区区厨子[r]想当本大爷的奴仆吗？[r][p]
+哦？怎么，区区厨子[r]想当本大爷的奴仆吗？[p]
 [_tb_end_text]
 
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/8.png"  ]
@@ -244,7 +244,7 @@
 [playse  volume="100"  time="0"  buf="4"  storage="AURA_NG.ogg"  ]
 [tb_start_text mode=1 ]
 #艾美洛德
-醋、醋饭！？[r]而且在冰箱里冻过变硬了…[p]
+醋、醋饭！？[r]而且在冰箱里冷得变硬了…[p]
 
 [_tb_end_text]
 
@@ -280,7 +280,7 @@
 [tb_eval  exp="f.HANYOU=1"  name="HANYOU"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
 [tb_start_text mode=4 ]
 #艾美洛德
-我只能说试试…[r]
+我想想办法吧…[r]
 
 [_tb_end_text]
 

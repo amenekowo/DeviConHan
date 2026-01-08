@@ -101,7 +101,7 @@
 [camera  time="30000"  zoom="1.2"  wait="false"  ease_type="ease"  layer="layer_camera"  ]
 [tb_start_text mode=1 ]
 #阿尔玛斯
-[font face="KaiseiDecol-Bold"]你的内心看起来仿佛空了一大块。[r]没关系，我会用我来填满它的[delay speed=100]・・・[resetdelay][resetfont][p]
+[font face="KaiseiDecol-Bold"]你的内心看起来仿佛空了一大块。[r]没关系，让我来填满它吧[delay speed=100]・・・[resetdelay][resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/106.png"  ]
@@ -139,7 +139,7 @@
 [chara_mod  name="アルマース"  time="0"  cross="false"  storage="chara/43/7.png"  ]
 [tb_start_text mode=1 ]
 #阿尔玛斯
-[font face="DZUYOKU"][font size=70]居然[font color=0xEC6FC5 bold=true]是个男的[font color=0xFFFFFF bold=true]啊你这家伙——！[p]
+[font face="DZUYOKU"][font size=70]居然[font color=0xEC6FC5 bold=true]是个男的[font color=0xFFFFFF bold=true]啊啊啊啊啊——！[p]
 
 
 [_tb_end_text]
@@ -270,7 +270,7 @@
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/82.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-咕・・・虽然是靠不住的屏障，但能挡住吗[p]
+咕・・・虽说这屏障靠不住，但能挡住吗[p]
 [_tb_end_text]
 
 [chara_mod  name="アルマース"  time="30"  cross="false"  storage="chara/43/9.png"  ]
@@ -1402,12 +1402,12 @@ f.finished = [...f.finished, f.chara.name];
 [reset_camera  time="30000"  wait="false"  layer="layer_camera"  ]
 [tb_start_text mode=1 ]
 #阿尔玛斯
-[font face="KaiseiDecol-Bold"]你的内心看起来仿佛有一个空洞。[r]没关系，我会用我来填满它的・・・[resetdelay][resetfont][p]
+[font face="KaiseiDecol-Bold"]你的内心看起来仿佛有一个空洞。[r]没关系，让我来填满它吧・・・[resetdelay][resetfont][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #德比伦
-本大爷可不管了。[r]忠告过你了，告辞！[p]
+本大爷可不管了。[r]忠告过你了，拜啦！[p]
 
 [_tb_end_text]
 
@@ -1429,7 +1429,7 @@ f.finished = [...f.finished, f.chara.name];
 [playse  volume="100"  time="0"  buf="3"  storage="Horror.ogg"  ]
 [tb_start_text mode=1 ]
 #阿尔玛斯
-[font face="kowai"]难道说[delay speed=100]・・・[resetdelay]你这家伙[delay speed=100]・・・[resetdelay][resetfont][p]
+[font face="kowai"]难道说[delay speed=100]・・・[resetdelay]你[delay speed=100]・・・[resetdelay][resetfont][p]
 [_tb_end_text]
 
 [stopse  time="0"  buf="5"  ]
