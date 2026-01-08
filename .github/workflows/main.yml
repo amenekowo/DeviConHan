@@ -2,22 +2,20 @@ name: Auto Build (Nightly)
 
 on:
   push:
-    branches: [ "main" ] # 只要推送到 main 分支就触发
-  workflow_dispatch:      # 允许手动触发
+    branches: [ "main" ]
+  workflow_dispatch:
 
 permissions:
-  contents: write # 【重要】必须给写权限，否则无法强制更新 Tag 和 Release
+  contents: write # 必须权限
 
 jobs:
   build-and-release:
     runs-on: windows-latest
 
     steps:
-      # 1. 拉取代码
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. 准备环境
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -26,30 +24,43 @@ jobs:
       - name: Install PyInstaller
         run: pip install pyinstaller
 
-      # 3. 打包
       - name: Run Pack.cmd
         shell: cmd
         run: call Pack.cmd
 
-      # 4. 【核心步骤】强制更新 Tag
-      # 这步的作用是把 "nightly" 这个标签强行挪到你最新的这次提交上
+      # ========================================================
+      # 修复核心：先删除旧的 Release 和 Tag，防止文件冲突
+      # ========================================================
+      - name: Delete Old Nightly Release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # 尝试删除名为 nightly 的 release 和 tag
+          # || true 表示如果本来就没有（比如第一次运行），也不报错继续往下走
+          gh release delete nightly --cleanup-tag -y || true
+
+      # ========================================================
+      # 创建新的 Tag 并推送
+      # ========================================================
       - name: Update Nightly Tag
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # 先删除本地（如果存在），再创建新 tag，最后强制推送到远程
-          git tag -f nightly
-          git push -f origin nightly
+          git tag nightly
+          git push origin nightly
 
-      # 5. 发布/更新 Release
+      # ========================================================
+      # 发布新的 Release
+      # ========================================================
       - name: Release Nightly
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: nightly            # 永远针对这个 tag 发布
-          name: "最新测试补丁 (Nightly)" # Release 的标题
+          tag_name: nightly
+          name: "最新测试补丁 (Nightly)"
           body: |
             自动构建版本。
-            提交哈希: ${{ github.sha }}
-            构建时间: ${{ github.event.head_commit.timestamp }}
-          files: dist/*.exe            # 上传文件
-          prerelease: true             # 标记为预发布
+            提交: ${{ github.sha }}
+            时间: ${{ github.event.head_commit.timestamp }}
+          files: dist/*.exe  # 即使是中文文件名，因为是全新的 Release，也能成功上传
+          prerelease: true
