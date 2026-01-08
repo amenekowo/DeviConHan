@@ -19,7 +19,7 @@
 
 [tb_start_text mode=1 ]
 #新生德比伦
-[quake_text][font face="DZUYOKU"][font size=95]ぐわぁあぁあぁあぁあぁッ！[resetfont][free_quake_text][p]
+[quake_text][font face="DZUYOKU"][font size=95]咕哇啊啊啊啊啊啊！[resetfont][free_quake_text][p]
 
 
 [_tb_end_text]
@@ -72,13 +72,13 @@
 
 [tb_start_text mode=1 ]
 #贝尔伦
-这、这是什么状况・・・？[p]
+这、这是什么状况…？[p]
 [_tb_end_text]
 
 [chara_mod  name="成体クピャドエル"  time="0"  cross="false"  storage="chara/36/20.png"  ]
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-德比君！那个・・・[r]我无论哪边都可以啦[p]
+德比君！那个…[r]我无论哪边都可以啦[p]
 
 [_tb_end_text]
 
@@ -94,7 +94,7 @@
 [chara_mod  name="ウエディングでびるん"  time="0"  cross="false"  storage="chara/56/11.png"  ]
 [tb_start_text mode=1 ]
 #贝尔伦
-不不不，正常想的话应该是你来当新娘吧！[p]
+不不不，正常来说该是你当新娘才对吧！[p]
 [_tb_end_text]
 
 [playse  volume="100"  time="0"  buf="1"  storage="aseru.ogg"  ]
@@ -130,7 +130,7 @@
 [chara_mod  name="成体クピャドエル"  time="0"  cross="false"  storage="chara/36/20.png"  ]
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-就算是重婚，把大家一起都变得幸福就是最好呀・・・♥[p]
+就算是重婚，只要能让大家一起幸福就最好啦…♥[p]
 [_tb_end_text]
 
 [chara_mod  name="ウエディングでびるん"  time="0"  cross="false"  storage="chara/56/12.png"  ]
@@ -197,7 +197,7 @@
 [tb_show_message_window  ]
 [tb_start_text mode=4 ]
 #库皮亚多艾鲁
-话说到此为止这场闹剧就到这儿・・・[r]正确的选项似乎不在这边呢呀
+这场闹剧就到此为止吧…[r]正确的选项似乎不在这边呢
 [_tb_end_text]
 
 [glink  name="waku_small"  font_color="white"  storage="Chapter4_wedding3.ks"  target="*load"  face="KaiseiDecol-Bold"  text="读档"  cm="false"  x="753"  y="604"  width="352"  height="79"  size="30"  graphic="ui/waku_small.png"  enterimg="ui/waku_small_.png"  enterse="tap.ogg"  clickse="OK.ogg"  ]

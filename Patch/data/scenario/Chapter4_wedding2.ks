@@ -15,14 +15,14 @@
 
 [tb_start_text mode=1 ]
 #贝尔伦
-为什么又得在这种破小[r]又挤的床上一起睡啊[p]
+为啥又要在这种破小[r]又挤的床上一起睡啊[p]
 
 [_tb_end_text]
 
 [bg  time="0"  method="crossfade"  storage="w1.webp"  ]
 [tb_start_text mode=1 ]
 #贝尔伦
-哼。对本大爷的事，[r]竟然需要到这种地步吗？[p]
+哼。对本大爷的事，[r]竟然需要做到这种程度？[p]
 
 [_tb_end_text]
 
@@ -180,13 +180,13 @@
 [bg  time="500"  method="crossfade"  storage="DE2.webp"  wait="false"  ]
 [tb_start_text mode=1 ]
 #D・Red
-首先是贝尔菲戈尔，问你一件事。[r]你还记得我们七大恶魔的职责吗？[p]
+首先是贝尔菲戈尔，你这家伙给我听着。[r]还记得我们七大恶魔的职责吗？[p]
 [_tb_end_text]
 
 [bg  time="500"  method="crossfade"  storage="DE3.webp"  wait="false"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-啊？那种事我才不管呢[p]
+啊？那种事鬼哪知道啊[p]
 [_tb_end_text]
 
 [quake  time="300"  count="3"  hmax="15"  wait="false"  vmax="0"  ]
@@ -211,14 +211,14 @@
 [bg  time="500"  method="crossfade"  storage="DE6.webp"  wait="false"  ]
 [tb_start_text mode=1 ]
 #D・Red
-被部下轻视[r]也是你那态度造成的吧・・・[p]
+被部下瞧不起[r]也是你那态度造成的吧…[p]
 
 [_tb_end_text]
 
 [bg  time="0"  method="crossfade"  storage="DE7.webp"  wait="false"  ]
 [tb_start_text mode=1 ]
 #D・Red
-[font size=46]贝尔菲戈尔，予你从魔界流放！[resetfont][r]若是部下不肯跟随，就自己去把魔力回收回来吧[p]
+[font size=46]贝尔菲戈尔，将你从魔界流放！[resetfont][r]若是部下不肯跟随，就自己去把魔力回收回来吧[p]
 
 [_tb_end_text]
 
@@ -315,7 +315,7 @@
 [stopse  time="5000"  buf="5"  fadeout="true"  ]
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-可恶・・・[r]本来魔力就已经枯竭了・・・[p]
+可恶・・・[r]本来魔力就已经枯竭了…[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
@@ -336,7 +336,7 @@
 
 [tb_start_text mode=1 ]
 #贝尔菲戈尔
-哈啊・・・要是能把这魔力全都带回魔界的话[r]是不是就能把魔界那帮家伙给治得服服帖帖的呢[p]
+哈啊…要是能把这魔力全都带回魔界的话[r]是不是就能让魔界那帮家伙哑口无言呢[p]
 [_tb_end_text]
 
 [bg  time="500"  method="crossfade"  storage="DE15.webp"  wait="false"  ]
@@ -348,7 +348,7 @@
 [bg  time="300"  method="crossfade"  storage="DE16.webp"  wait="false"  ]
 [tb_start_text mode=1 ]
 #？？？①
-咕啵ー总算是找到你啦！[r]德比君！[p]
+咕啵ー总算是找到你啦！[r]恶魔君！[p]
 [_tb_end_text]
 
 [playse  volume="100"  time="0"  buf="3"  storage="gauru1.ogg"  ]

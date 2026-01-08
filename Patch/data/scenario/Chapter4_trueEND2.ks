@@ -43,12 +43,12 @@
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-你终于醒啦[r]早——安——！[p]
+你终于醒啦~[r]早——安——！[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-那之后，托卜卜桑供给魔力的福，[r]德比君已经完全恢复原状啦！[p]
+那之后，多亏了卜卜桑供给魔力，[r]德比君已经完全恢复原状啦！[p]
 [_tb_end_text]
 
 [tb_filter_blur  layer="base"  time="3000"  ]
@@ -104,7 +104,7 @@
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/53.png"  ]
 [tb_start_text mode=4 ]
 #德比伦
-[delay speed=100]・・・[resetdelay]真的、 [wait time=200]是真的吗ー？[wait time=500]
+[delay speed=100]・・・[resetdelay]真的…[wait time=200]是真的吗ー？[wait time=500]
 [_tb_end_text]
 
 [skipstop]
@@ -207,7 +207,7 @@
 [chara_mod  name="クピャドエル"  time="0"  cross="false"  storage="chara/14/1.png"  ]
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-解除与[emb exp="f.name"]桑擅自缔结的临时契约，然后回到天界哟[p]
+解除和[emb exp="f.name"]擅自结下的临时契约，然后回到天界哟[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -405,7 +405,7 @@
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/11.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-香味还挺诱人的不是嘛！[p]
+闻起来还挺香嘛！[p]
 [_tb_end_text]
 
 [chara_mod  name="クピャドエル"  time="0"  cross="false"  storage="chara/14/3.png"  ]
@@ -440,7 +440,7 @@
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/72.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-[delay speed=100]・・・[resetdelay]嘛—？比起多艾鲁，本大爷和[r][emb exp="f.name"]可是有连接之链的呀—[p]
+[delay speed=100]・・・[resetdelay]嘛—？比起多艾鲁，本大爷和[r][emb exp="f.name"]可是有"连接之链"的呀—[p]
 [_tb_end_text]
 
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/73.png"  ]
@@ -727,13 +727,13 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-被本大爷装可怜[r]耍得团团转呢ー[p]
+被本大爷装可怜[r]耍得团团转了吧ー[p]
 [_tb_end_text]
 
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/11.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-真是的，你这家伙也太好哄了吧[p]
+真是的，你这家伙也太好骗了吧[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]

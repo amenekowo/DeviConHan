@@ -14,14 +14,14 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-呼～好久没靠魔力吃饱啦～[r][wait time=300]和用食物填饱肚子完全不一样的满足感[p]
+呼～好久没靠魔力吃饱肚子啦～[r][wait time=300]是和用食物填饱肚子完全不一样的满足感[p]
 
 [_tb_end_text]
 
 [chara_mod  name="ベッド"  time="300"  cross="false"  storage="chara/19/2.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-今天就为了明天好好休息吧～[p]
+今天就为了明天好好睡一觉吧～[p]
 [_tb_end_text]
 
 [playse  volume="100"  time="0"  buf="1"  storage="beru.ogg"  ]
@@ -113,7 +113,7 @@
 [playbgm  volume="50"  time="0"  loop="true"  storage="7_before_sleep.ogg"  ]
 [tb_start_text mode=1 ]
 #德比伦
-[font size=63]不想去上学了啊！[resetfont][p]
+[font size=63]原来不去上学了啊！！[resetfont][p]
 
 [_tb_end_text]
 
@@ -146,7 +146,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-所以说[delay speed=100]・・・[resetdelay]本大爷也[delay speed=100]・・・・・・[resetdelay][p]
+毕竟[delay speed=100]・・・[resetdelay]本大爷也[delay speed=100]・・・・・・[resetdelay][p]
 
 [_tb_end_text]
 
@@ -182,7 +182,7 @@
 [playbgm  volume="50"  time="0"  loop="true"  storage="7_before_sleep.ogg"  ]
 [tb_start_text mode=1 ]
 #德比伦
-哇、干嘛啦，突然摸本大爷干嘛啦～[p]
+哇、干嘛啦，别突然摸本大爷啦[p]
 
 [_tb_end_text]
 
@@ -377,7 +377,7 @@
 [tb_start_text mode=1 ]
 #德比伦
 本大爷的魔力也恢复得差不多了，[r]看样子可以盯上更强的家伙了。[p]
-[font size=50]赶紧去连接！[resetfont]…吧[p]
+[font size=50]赶紧去连接！[resetfont]…哎?[p]
 
 [_tb_end_text]
 
@@ -391,7 +391,7 @@
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/8.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-[if exp="f.currentLoop == 2]明明想不开却[r]为了买东西还愿意出门啊[else]虽说是不上学了[r]买东西还是会出门的嘛[endif][p]
+[if exp="f.currentLoop == 2]明明想寻短见却[r]为了买东西还愿意出门啊[else]虽说是不上学了[r]买东西还是会出门的嘛[endif][p]
 [_tb_end_text]
 
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/15.png"  ]

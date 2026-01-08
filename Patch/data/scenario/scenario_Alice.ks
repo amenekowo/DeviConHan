@@ -208,7 +208,7 @@
 
 [tb_start_text mode=1 ]
 #爱丽丝
-不会做坏事的啦[p]
+不会做坏事的[p]
 [_tb_end_text]
 
 [playse  volume="100"  time="0"  buf="1"  storage="sasu.ogg"  ]
@@ -244,7 +244,7 @@
 
 [tb_start_text mode=1 ]
 #爱丽丝
-可怕的恶魔的事情、想更详细地了解[p]
+关于可怕的恶魔，我想了解更多详情[p]
 
 [_tb_end_text]
 
@@ -261,7 +261,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-嗯嘛确实，本大爷可是[r]前途无量又可怕的恶魔啦・・・[p]
+嗯嘛确实，本大爷可是[r]深不可测的可怕恶魔・・・[p]
 [_tb_end_text]
 
 [playse  volume="100"  time="0"  buf="4"  storage="sasu.ogg"  ]
@@ -317,7 +317,7 @@
 [fadein_window  time="300"  ]
 [tb_start_text mode=1 ]
 #爱丽丝
-只是…想采集恶魔的样本。仅此而已。[p]
+只是想采集恶魔的样本。仅此而已。[p]
 蓝色的应该会成功…红色的还没有把握。[p]
 
 [_tb_end_text]
@@ -573,7 +573,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-塞、[wait time=300]塞药[delay speed=100]・・・[resetdelay]？[r]那到底是什么药啊？[p]
+栓、[wait time=300]栓剂[delay speed=100]・・・[resetdelay]？[r]那到底是什么药啊？[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -1039,7 +1039,7 @@
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #德比伦
-[font size=50]不是融化就是石化！[r]你们这帮家伙就不能有个中间状态吗！[resetfont][p]
+[font size=50]不是融化就是石化！[r]你们这帮家伙能不能不要非黑即白啊！[resetfont][p]
 [_tb_end_text]
 
 [playse  volume="100"  time="0"  buf="4"  storage="AURA_NG.ogg"  ]
@@ -1267,7 +1267,7 @@
 [camera  time="1000"  zoom="1.3"  wait="false"  x="0"  y="50"  rotate="0"  layer="base"  ease_type="ease"  ]
 [tb_start_text mode=1 ]
 #德比伦
-看什么啊笨蛋！别看这边！[r][font face="DZUYOKU"][font size=50]走开！[resetfont][p]
+看什么啊笨蛋！别看这边！[r][font face="DZUYOKU"][font size=50]退下！[resetfont][p]
 [_tb_end_text]
 
 [iscript]

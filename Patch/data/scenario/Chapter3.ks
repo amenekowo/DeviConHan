@@ -17,7 +17,7 @@
 [quake  time="300"  count="5"  hmax="3"  wait="false"  ]
 [tb_start_text mode=1 ]
 #德比伦
-充盈了[delay speed=300]・・・[resetdelay]力量不断涌现出来！[p]
+充盈了[delay speed=300]・・・[resetdelay]力量源源不断地涌上来了！[p]
 [_tb_end_text]
 
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/23.png"  ]
@@ -29,7 +29,7 @@
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/24.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-为了本大爷忙到现在的你这家伙[r]我要让你看看好东西[p]
+看在你这家伙为本大爷这么卖命的份上[r]给你看个好东西[p]
 
 [_tb_end_text]
 
@@ -169,7 +169,7 @@
 [chara_mod  name="ベッド"  time="0"  cross="false"  storage="chara/19/5.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-真是麻烦啊，[r][wait time=300]连为了收集魔力去地上也是觉得很费劲啊。[p]
+真是个懒鬼啊，[r][wait time=300]连为了收集魔力去地上也嫌麻烦得要死啊。[p]
 
 [_tb_end_text]
 
@@ -191,7 +191,7 @@
 [chara_mod  name="ベッド"  time="0"  cross="false"  storage="chara/19/5.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-[if exp="f.nezeru_clear == 1]所以之前，在谈到结婚的话题时，[r]才会有些奇怪的反应・・・[else]因为一直在想这个问题・・・[endif][p]
+[if exp="f.nezeru_clear == 1]所以之前，在谈到结婚的话题时，[r]才会莫名其妙地反应过激了・・・[else]因为一直在想这个问题・・・[endif][p]
 [_tb_end_text]
 
 [chara_mod  name="ベッド"  time="0"  cross="false"  storage="chara/19/6.png"  ]
@@ -216,7 +216,7 @@
 [quake  time="300"  count="5"  hmax="3"  wait="false"  ]
 [tb_start_text mode=1 ]
 #德比伦
-切，[wait time=300]你这家伙还真像某个爱的天使一样[r]这么煽情的思维回路。[p]
+切，[wait time=300]你这家伙还真像某个爱的天使一样[r]这么酸臭的思维回路。[p]
 
 [_tb_end_text]
 
@@ -386,7 +386,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-内心真是个怪人。[font size=25][r]我还以为你会更加畏惧地跪下・・・[resetfont][p]
+打心底里是个怪人。[font size=25][r]我还以为你会更加畏惧地跪下・・・[resetfont][p]
 
 [_tb_end_text]
 
@@ -421,7 +421,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-[if exp="f.blueberry== 1]香味！？[wait time=300]那、那是因为昨晚沾了果酱之后[r]就睡了！这不是本大爷的味儿！[else]哼，[wait time=300]软乎乎的[delay speed=100]・・・[resetdelay]？也没特别护理过，[r]是因为今天早上被你洗了吧？[endif][p]
+[if exp="f.blueberry== 1]闻着很香！？[wait time=300]那、那是因为昨晚沾了果酱之后[r]就睡了！这不是本大爷的味儿！[else]哼，[wait time=300]软乎乎的[delay speed=100]・・・[resetdelay]？也没特别护理过，[r]是因为今天早上被你洗了吧？[endif][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -431,7 +431,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-看到了本大爷的魅力体型吧！[r]其实我可是更强更吓人的・・・[p]
+看到了本大爷的超凡魅力体型吧！[r]其实我可是更强更吓人的・・・[p]
 
 
 [_tb_end_text]
@@ -504,7 +504,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-以这么小的姿态持有庞大的魔力[r]确实有点难以承受[delay speed=100]・・・[resetdelay][p]
+以这么小的姿态持有庞大的魔力[r]确实有点吃不消[delay speed=100]・・・[resetdelay][p]
 [_tb_end_text]
 
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/28.png"  ]
@@ -518,7 +518,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-[font face="kowai"][font size=25]库呼呼呼呼，等着瞧吧[r]魔界的民众们・・・[resetfont][p]
+[font face="kowai"][font size=25]库呼呼呼呼，给我等着瞧[r]魔界的民众们・・・[resetfont][p]
 
 
 [_tb_end_text]
@@ -528,7 +528,7 @@
 [quake  time="300"  count="10"  hmax="5"  wait="false"  ]
 [tb_start_text mode=1 ]
 #德比伦
-[font face="kowai"][font size=50]本大爷才是最凶的！[r]马上就让你们明白！！！[resetfont][p]
+[font face="kowai"][font size=50]本大爷才是最凶的！[r]马上就让你们知道厉害！！！[resetfont][p]
 
 [_tb_end_text]
 

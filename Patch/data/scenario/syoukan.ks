@@ -39,7 +39,7 @@
 [bg  time="200"  method="crossfade"  storage="17.webp"  ]
 [call  target="*item_glink"  storage=""  ]
 [call  target="*item_image"  storage=""  ]
-[tb_ptext_show  x="86"  y="119"  size="33"  color="0xffffff"  time="100"  anim="false"  face="craftmincho"  text="你跑哪儿去了啊你——<br>可别让本大爷等太久啊"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
+[tb_ptext_show  x="86"  y="119"  size="33"  color="0xffffff"  time="100"  anim="false"  face="craftmincho"  text="跑哪儿去了啊你这家伙ー<br>可别让本大爷等太久啊"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
 [image name="menu_kari" layer="0" folder="image" storage="menu_syoukan.png" x="784" y="809" width="496" height="151" cond="$('.menu_kari').length==0"]
 [jump  storage="syoukan.ks"  target="*text_end"  ]
 *back_from_collection
@@ -76,7 +76,7 @@ if (f.finished.includes(f.chara.name) || (f.chara.tutorial && f.tutorial_finishe
 f.phrase = '这家伙已经没用了嘿';
 f.charaFile = '/00.png';
 } else if (!f.choosable.includes(f.chara.name)) {
-f.phrase = '怎么有点模糊・・・<br>看不太清啊・・・';
+f.phrase = '怎么有点模糊<br>看不太清啊…';
 f.charaFile = '/mikaikin.png';
 } else {
 f.phrase = f.chara.phrase;
@@ -90,7 +90,7 @@ f.charaFile = '/0.png';
 [call  target="*bg"  storage=""  ]
 [if exp="f.nemumi == 1"]
 
-[eval exp="f.phrase = '呼啊・・・真懒得动。快点啦。'"]
+[eval exp="f.phrase = '呼啊…真懒得动。快点啦。'"]
 
 [elsif exp="f.nemumi == 2"]
 
@@ -205,7 +205,7 @@ phrase: '别随便碰我。<br>王冠会脏的',
 bg: '17'
 },
 {
-phrase: '莫非你在羡慕这顶王冠？<br>这是我重要的朋友送的哦',
+phrase: '莫非你在羡慕这顶王冠？<br>这可是我重要的哥们送的',
 bg: '18'
 },
 {
@@ -247,7 +247,7 @@ phrase: '干嘛那么别扭啊。<br>赶紧去回收魔力啦！！',
 bg: '2'
 },
 {
-phrase: '都说了别碰我！<br>真是的・・・',
+phrase: '都说了别碰我！<br>真是的…',
 bg: '2'
 },
 {
@@ -285,15 +285,15 @@ f.timerId = null;
 }
 tf.mimiPhases = [
 {
-phrase: '别碰耳朵啦！<br>痒死了你这笨蛋！',
+phrase: '别碰耳朵啦！<br>痒死了你这白痴！',
 bg: '3'
 },
 {
-phrase: '都-说-了！<br>别碰我耳朵啦！',
+phrase: '都ー说ー了！<br>别碰我耳朵啦！',
 bg: '3'
 },
 {
-phrase: '啊——行了，我再也<br>不会理你了。笨蛋',
+phrase: '啊ー行了，我再也<br>不会理你了。白痴',
 bg: '22'
 },
 {
@@ -330,9 +330,9 @@ clearTimeout(f.timerId);
 f.timerId = null;
 }
 tf.tunoTexts = [
-/*  1回目 */ "呃・・・你在摸哪儿啊・・・<br>别碰我的角・・・",
-/*  2回目 */ "都说了・・・<br>别碰角啊",
-/*  3回目 */ "你这家伙・・・<br>要摸几次啊",
+/*  1回目 */ "呃…你在摸哪儿啊…<br>别碰我的角…",
+/*  2回目 */ "都说了…<br>别碰角啊",
+/*  3回目 */ "你这家伙…<br>要摸几次啊",
 /*  4回目 */ "都——说——了——！<br>要摸几次啊",
 /*  5回目 */ "对恶魔来说，角可是<br>很重要的地方啊！",
 /*  6回目 */ "像我这小小的身体，<br>被摸那里可不行啊！",
@@ -340,7 +340,7 @@ tf.tunoTexts = [
 /*  8回目 */ "都说了别碰啦！",
 /*  9回目 */ "不、不要了啦！",
 /* 10回目 */ "咿呀——！",
-/* 11回目 */ "感、感觉怪怪的啦！！",
+/* 11回目 */ "感、感觉好奇怪！！",
 ];
 [endscript]
 
@@ -493,7 +493,7 @@ f.timerId = null;
 [bg  time="200"  method="crossfade"  storage="12.webp"  ]
 [quake  time="300"  count="5"  hmax="3"  wait="false"  ]
 [tb_ptext_hide  time="0"  ]
-[tb_ptext_show  x="87"  y="141"  size="33"  color="0xffffff"  time="0"  anim="false"  face="craftmincho"  text="哼・・・我才没睡呢"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
+[tb_ptext_show  x="87"  y="141"  size="33"  color="0xffffff"  time="0"  anim="false"  face="craftmincho"  text="哼…我才没睡呢"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
 [flash_off  time="0"  effect="fadeOut"  ]
 
 [wait  time="1500"  ]
@@ -772,7 +772,7 @@ f.timerId = null;
 [tb_ptext_hide  time="0"  ]
 [bg  time="200"  method="crossfade"  storage="8.webp"  ]
 [layermode_movie  mode="screen"  speed="1"  volume="100"  loop="true"  time="500"  wait="false"  video="hue.mp4"  ]
-[tb_ptext_show  x="89"  y="95"  size="33"  color="0xffffff"  time="0"  anim="false"  face="craftmincho"  text="这声音真舒服啊～<br>MP都涨了一点呢！<br>涨了一"笛笛"・・・你懂的！"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
+[tb_ptext_show  x="89"  y="95"  size="33"  color="0xffffff"  time="0"  anim="false"  face="craftmincho"  text="这声音真舒服啊～<br>MP都涨了一点呢！<br>涨了一"笛笛"…你懂的！"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
 [tb_eval  exp="f.mp+=5"  name="mp"  cmd="+="  op="t"  val="5"  val_2="undefined"  ]
 [tb_eval  exp="f.fue=1"  name="fue"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
 [call  storage="mp.ks"  target="*update"  ]

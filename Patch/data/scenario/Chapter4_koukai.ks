@@ -56,13 +56,13 @@
 [fadein_window  time="1000"  ]
 [tb_start_text mode=1 ]
 #①德比伦①
-[delay speed=150]啧・・・啧・・・[resetdelay][p]
+[delay speed=150]呼・・・呼・・・[resetdelay][p]
 
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #①德比伦①
-[delay speed=150]・・・怎么了、这是[resetdelay][p]
+[delay speed=150]・・・搞什么啊、这是[resetdelay][p]
 
 [_tb_end_text]
 
@@ -74,7 +74,7 @@
 
 [tb_start_text mode=1 ]
 #①德比伦①
-[delay speed=150]本大爷的身体・・・[r]到底去哪儿了啊[resetdelay][p]
+[delay speed=150]本大爷的身体・・・[r]跑哪儿去了啊[resetdelay][p]
 
 [_tb_end_text]
 
@@ -117,12 +117,12 @@
 
 [tb_start_text mode=1 ]
 #①德比伦①
-[delay speed=150]・・・你这家伙到最后也对本大爷[r]无论变成什么都无动于衷啊[resetdelay][p]
+[delay speed=150]・・・你这家伙到最后也对本大爷[r]无论变成什么样都完全不在乎啊[resetdelay][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #①德比伦①
-[delay speed=150]就算是这样子也来碰我，[r]真是不知道你在想些什么[resetdelay][p]
+[delay speed=150]就算变成这样你还碰我，[r]真搞不懂在想啥[resetdelay][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -320,7 +320,7 @@
 
 [tb_start_text mode=1 ]
 #①德比伦①
-[delay speed=150]本大爷一直以为・・・[r]是想要反击魔界的家伙们才走到这里[resetdelay][p]
+[delay speed=150]本大爷一直以为・・・[r]是想要报复魔界的家伙们才走到这里[resetdelay][p]
 
 [_tb_end_text]
 
@@ -355,7 +355,7 @@
 
 [tb_start_text mode=1 ]
 #①德比伦①
-[delay speed=150]成为了本大爷、第一位使魔[resetdelay][p]
+[delay speed=150]成了本大爷的第一个使魔[resetdelay][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -370,7 +370,7 @@
 
 [tb_start_text mode=1 ]
 #①德比伦①
-[delay speed=150]就像第一次在地上吃上饭时一样[r]一直都有新的惊喜・・・[resetdelay][p]
+[delay speed=150]就像第一次在地上吃到好吃的饭时一样[r]惊喜一个接一个・・・[resetdelay][p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
@@ -381,7 +381,7 @@
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #①德比伦①
-[delay speed=150]真的、非常开心・・・[resetdelay][p]
+[delay speed=150]真的、超开心的・・・[resetdelay][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -431,7 +431,7 @@
 
 [tb_start_text mode=1 ]
 #①德比伦①
-[delay speed=150]・・・呵，这就是所谓的嫉妒吗？[resetdelay][p]
+[delay speed=150]・・・切，这就是所谓的嫉妒吗？[resetdelay][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]

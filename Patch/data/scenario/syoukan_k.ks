@@ -43,7 +43,7 @@
 
 [else]
 
-[tb_ptext_show  name="syoukan_devi_phrase"  x="85"  y="114"  size="33"  color="0xffffff"  time="100"  anim="false"  face="craftmincho"  text="你这家伙去哪了<br>别让本大爷等太久哦"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
+[tb_ptext_show  name="syoukan_devi_phrase"  x="85"  y="114"  size="33"  color="0xffffff"  time="100"  anim="false"  face="craftmincho"  text="你这家伙跑哪去了<br>别让本大爷等太久啊"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
 [endif]
 
 [call  target="*item_glink"  storage=""  ]
@@ -105,7 +105,7 @@ f.charaFile = '/0.png';
 [call  target="*bg"  storage=""  ]
 [if exp="f.nemumi == 1"]
 
-[eval exp="f.phrase = '酒劲上来了呢・・・<br>快点・・・选择吧・・・'"]
+[eval exp="f.phrase = '酒劲上来了啊・・・<br>快点・・・选啊・・・'"]
 
 [elsif exp="f.nemumi == 2"]
 
@@ -392,11 +392,11 @@ phrase: '碰到旗子后再被触碰<br>绝对不行哦！',
 bg: 'k_tuno2'
 },
 {
-phrase: '你这家伙是不是在享受<br>看本大爷的反应啊！？',
+phrase: '你这家伙是不是在享受<br>看本大爷出糗啊！？',
 bg: 'k_tuno3'
 },
 {
-phrase: '可恶、再也<br>不理你了',
+phrase: '可恶、再也<br>不搭理你了',
 bg: 'k_tuno3'
 },
 {
@@ -652,7 +652,7 @@ f.timerId = null;
 
 [bg  time="200"  method="crossfade"  storage="&f.finished.slice(-1)[0]=='ルビー'?'k_hatena_ruby.webp':'k_hatena.webp'"  ]
 [tb_ptext_hide  time="0"  ]
-[tb_ptext_show  x="84"  y="119"  size="33"  color="0xffffff"  time="50"  anim="false"  face="craftmincho"  text="你也知道不行吧<br>换其他的吧"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
+[tb_ptext_show  x="84"  y="119"  size="33"  color="0xffffff"  time="50"  anim="false"  face="craftmincho"  text="你也知道不行吧<br>换别人去"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
 [wait  time="1500"  ]
 [jump  storage="syoukan_k.ks"  target="*modoru"  ]
 *sumi
@@ -668,7 +668,7 @@ f.timerId = null;
 
 [bg  time="200"  method="crossfade"  storage="k_no2.webp"  ]
 [tb_ptext_hide  time="0"  ]
-[tb_ptext_show  x="85"  y="129"  size="33"  color="0xffffff"  time="50"  anim="false"  face="craftmincho"  text="已经结束了吧"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
+[tb_ptext_show  x="85"  y="129"  size="33"  color="0xffffff"  time="50"  anim="false"  face="craftmincho"  text="已经完事了吧"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
 [wait  time="1500"  ]
 [jump  storage="syoukan_k.ks"  target="*modoru"  ]
 *confirm
@@ -688,7 +688,7 @@ f.timerId = null;
 [tb_eval  exp="f.nemumi=0"  name="nemumi"  cmd="="  op="t"  val="0"  val_2="undefined"  ]
 [tb_ptext_hide  time="0"  ]
 [bg  time="200"  method="crossfade"  storage="k_connection.webp"  ]
-[tb_ptext_show  x="85"  y="114"  size="33"  color="0xffffff"  time="50"  anim="false"  face="craftmincho"  text="从这家伙那儿・・・<br>抢点魔力吧～？"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
+[tb_ptext_show  x="85"  y="114"  size="33"  color="0xffffff"  time="50"  anim="false"  face="craftmincho"  text="从这家伙身上・・・<br>抢点魔力过来～？"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
 [tb_start_tyrano_code]
 [preload  storage="./data/image/ui/waku_small_.png"  ]
 [glink name="waku_small" font_color="white" target="*go" face="KaiseiDecol-Bold"  text="是" x="161" y="470" width="352" height="79" size="30" graphic="ui/waku_small.png" enterimg="ui/waku_small_.png" enterse="tap.ogg"]
@@ -861,7 +861,7 @@ f.timerId = null;
 [tb_ptext_hide  time="0"  ]
 [bg  time="200"  method="crossfade"  storage="k_connection.webp"  ]
 [layermode_movie  mode="screen"  speed="1"  volume="100"  loop="true"  time="500"  wait="false"  video="hue.mp4"  ]
-[tb_ptext_show  x="84"  y="115"  size="33"  color="0xffffff"  time="0"  anim="false"  face="craftmincho"  text="声音沙沙的，小小的嘛<br>MP稍微增加了一点"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
+[tb_ptext_show  x="84"  y="115"  size="33"  color="0xffffff"  time="0"  anim="false"  face="craftmincho"  text="声音沙沙的，小小的嘛<br>MP倒是涨了一丁点儿"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
 [tb_eval  exp="f.mp+=5"  name="mp"  cmd="+="  op="t"  val="5"  val_2="undefined"  ]
 [tb_eval  exp="f.fue=1"  name="fue"  cmd="="  op="t"  val="1"  val_2="undefined"  ]
 [call  storage="mp.ks"  target="*update"  ]
@@ -910,7 +910,7 @@ f.timerId = null;
 
 [cm  ]
 [bg  time="200"  method="crossfade"  storage="k_goal.webp"  ]
-[tb_ptext_show  x="89"  y="118"  size="33"  color="0xffffff"  time="0"  anim="false"  face="craftmincho"  text="邪眼闪亮亮的呀！<br>大干一场吧"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
+[tb_ptext_show  x="89"  y="118"  size="33"  color="0xffffff"  time="0"  anim="false"  face="craftmincho"  text="邪眼闪亮亮的呀！<br>大干一场呗"  edge="undefined"  shadow="undefined"  fadeout="true"  wait="false"  in_effect="fadeInDown"  out_effect="fadeOutUp"  ]
 [wait  time="300"  ]
 [l  ]
 [jump  storage="syoukan_k.ks"  target="*modoru"  ]

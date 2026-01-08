@@ -36,12 +36,12 @@
 [chara_mod  name="でびるん"  time="0"  cross="true"  storage="chara/1/11.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-那么！从现在开始！[r]召开七大恶魔亲睦会！[p]
+好啦！从现在开始！[r]召开七大恶魔联谊会！[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #德比伦
-主持人由多艾鲁改为本大爷……[r]不对，是德比伦啊！[p]
+主持人由多艾鲁换成本大爷…[r]不对，是德比伦啊！[p]
 [_tb_end_text]
 
 [chara_mod  name="でびるん"  time="0"  cross="true"  storage="chara/1/17.png"  ]
@@ -124,7 +124,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-你这家伙还配着一堆臭台词现身了啊，[r]今日的主角是你么・・・[p]
+你这家伙还带着一堆臭台词现身了啊，[r]今日的主角是你么…[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -256,7 +256,7 @@
 [chara_mod  name="あもあも"  time="0"  cross="true"  storage="chara/48/26.png"  ]
 [tb_start_text mode=1 ]
 #阿莫阿莫
-然后给咕啵酱呢・・・[r]阿莫来给你穿上哦[p]
+然后给咕啵酱呢…[r]阿莫来给你穿上哦[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -287,7 +287,7 @@
 
 [tb_start_text mode=1 ]
 #阿莫阿莫
-呜喵・・・咕啵酱[r]软绵绵的好暖和呢[p]
+呜喵…咕啵酱[r]软绵绵的好暖和呢[p]
 [_tb_end_text]
 
 [playse  volume="100"  time="0"  buf="1"  loop="false"  storage="sasu.ogg"  ]
@@ -345,7 +345,7 @@
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/11.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-嗯ー・・・嘛，那就[r]算是那么回事吧[p]
+嗯ー…嘛，那就[r]算是那么回事吧[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
@@ -402,7 +402,7 @@
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/38.png"  ]
 [tb_start_text mode=1 ]
 #BBB
-・・・贝尔，[emb exp="f.name"][p]
+…贝尔，[emb exp="f.name"][p]
 [_tb_end_text]
 
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/41.png"  ]
@@ -410,7 +410,7 @@
 [chara_move  name="ハーデスター"  anim="true"  time="1500"  effect="easeOutQuad"  wait="false"  left="430"  top="7"  width="984"  height="780"  ]
 [tb_start_text mode=1 ]
 #BBB
-而且还有哈迪斯塔・・・[r]总觉得事态变得很厉害啊[p]
+而且还有哈迪斯塔…[r]总觉得事态变得不得了了啊[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -421,7 +421,7 @@
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/45.png"  ]
 [tb_start_text mode=1 ]
 #BBB
-・・・啊啊，总觉得大家[r]都神清气爽的样子。干得不错啊[p]
+…啊啊，总觉得大家[r]都神清气爽的样子。干得不错啊[p]
 [_tb_end_text]
 
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/163.png"  ]
@@ -446,7 +446,7 @@
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/45.png"  ]
 [tb_start_text mode=1 ]
 #BBB
-・・・总之，[emb exp="f.name"]的[r]力量看来是真的[p]
+…总之，[emb exp="f.name"]的[r]力量看来是真的[p]
 [_tb_end_text]
 
 [tb_start_tyrano_code]
@@ -485,7 +485,7 @@
 [playse  volume="100"  time="1000"  buf="0"  storage="kawaii.ogg"  ]
 [tb_start_text mode=1 ]
 #德比伦
-喵嘎！是堕乐园出产苹果的披萨！是部下的料理长・・・[r]这么说那只像鸟的堕天使做的？[p]
+喵嘎！是堕乐园出产苹果的披萨！是部下的料理长…[r]这么说那只像鸟的堕天使做的？[p]
 [_tb_end_text]
 
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/165.png"  ]
@@ -500,21 +500,21 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-嗯嘛，虽然那家伙的态度让人不太喜欢[r]但他做的料理是一流的・・・这一点我还是承认的[p]
+嗯嘛，虽然那家伙的态度让人不太喜欢[r]但他做的料理是一流的…这一点我还是承认的[p]
 [_tb_end_text]
 
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/44.png"  ]
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/117.png"  ]
 [tb_start_text mode=1 ]
 #BBB
-那家伙在没有饮食文化的魔界里可是少有的知音・・・[r]称作老夫的搭档也不为过[p]
+那家伙在没有饮食文化的魔界里可是少有的知音…[r]称作老夫的搭档也不为过[p]
 [_tb_end_text]
 
 [chara_mod  name="ハーデスター"  time="0"  cross="true"  storage="chara/78/19.png"  ]
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/115.png"  ]
 [tb_start_text mode=1 ]
 #哈迪斯塔
-饮食・・・嗯，挺让人在意呢[p]
+饮食…嗯，挺让人在意呢[p]
 
 [_tb_end_text]
 
@@ -526,13 +526,13 @@
 [chara_mod  name="ハーデスター"  time="0"  cross="true"  storage="chara/78/11.png"  ]
 [tb_start_text mode=1 ]
 #哈迪斯塔
-用餐的魔力供给效率太差・・・[r]所以一直没有机会去做呢[p]
+用餐的魔力供给效率太差…[r]所以一直没有机会去做呢[p]
 [_tb_end_text]
 
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/43.png"  ]
 [tb_start_text mode=1 ]
 #BBB
-竟然不知饮食的喜悦・・・太可惜了。[r]那就尽情地陪我一起体验吧[p]
+竟然不知饮食的喜悦…太可惜了。[r]那就尽情地陪我一起体验吧[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
@@ -577,7 +577,7 @@
 [fadein_window  time="500"  ]
 [tb_start_text mode=1 ]
 #纳扎尔
-唔呃呃・・・竟然被召唤到[r]这么狭窄的房间里两次・・・真是讨厌[r][p]
+唔呃呃…竟然被召唤到[r]这么狭窄的房间里两次…真是可恶[r][p]
 [_tb_end_text]
 
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/79.png"  ]
@@ -598,7 +598,7 @@
 [chara_mod  name="ナザール"  time="0"  cross="false"  storage="chara/73/19.png"  ]
 [tb_start_text mode=1 ]
 #纳扎尔
-派对吗？那种一群蠢货扎堆[r]喧闹胡闹的低俗聚会・・・[p]
+派对吗？那种一群蠢货扎堆[r]喧闹胡闹的低俗聚会…[p]
 
 [_tb_end_text]
 
@@ -646,7 +646,7 @@
 [chara_mod  name="ナザール"  time="0"  cross="false"  storage="chara/73/19.png"  ]
 [tb_start_text mode=1 ]
 #纳扎尔
-你都说到这个份上了・・・[r]让我掺一脚也不是不行・・・不过[p]
+你都说到这个份上了…[r]让我掺一脚也不是不行…不过[p]
 [_tb_end_text]
 
 [tb_start_tyrano_code]
@@ -661,7 +661,7 @@
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/19.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-对了，差不多到角要换新的时候了吧？[r]不痒吗？要不要像之前那样给你做点处理[p]
+对了，差不多到角要换新的时候了吧？[r]不痒吗？要不要像之前那样帮你弄弄[p]
 [_tb_end_text]
 
 [chara_mod  name="ナザール"  time="0"  cross="false"  storage="chara/73/18.png"  ]
@@ -716,7 +716,7 @@
 [playse  volume="100"  time="0"  buf="1"  loop="false"  storage="aseru.ogg"  ]
 [tb_start_text mode=1 ]
 #纳扎尔
-哈？！哎・・・不、不是那种意思！[p]
+哈？！哎…不、不是那种意思！[p]
 [_tb_end_text]
 
 [chara_mod  name="ハーデスター"  time="0"  cross="true"  storage="chara/78/19.png"  ]
@@ -731,7 +731,7 @@
 [quake  time="600"  count="10"  hmax="0"  wait="false"  vmax="3"  ]
 [tb_start_text mode=1 ]
 #纳扎尔
-[font size=80]揍扁你・・・[resetfont][p]
+[font size=80]揍扁你…[resetfont][p]
 [_tb_end_text]
 
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/147.png"  ]
@@ -823,12 +823,12 @@
 [chara_mod  name="マネコ"  time="0"  cross="false"  storage="chara/76/29.png"  ]
 [tb_start_text mode=1 ]
 #玛妮猫
-那边的你[r]嗯……[emb exp="f.name"]？[p]
+那边的你[r]嗯・・・[emb exp="f.name"]？[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #玛妮猫
-在下就特别感谢你一回吧[p]
+在下就特别感谢你一下好了[p]
 [_tb_end_text]
 
 [chara_mod  name="マネコ"  time="0"  cross="false"  storage="chara/76/30.png"  ]
@@ -870,7 +870,7 @@
 
 [tb_start_text mode=1 ]
 #玛妮猫
-那么・・・那位天使在哪儿呢[p]
+那么…那位天使在哪儿呢[p]
 [_tb_end_text]
 
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/74.png"  ]
@@ -892,7 +892,7 @@
 [chara_mod  name="あもあも"  time="0"  cross="true"  storage="chara/48/25.png"  ]
 [tb_start_text mode=1 ]
 #阿莫阿莫
-说起来，之前你来咨询的那个案子啊・・・[r]按照约定，我会和你一起做的哦！[p]
+说起来，之前你来咨询的那个案子啊…[r]按照约定，我会和你一起做的哦！[p]
 [_tb_end_text]
 
 [chara_mod  name="マネコ"  time="0"  cross="false"  storage="chara/76/26.png"  ]
@@ -906,7 +906,7 @@
 [chara_mod  name="あもあも"  time="0"  cross="true"  storage="chara/48/26.png"  ]
 [tb_start_text mode=1 ]
 #阿莫阿莫
-那句定番台词・・・好可爱哦[p]
+那句定番台词…好可爱哦[p]
 [_tb_end_text]
 
 [playse  volume="100"  time="0"  buf="1"  loop="false"  storage="gimon.ogg"  ]
@@ -915,7 +915,7 @@
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/12.png"  ]
 [tb_start_text mode=1 ]
 #玛妮猫
-呜喵・・・你这家伙[r]那句台词，你是怎么看到的呀[p]
+呜喵…你这家伙[r]那句台词，你是怎么看到的呀[p]
 [_tb_end_text]
 
 [chara_mod  name="あもあも"  time="0"  cross="true"  storage="chara/48/29.png"  ]
@@ -940,7 +940,7 @@
 [quake  time="300"  count="5"  hmax="3"  wait="false"  ]
 [tb_start_text mode=1 ]
 #德比伦
-喵嘎那家伙是那时候的・・・所以本大爷[r]想开睡衣派对这事你也知道了啊[p]
+喵嘎那家伙是那时候的…所以本大爷[r]想开睡衣派对这事你也知道了啊[p]
 
 [_tb_end_text]
 
@@ -1017,7 +1017,7 @@
 [chara_mod  name="ハーデスター"  time="0"  cross="true"  storage="chara/78/10.png"  ]
 [tb_start_text mode=1 ]
 #哈迪斯塔
-超级好色的贝尔菲戈尔・・・？[r]你是说・・・变态的意思吗[p]
+超级好色的贝尔菲戈尔…？[r]你是说…变态的意思吗[p]
 
 [_tb_end_text]
 
@@ -1094,7 +1094,7 @@
 [chara_mod  name="コマでび"  time="0"  cross="false"  storage="chara/10/160.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-真是的，一看就心情很好啊・・・[r]没想到一向动不动就发火的你还有这一面[p]
+真是的，一看就心情很好啊…[r]没想到一向动不动就发火的你还有这一面[p]
 [_tb_end_text]
 
 [chara_mod  name="D・Red"  time="0"  cross="true"  storage="chara/77/30.png"  ]
@@ -1110,13 +1110,13 @@
 
 [tb_start_text mode=1 ]
 #D・Red
-怎么回事怎么回事？那死神・・・[r]好像成了小狗崽儿的狗了不是吗[p]
+怎么回事怎么回事？那死神…[r]好像成了小狗崽儿的狗了不是吗[p]
 [_tb_end_text]
 
 [chara_mod  name="D・Red"  time="0"  cross="true"  storage="chara/77/38.png"  ]
 [tb_start_text mode=1 ]
 #D・Red
-听说你对恶魔没有敌意・・・[r]那为何一直都不愿与在下有所牵扯呢？[p]
+听说你对恶魔没有敌意…[r]那为何一直都不愿与在下有所牵扯呢？[p]
 
 [_tb_end_text]
 
@@ -1320,14 +1320,14 @@
 [chara_mod  name="でびるん"  time="0"  cross="true"  storage="chara/1/83.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-棒极了棒极了[p]
+超赞超赞[p]
 [_tb_end_text]
 
 [playse  volume="100"  time="1000"  buf="0"  storage="hirameki.ogg"  ]
 [chara_mod  name="でびるん"  time="0"  cross="true"  storage="chara/1/103.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-[font size=50]总觉得，真是棒极了！[resetfont][p]
+[font size=50]总觉得，真是超赞啊！[resetfont][p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]

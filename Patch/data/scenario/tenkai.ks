@@ -531,7 +531,7 @@
 [chara_mod  name="コマえる"  time="0"  cross="false"  storage="chara/21/15.png"  ]
 [tb_start_text mode=1 ]
 #米迦勒
-所以，他的行为是有情有酌量的余地的[r]毕竟在最后他也意识到了自己犯下的错误[p]
+所以，他的行为是有情有可原的[r]毕竟在最后他也意识到了自己犯下的错误[p]
 [_tb_end_text]
 
 [chara_mod  name="ミカエル"  time="0"  cross="false"  storage="chara/67/2.png"  ]
@@ -582,7 +582,7 @@
 
 [tb_start_text mode=1 ]
 #米迦勒
-所以我多次造访危险的魔界之门附近[delay speed=100]・・・[resetdelay][p]
+所以我多次前往危险的魔界之门附近[delay speed=100]・・・[resetdelay][p]
 [_tb_end_text]
 
 [chara_mod  name="ミカエル"  time="0"  cross="false"  storage="chara/67/2.png"  ]
@@ -608,7 +608,7 @@
 [chara_mod  name="ミカエル"  time="0"  cross="false"  storage="chara/67/4.png"  ]
 [tb_start_text mode=1 ]
 #米迦勒
-铃兰[font color=0xF8DEC9 bold=true][ruby text="贝尔"]铃[resetfont]、[font color=0xF8DEC9 bold=true]菲[resetfont]、[font color=0xF8DEC9 bold=true][ruby text="戈"]终[ruby text="尔"]点[resetfont]，三种凑在一起[r]“贝尔菲戈尔”…这样，很好理解吧？[p]
+铃兰[font color=0xF8DEC9 bold=true][ruby text="贝尔"]铃[resetfont]、[font color=0xF8DEC9 bold=true]菲[resetfont]、[font color=0xF8DEC9 bold=true][ruby text="戈"]终[ruby text="尔"]点[resetfont]，三种合起来就是[r]“贝尔菲戈尔”…这样，很好懂吧？[p]
 [_tb_end_text]
 
 [chara_mod  name="コマえる"  time="0"  cross="false"  storage="chara/21/12.png"  ]

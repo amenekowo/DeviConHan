@@ -62,7 +62,7 @@
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/3.png"  ]
 [tb_start_text mode=1 ]
 #？？？②
-[delay speed=100]所谓的朋友是什么？难不成是想与恶魔贝尔缔结本契约，[r]借用真名之力将他使唤一生吗？[resetdelay][p]
+[delay speed=100]所谓的朋友是什么？难不成是想与恶魔贝尔缔结本契约，[r]借用真名之力将他驱使一生吗？[resetdelay][p]
 
 [_tb_end_text]
 
@@ -91,7 +91,7 @@
 
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-[emb exp="f.name"]桑只是想和德比君缔结正式契约[r]一起变得幸福而已呀！[p]
+[emb exp="f.name"]桑只是想和德比君签订正式契约[r]一起变得幸福而已呀！[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -116,12 +116,12 @@
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/13.png"  ]
 [tb_start_text mode=1 ]
 #BBB
-[delay speed=100]・・・你们这些家伙是永远也不会明白的[resetdelay][p]
+[delay speed=100]・・・尔等是永远也不会明白的[resetdelay][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #BBB
-[delay speed=100]就这么灰溜溜地回魔界，对贝尔来说・・・[r]是屈辱到希望消失的事情。[resetdelay][p]
+[delay speed=100]就这么灰溜溜地回魔界，对贝尔来说・・・[r]是何等屈辱的事情啊![resetdelay][p]
 
 
 [_tb_end_text]
@@ -140,7 +140,7 @@
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/6.png"  ]
 [tb_start_text mode=1 ]
 #BBB
-[delay speed=100]・・・现在，就来解放你[resetdelay][p]
+[delay speed=100]・・・现在，就来解放汝[resetdelay][p]
 
 [_tb_end_text]
 
@@ -260,7 +260,7 @@
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #德比伦
-[delay speed=100]卜卜、不要对他们・・・出手・・・[resetdelay][p]
+[delay speed=100]卜卜、不要对那些家伙・・・出手・・・[resetdelay][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -386,13 +386,13 @@
 [bg  time="100"  method="crossfade"  storage="BBB8.webp"  wait="false"  ]
 [tb_start_text mode=1 ]
 #别西卜
-[delay speed=100]不过是一时兴起而已，像是想吃掉那样含进口中，[r]像舔着糖果一样用舌头拨弄着，同时不断给予他我的魔力[resetdelay][p]
+[delay speed=100]不过是一时兴起，像含着糖果般用舌头拨弄，[r]同时不断注入我的魔力[resetdelay][p]
 [_tb_end_text]
 
 [bg  time="100"  method="crossfade"  storage="BBB9.webp"  wait="false"  ]
 [tb_start_text mode=1 ]
 #别西卜
-[delay speed=100]可是却始终没有消散[resetdelay][p]
+[delay speed=100]可却始终没有消散[resetdelay][p]
 [_tb_end_text]
 
 [stopse  time="1000"  buf="5"  fadeout="true"  ]

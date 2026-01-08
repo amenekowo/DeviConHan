@@ -54,7 +54,7 @@
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #贝尔伦
-呜嘎・・・[p]
+呜嘎……[p]
 [_tb_end_text]
 
 [playse  volume="100"  time="0"  buf="4"  storage="sasu.ogg"  ]
@@ -64,7 +64,7 @@
 [chara_mod  name="ウエディングでびるん"  time="0"  cross="false"  storage="chara/56/3.png"  ]
 [tb_start_text mode=1 ]
 #贝尔伦
-・・・这、这到底是搞什么鬼？[p]
+……这、这到底是在搞什么名堂？[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -105,7 +105,7 @@
 
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-请接受吧。[r]・・・这样一来，他也一定会察觉到这份幸福的。[p]
+请接受吧。[r]……这样一来，他也一定会察觉到这份幸福的。[p]
 [_tb_end_text]
 
 [tb_hide_message_window  ]
@@ -137,14 +137,14 @@
 [chara_mod  name="ウエディングでびるん"  time="0"  cross="false"  storage="chara/56/5.png"  ]
 [tb_start_text mode=1 ]
 #贝尔伦
-那、那、那是什么手势！[r]虽、虽然确实说过可以结婚，但那只不过是开玩笑・・・[p]
+那、那、那是什么手势！[r]虽、虽然确实说过可以结婚，但那只不过是开玩笑……[p]
 
 
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #德比伦
-话说回来！认识才三、四天就太心急了吧！[r]虽然听说地上的家伙命短，但这也太着急了！[p]
+再说了！认识才三、四天就太心急了吧！[r]虽然听说地上的人命短，但这未免也太着急了！[p]
 
 
 [_tb_end_text]
@@ -287,7 +287,7 @@
 
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-咕啵～❤ 成功消耗了魔力！[r]魔法的力量真是无所不能啊～[p]
+咕啵～❤ 成功消耗掉魔力了！[r]魔法的力量真是无所不能呢～[p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -298,7 +298,7 @@
 [chara_mod  name="ウエディングでびるん"  time="0"  cross="false"  storage="chara/56/1.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-不，不要叫那个名字！可恶，感觉头晕晕的，[r]身体也不听使唤・・・！[p]
+不，不要叫那个名字！可恶，感觉头晕晕的，[r]身体也不听使唤……！[p]
 
 
 [_tb_end_text]

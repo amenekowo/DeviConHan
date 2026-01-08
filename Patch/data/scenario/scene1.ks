@@ -237,7 +237,7 @@
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/49.png"  ]
 [tb_start_text mode=1 ]
 #&f.debiName
-哦，是吗。[l][r]竟然敢拒绝本大爷的邀请，真是好大的架子啊[p]
+哦，是吗。[l][r]竟敢拒绝本大爷的邀请，真是好大的排场啊！[p]
 
 [_tb_end_text]
 
@@ -424,7 +424,7 @@ tf.ngWord = dc.ngWords.some(word => f.name.includes(word))
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/2.png"  ]
 [tb_start_text mode=4 ]
 #&f.debiName
-[font face="KaiseiDecol-Bold"]不[resetfont]要驱逐本大爷！[wait time=200][if exp="sf.kill== 0]笨蛋！[else]这还算是信徒吗！[endif][wait time=200]
+[font face="KaiseiDecol-Bold"]不[resetfont]准驱逐本大爷！[wait time=200][if exp="sf.kill== 0]蠢货！[else]这也算信徒吗！[endif][wait time=200]
 [_tb_end_text]
 
 [jump  storage="scene1.ks"  target="*input_start"  ]
@@ -466,7 +466,7 @@ tf.ngWord = dc.ngWords.some(word => f.name.includes(word))
 
 [tb_start_text mode=1 ]
 #&f.debiName
-你这家伙，想干什么？[wait time=200][r]本大爷可是一眼就能看穿的哦[p]
+你这家伙，想干什么？[wait time=200][r]本大爷可是全都看得一清二楚！[p]
 [_tb_end_text]
 
 [flash  time="80"  effect="fadeIn"  color="0x000000"  ]
@@ -577,7 +577,7 @@ tf.ngWord = dc.ngWords.some(word => f.name.includes(word))
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/10.png"  ]
 [tb_start_text mode=4 ]
 #&f.debiName
-就算把真名藏起来也没用哦★[r]这是灵魂契约来的～
+就算把真名藏起来也没用哦★[r]这可是灵魂契约哦～
 [_tb_end_text]
 
 [jump  storage="scene1.ks"  target="*input_coinfirm"  cond="f.name!=''"  ]
@@ -956,7 +956,7 @@ TYRANO.kag.ftag.startTag("jump",{target:"*hutanari"});
 [tb_eval  exp="f.HANYOU=0"  name="HANYOU"  cmd="="  op="t"  val="0"  val_2="undefined"  ]
 [tb_start_text mode=1 ]
 #德比伦
-[font size=43]德，[wait time=200]德比伦！？[wait time=200][font size=28][if exp="f.debirun2 == 1"][r]那不是我刚才的暂用名候选吗，真够土的・・・[else]太土了吧这破烂名字！[wait time=300][r]算了随便。[wait time=200][font size=20]可恶[delay speed=200]・・・[resetdelay]话说你这品味也太差了吧[endif][resetfont][p]
+[font size=43]德，[wait time=200]德比伦！？[wait time=200][font size=28][if exp="f.debirun2 == 1"][r]那不是我刚才的暂用名候选吗，真够土的・・・[else]太土了吧这破名字！[wait time=300][r]算了随便。[wait time=200][font size=20]可恶[delay speed=200]・・・[resetdelay]话说你这品味也太差了吧[endif][resetfont][p]
 [_tb_end_text]
 
 [chara_move  name="プレイヤー"  anim="true"  time="800"  effect="easeOutQuad"  wait="false"  left="0"  top="0"  width="1280"  height="960"  ]

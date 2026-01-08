@@ -102,7 +102,7 @@
 
 [tb_start_text mode=1 ]
 #BBB
-[delay speed=100]・・・谁知道呢。[resetdelay][p]
+[delay speed=100]・・・不明白。[resetdelay][p]
 
 
 [_tb_end_text]
@@ -115,7 +115,7 @@
 
 [tb_start_text mode=1 ]
 #BBB
-[delay speed=100]地上的民众真是浅薄至极，[r]这也是因为你们寿命短暂又脆弱的缘故吗？[resetdelay][p]
+[delay speed=100]地上的民众真是浅薄至极，[r]这也是因为尔等寿命短暂又脆弱的缘故吗？[resetdelay][p]
 
 
 [_tb_end_text]
@@ -123,7 +123,7 @@
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/13.png"  ]
 [tb_start_text mode=1 ]
 #BBB
-[delay speed=100]・・・你们这些家伙是永远也不会明白的[resetdelay][p]
+[delay speed=100]・・・尔等是永远也不会明白的[resetdelay][p]
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
@@ -137,7 +137,7 @@
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/6.png"  ]
 [tb_start_text mode=1 ]
 #BBB
-[delay speed=100]・・・现在，就由我来解放你吧[resetdelay][p]
+[delay speed=100]・・・现在，就由吾来解放汝吧[resetdelay][p]
 
 [_tb_end_text]
 
@@ -172,7 +172,7 @@
 [stopse  time="500"  buf="5"  fadeout="true"  ]
 [tb_start_text mode=1 ]
 #BBB
-[delay speed=100]把你逼到这个地步的[r]是老夫我啊[wait time=500]，原谅我吧。[resetdelay][p]
+[delay speed=100]请宽恕、[r]将汝逼迫至此的[wait time=500]，老夫吧。[resetdelay][p]
 
 
 [_tb_end_text]
@@ -194,7 +194,7 @@
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #BBB
-[font size=25 color=0xEA0F18 bold=true][delay speed=120]甜咸适中[resetdelay][resetfont][p]
+[font size=25 color=0xEA0F18 bold=true][delay speed=120]甜中带咸[resetdelay][resetfont][p]
 
 
 
@@ -247,7 +247,7 @@
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/5.png"  ]
 [tb_start_text mode=1 ]
 #BBB
-[delay speed=100]若是不被你唤出真名，[r]就会被邪眼的力量吞噬・・・[resetdelay][p]
+[delay speed=100]若是不被汝唤出真名，[r]就会被邪眼的力量吞噬・・・[resetdelay][p]
 
 [_tb_end_text]
 
@@ -266,14 +266,14 @@
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/4.png"  ]
 [tb_start_text mode=1 ]
 #BBB
-[delay speed=100]我也曾考虑过带他回魔界。[wait time=500][r]但对这家伙来说，那是极大的屈辱。[resetdelay][p]
+[delay speed=100]吾也曾考虑过带他回魔界。[wait time=500][r]但对这家伙来说，那是极大的屈辱。[resetdelay][p]
 
 [_tb_end_text]
 
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/3.png"  ]
 [tb_start_text mode=1 ]
 #BBB
-[delay speed=100]可是被你们这些家伙在地上当成玩具可不行。[resetdelay][p]
+[delay speed=100]但是，在这世上被尔等当作玩具戏耍，绝难容忍。[resetdelay][p]
 
 
 [_tb_end_text]
@@ -291,7 +291,7 @@
 [chara_mod  name="BBB"  time="0"  cross="false"  storage="chara/64/4.png"  ]
 [tb_start_text mode=1 ]
 #BBB
-[delay speed=100]追着贝尔到处跑还说得那么好听，真不愧是个卑俗的天使。[resetdelay][p]
+[delay speed=100]把一直抗拒的贝尔追得团团转，还真敢说啊，卑俗的天使。[resetdelay][p]
 
 
 [_tb_end_text]
@@ -315,14 +315,14 @@
 
 [tb_start_text mode=1 ]
 #BBB
-[delay speed=100]老夫我啊[resetdelay][p]
+[delay speed=100]老夫啊[resetdelay][p]
 
 
 [_tb_end_text]
 
 [tb_start_text mode=1 ]
 #BBB
-[delay speed=100]把你逼到如此绝境的[r]是愚蠢的老夫啊[resetdelay][p]
+[delay speed=100]把汝逼到如此绝境的[r]是愚蠢的老夫啊[resetdelay][p]
 
 
 [_tb_end_text]
@@ -335,7 +335,7 @@
 [stopse  time="500"  buf="5"  fadeout="true"  ]
 [tb_start_text mode=1 ]
 #BBB
-[font size=25][delay speed=100]原谅我吧[resetdelay][resetfont][p]
+[font size=25][delay speed=100]宽恕我吧[resetdelay][resetfont][p]
 
 
 [_tb_end_text]
@@ -366,7 +366,7 @@
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #BBB
-[font size=25 color=0xEA0F18 bold=true][delay speed=120]甜咸适中[resetdelay][resetfont][p]
+[font size=25 color=0xEA0F18 bold=true][delay speed=120]甜中带咸[resetdelay][resetfont][p]
 
 
 
@@ -374,7 +374,7 @@
 
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-[font size=25]这、这是・・・为什么・・・[resetfont][p]
+[font size=25]等、等等・・・你做了什么・・・[resetfont][p]
 
 
 
@@ -411,7 +411,7 @@
 
 [tb_start_text mode=1 ]
 #BBB
-[font color=0xEA0F18 bold=true][delay speed=120]不过，我已赋予灵魂最低限度复活身体所需的魔力。[resetdelay][resetfont][p]
+[font color=0xEA0F18 bold=true][delay speed=120]不过，吾已赋予灵魂最低限度复活身体所需的魔力。[resetdelay][resetfont][p]
 
 
 [_tb_end_text]

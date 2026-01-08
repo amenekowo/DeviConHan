@@ -16,7 +16,7 @@
 [fadein_window  time="300"  ]
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-今天很努力了呢[p]
+今天辛苦啦[p]
 [_tb_end_text]
 
 [bg  time="0"  method="crossfade"  storage="w8.webp"  ]
@@ -33,7 +33,7 @@
 
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-[delay speed=300]・・・[resetdelay]我才刚刚提醒过德比君[r]结果又犯了，抱歉。[p]
+[delay speed=300]・・・[resetdelay]明明才提醒过德比君，[r]自己却又这样，实在抱歉。[p]
 
 [_tb_end_text]
 
@@ -66,7 +66,7 @@
 [tb_show_message_window  ]
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-莫莫莫、莫非是薯片碎屑掉下来了呀！？[p]
+难难难、难道是薯片碎屑掉下来了吗！？[p]
 
 [_tb_end_text]
 
@@ -78,7 +78,7 @@
 
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-以后我会注意的，实在是太丢脸了呢[r]下次我会用粘毛滚筒滚一滚哦[p]
+以后我会注意的，实在是太丢脸了呢,[r]下次我会用粘毛滚筒滚一滚哦[p]
 [_tb_end_text]
 
 [bg  time="0"  method="crossfade"  storage="w11.webp"  ]
@@ -504,7 +504,7 @@
 
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-你要是睡着了，我就立刻把束缚加紧然后拧断哦[p]
+你要是睡着了，我就立刻收紧束缚然后拧断哦[p]
 [_tb_end_text]
 
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/33.png"  ]
@@ -512,7 +512,7 @@
 [playse  volume="100"  time="0"  buf="1"  storage="sasu2.ogg"  ]
 [tb_start_text mode=1 ]
 #德比伦
-[font size=50]要拧断！？[r]别说这么危险的话啊，蠢货——！[resetfont][p]
+[font size=50]拧断！？[r]别说这么危险的话啊，你这蠢货——！[resetfont][p]
 [_tb_end_text]
 
 [tb_eval  exp="f.photoDeviPose=1"  name="photoDeviPose"  cmd="="  op="t"  val="1"  val_2="undefined"  ]

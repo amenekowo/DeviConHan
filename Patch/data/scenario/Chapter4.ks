@@ -20,7 +20,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-咯咯咯[delay speed=100]・・・[resetdelay][r]本大爷就凭这个[delay speed=100]・・・[resetdelay][p]
+库库库[delay speed=100]・・・[resetdelay][r]本大爷就凭这个[delay speed=100]・・・[resetdelay][p]
 [_tb_end_text]
 
 [stopse  time="200"  buf="1"  fadeout="true"  ]
@@ -29,7 +29,7 @@
 [chara_mod  name="でびるん"  time="300"  cross="false"  storage="chara/1/6.png"  ]
 [tb_start_text mode=1 ]
 #德比伦
-在干什么呢你这家伙[delay speed=300]・・・[resetdelay][r]弄得那么吵[p]
+在干什么呢你这家伙[delay speed=300]・・・[resetdelay][r]弄得窸窸窣窣的[p]
 [_tb_end_text]
 
 [chara_mod  name="でびるん"  time="0"  cross="false"  storage="chara/1/8.png"  ]
@@ -283,7 +283,7 @@
 
 [tb_start_text mode=1 ]
 #新生德比伦
-[quake_text][delay speed=100][font size=70]你这家伙！为什么知道这个名字！？[resetfont][resetdelay][free_quake_text][p]
+[quake_text][delay speed=100][font size=70]混蛋！怎么会知道那个名字！？[resetfont][resetdelay][free_quake_text][p]
 
 [_tb_end_text]
 
@@ -330,7 +330,7 @@
 
 [tb_start_text mode=1 ]
 #新生德比伦
-[quake_text][font size=70]居然敢来捣乱・・・！[r]绝不让你得逞！[resetfont][free_quake_text][p]
+[quake_text][font size=70]少来碍事・・・！[r]才不会让你们得逞呢！[resetfont][free_quake_text][p]
 
 
 
@@ -395,7 +395,7 @@
 [chara_hide  name="コマえる"  time="80"  wait="false"  pos_mode="false"  ]
 *meirei_jump
 
-[choice2 text1="做朋友吧" target1="*partner" text2="结婚吧" target2="*wedding"]
+[choice2 text1="成为朋友吧" target1="*partner" text2="我们结婚吧" target2="*wedding"]
 
 [s  ]
 *name_wakaru
@@ -431,7 +431,7 @@
 
 [tb_start_text mode=1 ]
 #库皮亚多艾鲁
-[font size=50]然后把德比君…[r]救回来！[resetfont][p]
+[font size=50]然后请把德比君…[r]救回来吧！[resetfont][p]
 
 
 [_tb_end_text]

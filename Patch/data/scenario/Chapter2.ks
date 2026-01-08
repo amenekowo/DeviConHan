@@ -442,7 +442,7 @@
 [camera  time="1000"  zoom="1.8"  wait="false"  layer="1"  y="60"  ]
 [tb_start_text mode=1 ]
 #德比伦
-没错！[wait time=300][r][font size=50]深・[wait time=300]夜・[wait time=300]甜・[wait time=300]食[wait time=300][resetfont] 就是这个啊！[p]
+没错！[wait time=300][r][font size=50]欲・[wait time=300]罢・[wait time=300]不・[wait time=300]能[wait time=300][resetfont] 的就是这个啊！[p]
 
 [_tb_end_text]
 
@@ -542,7 +542,7 @@
 
 [tb_start_text mode=1 ]
 #德比伦
-那个超能吃的朋友经常带我来这家店。[wait time=500][r]这种滑溜溜的面条真不错啊。[p]
+那个超能吃的朋友经常带我来这家店。[wait time=500][r]这种Q弹有嚼劲的面条真不错啊。[p]
 
 [_tb_end_text]
 
