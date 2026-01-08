@@ -3,8 +3,7 @@ name: Build and Release Patch
 on:
   # 方式1：当你推送形如 v1.0, v0.2 这样的 tag 时触发
   push:
-    tags:
-      - 'v*'
+    branches: [ "main" ] 
   # 方式2：允许在网页端手动点击按钮触发（用于测试）
   workflow_dispatch:
 
