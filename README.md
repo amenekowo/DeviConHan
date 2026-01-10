@@ -100,12 +100,16 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
 - **Assets**: Contains only necessary translation files and injection code. **Does not distribute the full game** or misuse internal assets.
 - **Ownership**: All rights to the original game, designs, and characters belong to **Bayachao**.
 
+**Reference:** [Author's Guideline](https://bayachao.com/devil-connection/guideline.html)
+
 ### 🇯🇵 日本語
 本プロジェクトは、原作者 **ばやちゃお** 様の「二次創作・同人活動可能範囲」および「翻訳パッチの作成について」の規定を厳守して作成されています。
-- **ガイドライン準拠**: ガイドラインに従い、翻訳パッチの公開を行います。
+- **ガイドライン準拠**: ガイドラインに従い、翻訳パッチの公開を行います。（※原作者様への事前連絡済み/対応済み）
 - **非営利**: 非営利目的での利用に限ります。営利目的での利用は固く禁じられています。
 - **素材の利用**: 本パッチは翻訳および導入に必要なファイルのみを含んでおり、**ゲーム本体は含まれません**。
 - **権利の帰属**: 原作、デザイン、キャラクター等のすべての権利は **ばやちゃお** 様に帰属します。
+
+**参照リンク:** [二次創作ガイドライン](https://bayachao.com/devil-connection/guideline.html)
 
 ---
 
@@ -122,8 +126,6 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
     - *（注：如果您是开发者且已配置 Node.js，可按任意键手动选择 `[1]`）*。
 4. **开始游戏**：从 Steam 启动，或者在 Steam 运行时直接从 `DevilConnection.exe` 启动游戏。
 
-> **常见问题**：如果运行出现红字报错，请删除 `resources` 文件夹，然后在 Steam 中点击“验证游戏完整性”后再试。
-
 ### 🇺🇸 English
 1. **Prerequisite**: Ensure you own the original game. Please support the original author by purchasing the official release.
 2. **Download**: Get the latest version from [Releases](../../releases).
@@ -134,8 +136,6 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
     - **Selection**: It will countdown and auto-select `[2] Bundled Env`. **No action needed** for most users.
 4. **Launch**: Start the game via Steam.
 
-> **Troubleshooting**: If you encounter errors, delete the `resources` folder and use Steam's "Verify integrity of game files" feature.
-
 ### 🇯🇵 日本語
 1. **準備**: 正規版のゲームを所持しており、正常に動作することを確認してください。
 2. **ダウンロード**: [Releases](../../releases) から最新バージョンをダウンロードします。
@@ -145,7 +145,30 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
     - **環境選択**: 自動的にカウントダウンし、`[2] 内蔵環境` (Bundled Env) が選択されます。通常は**操作不要**です。
 4. **起動**: Steam から起動してください。
 
-> **トラブルシューティング**: エラーが発生した場合は、`resources` フォルダを削除し、Steamで「ゲームファイルの整合性を確認」を行ってください。
+---
+
+## 🗑️ Uninstall & Restore / 卸载与还原 / アンインストール
+
+### 🇨🇳 中文
+如果您想卸载补丁或游戏出现异常，请执行以下操作还原纯净版：
+1. 打开 Steam 库，右键点击游戏。
+2. 选择 **属性** -> **已安装文件**。
+3. 点击 **验证游戏文件的完整性**。
+4. 等待 Steam 自动下载原版文件覆盖即可。
+
+### 🇺🇸 English
+To uninstall the patch or fix any issues, please restore the clean version:
+1. Open Steam Library and right-click the game.
+2. Select **Properties** -> **Installed Files**.
+3. Click **Verify integrity of game files**.
+4. Wait for Steam to redownload the original files.
+
+### 🇯🇵 日本語
+パッチをアンインストールする場合、または不具合が発生した場合は、以下の手順で初期状態に戻してください：
+1. Steamライブラリでゲームを右クリックします。
+2. **プロパティ** -> **インストール済みファイル** を選択します。
+3. **ゲームファイルの整合性を確認** をクリックします。
+4. Steamが自動的にオリジナルファイルをダウンロードするのを待ちます。
 
 ---
 
@@ -189,6 +212,7 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
 3. Install dependencies: `pip install pyinstaller`
 4. Place translation files into the `Patch` folder.
 5. Run **`Pack.cmd`** in the root directory.
+6. The executable will be generated in the `dist/` folder.
 
 ### 🇯🇵 日本語
 開発者の方、またはご自身でパッチをビルドしたい方向けの情報です。一般のプレイヤーの方は Releases からダウンロードしてください。
