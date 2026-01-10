@@ -87,6 +87,10 @@ LANG_DICT = {
         'task_fail': "失败 (Exit Code:",
         'miss_node': "[Debug] 缺失 Node:",
         'miss_script': "[Debug] 缺失 Asar脚本:",
+        # 新增错误提示
+        'err_enoent_title': "⚠️ 检测到游戏源文件损坏或不完整 (ENOENT)。",
+        'err_enoent_reason': "💡 原因: app.asar 与 app.asar.unpacked 内容不匹配。",
+        'err_enoent_fix': "💡 解决方法: 请删除 resources 文件夹下的所有文件，\n   然后在 Steam 中点击“验证游戏文件的完整性”后重试。",
     },
     'en': {
         'title': " Devil Connection Localization Tool by KouzakiUmi ",
@@ -138,6 +142,9 @@ LANG_DICT = {
         'task_fail': "Failed (Exit Code:",
         'miss_node': "[Debug] Missing Node:",
         'miss_script': "[Debug] Missing Script:",
+        'err_enoent_title': "⚠️ Game files corrupted or incomplete (ENOENT).",
+        'err_enoent_reason': "💡 Reason: Mismatch between app.asar and unpacked files.",
+        'err_enoent_fix': "💡 Fix: Delete 'resources' folder and Verify Integrity in Steam.",
     },
     'jp': {
         'title': " でびるコネクション ローカライズツール by 神前海 ",
@@ -189,6 +196,9 @@ LANG_DICT = {
         'task_fail': "失敗 (Exit Code:",
         'miss_node': "[Debug] Node欠落:",
         'miss_script': "[Debug] Script欠落:",
+        'err_enoent_title': "⚠️ ゲームファイルが破損しているか不完全です (ENOENT)。",
+        'err_enoent_reason': "💡 原因: app.asar と unpacked フォルダの不整合。",
+        'err_enoent_fix': "💡 解決策: resources フォルダを削除し、Steamで整合性を確認してください。",
     }
 }
 
@@ -308,21 +318,32 @@ class AsarTool:
                     text=True, encoding='utf-8', errors='replace', bufsize=1,
                     creationflags=0x08000000
                 )
+                
+                # 捕获所有输出以供分析
+                captured_output = []
                 while True:
                     output = process.stdout.readline()
                     if output == '' and process.poll() is not None: break
                     if output:
-                        print(output.rstrip())
+                        line = output.rstrip()
+                        print(line)
                         sys.stdout.flush()
+                        captured_output.append(line)
 
                 if process.returncode != 0:
-                    # 如果错误码非0，有可能是文件占用，但 Asar 通常会报错信息
-                    # 这里直接抛出异常，外层看是否是 PermissionError (不太可能)，
-                    # 主要是 Asar 自己会报错
+                    # === 错误智能分析 (新增) ===
+                    full_log = "\n".join(captured_output)
+                    if "ENOENT" in full_log or "unable to open" in full_log.lower():
+                        log(f"\n{TR['err_enoent_title']}")
+                        log(f"{TR['err_enoent_reason']}")
+                        log(f"{TR['err_enoent_fix']}")
+                        pause_exit()
+                        sys.exit(1)
+                    # ==========================
+
                     log(f"\n❌ {task_name} {TR['task_fail']} {process.returncode})")
                     raise Exception(f"{task_name} Error")
                 
-                # 成功则跳出循环
                 break 
 
             except Exception as e:
@@ -351,7 +372,8 @@ class AsarTool:
     def pack(self, src, dest):
         src = os.path.abspath(src)
         dest = os.path.abspath(dest)
-        unpack_pattern = "*.{node,dll}"
+        # 兼容性修复: 包含 .so 和 .dylib，防止改变原版文件结构
+        unpack_pattern = "*.{node,dll,so,dylib,exe,bin}"
         log(TR['preparing_pk'])
         
         if self.mode == 'system':
