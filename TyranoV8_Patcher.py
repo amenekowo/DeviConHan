@@ -13,13 +13,13 @@ import traceback
 import stat
 import io
 import ctypes
-import msvcrt  # Windows 专属库，用于监听按键
+import msvcrt  # Windows 专属库
 
 # ================= 配置常量 =================
 GAME_EXE_NAME = "DevilConnection.exe"
 FUSE_SENTINEL = b'dL7pKGdnNz796PbbjQWNKmHXBZaB9tsX'
 
-# ================= 颜色控制 (Windows API) =================
+# ================= 颜色控制 =================
 class Colors:
     RESET = '\033[0m'
     RED = '\033[91m'
@@ -27,7 +27,6 @@ class Colors:
     YELLOW = '\033[93m'
     CYAN = '\033[96m'
     
-    # 强制开启 Windows 10/11 控制台颜色支持
     if os.name == 'nt':
         try:
             kernel32 = ctypes.windll.kernel32
@@ -42,6 +41,7 @@ LANG_DICT = {
         'err_exe': "❌ 错误: 未找到游戏主程序",
         'err_res': "❌ 错误: 未找到 'resources' 文件夹",
         'pass_dir': "✓ 目录检查通过",
+        'warn_running': "⚠️ 检测到文件被占用！请先关闭游戏。",
         'step2': "[第二步] 选择工作环境:",
         'sys_env': "系统环境",
         'in_env': "内置环境",
@@ -52,6 +52,8 @@ LANG_DICT = {
         'set_in': "-> 已设定: 使用内置环境 (单文件模式)",
         'err_env': "❌ 该环境不可用",
         'step3': "[第三步] 检查文件状态:",
+        'err_no_asar': "❌ 致命错误: 核心数据文件 (app.asar) 丢失！",
+        'steam_guide': "💡 请尝试修复游戏: Steam库 -> 右键游戏 -> 属性 -> 已安装文件 -> 验证游戏文件完整性",
         'bk_create': "正在创建备份 (文件较大请稍候)...",
         'bk_done': "✓ 备份已创建",
         'bk_rest': "正在从备份还原 (文件较大请稍候)...",
@@ -83,6 +85,7 @@ LANG_DICT = {
         'err_exe': "❌ Error: Game executable not found",
         'err_res': "❌ Error: 'resources' folder not found",
         'pass_dir': "✓ Directory check passed",
+        'warn_running': "⚠️ Files are locked! Please close the game first.",
         'step2': "[Step 2] Select Environment:",
         'sys_env': "System Env",
         'in_env': "Bundled Env",
@@ -93,6 +96,8 @@ LANG_DICT = {
         'set_in': "-> Set: Using Bundled Environment",
         'err_env': "❌ Environment unavailable",
         'step3': "[Step 3] File Status Check:",
+        'err_no_asar': "❌ FATAL: Core data file (app.asar) missing!",
+        'steam_guide': "💡 Fix: Steam Library -> Right Click Game -> Properties -> Installed Files -> Verify integrity",
         'bk_create': "Creating backup (Please wait)...",
         'bk_done': "✓ Backup created",
         'bk_rest': "Restoring from backup (Please wait)...",
@@ -124,6 +129,7 @@ LANG_DICT = {
         'err_exe': "❌ エラー: ゲーム本体が見つかりません",
         'err_res': "❌ エラー: 'resources' フォルダが見つかりません",
         'pass_dir': "✓ 確認完了",
+        'warn_running': "⚠️ ファイルが使用中です！ゲームを終了してください。",
         'step2': "[ステップ 2] 環境選択:",
         'sys_env': "システム環境",
         'in_env': "内蔵環境",
@@ -134,6 +140,8 @@ LANG_DICT = {
         'set_in': "-> 設定: 内蔵環境を使用",
         'err_env': "❌ 選択した環境は利用できません",
         'step3': "[ステップ 3] ファイル状態確認:",
+        'err_no_asar': "❌ 致命的エラー: データファイル (app.asar) がありません！",
+        'steam_guide': "💡 修復方法: Steamライブラリ -> ゲームを右クリック -> プロパティ -> インストール済みファイル -> 整合性を確認",
         'bk_create': "バックアップ作成中 (お待ちください)...",
         'bk_done': "✓ バックアップ作成完了",
         'bk_rest': "バックアップから復元中 (お待ちください)...",
@@ -163,23 +171,17 @@ LANG_DICT = {
 
 # ================= Windows 专用语言检测 =================
 def get_windows_language():
-    """使用 Win32 API 检测系统语言"""
     try:
-        # GetUserDefaultUILanguage: 返回 10进制 语言ID
-        # 2052=zh-CN, 1041=ja-JP, 1033=en-US, 2057=en-UK
         user_lang = ctypes.windll.kernel32.GetUserDefaultUILanguage()
-        
         if user_lang == 2052: return 'cn'
         if user_lang == 1041: return 'jp'
-        return 'en' # 其他所有语言默认英语
-    except:
-        return 'cn' # API 调用失败默认中文
+        return 'en'
+    except: return 'cn'
 
 CURRENT_LANG_CODE = get_windows_language()
 TR = LANG_DICT.get(CURRENT_LANG_CODE, LANG_DICT['en'])
 
 # ================= 强制 UTF-8 输出 =================
-# 修复 Windows 控制台中文乱码
 try:
     sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
     sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
@@ -187,14 +189,15 @@ except: pass
 
 # ================= 基础工具函数 =================
 def log(msg):
-    """带颜色自动识别的打印函数"""
-    if "❌" in msg or "Error" in msg or "Fail" in msg:
+    if "❌" in msg or "Error" in msg or "Fail" in msg or "FATAL" in msg:
         print(f"{Colors.RED}{msg}{Colors.RESET}")
     elif "✓" in msg or "✅" in msg or "Success" in msg:
         print(f"{Colors.GREEN}{msg}{Colors.RESET}")
-    elif "Warning" in msg or "Debug" in msg:
+    elif "Warning" in msg or "Debug" in msg or "⚠️" in msg:
         print(f"{Colors.YELLOW}{msg}{Colors.RESET}")
     elif "->" in msg or "[" in msg:
+        print(f"{Colors.CYAN}{msg}{Colors.RESET}")
+    elif "💡" in msg: # 提示类高亮
         print(f"{Colors.CYAN}{msg}{Colors.RESET}")
     else:
         print(msg)
@@ -205,12 +208,8 @@ def user_input(prompt):
     return input(prompt)
 
 def pause_exit():
-    """
-    【任意键退出】Windows 专属实现
-    """
     print(TR['exit'])
     sys.stdout.flush()
-    # 既然是 exe，一定有 msvcrt
     msvcrt.getch()
 
 def get_resource_path(relative_path):
@@ -238,14 +237,12 @@ class AsarTool:
         if os.path.exists(path_mjs): return path_mjs
         path_js = os.path.join(tools_root, "bundled_asar", "index.js")
         if os.path.exists(path_js): return path_js
-        # 单文件 EXE 模式下，node_modules 通常不存在，仅保留作为开发环境回退
         fallback_mjs = os.path.join(tools_root, "node_modules", "@electron", "asar", "bin", "asar.mjs")
         if os.path.exists(fallback_mjs): return fallback_mjs
         return None
 
     def check_system_available(self):
         try:
-            # shell=True 在 Windows 下必须开启，否则找不到命令
             subprocess.run("asar --version", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
             return True
         except: return False
@@ -268,7 +265,6 @@ class AsarTool:
     def _run_asar_cmd(self, cmd, shell_mode, task_name):
         try:
             log(f"{TR['processing']} {task_name}...")
-            # Windows 下 creationflags=0x08000000 隐藏子进程黑框
             process = subprocess.Popen(
                 cmd, shell=shell_mode, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                 text=True, encoding='utf-8', errors='replace', bufsize=1,
@@ -341,7 +337,12 @@ def main():
     log(f"   Language: {CURRENT_LANG_CODE.upper()}")
     log("==========================================")
     
-    base_dir = os.getcwd()
+    # 优化 1: 获取真实的 EXE 所在目录，防止因快捷方式启动导致路径错误
+    if getattr(sys, 'frozen', False):
+        base_dir = os.path.dirname(os.path.abspath(sys.executable))
+    else:
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+
     game_exe_path = os.path.join(base_dir, GAME_EXE_NAME)
     resources_dir = os.path.join(base_dir, 'resources')
     
@@ -351,6 +352,17 @@ def main():
         log(f"\n{TR['err_exe']} '{GAME_EXE_NAME}'"); pause_exit(); sys.exit(1)
     if not os.path.exists(resources_dir):
         log(f"\n{TR['err_res']}"); pause_exit(); sys.exit(1)
+    
+    # 优化 2: 提前检测文件占用 (通过尝试追加模式打开文件)
+    # 如果游戏正在运行，这一步会直接抛出 PermissionError
+    asar_file = os.path.join(resources_dir, 'app.asar')
+    if os.path.exists(asar_file):
+        try:
+            with open(asar_file, 'ab'): pass
+        except PermissionError:
+            log(f"\n{TR['warn_running']}"); pause_exit(); sys.exit(1)
+        except: pass # 其他错误暂时忽略，留给后面处理
+
     log(TR['pass_dir'])
 
     # 1. 环境选择
@@ -370,15 +382,21 @@ def main():
         else: pass
 
     # 2. 路径定义
-    asar_file = os.path.join(resources_dir, 'app.asar')
     asar_backup = asar_file + ".bak"
     unpacked_dir = os.path.join(resources_dir, 'app.asar.unpacked')
     unpacked_backup = unpacked_dir + ".bak"
     patch_dir = get_resource_path('patch_data')
     if not os.path.exists(patch_dir): patch_dir = os.path.join(base_dir, 'patch_data')
 
-    # 3. 备份与还原逻辑
+    # 3. 检查文件状态 (新增：核心文件缺失检测)
     log(f"\n{TR['step3']}")
+    
+    # 优化 3: 如果既没有原文件，也没有备份，说明文件完全丢失
+    if not os.path.exists(asar_file) and not os.path.exists(asar_backup):
+        log(f"\n{TR['err_no_asar']}")
+        log(f"{TR['steam_guide']}")
+        pause_exit(); sys.exit(1)
+
     try:
         if os.path.exists(asar_file) and not os.path.exists(asar_backup):
             log(TR['bk_create'])
