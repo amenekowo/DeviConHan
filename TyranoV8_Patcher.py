@@ -49,6 +49,11 @@ LANG_DICT = {
         'lock_step2': "2. 如果依然无效，请重启电脑后再试。",
         'lock_retry': ">>> 确保关闭后，按任意键重试...",
         'step2': "[第二步] 选择工作环境:",
+        # === 新增倒计时文案 ===
+        'auto_count': ">>> 默认使用内置环境，倒计时: {} 秒 (按任意键手动配置)",
+        'auto_done': "-> 倒计时结束，自动选择: [2] 内置环境",
+        'dev_enter': "-> 检测到按键，进入开发者配置模式...",
+        # ====================
         'sys_env': "系统环境",
         'in_env': "内置环境",
         'avail': "可用",
@@ -56,7 +61,7 @@ LANG_DICT = {
         'input_sel': "请输入序号 (1/2): ",
         'set_sys': "-> 已设定: 使用系统环境",
         'set_in': "-> 已设定: 使用内置环境 (单文件模式)",
-        'err_env': "❌ 该环境不可用",
+        'err_env': "❌ 该环境检测未通过 (缺少 asar 或 node)",
         'step3': "[第三步] 检查文件状态:",
         'err_no_asar': "❌ 致命错误: 核心数据文件 (app.asar) 丢失！",
         'steam_guide': "💡 请尝试修复游戏: Steam库 -> 右键游戏 -> 属性 -> 已安装文件 -> 验证游戏文件完整性",
@@ -91,6 +96,8 @@ LANG_DICT = {
         'err_enoent_reason': "💡 原因: app.asar 与 app.asar.unpacked 内容不匹配。",
         'err_enoent_fix': "💡 解决方法: 请删除 resources 文件夹下的所有文件，\n   然后在 Steam 中点击“验证游戏文件的完整性”后重试。",
         'clean_temp': "🧹 正在清理临时文件...",
+        'sys_check_fail': "❌ 检测到 Node.js 但未安装 asar 全局命令。",
+        'sys_install_hint': "💡 请运行: npm install -g @electron/asar 或使用内置环境。",
     },
     'en': {
         'title': " Devil Connection Localization Tool by KouzakiUmi ",
@@ -104,6 +111,9 @@ LANG_DICT = {
         'lock_step2': "2. If fails, restart your computer.",
         'lock_retry': ">>> Press any key to RETRY after closing...",
         'step2': "[Step 2] Select Environment:",
+        'auto_count': ">>> Defaulting to Bundled Env in {}s (Press any key to config)",
+        'auto_done': "-> Timeout. Auto-selected: [2] Bundled Env",
+        'dev_enter': "-> Key pressed. Entering Developer Mode...",
         'sys_env': "System Env",
         'in_env': "Bundled Env",
         'avail': "Available",
@@ -111,7 +121,7 @@ LANG_DICT = {
         'input_sel': "Select number (1/2): ",
         'set_sys': "-> Set: Using System Environment",
         'set_in': "-> Set: Using Bundled Environment",
-        'err_env': "❌ Environment unavailable",
+        'err_env': "❌ Environment check failed (Missing asar or node)",
         'step3': "[Step 3] File Status Check:",
         'err_no_asar': "❌ FATAL: Core data file (app.asar) missing!",
         'steam_guide': "💡 Fix: Steam Library -> Right Click Game -> Properties -> Installed Files -> Verify integrity",
@@ -146,6 +156,8 @@ LANG_DICT = {
         'err_enoent_reason': "💡 Reason: Mismatch between app.asar and unpacked files.",
         'err_enoent_fix': "💡 Fix: Delete 'resources' folder and Verify Integrity in Steam.",
         'clean_temp': "🧹 Cleaning up temporary files...",
+        'sys_check_fail': "❌ Node.js found but global 'asar' command missing.",
+        'sys_install_hint': "💡 Run: npm install -g @electron/asar OR use Bundled Env.",
     },
     'jp': {
         'title': " でびるコネクション ローカライズツール by 神前海 ",
@@ -159,6 +171,9 @@ LANG_DICT = {
         'lock_step2': "2. 解決しない場合は、PCを再起動してください。",
         'lock_retry': ">>> 準備ができたら、何かキーを押して再試行...",
         'step2': "[ステップ 2] 環境選択:",
+        'auto_count': ">>> デフォルト(内蔵環境)を使用します: {}秒 (キーを押して手動設定)",
+        'auto_done': "-> タイムアウト。自動選択: [2] 内蔵環境",
+        'dev_enter': "-> キー入力を検知。開発者モードに入ります...",
         'sys_env': "システム環境",
         'in_env': "内蔵環境",
         'avail': "利用可",
@@ -166,7 +181,7 @@ LANG_DICT = {
         'input_sel': "番号を入力 (1/2): ",
         'set_sys': "-> 設定: システム環境を使用",
         'set_in': "-> 設定: 内蔵環境を使用",
-        'err_env': "❌ 選択した環境は利用できません",
+        'err_env': "❌ 環境チェック失敗 (asar または node がありません)",
         'step3': "[ステップ 3] ファイル状態確認:",
         'err_no_asar': "❌ 致命的エラー: データファイル (app.asar) がありません！",
         'steam_guide': "💡 修復方法: Steamライブラリ -> ゲームを右クリック -> プロパティ -> インストール済みファイル -> 整合性を確認",
@@ -201,6 +216,8 @@ LANG_DICT = {
         'err_enoent_reason': "💡 原因: app.asar と unpacked フォルダの不整合。",
         'err_enoent_fix': "💡 解決策: resources フォルダを削除し、Steamで整合性を確認してください。",
         'clean_temp': "🧹 一時ファイルを削除しています...",
+        'sys_check_fail': "❌ Node.js はありますが、asar コマンドが見つかりません。",
+        'sys_install_hint': "💡 実行: npm install -g @electron/asar または内蔵環境を使用してください。",
     }
 }
 
@@ -291,8 +308,8 @@ class AsarTool:
 
     def check_system_available(self):
         try:
-            subprocess.run("asar --version", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            return True
+            res = subprocess.run("asar --version", shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            return res.returncode == 0
         except: return False
 
     def check_bundled_available(self):
@@ -311,7 +328,6 @@ class AsarTool:
             log(TR['set_in'])
 
     def _run_asar_cmd(self, cmd, shell_mode, task_name):
-        # 针对 Asar 操作的重试循环
         while True:
             try:
                 log(f"{TR['processing']} {task_name}...")
@@ -321,7 +337,6 @@ class AsarTool:
                     creationflags=0x08000000
                 )
                 
-                # 捕获所有输出以供分析
                 captured_output = []
                 while True:
                     output = process.stdout.readline()
@@ -333,15 +348,12 @@ class AsarTool:
                         captured_output.append(line)
 
                 if process.returncode != 0:
-                    # === 错误智能分析 ===
                     full_log = "\n".join(captured_output)
                     if "ENOENT" in full_log or "unable to open" in full_log.lower():
                         log(f"\n{TR['err_enoent_title']}")
                         log(f"{TR['err_enoent_reason']}")
                         log(f"{TR['err_enoent_fix']}")
-                        # 这里直接退出，finally 块会处理清理
                         sys.exit(1)
-                    # ===================
 
                     log(f"\n❌ {task_name} {TR['task_fail']} {process.returncode})")
                     raise Exception(f"{task_name} Error")
@@ -349,11 +361,10 @@ class AsarTool:
                 break 
 
             except Exception as e:
-                # 检查是否是 Python 层的权限错误，或者是 Asar 报的 EBUSY
                 err_str = str(e)
                 if "PermissionError" in err_str or "EBUSY" in err_str:
                     handle_permission_error()
-                    continue # 重试
+                    continue 
                 else:
                     if not isinstance(e, Exception): log(f"❌ Error: {str(e)}")
                     raise e
@@ -374,7 +385,7 @@ class AsarTool:
     def pack(self, src, dest):
         src = os.path.abspath(src)
         dest = os.path.abspath(dest)
-        # 兼容性修复: 包含 .so 和 .dylib，防止改变原版文件结构
+        # 兼容性修复
         unpack_pattern = "*.{node,dll,so,dylib,exe,bin}"
         log(TR['preparing_pk'])
         
@@ -427,7 +438,6 @@ def main():
     resources_dir = os.path.join(base_dir, 'resources')
     temp_extract_dir = os.path.join(base_dir, 'temp_extracted_asar')
 
-    # 【重要】将所有逻辑包裹在 try...finally 中，确保无论如何都清理临时文件
     try:
         # 0. 目录检查
         log(f"\n{TR['step1']}")
@@ -448,21 +458,72 @@ def main():
 
         log(TR['pass_dir'])
 
-        # 1. 环境选择
+        # 1. 环境选择 (自动倒计时 + 手动模式)
         tool = AsarTool()
         has_sys = tool.check_system_available()
         has_bun = tool.check_bundled_available()
 
         log(f"\n{TR['step2']}")
-        log(f"    [1] {TR['sys_env']} ({TR['avail'] if has_sys else TR['unavail']})")
-        log(f"    [2] {TR['in_env']} ({TR['avail'] if has_bun else TR['unavail']})")
         
-        while True:
-            choice = user_input(TR['input_sel']).strip()
-            if choice == '1' and has_sys: tool.set_mode('system'); break
-            elif choice == '2' and has_bun: tool.set_mode('bundled'); break
-            elif (choice == '1' and not has_sys) or (choice == '2' and not has_bun): log(TR['err_env'])
-            else: pass
+        # 决定是否进入手动模式
+        enter_manual_mode = False
+        
+        # 如果有内置环境，显示倒计时，否则强制手动
+        if has_bun:
+            # 倒计时逻辑
+            count_seconds = 3
+            # 使用列表保存状态，以便在循环中断时知道是否按键
+            is_interrupted = False
+            
+            # 打印初始提示
+            print(f"   {TR['auto_count'].format(count_seconds)}", end="", flush=True)
+            
+            start_time = time.time()
+            while time.time() - start_time < count_seconds:
+                # 重新打印倒计时
+                remaining = int(count_seconds - (time.time() - start_time)) + 1
+                # \r 回车不换行，实现覆盖
+                print(f"\r   {TR['auto_count'].format(remaining)}   ", end="", flush=True)
+                
+                if msvcrt.kbhit():
+                    msvcrt.getch() # 消耗掉按键
+                    is_interrupted = True
+                    break
+                time.sleep(0.1)
+            
+            print("") # 换行
+            
+            if is_interrupted:
+                log(TR['dev_enter'])
+                enter_manual_mode = True
+            else:
+                log(TR['auto_done'])
+                tool.set_mode('bundled')
+        else:
+            # 没内置环境，强制显示菜单
+            enter_manual_mode = True
+
+        # 如果需要手动选择
+        if enter_manual_mode:
+            log(f"    [1] {TR['sys_env']} ({TR['avail'] if has_sys else TR['unavail']})")
+            log(f"    [2] {TR['in_env']} ({TR['avail'] if has_bun else TR['unavail']})")
+            while True:
+                choice = user_input(TR['input_sel']).strip()
+                if choice == '1':
+                    if has_sys:
+                        tool.set_mode('system')
+                        break
+                    else:
+                        log(TR['sys_check_fail'])
+                        log(TR['sys_install_hint'])
+                        log(TR['err_env'])
+                elif choice == '2':
+                    if has_bun:
+                        tool.set_mode('bundled')
+                        break
+                    else:
+                        log(TR['err_env'])
+                else: pass
 
         # 2. 路径定义
         asar_backup = asar_file + ".bak"
@@ -539,7 +600,7 @@ def main():
             success = True
 
         except SystemExit:
-            raise # 重新抛出 sys.exit，让 finally 执行
+            raise
         except Exception as e:
             log(f"\n❌ Error: {e}")
             traceback.print_exc()
@@ -564,9 +625,7 @@ def main():
                 except PermissionError:
                     handle_permission_error()
                 except OSError as e:
-                    # 可能是其他 IO 错误
                     log(f"{TR['err_perm']}: {e}")
-                    # 这种情况也可能是占用，尝试作为占用处理
                     handle_permission_error()
 
             disable_integrity_fuse(game_exe_path)
@@ -589,25 +648,23 @@ def main():
                         log(f"{TR['save_bk_err']} {e}")
 
     except SystemExit:
-        pass # 正常退出不处理
+        pass 
     except Exception as e:
         log(f"\n❌ Unexpected Error: {e}")
         traceback.print_exc()
     finally:
-        # === 强制清理临时文件 (无论成功/失败/报错退出) ===
+        # === 强制清理临时文件 ===
         if 'temp_extract_dir' in locals() and os.path.exists(temp_extract_dir):
             print("")
             log(TR['clean_temp'])
-            # 尝试循环清理，防止残留
             while True:
                 try:
                     shutil.rmtree(temp_extract_dir, onerror=remove_readonly)
                     break
                 except PermissionError:
-                    # 如果退出时还被占用，询问是否重试，或者直接让用户手动删
                     handle_permission_error()
                 except:
-                    break # 其他错误忽略
+                    break
 
         pause_exit()
 
