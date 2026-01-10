@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write # 必须权限
+  contents: write # 允许发布 Release 和修改 Tag
 
 jobs:
   build-and-release:
@@ -16,51 +16,63 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 优化 1: 增加缓存，第二次运行起速度会变快
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip' # 开启 pip 缓存
 
       - name: Install PyInstaller
         run: pip install pyinstaller
 
-      - name: Run Pack.cmd
-        shell: cmd
-        run: call Pack.cmd
-
-      # ========================================================
-      # 修复核心：先删除旧的 Release 和 Tag，防止文件冲突
-      # ========================================================
-      - name: Delete Old Nightly Release
+      # 优化 2: 生成友好的时间戳 (北京时间)
+      - name: Generate Build Info
+        id: date
         shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
         run: |
-          # 尝试删除名为 nightly 的 release 和 tag
-          # || true 表示如果本来就没有（比如第一次运行），也不报错继续往下走
-          gh release delete nightly --cleanup-tag -y || true
+          # 获取当前时间 (UTC+8)
+          echo "build_time=$(date -u -d '+8 hours' +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
 
-      # ========================================================
-      # 创建新的 Tag 并推送
-      # ========================================================
+      # 确认你的脚本文件名是 Pack.cmd 还是 build.bat
+      # 这里沿用你代码里的 Pack.cmd
+      - name: Run Pack Script
+        shell: cmd
+        run: |
+          if exist Pack.cmd ( call Pack.cmd ) else ( call build.bat )
+
+      # 优化 3: 强制更新本地 Tag，而不是删除远程 Release
+      # 这种方式比删除 Release 更安全，不会导致 Release ID 变化带来的 404
       - name: Update Nightly Tag
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # 强制删除本地旧 tag (如果有)
+          git tag -d nightly 2>nul || echo "No local tag to delete"
+          # 创建指向当前 commit 的新 tag
           git tag nightly
-          git push origin nightly
+          # 强制推送到远程 (覆盖旧 tag)
+          git push origin nightly --force
 
-      # ========================================================
-      # 发布新的 Release
-      # ========================================================
+      # 优化 4: 使用 v2 版本，并开启覆盖模式
       - name: Release Nightly
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: nightly
-          name: "最新测试补丁 (Nightly)"
+          name: "最新测试补丁 (Nightly) - ${{ steps.date.outputs.build_time }}"
           body: |
-            自动构建版本。
-            提交: ${{ github.sha }}
-            时间: ${{ github.event.head_commit.timestamp }}
-          files: dist/*.exe  # 即使是中文文件名，因为是全新的 Release，也能成功上传
+            ### 🚧 自动构建版本 (Auto Build)
+            
+            **构建信息:**
+            - 📅 时间: ${{ steps.date.outputs.build_time }} (CST)
+            - #️⃣ 提交: ${{ github.sha }}
+            
+            **更新日志:**
+            ${{ github.event.head_commit.message }}
+            
+            > 注意：这是自动生成的测试版本，可能包含未知 BUG。
+          files: dist/*.exe
           prerelease: true
+          make_latest: true # 标记为最新发布
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

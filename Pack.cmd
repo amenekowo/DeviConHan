@@ -3,51 +3,55 @@
 chcp 65001 >nul
 cls
 
+:: ================= 配置区域 =================
+set OUTPUT_NAME=DevilConnection_Localization_Tool
+set PY_SCRIPT=TyranoV8_Patcher.py
+:: ===========================================
+
 echo ==========================================
-echo       恶魔链接汉化包 - 一键打包工具
+echo    Devil Connection Localization Packer
+echo      恶魔链接本地化工具 - 构建脚本
 echo ==========================================
 
-:: 1. 检查“补丁”文件夹是否存在
+:: 1. 检查“Patch”文件夹
 if not exist "Patch" (
     echo.
+    echo [Error] Patch folder not found!
     echo [错误] 当前目录下未找到“Patch”文件夹！
-    echo 请将汉化文件放在名为“Patch”的文件夹中。
     echo.
-    pause
-    exit
+    :: 如果是 GHA 则不暂停直接退出（报错）
+    if not "%GITHUB_ACTIONS%"=="true" pause
+    exit /b 1
 )
 
-:: 2. 检查 PyInstaller 环境
+:: 2. 检查 PyInstaller
 pyinstaller --version >nul 2>&1
 if %errorlevel% neq 0 (
     echo.
+    echo [Error] PyInstaller not found.
     echo [错误] 未找到 PyInstaller，请先运行 pip install pyinstaller
     echo.
-    pause
-    exit
+    if not "%GITHUB_ACTIONS%"=="true" pause
+    exit /b 1
 )
 
-:: 检查是否生成了单文件 (兼容 js/mjs)
+:: 3. 检查依赖
 if exist "tools\bundled_asar\index.js" goto :FoundScript
 if exist "tools\bundled_asar\index.mjs" goto :FoundScript
 
-echo [ERROR] 依赖文件丢失!
-echo 已检查: tools\bundled_asar\index.js OR index.mjs
+echo [ERROR] Dependency missing!
+echo [错误] 依赖文件丢失! (tools\bundled_asar\index.mjs)
 echo.
-echo 请先运行'ncc build ...'.
-pause
-exit /b
+if not "%GITHUB_ACTIONS%"=="true" pause
+exit /b 1
 
 :FoundScript
 
 echo.
-echo [1/3] 正在打包 EXE (包含“tools”和“Patch”)...
+echo [1/3] Building EXE...
+echo [1/3] 正在打包...
 echo ------------------------------------------
 
-:: --- 打包命令核心修改 ---
-:: 语法说明: --add-data "本地源文件夹;打包内的目标文件夹"
-:: 这里直接把本地的 "Patch" 映射为程序内部的 "patch_data"
-:: name可改为你喜欢的名字
 pyinstaller -F --clean ^
     --distpath "dist" ^
     --workpath "build" ^
@@ -55,47 +59,33 @@ pyinstaller -F --clean ^
     --add-data "tools/node.exe;tools" ^
     --add-data "tools/bundled_asar;tools/bundled_asar" ^
     --add-data "Patch;patch_data" ^
-    --name "恶魔链接呜咪个人汉化包" ^
-    TyranoV8_Patcher.py
+    --name "%OUTPUT_NAME%" ^
+    %PY_SCRIPT%
 
 if %errorlevel% neq 0 (
     echo.
-    echo [失败] 打包过程中出现错误，请检查上方报错信息。
-    pause
-    exit
+    echo [FAILED] Build failed.
+    echo [失败] 打包错误。
+    :: 如果是 GHA，这里不暂停，直接以错误码退出，这样 GHA 会显示红叉
+    if not "%GITHUB_ACTIONS%"=="true" pause
+    exit /b 1
 )
 
 echo.
+echo [2/3] Cleaning up...
 echo [2/3] 正在清理临时文件...
 echo ------------------------------------------
 
-:: 清理 build 文件夹
-if exist "build" (
-    rd /s /q "build"
-    echo  - 已删除 build 临时目录
-)
+if exist "build" rd /s /q "build"
+if exist "%OUTPUT_NAME%.spec" del /q "%OUTPUT_NAME%.spec"
+if exist "patch_data" rd /s /q "patch_data"
 
-:: 清理 .spec 配置文件 (文件名与 --name 参数一致)
-if exist "恶魔链接呜咪个人汉化包.spec" (
-    del /q "恶魔链接呜咪个人汉化包.spec"
-    echo  - 已删除 .spec 配置文件
-)
-
-:: 防止之前运行脚本留下的 patch_data 文件夹干扰（如果有的话）
-if exist "patch_data" (
-    rd /s /q "patch_data"
-    echo  - 已删除旧的 patch_data 缓存目录
-)
-
-::.exe名字改为你喜欢的名字
 echo.
 echo ==========================================
-echo [3/3] 打包完成！
+echo [3/3] DONE! / 打包完成！
 echo ==========================================
-echo  - 程序位于: dist\恶魔链接呜咪个人汉化包.exe
+echo  - Output: dist\%OUTPUT_NAME%.exe
 echo.
 
-:: 可选：打包完直接打开 dist 文件夹
-:: start dist
-
-:: pause
+:: 只在非 GHA 环境下暂停，方便本地查看结果
+if not "%GITHUB_ACTIONS%"=="true" pause
