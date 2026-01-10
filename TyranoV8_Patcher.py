@@ -37,7 +37,7 @@ class Colors:
 # ================= 多语言字典 =================
 LANG_DICT = {
     'cn': {
-        'title': " 恶魔链接本地化工具 (NCC Bundled Ver) by 呜咪 ",
+        'title': " 恶魔链接本地化工具 by 呜咪 ",
         'step1': "[第一步] 目录检查...",
         'err_exe': "❌ 错误: 未找到游戏主程序",
         'err_res': "❌ 错误: 未找到 'resources' 文件夹",
@@ -78,7 +78,7 @@ LANG_DICT = {
         'miss_script': "[Debug] 缺失 Asar脚本:",
     },
     'en': {
-        'title': " Devil Connection Localization Tool (NCC Ver) by KouzakiUmi ",
+        'title': " Devil Connection Localization Tool by KouzakiUmi ",
         'step1': "[Step 1] Directory Check...",
         'err_exe': "❌ Error: Game executable not found",
         'err_res': "❌ Error: 'resources' folder not found",
@@ -119,7 +119,7 @@ LANG_DICT = {
         'miss_script': "[Debug] Missing Script:",
     },
     'jp': {
-        'title': " Devil Connection ローカライズツール (NCC版) by 神前海 ",
+        'title': " でびるコネクション ローカライズツール by 神前海 ",
         'step1': "[ステップ 1] ディレクトリ確認...",
         'err_exe': "❌ エラー: ゲーム本体が見つかりません",
         'err_res': "❌ エラー: 'resources' フォルダが見つかりません",
