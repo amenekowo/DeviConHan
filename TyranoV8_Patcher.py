@@ -1,13 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-恶魔链接本地化工具 (Ultimate Polished Ver)
+恶魔链接本地化工具 (Final Release Ver)
 作者: 呜咪 (KouzakiUmi)
 功能: 
   1. 智能环境检测 + 倒计时自动选择
   2. 动态磁盘空间预检 (原地操作算法)
   3. 原地备份 (Rename) + 跨平台文件兼容
   4. 存档自动备份 (倒计时取消)
-  5. 双重残留清理 (即时清理 + 退出兜底)
+  5. 预防性 Fuse 移除 (以防万一)
+  6. 双重残留清理 (即时清理 + 退出兜底)
 """
 
 import os
@@ -44,7 +45,7 @@ class Colors:
 # ================= 多语言字典 =================
 LANG_DICT = {
     'cn': {
-        'title': " 恶魔链接本地化工具 (最终形态) by 呜咪 ",
+        'title': " 恶魔链接本地化工具 (最终版) by 呜咪 ",
         'step1': "[第一步] 目录检查...",
         'err_exe': "❌ 错误: 未找到游戏主程序",
         'err_res': "❌ 错误: 未找到 'resources' 文件夹",
@@ -82,8 +83,11 @@ LANG_DICT = {
         'no_patch_dir': "未找到 patch_data 文件夹",
         'pack_err': "打包未生成文件",
         'finishing': "[收尾] 正在应用新文件...",
-        'fuse_ok': "✓ 成功移除 Electron 完整性校验。",
-        'fuse_skip': "✓ 校验位已经是关闭状态。",
+        # === Fuse 文案更新 ===
+        'fuse_ok': "✓ 成功移除 Electron 完整性校验 (以防万一)。",
+        'fuse_skip': "✓ 校验位已经是关闭状态 (以防万一)。",
+        'fuse_not_found': "-> 未检测到完整性校验位 (跳过)。",
+        # ====================
         'save_bk_auto': ">>> 准备自动备份存档: {}s (按任意键【取消】)",
         'save_bk_skip': "-> 已跳过存档备份。",
         'save_bk_start': "-> 正在备份存档...",
@@ -148,8 +152,11 @@ LANG_DICT = {
         'no_patch_dir': "patch_data folder not found",
         'pack_err': "Packing failed (No file generated)",
         'finishing': "[Finalizing] Applying new files...",
-        'fuse_ok': "✓ Electron integrity check removed.",
-        'fuse_skip': "✓ Integrity check already disabled.",
+        # === Fuse ===
+        'fuse_ok': "✓ Integrity check removed (Just in case).",
+        'fuse_skip': "✓ Integrity check already disabled (Just in case).",
+        'fuse_not_found': "-> No integrity check found (Skipped).",
+        # ============
         'save_bk_auto': ">>> Auto-backup saves in {}s (Press any key to SKIP)",
         'save_bk_skip': "-> Save backup skipped.",
         'save_bk_start': "-> Creating save backup...",
@@ -214,8 +221,11 @@ LANG_DICT = {
         'no_patch_dir': "patch_data フォルダが見つかりません",
         'pack_err': "パック生成失敗",
         'finishing': "[仕上げ] ファイル置換中...",
-        'fuse_ok': "✓ Electron 整合性チェックを解除しました。",
-        'fuse_skip': "✓ 整合性チェックは既に無効です。",
+        # === Fuse ===
+        'fuse_ok': "✓ 整合性チェックを解除しました (念のため)。",
+        'fuse_skip': "✓ 整合性チェックは既に無効です (念のため)。",
+        'fuse_not_found': "-> 整合性チェックは見つかりませんでした (スキップ)。",
+        # ============
         'save_bk_auto': ">>> セーブデータをバックアップします: {}秒 (キーを押して【キャンセル】)",
         'save_bk_skip': "-> バックアップをスキップしました。",
         'save_bk_start': "-> バックアップを作成中...",
@@ -322,15 +332,10 @@ def calculate_needed_space(resources_dir, patch_dir):
     size_patch = get_folder_size(patch_dir)
     
     total_needed = 0
-    # 1. 解压临时文件 (通常比原文件大，给 1.5 倍余量)
-    total_needed += (size_asar * 1.5)
-    # 2. 打包生成新文件
-    total_needed += (size_asar * 1.5)
-    # 3. 补丁文件大小
+    total_needed += (size_asar * 1.5) # 解压
+    total_needed += (size_asar * 1.5) # 打包
     total_needed += size_patch
-    # 4. 安全缓冲
-    total_needed += (200 * 1024 * 1024)
-    # 注：原地Rename备份不占用额外空间，故不计入
+    total_needed += (200 * 1024 * 1024) # 缓冲
     
     return total_needed
 
@@ -479,7 +484,10 @@ def disable_integrity_fuse(exe_path):
             with open(exe_path, 'r+b') as f:
                 with mmap.mmap(f.fileno(), 0) as mm:
                     offset = mm.find(FUSE_SENTINEL)
-                    if offset == -1: return True 
+                    if offset == -1: 
+                        log(TR['fuse_not_found']) # 未找到提示
+                        return True 
+                    
                     target = offset + 34 + 4
                     if target < mm.size() and mm[target:target+1] == b'\x31':
                         mm[target:target+1] = b'\x30'
