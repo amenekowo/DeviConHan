@@ -190,6 +190,22 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
 4. Place translation files into the `Patch` folder.
 5. Run **`Pack.cmd`** in the root directory.
 
+### 🇯🇵 日本語
+開発者の方、またはご自身でパッチをビルドしたい方向けの情報です。一般のプレイヤーの方は Releases からダウンロードしてください。
+
+**技術スタック:**
+* **Node.js**: `tools/` ディレクトリに内蔵。Asar操作に使用します。
+* **PyInstaller**: Pythonスクリプト、Node環境、パッチリソースを単一の `.exe` にパッケージ化します。
+* **堅牢な設計**: ファイルロックの循環検出、動的なディスク容量計算、アトミックなファイル操作などの保護ロジックを搭載しています。
+
+**ソースコードからのビルド方法:**
+1. リポジトリをクローンします。
+2. `tools/` ディレクトリに `node.exe` と `bundled_asar/index.mjs` があることを確認します。
+3. 依存関係をインストール: `pip install pyinstaller`
+4. 翻訳済みリソースを `Patch` フォルダに配置します。
+5. ルートディレクトリにある **`Pack.cmd`** を実行します。
+6. `dist/` フォルダに生成されたプログラムが出力されます。
+
 ---
 
 ## 📄 License / ライセンス
