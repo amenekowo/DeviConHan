@@ -83,7 +83,9 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
    - 文件名通常为：`DevilConnection_Localization_Tool.exe`
 3. **安装**：
     - 将下载的 `.exe` 文件直接放入游戏根目录（即包含 `DevilConnection.exe` 的文件夹）。
-    - 双击运行该程序（无需解压）。根据提示输入 `2` 选择内置环境，然后按提示操作即可。
+    - 双击运行该程序。
+    - **环境选择**：通常推荐选择 `[2] 内置环境`。
+    - *（注：如果您已自行配置了 Node.js 系统环境，也可选择 `[1]`）*。
 4. **开始游戏**：从 Steam 启动，或者在 Steam 运行时直接从 `DevilConnection.exe` 启动游戏。
 
 ### 🇺🇸 English
@@ -92,7 +94,9 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
    - Filename: `DevilConnection_Localization_Tool.exe`
 3. **Install**:
     - Place the downloaded `.exe` file directly into the game's root directory (where `DevilConnection.exe` is located).
-    - Run the executable directly. Select option `2` (Bundled Env) and follow the prompts.
+    - Run the executable directly.
+    - **Selection**: We recommend selecting `[2] Bundled Env`.
+    - *(Note: Advanced users with a configured local Node.js environment may select `[1]`)*.
 4. **Launch**: Start the game via Steam, or run `DevilConnection.exe` directly while Steam is running.
 
 ### 🇯🇵 日本語
@@ -101,7 +105,9 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
    - ファイル名：`DevilConnection_Localization_Tool.exe`
 3. **インストール**:
     - ダウンロードした `.exe` ファイルをそのままゲームのルートフォルダ（`DevilConnection.exe` がある場所）に配置してください。
-    - プログラムを直接実行します。選択肢 `2` (内蔵環境) を選び、画面の指示に従ってください。
+    - プログラムを直接実行します。
+    - **環境選択**: 通常は `[2] 内蔵環境` (Bundled Env) を推奨します。
+    - *（注：ご自身でNode.js環境を構築済みの方は `[1]` も選択可能です）*。
 4. **起動**: Steam から起動するか、Steam が起動している状態で `DevilConnection.exe` を直接実行してください。
 
 ---
