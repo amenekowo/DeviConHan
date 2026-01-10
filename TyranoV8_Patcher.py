@@ -13,7 +13,8 @@ import traceback
 import stat
 import io
 import ctypes
-import msvcrt  # Windows 专属库
+import msvcrt
+import datetime # 新增：用于生成时间戳
 
 # ================= 配置常量 =================
 GAME_EXE_NAME = "DevilConnection.exe"
@@ -69,6 +70,9 @@ LANG_DICT = {
         'finishing': "[收尾] 正在替换文件...",
         'fuse_ok': "✓ 成功移除 Electron 完整性校验。",
         'fuse_skip': "✓ 校验位已经是关闭状态。",
+        'ask_save_bk': "是否备份存档文件 (_storage)？(y/n) [推荐y]: ",
+        'save_bk_done': "✓ 存档已备份至:",
+        'save_bk_err': "⚠️ 存档备份失败 (可能无权限):",
         'success': "\n✅ 本地化安装成功！",
         'err_perm': "❌ 文件被占用或权限不足",
         'exit': "\n按任意键退出...", 
@@ -113,6 +117,9 @@ LANG_DICT = {
         'finishing': "[Finalizing] Replacing files...",
         'fuse_ok': "✓ Electron integrity check removed.",
         'fuse_skip': "✓ Integrity check already disabled.",
+        'ask_save_bk': "Backup save data (_storage)? (y/n) [Recommended y]: ",
+        'save_bk_done': "✓ Save data backed up to:",
+        'save_bk_err': "⚠️ Save backup failed:",
         'success': "\n✅ Localization Installed Successfully!",
         'err_perm': "❌ Permission denied or file in use",
         'exit': "\nPress any key to exit...", 
@@ -157,6 +164,9 @@ LANG_DICT = {
         'finishing': "[仕上げ] ファイル置換中...",
         'fuse_ok': "✓ Electron 整合性チェックを解除しました。",
         'fuse_skip': "✓ 整合性チェックは既に無効です。",
+        'ask_save_bk': "セーブデータ (_storage) をバックアップしますか？ (y/n) [推奨 y]: ",
+        'save_bk_done': "✓ セーブデータをバックアップしました:",
+        'save_bk_err': "⚠️ バックアップ失敗:",
         'success': "\n✅ ローカライズ完了！",
         'err_perm': "❌ 書き込み権限がないか、ファイルが使用中です",
         'exit': "\n何かキーを押して終了...", 
@@ -197,7 +207,7 @@ def log(msg):
         print(f"{Colors.YELLOW}{msg}{Colors.RESET}")
     elif "->" in msg or "[" in msg:
         print(f"{Colors.CYAN}{msg}{Colors.RESET}")
-    elif "💡" in msg: # 提示类高亮
+    elif "💡" in msg:
         print(f"{Colors.CYAN}{msg}{Colors.RESET}")
     else:
         print(msg)
@@ -337,7 +347,6 @@ def main():
     log(f"   Language: {CURRENT_LANG_CODE.upper()}")
     log("==========================================")
     
-    # 优化 1: 获取真实的 EXE 所在目录，防止因快捷方式启动导致路径错误
     if getattr(sys, 'frozen', False):
         base_dir = os.path.dirname(os.path.abspath(sys.executable))
     else:
@@ -353,15 +362,14 @@ def main():
     if not os.path.exists(resources_dir):
         log(f"\n{TR['err_res']}"); pause_exit(); sys.exit(1)
     
-    # 优化 2: 提前检测文件占用 (通过尝试追加模式打开文件)
-    # 如果游戏正在运行，这一步会直接抛出 PermissionError
+    # 检测占用
     asar_file = os.path.join(resources_dir, 'app.asar')
     if os.path.exists(asar_file):
         try:
             with open(asar_file, 'ab'): pass
         except PermissionError:
             log(f"\n{TR['warn_running']}"); pause_exit(); sys.exit(1)
-        except: pass # 其他错误暂时忽略，留给后面处理
+        except: pass
 
     log(TR['pass_dir'])
 
@@ -388,10 +396,9 @@ def main():
     patch_dir = get_resource_path('patch_data')
     if not os.path.exists(patch_dir): patch_dir = os.path.join(base_dir, 'patch_data')
 
-    # 3. 检查文件状态 (新增：核心文件缺失检测)
+    # 3. 检查文件状态
     log(f"\n{TR['step3']}")
     
-    # 优化 3: 如果既没有原文件，也没有备份，说明文件完全丢失
     if not os.path.exists(asar_file) and not os.path.exists(asar_backup):
         log(f"\n{TR['err_no_asar']}")
         log(f"{TR['steam_guide']}")
@@ -472,6 +479,24 @@ def main():
             
             disable_integrity_fuse(game_exe_path)
             log(TR['success'])
+
+            # 6. 存档备份 (采用时间戳备份，不覆盖旧备份)
+            storage_dir = os.path.join(base_dir, '_storage')
+            if os.path.exists(storage_dir):
+                print("") # 美观空行
+                bk_save = user_input(TR['ask_save_bk']).strip().lower()
+                if bk_save == '' or bk_save == 'y':
+                    try:
+                        # 生成带时间戳的文件夹名，如: _storage_backup_20231027_123000
+                        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+                        bk_folder_name = f"_storage_backup_{timestamp}"
+                        bk_dir = os.path.join(base_dir, bk_folder_name)
+                        
+                        shutil.copytree(storage_dir, bk_dir)
+                        log(f"{TR['save_bk_done']} {bk_folder_name}")
+                    except Exception as e:
+                        log(f"{TR['save_bk_err']} {e}")
+
         except OSError as e:
             log(f"{TR['err_perm']}: {e}")
 
