@@ -292,6 +292,39 @@ def get_folder_size(start_path):
     except: pass
     return total_size
 
+def calculate_needed_space(resources_dir, patch_dir):
+    """
+    智能计算所需空间 (字节)
+    """
+    asar_path = os.path.join(resources_dir, 'app.asar')
+    unpacked_path = os.path.join(resources_dir, 'app.asar.unpacked')
+    
+    # 基础大小
+    size_asar = os.path.getsize(asar_path) if os.path.exists(asar_path) else 0
+    size_unpacked = get_folder_size(unpacked_path) if os.path.exists(unpacked_path) else 0
+    size_patch = get_folder_size(patch_dir)
+    
+    total_needed = 0
+    
+    # 1. 备份需求: 仅当备份不存在时才需要空间
+    asar_bk = asar_path + ".bak"
+    if not os.path.exists(asar_bk):
+        total_needed += (size_asar + size_unpacked)
+    
+    # 2. 解压需求: 解压临时文件 (通常比原文件大，给 1.5 倍余量)
+    total_needed += (size_asar * 1.5)
+    
+    # 3. 打包需求: 生成新文件
+    total_needed += (size_asar * 1.5)
+    
+    # 4. 补丁文件大小
+    total_needed += size_patch
+    
+    # 5. 安全缓冲 (200MB)
+    total_needed += (200 * 1024 * 1024)
+    
+    return total_needed
+
 def check_disk_space(target_dir, required_bytes):
     """检测磁盘空间是否足够"""
     try:
@@ -300,6 +333,7 @@ def check_disk_space(target_dir, required_bytes):
         required_mb = required_bytes / (1024 * 1024)
         free_mb = free / (1024 * 1024)
         
+        # 允许 50MB 的计算误差，如果真的非常极限再报错
         if free < required_bytes:
             log(f"\n{TR['err_disk_full']}")
             print(TR['disk_info'].format(required_mb, free_mb))
@@ -421,7 +455,6 @@ class AsarTool:
     def pack(self, src, dest):
         src = os.path.abspath(src)
         dest = os.path.abspath(dest)
-        # 兼容性修复
         unpack_pattern = "*.{node,dll,so,dylib,exe,bin}"
         log(TR['preparing_pk'])
         
@@ -473,6 +506,8 @@ def main():
     game_exe_path = os.path.join(base_dir, GAME_EXE_NAME)
     resources_dir = os.path.join(base_dir, 'resources')
     temp_extract_dir = os.path.join(base_dir, 'temp_extracted_asar')
+    patch_dir = get_resource_path('patch_data')
+    if not os.path.exists(patch_dir): patch_dir = os.path.join(base_dir, 'patch_data')
 
     try:
         # 0. 目录检查
@@ -482,11 +517,9 @@ def main():
         if not os.path.exists(resources_dir):
             log(f"\n{TR['err_res']}"); pause_exit(); sys.exit(1)
         
-        # 磁盘空间检查 (新增)
-        # 预估需求: resources文件夹大小 * 3 (备份+解包+打包) + 500MB 缓冲
-        res_size = get_folder_size(resources_dir)
-        required_space = (res_size * 3) + (500 * 1024 * 1024)
-        if not check_disk_space(base_dir, required_space):
+        # 0.1 磁盘空间检查 (智能计算)
+        needed_space = calculate_needed_space(resources_dir, patch_dir)
+        if not check_disk_space(base_dir, needed_space):
             pause_exit()
             sys.exit(1)
 
@@ -562,10 +595,8 @@ def main():
         asar_backup = asar_file + ".bak"
         unpacked_dir = os.path.join(resources_dir, 'app.asar.unpacked')
         unpacked_backup = unpacked_dir + ".bak"
-        patch_dir = get_resource_path('patch_data')
-        if not os.path.exists(patch_dir): patch_dir = os.path.join(base_dir, 'patch_data')
 
-        # 3. 检查文件状态
+        # 3. 检查文件状态 (带重试循环)
         log(f"\n{TR['step3']}")
         
         if not os.path.exists(asar_file) and not os.path.exists(asar_backup):
