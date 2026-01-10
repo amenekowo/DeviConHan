@@ -14,7 +14,8 @@ import stat
 import io
 import ctypes
 import msvcrt
-import datetime # 新增：用于生成时间戳
+import datetime
+import time
 
 # ================= 配置常量 =================
 GAME_EXE_NAME = "DevilConnection.exe"
@@ -42,7 +43,11 @@ LANG_DICT = {
         'err_exe': "❌ 错误: 未找到游戏主程序",
         'err_res': "❌ 错误: 未找到 'resources' 文件夹",
         'pass_dir': "✓ 目录检查通过",
-        'warn_running': "⚠️ 检测到文件被占用！请先关闭游戏。",
+        'lock_title': "⚠️ 错误: 文件被占用或无权限 (PermissionError)",
+        'lock_msg1': "请尝试以下解决方案：",
+        'lock_step1': "1. 请务必关闭游戏、Steam 以及相关文件夹。",
+        'lock_step2': "2. 如果依然无效，请重启电脑后再试。",
+        'lock_retry': ">>> 确保关闭后，按任意键重试...",
         'step2': "[第二步] 选择工作环境:",
         'sys_env': "系统环境",
         'in_env': "内置环境",
@@ -89,7 +94,11 @@ LANG_DICT = {
         'err_exe': "❌ Error: Game executable not found",
         'err_res': "❌ Error: 'resources' folder not found",
         'pass_dir': "✓ Directory check passed",
-        'warn_running': "⚠️ Files are locked! Please close the game first.",
+        'lock_title': "⚠️ Error: File Locked or Permission Denied!",
+        'lock_msg1': "Please try the following:",
+        'lock_step1': "1. Close the game, Steam, and related folders.",
+        'lock_step2': "2. If fails, restart your computer.",
+        'lock_retry': ">>> Press any key to RETRY after closing...",
         'step2': "[Step 2] Select Environment:",
         'sys_env': "System Env",
         'in_env': "Bundled Env",
@@ -136,7 +145,11 @@ LANG_DICT = {
         'err_exe': "❌ エラー: ゲーム本体が見つかりません",
         'err_res': "❌ エラー: 'resources' フォルダが見つかりません",
         'pass_dir': "✓ 確認完了",
-        'warn_running': "⚠️ ファイルが使用中です！ゲームを終了してください。",
+        'lock_title': "⚠️ エラー: ファイルが使用中、または権限がありません！",
+        'lock_msg1': "以下の解決策をお試しください：",
+        'lock_step1': "1. ゲーム、Steam、関連フォルダを閉じてください。",
+        'lock_step2': "2. 解決しない場合は、PCを再起動してください。",
+        'lock_retry': ">>> 準備ができたら、何かキーを押して再試行...",
         'step2': "[ステップ 2] 環境選択:",
         'sys_env': "システム環境",
         'in_env': "内蔵環境",
@@ -207,7 +220,7 @@ def log(msg):
         print(f"{Colors.YELLOW}{msg}{Colors.RESET}")
     elif "->" in msg or "[" in msg:
         print(f"{Colors.CYAN}{msg}{Colors.RESET}")
-    elif "💡" in msg:
+    elif "💡" in msg or ">>>" in msg:
         print(f"{Colors.CYAN}{msg}{Colors.RESET}")
     else:
         print(msg)
@@ -230,6 +243,19 @@ def get_resource_path(relative_path):
 def remove_readonly(func, path, excinfo):
     os.chmod(path, stat.S_IWRITE)
     func(path)
+
+# ================= 错误处理装饰器 =================
+def handle_permission_error():
+    """统一处理文件占用，循环等待直到用户解决或放弃"""
+    print("")
+    log(f"{TR['lock_title']}")
+    print(f"   {TR['lock_msg1']}")
+    print(f"   {TR['lock_step1']}")
+    print(f"   {TR['lock_step2']}")
+    print(f"\n{TR['lock_retry']}", end="")
+    sys.stdout.flush()
+    msvcrt.getch() # 等待按键
+    print("\n")
 
 # ================= Asar 工具类 =================
 class AsarTool:
@@ -273,26 +299,41 @@ class AsarTool:
             log(TR['set_in'])
 
     def _run_asar_cmd(self, cmd, shell_mode, task_name):
-        try:
-            log(f"{TR['processing']} {task_name}...")
-            process = subprocess.Popen(
-                cmd, shell=shell_mode, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                text=True, encoding='utf-8', errors='replace', bufsize=1,
-                creationflags=0x08000000
-            )
-            while True:
-                output = process.stdout.readline()
-                if output == '' and process.poll() is not None: break
-                if output:
-                    print(output.rstrip())
-                    sys.stdout.flush()
+        # 针对 Asar 操作的重试循环
+        while True:
+            try:
+                log(f"{TR['processing']} {task_name}...")
+                process = subprocess.Popen(
+                    cmd, shell=shell_mode, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                    text=True, encoding='utf-8', errors='replace', bufsize=1,
+                    creationflags=0x08000000
+                )
+                while True:
+                    output = process.stdout.readline()
+                    if output == '' and process.poll() is not None: break
+                    if output:
+                        print(output.rstrip())
+                        sys.stdout.flush()
 
-            if process.returncode != 0:
-                log(f"\n❌ {task_name} {TR['task_fail']} {process.returncode})")
-                raise Exception(f"{task_name} Error")
-        except Exception as e:
-            if not isinstance(e, Exception): log(f"❌ Error: {str(e)}")
-            raise e
+                if process.returncode != 0:
+                    # 如果错误码非0，有可能是文件占用，但 Asar 通常会报错信息
+                    # 这里直接抛出异常，外层看是否是 PermissionError (不太可能)，
+                    # 主要是 Asar 自己会报错
+                    log(f"\n❌ {task_name} {TR['task_fail']} {process.returncode})")
+                    raise Exception(f"{task_name} Error")
+                
+                # 成功则跳出循环
+                break 
+
+            except Exception as e:
+                # 检查是否是 Python 层的权限错误，或者是 Asar 报的 EBUSY
+                err_str = str(e)
+                if "PermissionError" in err_str or "EBUSY" in err_str:
+                    handle_permission_error()
+                    continue # 重试
+                else:
+                    if not isinstance(e, Exception): log(f"❌ Error: {str(e)}")
+                    raise e
 
     def extract(self, src, dest):
         src = os.path.abspath(src)
@@ -325,19 +366,25 @@ class AsarTool:
 # ================= 辅助功能 =================
 def disable_integrity_fuse(exe_path):
     log(f"[Fuse] Scanning: {os.path.basename(exe_path)}")
-    try:
-        if os.path.exists(exe_path): os.chmod(exe_path, stat.S_IWRITE)
-        with open(exe_path, 'r+b') as f:
-            with mmap.mmap(f.fileno(), 0) as mm:
-                offset = mm.find(FUSE_SENTINEL)
-                if offset == -1: return True 
-                target = offset + 34 + 4
-                if target < mm.size() and mm[target:target+1] == b'\x31':
-                    mm[target:target+1] = b'\x30'
-                    log(TR['fuse_ok'])
-                else:
-                    log(TR['fuse_skip'])
-    except Exception as e: log(f"[Warning] Fuse Error: {e}")
+    while True:
+        try:
+            if os.path.exists(exe_path): os.chmod(exe_path, stat.S_IWRITE)
+            with open(exe_path, 'r+b') as f:
+                with mmap.mmap(f.fileno(), 0) as mm:
+                    offset = mm.find(FUSE_SENTINEL)
+                    if offset == -1: return True 
+                    target = offset + 34 + 4
+                    if target < mm.size() and mm[target:target+1] == b'\x31':
+                        mm[target:target+1] = b'\x30'
+                        log(TR['fuse_ok'])
+                    else:
+                        log(TR['fuse_skip'])
+            break # 成功
+        except PermissionError:
+            handle_permission_error()
+        except Exception as e:
+            log(f"[Warning] Fuse Error: {e}")
+            break
     return True
 
 # ================= 主程序流程 =================
@@ -362,14 +409,15 @@ def main():
     if not os.path.exists(resources_dir):
         log(f"\n{TR['err_res']}"); pause_exit(); sys.exit(1)
     
-    # 检测占用
+    # 初始占用检测
     asar_file = os.path.join(resources_dir, 'app.asar')
     if os.path.exists(asar_file):
-        try:
-            with open(asar_file, 'ab'): pass
-        except PermissionError:
-            log(f"\n{TR['warn_running']}"); pause_exit(); sys.exit(1)
-        except: pass
+        while True:
+            try:
+                with open(asar_file, 'ab'): pass
+                break
+            except PermissionError:
+                handle_permission_error()
 
     log(TR['pass_dir'])
 
@@ -396,7 +444,7 @@ def main():
     patch_dir = get_resource_path('patch_data')
     if not os.path.exists(patch_dir): patch_dir = os.path.join(base_dir, 'patch_data')
 
-    # 3. 检查文件状态
+    # 3. 检查文件状态 (带重试循环)
     log(f"\n{TR['step3']}")
     
     if not os.path.exists(asar_file) and not os.path.exists(asar_backup):
@@ -404,33 +452,37 @@ def main():
         log(f"{TR['steam_guide']}")
         pause_exit(); sys.exit(1)
 
-    try:
-        if os.path.exists(asar_file) and not os.path.exists(asar_backup):
-            log(TR['bk_create'])
-            shutil.copy2(asar_file, asar_backup)
-            if os.path.exists(unpacked_dir): shutil.copytree(unpacked_dir, unpacked_backup)
-            log(TR['bk_done'])
-        elif not os.path.exists(asar_file) and os.path.exists(asar_backup):
-            log(TR['bk_rest'])
-            shutil.copy2(asar_backup, asar_file)
-            if os.path.exists(unpacked_backup):
-                if os.path.exists(unpacked_dir): shutil.rmtree(unpacked_dir, onerror=remove_readonly)
-                shutil.copytree(unpacked_backup, unpacked_dir)
-            log(TR['bk_rest_done'])
-        elif os.path.exists(asar_file) and os.path.exists(asar_backup):
-            verify = user_input(TR['ask_pure']).strip().lower()
-            if verify == '' or verify == 'y':
-                log(TR['rest_pure'])
-                if os.path.exists(asar_file):
-                    os.chmod(asar_file, stat.S_IWRITE)
-                    os.remove(asar_file)
+    while True:
+        try:
+            if os.path.exists(asar_file) and not os.path.exists(asar_backup):
+                log(TR['bk_create'])
+                shutil.copy2(asar_file, asar_backup)
+                if os.path.exists(unpacked_dir): shutil.copytree(unpacked_dir, unpacked_backup)
+                log(TR['bk_done'])
+            elif not os.path.exists(asar_file) and os.path.exists(asar_backup):
+                log(TR['bk_rest'])
                 shutil.copy2(asar_backup, asar_file)
                 if os.path.exists(unpacked_backup):
                     if os.path.exists(unpacked_dir): shutil.rmtree(unpacked_dir, onerror=remove_readonly)
                     shutil.copytree(unpacked_backup, unpacked_dir)
-                log(TR['rest_pure_done'])
-    except Exception as e:
-        log(f"\n{TR['err_bk']} {e}"); pause_exit(); sys.exit(1)
+                log(TR['bk_rest_done'])
+            elif os.path.exists(asar_file) and os.path.exists(asar_backup):
+                verify = user_input(TR['ask_pure']).strip().lower()
+                if verify == '' or verify == 'y':
+                    log(TR['rest_pure'])
+                    if os.path.exists(asar_file):
+                        os.chmod(asar_file, stat.S_IWRITE)
+                        os.remove(asar_file)
+                    shutil.copy2(asar_backup, asar_file)
+                    if os.path.exists(unpacked_backup):
+                        if os.path.exists(unpacked_dir): shutil.rmtree(unpacked_dir, onerror=remove_readonly)
+                        shutil.copytree(unpacked_backup, unpacked_dir)
+                    log(TR['rest_pure_done'])
+            break # 成功跳出
+        except PermissionError:
+            handle_permission_error()
+        except Exception as e:
+            log(f"\n{TR['err_bk']} {e}"); pause_exit(); sys.exit(1)
 
     # 4. 执行
     log(f"\n{TR['start']}")
@@ -440,7 +492,12 @@ def main():
 
     success = False
     try:
-        if os.path.exists(temp_extract_dir): shutil.rmtree(temp_extract_dir, onerror=remove_readonly)
+        # 清理临时目录 (带重试)
+        while True:
+            try:
+                if os.path.exists(temp_extract_dir): shutil.rmtree(temp_extract_dir, onerror=remove_readonly)
+                break
+            except PermissionError: handle_permission_error()
         
         tool.extract(asar_file, temp_extract_dir)
         
@@ -459,46 +516,54 @@ def main():
         log(f"\n❌ Error: {e}")
         traceback.print_exc()
     
-    # 5. 收尾
+    # 5. 收尾 (替换文件带重试)
+    # 删除临时目录不强求成功
     if os.path.exists(temp_extract_dir):
         try: shutil.rmtree(temp_extract_dir, onerror=remove_readonly)
         except: pass 
 
     if success:
-        try:
-            log(f"\n{TR['finishing']}")
-            if os.path.exists(asar_file): 
-                os.chmod(asar_file, stat.S_IWRITE)
-                os.remove(asar_file)
-            
-            os.rename(temp_output_asar, asar_file)
-            
-            if os.path.exists(temp_output_unpacked):
-                if os.path.exists(unpacked_dir): shutil.rmtree(unpacked_dir, onerror=remove_readonly)
-                os.rename(temp_output_unpacked, unpacked_dir)
-            
-            disable_integrity_fuse(game_exe_path)
-            log(TR['success'])
+        log(f"\n{TR['finishing']}")
+        while True:
+            try:
+                if os.path.exists(asar_file): 
+                    os.chmod(asar_file, stat.S_IWRITE)
+                    os.remove(asar_file)
+                
+                os.rename(temp_output_asar, asar_file)
+                
+                if os.path.exists(temp_output_unpacked):
+                    if os.path.exists(unpacked_dir): shutil.rmtree(unpacked_dir, onerror=remove_readonly)
+                    os.rename(temp_output_unpacked, unpacked_dir)
+                
+                # 如果成功，跳出循环
+                break
+            except PermissionError:
+                handle_permission_error()
+            except OSError as e:
+                # 可能是其他 IO 错误
+                log(f"{TR['err_perm']}: {e}")
+                # 这种情况也可能是占用，尝试作为占用处理
+                handle_permission_error()
 
-            # 6. 存档备份 (采用时间戳备份，不覆盖旧备份)
-            storage_dir = os.path.join(base_dir, '_storage')
-            if os.path.exists(storage_dir):
-                print("") # 美观空行
-                bk_save = user_input(TR['ask_save_bk']).strip().lower()
-                if bk_save == '' or bk_save == 'y':
-                    try:
-                        # 生成带时间戳的文件夹名，如: _storage_backup_20231027_123000
-                        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-                        bk_folder_name = f"_storage_backup_{timestamp}"
-                        bk_dir = os.path.join(base_dir, bk_folder_name)
-                        
-                        shutil.copytree(storage_dir, bk_dir)
-                        log(f"{TR['save_bk_done']} {bk_folder_name}")
-                    except Exception as e:
-                        log(f"{TR['save_bk_err']} {e}")
+        disable_integrity_fuse(game_exe_path)
+        log(TR['success'])
 
-        except OSError as e:
-            log(f"{TR['err_perm']}: {e}")
+        # 6. 存档备份
+        storage_dir = os.path.join(base_dir, '_storage')
+        if os.path.exists(storage_dir):
+            print("")
+            bk_save = user_input(TR['ask_save_bk']).strip().lower()
+            if bk_save == '' or bk_save == 'y':
+                try:
+                    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+                    bk_folder_name = f"_storage_backup_{timestamp}"
+                    bk_dir = os.path.join(base_dir, bk_folder_name)
+                    
+                    shutil.copytree(storage_dir, bk_dir)
+                    log(f"{TR['save_bk_done']} {bk_folder_name}")
+                except Exception as e:
+                    log(f"{TR['save_bk_err']} {e}")
 
     pause_exit()
 
