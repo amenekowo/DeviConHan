@@ -49,11 +49,9 @@ LANG_DICT = {
         'lock_step2': "2. 如果依然无效，请重启电脑后再试。",
         'lock_retry': ">>> 确保关闭后，按任意键重试...",
         'step2': "[第二步] 选择工作环境:",
-        # === 新增倒计时文案 ===
         'auto_count': ">>> 默认使用内置环境，倒计时: {} 秒 (按任意键手动配置)",
         'auto_done': "-> 倒计时结束，自动选择: [2] 内置环境",
         'dev_enter': "-> 检测到按键，进入开发者配置模式...",
-        # ====================
         'sys_env': "系统环境",
         'in_env': "内置环境",
         'avail': "可用",
@@ -98,6 +96,9 @@ LANG_DICT = {
         'clean_temp': "🧹 正在清理临时文件...",
         'sys_check_fail': "❌ 检测到 Node.js 但未安装 asar 全局命令。",
         'sys_install_hint': "💡 请运行: npm install -g @electron/asar 或使用内置环境。",
+        'disk_check': "[磁盘检查] 正在计算所需空间...",
+        'err_disk_full': "❌ 错误: 磁盘空间不足！",
+        'disk_info': "   需要: {:.2f} MB, 可用: {:.2f} MB",
     },
     'en': {
         'title': " Devil Connection Localization Tool by KouzakiUmi ",
@@ -158,6 +159,9 @@ LANG_DICT = {
         'clean_temp': "🧹 Cleaning up temporary files...",
         'sys_check_fail': "❌ Node.js found but global 'asar' command missing.",
         'sys_install_hint': "💡 Run: npm install -g @electron/asar OR use Bundled Env.",
+        'disk_check': "[Disk Check] Calculating space...",
+        'err_disk_full': "❌ Error: Insufficient disk space!",
+        'disk_info': "   Required: {:.2f} MB, Available: {:.2f} MB",
     },
     'jp': {
         'title': " でびるコネクション ローカライズツール by 神前海 ",
@@ -218,6 +222,9 @@ LANG_DICT = {
         'clean_temp': "🧹 一時ファイルを削除しています...",
         'sys_check_fail': "❌ Node.js はありますが、asar コマンドが見つかりません。",
         'sys_install_hint': "💡 実行: npm install -g @electron/asar または内蔵環境を使用してください。",
+        'disk_check': "[ディスクチェック] 必要容量を計算中...",
+        'err_disk_full': "❌ エラー: ディスク容量が不足しています！",
+        'disk_info': "   必要: {:.2f} MB, 空き: {:.2f} MB",
     }
 }
 
@@ -272,6 +279,35 @@ def get_resource_path(relative_path):
 def remove_readonly(func, path, excinfo):
     os.chmod(path, stat.S_IWRITE)
     func(path)
+
+def get_folder_size(start_path):
+    """递归计算文件夹大小"""
+    total_size = 0
+    try:
+        for dirpath, dirnames, filenames in os.walk(start_path):
+            for f in filenames:
+                fp = os.path.join(dirpath, f)
+                if not os.path.islink(fp):
+                    total_size += os.path.getsize(fp)
+    except: pass
+    return total_size
+
+def check_disk_space(target_dir, required_bytes):
+    """检测磁盘空间是否足够"""
+    try:
+        log(TR['disk_check'])
+        _, _, free = shutil.disk_usage(target_dir)
+        required_mb = required_bytes / (1024 * 1024)
+        free_mb = free / (1024 * 1024)
+        
+        if free < required_bytes:
+            log(f"\n{TR['err_disk_full']}")
+            print(TR['disk_info'].format(required_mb, free_mb))
+            return False
+        return True
+    except Exception as e:
+        log(f"[Warning] Disk Check Failed: {e}")
+        return True # 如果检测失败，暂且放行
 
 # ================= 错误处理装饰器 =================
 def handle_permission_error():
@@ -446,6 +482,14 @@ def main():
         if not os.path.exists(resources_dir):
             log(f"\n{TR['err_res']}"); pause_exit(); sys.exit(1)
         
+        # 磁盘空间检查 (新增)
+        # 预估需求: resources文件夹大小 * 3 (备份+解包+打包) + 500MB 缓冲
+        res_size = get_folder_size(resources_dir)
+        required_space = (res_size * 3) + (500 * 1024 * 1024)
+        if not check_disk_space(base_dir, required_space):
+            pause_exit()
+            sys.exit(1)
+
         # 初始占用检测
         asar_file = os.path.join(resources_dir, 'app.asar')
         if os.path.exists(asar_file):
@@ -458,40 +502,31 @@ def main():
 
         log(TR['pass_dir'])
 
-        # 1. 环境选择 (自动倒计时 + 手动模式)
+        # 1. 环境选择
         tool = AsarTool()
         has_sys = tool.check_system_available()
         has_bun = tool.check_bundled_available()
 
         log(f"\n{TR['step2']}")
         
-        # 决定是否进入手动模式
         enter_manual_mode = False
         
-        # 如果有内置环境，显示倒计时，否则强制手动
         if has_bun:
-            # 倒计时逻辑
             count_seconds = 3
-            # 使用列表保存状态，以便在循环中断时知道是否按键
             is_interrupted = False
             
-            # 打印初始提示
             print(f"   {TR['auto_count'].format(count_seconds)}", end="", flush=True)
-            
             start_time = time.time()
             while time.time() - start_time < count_seconds:
-                # 重新打印倒计时
                 remaining = int(count_seconds - (time.time() - start_time)) + 1
-                # \r 回车不换行，实现覆盖
                 print(f"\r   {TR['auto_count'].format(remaining)}   ", end="", flush=True)
-                
                 if msvcrt.kbhit():
-                    msvcrt.getch() # 消耗掉按键
+                    msvcrt.getch()
                     is_interrupted = True
                     break
                 time.sleep(0.1)
             
-            print("") # 换行
+            print("") 
             
             if is_interrupted:
                 log(TR['dev_enter'])
@@ -500,10 +535,8 @@ def main():
                 log(TR['auto_done'])
                 tool.set_mode('bundled')
         else:
-            # 没内置环境，强制显示菜单
             enter_manual_mode = True
 
-        # 如果需要手动选择
         if enter_manual_mode:
             log(f"    [1] {TR['sys_env']} ({TR['avail'] if has_sys else TR['unavail']})")
             log(f"    [2] {TR['in_env']} ({TR['avail'] if has_bun else TR['unavail']})")
@@ -532,7 +565,7 @@ def main():
         patch_dir = get_resource_path('patch_data')
         if not os.path.exists(patch_dir): patch_dir = os.path.join(base_dir, 'patch_data')
 
-        # 3. 检查文件状态 (带重试循环)
+        # 3. 检查文件状态
         log(f"\n{TR['step3']}")
         
         if not os.path.exists(asar_file) and not os.path.exists(asar_backup):
@@ -566,7 +599,7 @@ def main():
                             if os.path.exists(unpacked_dir): shutil.rmtree(unpacked_dir, onerror=remove_readonly)
                             shutil.copytree(unpacked_backup, unpacked_dir)
                         log(TR['rest_pure_done'])
-                break # 成功跳出
+                break 
             except PermissionError:
                 handle_permission_error()
             except Exception as e:
@@ -579,7 +612,6 @@ def main():
 
         success = False
         try:
-            # 清理临时目录 (带重试)
             while True:
                 try:
                     if os.path.exists(temp_extract_dir): shutil.rmtree(temp_extract_dir, onerror=remove_readonly)
@@ -600,12 +632,12 @@ def main():
             success = True
 
         except SystemExit:
-            raise
+            raise 
         except Exception as e:
             log(f"\n❌ Error: {e}")
             traceback.print_exc()
         
-        # 5. 收尾 (替换文件带重试)
+        # 5. 收尾
         if success:
             log(f"\n{TR['finishing']}")
             while True:
@@ -620,7 +652,6 @@ def main():
                         if os.path.exists(unpacked_dir): shutil.rmtree(unpacked_dir, onerror=remove_readonly)
                         os.rename(temp_output_unpacked, unpacked_dir)
                     
-                    # 如果成功，跳出循环
                     break
                 except PermissionError:
                     handle_permission_error()
@@ -653,7 +684,6 @@ def main():
         log(f"\n❌ Unexpected Error: {e}")
         traceback.print_exc()
     finally:
-        # === 强制清理临时文件 ===
         if 'temp_extract_dir' in locals() and os.path.exists(temp_extract_dir):
             print("")
             log(TR['clean_temp'])
