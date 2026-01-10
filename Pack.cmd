@@ -27,6 +27,19 @@ if %errorlevel% neq 0 (
     exit
 )
 
+:: 检查是否生成了单文件 (兼容 js/mjs)
+if exist "tools\bundled_asar\index.js" goto :FoundScript
+if exist "tools\bundled_asar\index.mjs" goto :FoundScript
+
+echo [ERROR] 依赖文件丢失!
+echo 已检查: tools\bundled_asar\index.js OR index.mjs
+echo.
+echo 请先运行'ncc build ...'.
+pause
+exit /b
+
+:FoundScript
+
 echo.
 echo [1/3] 正在打包 EXE (包含“tools”和“Patch”)...
 echo ------------------------------------------
@@ -35,8 +48,12 @@ echo ------------------------------------------
 :: 语法说明: --add-data "本地源文件夹;打包内的目标文件夹"
 :: 这里直接把本地的 "Patch" 映射为程序内部的 "patch_data"
 :: name可改为你喜欢的名字
-pyinstaller -F ^
-    --add-data "tools;tools" ^
+pyinstaller -F --clean ^
+    --distpath "dist" ^
+    --workpath "build" ^
+    --specpath "." ^
+    --add-data "tools/node.exe;tools" ^
+    --add-data "tools/bundled_asar;tools/bundled_asar" ^
     --add-data "Patch;patch_data" ^
     --name "恶魔链接呜咪个人汉化包" ^
     TyranoV8_Patcher.py

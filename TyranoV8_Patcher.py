@@ -6,44 +6,39 @@ import mmap
 import subprocess
 import traceback
 import stat
+import io
 from pathlib import Path
 
 # ================= 配置常量 =================
 GAME_EXE_NAME = "DevilConnection.exe"
-# Electron Fuse 特征码
 FUSE_SENTINEL = b'dL7pKGdnNz796PbbjQWNKmHXBZaB9tsX'
 
-# 检测是否在 CI 环境 (GHA)
+# 检测 CI 环境
 IS_CI_ENV = os.getenv('GITHUB_ACTIONS') == 'true' or os.getenv('CI') == 'true'
 
-# ================= 基础兼容配置 =================
-def configure_encoding():
-    """强制控制台输出 UTF-8，防止 GHA Windows 环境报错"""
-    if sys.stdout.encoding != 'utf-8':
-        try:
-            sys.stdout.reconfigure(encoding='utf-8')
-            sys.stderr.reconfigure(encoding='utf-8')
-        except AttributeError:
-            import codecs
-            sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
-            sys.stderr = codecs.getwriter("utf-8")(sys.stderr.detach())
+# ================= 强制 UTF-8 (防止控制台乱码) =================
+if sys.platform.startswith('win'):
+    try:
+        sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+        sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8', errors='replace')
+    except Exception:
+        pass
 
+# ================= 基础工具函数 =================
 def safe_input(prompt):
-    """CI 环境自动跳过交互"""
     if IS_CI_ENV:
         print(f"[CI自动跳过] {prompt} -> 默认选 Y/1")
         return "1"
     return input(prompt)
 
 def safe_pause():
-    """CI 环境不暂停"""
     if IS_CI_ENV:
         print("CI 环境检测到，直接退出。")
     else:
         input("\n按回车键退出...")
 
 def get_resource_path(relative_path):
-    """兼容 PyInstaller 的资源路径获取"""
+    """获取资源绝对路径"""
     try:
         base_path = sys._MEIPASS
     except Exception:
@@ -51,34 +46,36 @@ def get_resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 def remove_readonly(func, path, excinfo):
-    """强制删除只读文件"""
     os.chmod(path, stat.S_IWRITE)
     func(path)
 
-# ================= Asar 工具类 (核心修复版) =================
+# ================= Asar 工具类 (兼容版) =================
 class AsarTool:
     def __init__(self):
         self.mode = None 
         self.node_path = None
         self.asar_script_path = None
+        # 获取 node.exe 绝对路径
         self.bundled_node = get_resource_path(os.path.join("tools", "node.exe"))
+        # 获取我们打包好的单文件 js
         self.bundled_asar = self._locate_asar_script()
 
     def _locate_asar_script(self):
         tools_root = get_resource_path("tools")
         if not os.path.exists(tools_root): return None
         
-        # 优先查找标准路径
-        path_mjs = os.path.join(tools_root, "node_modules", "@electron", "asar", "bin", "asar.mjs")
+        # 【核心修改】兼容两种后缀，优先找 mjs (因为 ncc 默认生成 mjs)
+        # 路径对应: tools/bundled_asar/index.mjs 或 index.js
+        path_mjs = os.path.join(tools_root, "bundled_asar", "index.mjs")
         if os.path.exists(path_mjs): return path_mjs
-        path_js = os.path.join(tools_root, "node_modules", "@electron", "asar", "bin", "asar.js")
+
+        path_js = os.path.join(tools_root, "bundled_asar", "index.js")
         if os.path.exists(path_js): return path_js
+            
+        # 兼容性后备：如果没找到单文件，尝试找 node_modules
+        fallback_mjs = os.path.join(tools_root, "node_modules", "@electron", "asar", "bin", "asar.mjs")
+        if os.path.exists(fallback_mjs): return fallback_mjs
         
-        # 暴力搜索
-        for root, dirs, files in os.walk(tools_root):
-            if os.path.basename(root) == 'bin':
-                if "asar.mjs" in files: return os.path.join(root, "asar.mjs")
-                if "asar.js" in files: return os.path.join(root, "asar.js")
         return None
 
     def check_system_available(self):
@@ -88,7 +85,14 @@ class AsarTool:
         except: return False
 
     def check_bundled_available(self):
-        return os.path.exists(self.bundled_node) and self.bundled_asar and os.path.exists(self.bundled_asar)
+        # 检查 node.exe 和 index.js/mjs 是否都存在
+        node_ok = os.path.exists(self.bundled_node)
+        script_ok = self.bundled_asar and os.path.exists(self.bundled_asar)
+        
+        if not node_ok: print(f"[Debug] 缺失 Node: {self.bundled_node}")
+        if not script_ok: print(f"[Debug] 缺失 Asar脚本: tools/bundled_asar/index.mjs")
+            
+        return node_ok and script_ok
 
     def set_mode(self, mode):
         self.mode = mode
@@ -97,25 +101,21 @@ class AsarTool:
         elif mode == 'bundled':
             self.node_path = self.bundled_node
             self.asar_script_path = self.bundled_asar
-            print("-> 已设定: 使用内置环境")
+            print("-> 已设定: 使用内置环境 (单文件模式)")
 
     def _run_asar_cmd(self, cmd, shell_mode, task_name):
-        """
-        统一执行命令的内核函数
-        修复了日文路径乱码问题，并增加错误日志捕获
-        """
         try:
-            # 关键修复：encoding='utf-8' 确保路径中的日文能正确传给 Node.js
+            # 单文件模式直接跑
             res = subprocess.run(
                 cmd,
                 shell=shell_mode,
-                check=False,          # 手动检查，防止直接崩溃看不到日志
-                capture_output=True,  # 捕获输出
-                text=True,            # 文本模式
-                encoding='utf-8',     # 【核心修复】强制 UTF-8
-                errors='replace',     # 防止解码崩溃
-                stdin=subprocess.DEVNULL, # 切断输入流，防止 CI 卡死
-                creationflags=0x08000000 if os.name == 'nt' else 0 # 隐藏窗口
+                check=False,
+                capture_output=True,
+                text=True,
+                encoding='utf-8',     # 强制 UTF-8 修复日文路径
+                errors='replace',
+                stdin=subprocess.DEVNULL,
+                creationflags=0x08000000 if os.name == 'nt' else 0
             )
             
             if res.returncode != 0:
@@ -128,37 +128,42 @@ class AsarTool:
                 raise Exception(f"{task_name}过程出错，请检查上方日志。")
             
         except Exception as e:
-            if not isinstance(e, Exception): # 捕获非 subprocess 引起的其他异常
+            if not isinstance(e, Exception):
                 print(f"❌ 执行异常: {str(e)}")
             raise e
 
     def extract(self, src, dest):
+        src = os.path.abspath(src)
+        dest = os.path.abspath(dest)
         print(f" -> [解包] {os.path.basename(src)} ...")
+        
         if self.mode == 'system':
             cmd = f'asar extract "{src}" "{dest}"'
             shell_mode = True
         elif self.mode == 'bundled':
+            # 这里的 self.asar_script_path 就是那个 index.js/mjs
             cmd = [self.node_path, self.asar_script_path, 'extract', src, dest]
             shell_mode = False
         
         self._run_asar_cmd(cmd, shell_mode, "解包")
 
     def pack(self, src, dest):
+        src = os.path.abspath(src)
+        dest = os.path.abspath(dest)
         unpack_pattern = "*.{node,dll}"
         print(f" -> [打包] 生成 app.asar ...")
         
-        args = ['pack', src, dest, '--unpack', unpack_pattern]
         if self.mode == 'system':
             extra_args = f'--unpack "{unpack_pattern}"'
             cmd = f'asar pack "{src}" "{dest}" {extra_args}'
             shell_mode = True
         elif self.mode == 'bundled':
-            cmd = [self.node_path, self.asar_script_path] + args
+            cmd = [self.node_path, self.asar_script_path, 'pack', src, dest, '--unpack', unpack_pattern]
             shell_mode = False
-            
+
         self._run_asar_cmd(cmd, shell_mode, "打包")
 
-# ================= 辅助功能 =================
+# ================= 辅助功能 (校验修复) =================
 def disable_integrity_fuse(exe_path):
     print(f"[校验修复] 正在扫描 EXE: {os.path.basename(exe_path)}")
     try:
@@ -169,7 +174,7 @@ def disable_integrity_fuse(exe_path):
             with mmap.mmap(f.fileno(), 0) as mm:
                 offset = mm.find(FUSE_SENTINEL)
                 if offset == -1: 
-                    return True # 没找到也没事，可能不是新版 electron
+                    return True 
                 
                 target = offset + 34 + 4
                 if target < mm.size() and mm[target:target+1] == b'\x31':
@@ -183,9 +188,8 @@ def disable_integrity_fuse(exe_path):
 
 # ================= 主程序 =================
 def main():
-    configure_encoding()
     print("==========================================")
-    print(" 恶魔链接汉化工具 (Final Fix Ver) ")
+    print(" 恶魔链接汉化工具 (NCC Bundled Ver) ")
     print("==========================================")
     
     base_dir = os.getcwd()
@@ -195,9 +199,10 @@ def main():
     # 0. 目录检查
     print("\n[第一步] 目录检查...")
     if not os.path.exists(game_exe_path):
-        print(f"\n❌ 错误: 未找到游戏主程序 '{GAME_EXE_NAME}'"); sys.exit(1)
+        print(f"\n❌ 错误: 未找到游戏主程序 '{GAME_EXE_NAME}'")
+        safe_pause(); sys.exit(1)
     if not os.path.exists(resources_dir):
-        print(f"\n❌ 错误: 未找到 'resources' 文件夹"); sys.exit(1)
+        print(f"\n❌ 错误: 未找到 'resources' 文件夹"); safe_pause(); sys.exit(1)
     print("✓ 目录检查通过")
 
     # 1. 环境选择
@@ -208,7 +213,7 @@ def main():
     if IS_CI_ENV:
         if has_bun: tool.set_mode('bundled')
         elif has_sys: tool.set_mode('system')
-        else: print("❌ CI错误: 无可用环境"); sys.exit(1)
+        else: print("❌ CI错误: 无可用环境 (请确保打包了 tools/bundled_asar)"); sys.exit(1)
     else:
         print(f"\n[第二步] 选择工作环境:")
         print(f"    [1] 系统环境 ({'可用' if has_sys else '不可用'})")
@@ -256,7 +261,7 @@ def main():
                     shutil.copytree(unpacked_backup, unpacked_dir)
                 print("✓ 已还原纯净版")
     except Exception as e:
-        print(f"\n❌ [备份错误] {e}"); sys.exit(1)
+        print(f"\n❌ [备份错误] {e}"); safe_pause(); sys.exit(1)
 
     # 4. 解包/覆盖/打包
     print("\n[开始执行]...")
@@ -269,17 +274,14 @@ def main():
         if os.path.exists(temp_extract_dir): 
             shutil.rmtree(temp_extract_dir, onerror=remove_readonly)
         
-        # 解包
         tool.extract(asar_file, temp_extract_dir)
         
-        # 覆盖
         if os.path.exists(patch_dir):
             print(f" -> 应用补丁...")
             shutil.copytree(patch_dir, temp_extract_dir, dirs_exist_ok=True)
         else:
             raise Exception("未找到 patch_data 文件夹")
 
-        # 打包
         tool.pack(temp_extract_dir, temp_output_asar)
         
         if not os.path.exists(temp_output_asar):
@@ -292,7 +294,7 @@ def main():
         traceback.print_exc()
         if IS_CI_ENV: sys.exit(1)
     
-    # 5. 收尾与替换
+    # 5. 收尾
     if os.path.exists(temp_extract_dir):
         try: shutil.rmtree(temp_extract_dir, onerror=remove_readonly)
         except: pass 
