@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-恶魔链接本地化工具 (Final Optimized Ver)
+恶魔链接本地化工具 (Ultimate Polished Ver)
 作者: 呜咪 (KouzakiUmi)
 功能: 
-  1. 智能环境检测 (Node/Asar) + 倒计时自动选择
-  2. 动态磁盘空间预检
-  3. 文件占用循环检测 (防卡死)
-  4. 原地操作优化 (Rename替代Copy，极速备份)
-  5. 跨平台二进制文件兼容 (防止结构损坏)
-  6. 异常退出强制清理残留
+  1. 智能环境检测 + 倒计时自动选择
+  2. 动态磁盘空间预检 (原地操作算法)
+  3. 原地备份 (Rename) + 跨平台文件兼容
+  4. 存档自动备份 (倒计时取消)
+  5. 双重残留清理 (即时清理 + 退出兜底)
 """
 
 import os
@@ -45,7 +44,7 @@ class Colors:
 # ================= 多语言字典 =================
 LANG_DICT = {
     'cn': {
-        'title': " 恶魔链接本地化工具 (最终优化版) by 呜咪 ",
+        'title': " 恶魔链接本地化工具 (最终形态) by 呜咪 ",
         'step1': "[第一步] 目录检查...",
         'err_exe': "❌ 错误: 未找到游戏主程序",
         'err_res': "❌ 错误: 未找到 'resources' 文件夹",
@@ -56,7 +55,7 @@ LANG_DICT = {
         'lock_step2': "2. 如果依然无效，请重启电脑后再试。",
         'lock_retry': ">>> 确保关闭后，按任意键重试...",
         'step2': "[第二步] 选择工作环境:",
-        'auto_count': ">>> 默认使用内置环境，倒计时: {} 秒 (按任意键手动配置)",
+        'auto_count': ">>> 默认使用内置环境: {}s (按任意键手动配置)",
         'auto_done': "-> 倒计时结束，自动选择: [2] 内置环境",
         'dev_enter': "-> 检测到按键，进入开发者配置模式...",
         'sys_env': "系统环境",
@@ -85,7 +84,9 @@ LANG_DICT = {
         'finishing': "[收尾] 正在应用新文件...",
         'fuse_ok': "✓ 成功移除 Electron 完整性校验。",
         'fuse_skip': "✓ 校验位已经是关闭状态。",
-        'ask_save_bk': "是否备份存档文件 (_storage)？(y/n) [推荐y]: ",
+        'save_bk_auto': ">>> 准备自动备份存档: {}s (按任意键【取消】)",
+        'save_bk_skip': "-> 已跳过存档备份。",
+        'save_bk_start': "-> 正在备份存档...",
         'save_bk_done': "✓ 存档已备份至:",
         'save_bk_err': "⚠️ 存档备份失败 (可能无权限):",
         'success': "\n✅ 本地化安装成功！",
@@ -100,7 +101,8 @@ LANG_DICT = {
         'err_enoent_title': "⚠️ 检测到游戏源文件损坏或不完整 (ENOENT)。",
         'err_enoent_reason': "💡 原因: app.asar 与 app.asar.unpacked 内容不匹配。",
         'err_enoent_fix': "💡 解决方法: 请删除 resources 文件夹下的所有文件，\n   然后在 Steam 中点击“验证游戏文件的完整性”后重试。",
-        'clean_temp': "🧹 正在清理临时文件...",
+        'clean_temp_now': "🧹 打包完成，立即清理临时文件...",
+        'clean_temp_final': "🧹 检测到残留文件，正在执行最终清理...",
         'sys_check_fail': "❌ 检测到 Node.js 但未安装 asar 全局命令。",
         'sys_install_hint': "💡 请运行: npm install -g @electron/asar 或使用内置环境。",
         'disk_check': "[磁盘检查] 正在计算所需空间...",
@@ -148,7 +150,9 @@ LANG_DICT = {
         'finishing': "[Finalizing] Applying new files...",
         'fuse_ok': "✓ Electron integrity check removed.",
         'fuse_skip': "✓ Integrity check already disabled.",
-        'ask_save_bk': "Backup save data (_storage)? (y/n) [Recommended y]: ",
+        'save_bk_auto': ">>> Auto-backup saves in {}s (Press any key to SKIP)",
+        'save_bk_skip': "-> Save backup skipped.",
+        'save_bk_start': "-> Creating save backup...",
         'save_bk_done': "✓ Save data backed up to:",
         'save_bk_err': "⚠️ Save backup failed:",
         'success': "\n✅ Localization Installed Successfully!",
@@ -163,7 +167,8 @@ LANG_DICT = {
         'err_enoent_title': "⚠️ Game files corrupted or incomplete (ENOENT).",
         'err_enoent_reason': "💡 Reason: Mismatch between app.asar and unpacked files.",
         'err_enoent_fix': "💡 Fix: Delete 'resources' folder and Verify Integrity in Steam.",
-        'clean_temp': "🧹 Cleaning up temporary files...",
+        'clean_temp_now': "🧹 Cleaning up temp files immediately...",
+        'clean_temp_final': "🧹 Performing final cleanup...",
         'sys_check_fail': "❌ Node.js found but global 'asar' command missing.",
         'sys_install_hint': "💡 Run: npm install -g @electron/asar OR use Bundled Env.",
         'disk_check': "[Disk Check] Calculating space...",
@@ -211,7 +216,9 @@ LANG_DICT = {
         'finishing': "[仕上げ] ファイル置換中...",
         'fuse_ok': "✓ Electron 整合性チェックを解除しました。",
         'fuse_skip': "✓ 整合性チェックは既に無効です。",
-        'ask_save_bk': "セーブデータ (_storage) をバックアップしますか？ (y/n) [推奨 y]: ",
+        'save_bk_auto': ">>> セーブデータをバックアップします: {}秒 (キーを押して【キャンセル】)",
+        'save_bk_skip': "-> バックアップをスキップしました。",
+        'save_bk_start': "-> バックアップを作成中...",
         'save_bk_done': "✓ セーブデータをバックアップしました:",
         'save_bk_err': "⚠️ バックアップ失敗:",
         'success': "\n✅ ローカライズ完了！",
@@ -226,7 +233,8 @@ LANG_DICT = {
         'err_enoent_title': "⚠️ ゲームファイルが破損しているか不完全です (ENOENT)。",
         'err_enoent_reason': "💡 原因: app.asar と unpacked フォルダの不整合。",
         'err_enoent_fix': "💡 解決策: resources フォルダを削除し、Steamで整合性を確認してください。",
-        'clean_temp': "🧹 一時ファイルを削除しています...",
+        'clean_temp_now': "🧹 一時ファイルを直ちに削除しています...",
+        'clean_temp_final': "🧹 残留ファイルを削除しています...",
         'sys_check_fail': "❌ Node.js はありますが、asar コマンドが見つかりません。",
         'sys_install_hint': "💡 実行: npm install -g @electron/asar または内蔵環境を使用してください。",
         'disk_check': "[ディスクチェック] 必要容量を計算中...",
@@ -299,41 +307,30 @@ def get_folder_size(start_path):
     return total_size
 
 def files_are_same(f1, f2):
-    """通过大小和修改时间快速判断两个文件是否一致"""
     try:
         s1 = os.stat(f1)
         s2 = os.stat(f2)
-        # 大小相同 且 修改时间差小于1秒
         return s1.st_size == s2.st_size and abs(s1.st_mtime - s2.st_mtime) < 1.0
     except:
         return False
 
 def calculate_needed_space(resources_dir, patch_dir):
-    """
-    智能计算所需空间 (in-place优化版)
-    """
     asar_path = os.path.join(resources_dir, 'app.asar')
     unpacked_path = os.path.join(resources_dir, 'app.asar.unpacked')
     
     size_asar = os.path.getsize(asar_path) if os.path.exists(asar_path) else 0
-    size_unpacked = get_folder_size(unpacked_path) if os.path.exists(unpacked_path) else 0
     size_patch = get_folder_size(patch_dir)
     
     total_needed = 0
-    
-    # 1. 解压需求: 解压临时文件 (通常比原文件大，给 1.5 倍余量)
+    # 1. 解压临时文件 (通常比原文件大，给 1.5 倍余量)
     total_needed += (size_asar * 1.5)
-    
-    # 2. 打包需求: 生成新文件 (app.asar.new)
+    # 2. 打包生成新文件
     total_needed += (size_asar * 1.5)
-    
     # 3. 补丁文件大小
     total_needed += size_patch
-    
-    # 4. 安全缓冲 (200MB)
+    # 4. 安全缓冲
     total_needed += (200 * 1024 * 1024)
-    
-    # 注意：因为采用 Rename 备份，不需要额外预留备份空间
+    # 注：原地Rename备份不占用额外空间，故不计入
     
     return total_needed
 
@@ -523,12 +520,12 @@ def main():
         if not os.path.exists(resources_dir):
             log(f"\n{TR['err_res']}"); pause_exit(); sys.exit(1)
         
-        # 0.1 磁盘空间检查 (智能计算)
+        # 0.1 磁盘空间检查
         needed_space = calculate_needed_space(resources_dir, patch_dir)
         if not check_disk_space(base_dir, needed_space):
             pause_exit(); sys.exit(1)
 
-        # 初始占用检测 (asar 或 bak 有一个就行)
+        # 初始占用检测
         asar_file = os.path.join(resources_dir, 'app.asar')
         asar_bk = os.path.join(resources_dir, 'app.asar.bak')
         check_target = asar_file if os.path.exists(asar_file) else asar_bk
@@ -586,32 +583,24 @@ def main():
         unpacked_dir = os.path.join(resources_dir, 'app.asar.unpacked')
         unpacked_backup = unpacked_dir + ".bak"
 
-        # 3. 状态同步逻辑 (核心: 确保我们从一个干净的 .asar 开始解压)
+        # 3. 状态同步 (原地操作准备)
         log(f"\n{TR['step3']}")
-        
         has_asar = os.path.exists(asar_file)
         has_bak = os.path.exists(asar_backup)
 
-        # 循环检测权限，确保重命名操作不被锁
         while True:
             try:
                 if has_asar and not has_bak:
                     log(TR['status_only_asar'])
-                    # 状态完美，准备解压
-                
                 elif not has_asar and has_bak:
                     log(TR['status_only_bak'])
-                    # 将备份还原为 asar 以便解压 (因为解压工具通常要求输入文件必须存在)
                     os.rename(asar_backup, asar_file)
                     if os.path.exists(unpacked_backup):
                         if os.path.exists(unpacked_dir): shutil.rmtree(unpacked_dir, onerror=remove_readonly)
                         os.rename(unpacked_backup, unpacked_dir)
-                
                 elif has_asar and has_bak:
                     if files_are_same(asar_file, asar_backup):
                         log(TR['status_both_sync'])
-                        # 一模一样，删除多余的 asar，将 bak 重命名为 asar 准备解压
-                        # 这样逻辑统一，且我们确信 bak 是纯净的
                         os.chmod(asar_file, stat.S_IWRITE)
                         os.remove(asar_file)
                         os.rename(asar_backup, asar_file)
@@ -628,29 +617,22 @@ def main():
                             if os.path.exists(unpacked_backup):
                                 if os.path.exists(unpacked_dir): shutil.rmtree(unpacked_dir, onerror=remove_readonly)
                                 os.rename(unpacked_backup, unpacked_dir)
-                        # 如果选 n，则直接使用当前的 asar_file 进行解压 (即认为当前 asar 是用户想要的基础)
-                
                 else:
                     log(f"\n{TR['err_no_source']}"); log(f"{TR['steam_guide']}"); pause_exit(); sys.exit(1)
                 
-                # 再次确认 asar 文件存在 (经过上面的逻辑整理后)
                 if not os.path.exists(asar_file):
                      log(f"\n{TR['err_no_source']}"); pause_exit(); sys.exit(1)
-                
-                break # 状态整理完成
-            except PermissionError:
-                handle_permission_error()
-            except OSError as e:
-                log(f"Error preparing files: {e}"); pause_exit(); sys.exit(1)
+                break 
+            except PermissionError: handle_permission_error()
+            except OSError as e: log(f"Error: {e}"); pause_exit(); sys.exit(1)
 
-        # 4. 执行核心任务
+        # 4. 执行
         log(f"\n{TR['start']}")
         temp_output_asar = os.path.join(resources_dir, 'app.asar.new')
         
         success = False
         try:
             # 4.1 解压
-            # 清理临时目录
             while True:
                 try:
                     if os.path.exists(temp_extract_dir): shutil.rmtree(temp_extract_dir, onerror=remove_readonly)
@@ -660,27 +642,20 @@ def main():
             log(TR['extracting'])
             tool.extract(asar_file, temp_extract_dir)
             
-            # 4.2 【关键优化】立即重命名原文件为备份 (In-place Rename)
-            # 此时 asar_file 是我们刚解压完的源文件
-            # 我们直接把它“瞬移”成备份，既腾出了 app.asar 的名字，又完成了备份
+            # 4.2 原地重命名备份
             log(TR['renaming_bk'])
             while True:
                 try:
                     if os.path.exists(asar_backup):
-                        # 如果备份已存在 (说明是上面的 status_both_sync 还没来得及删，或者逻辑覆盖)
-                        # 安全起见，先删旧备份
-                        os.chmod(asar_backup, stat.S_IWRITE)
-                        os.remove(asar_backup)
-                    
+                        os.chmod(asar_backup, stat.S_IWRITE); os.remove(asar_backup)
                     os.rename(asar_file, asar_backup)
-                    
                     if os.path.exists(unpacked_dir):
                         if os.path.exists(unpacked_backup): shutil.rmtree(unpacked_backup, onerror=remove_readonly)
                         os.rename(unpacked_dir, unpacked_backup)
                     break
                 except PermissionError: handle_permission_error()
 
-            # 4.3 打补丁
+            # 4.3 补丁
             log(TR['patching'])
             if os.path.exists(patch_dir):
                 shutil.copytree(patch_dir, temp_extract_dir, dirs_exist_ok=True)
@@ -689,81 +664,76 @@ def main():
 
             # 4.4 打包
             log(TR['packing'])
-            # 注意：打包到 .new 文件，防止中断损坏
             tool.pack(temp_extract_dir, temp_output_asar)
             
             if not os.path.exists(temp_output_asar): raise Exception(TR['pack_err'])
+            
+            # [新增] 打包成功后立即清理
+            log(TR['clean_temp_now'])
+            try: shutil.rmtree(temp_extract_dir, onerror=remove_readonly)
+            except: pass 
+
             success = True
 
-        except SystemExit:
-            raise 
-        except Exception as e:
-            log(f"\n❌ Error: {e}")
-            traceback.print_exc()
+        except SystemExit: raise 
+        except Exception as e: log(f"\n❌ Error: {e}"); traceback.print_exc()
         
         # 5. 收尾
         if success:
             log(f"\n{TR['finishing']}")
             while True:
                 try:
-                    # 将生成的 .new 重命名为正式的 app.asar
                     if os.path.exists(asar_file): 
-                        os.chmod(asar_file, stat.S_IWRITE)
-                        os.remove(asar_file)
-                    
+                        os.chmod(asar_file, stat.S_IWRITE); os.remove(asar_file)
                     os.rename(temp_output_asar, asar_file)
-                    
-                    # 处理 unpacked (如果有新生成的)
-                    temp_output_unpacked = temp_output_asar + ".unpacked"
-                    if os.path.exists(temp_output_unpacked):
+                    if os.path.exists(temp_output_asar + ".unpacked"):
                         if os.path.exists(unpacked_dir): shutil.rmtree(unpacked_dir, onerror=remove_readonly)
-                        os.rename(temp_output_unpacked, unpacked_dir)
-                    
+                        os.rename(temp_output_asar + ".unpacked", unpacked_dir)
                     break
-                except PermissionError:
-                    handle_permission_error()
-                except OSError as e:
-                    log(f"{TR['err_perm']}: {e}")
-                    handle_permission_error()
+                except PermissionError: handle_permission_error()
+                except OSError as e: log(f"{TR['err_perm']}: {e}"); handle_permission_error()
 
             disable_integrity_fuse(game_exe_path)
             log(TR['success'])
 
-            # 6. 存档备份
+            # 6. 存档备份 (自动倒计时版)
             storage_dir = os.path.join(base_dir, '_storage')
             if os.path.exists(storage_dir):
                 print("")
-                bk_save = user_input(TR['ask_save_bk']).strip().lower()
-                if bk_save == '' or bk_save == 'y':
+                count_seconds = 3
+                skip_backup = False
+                print(f"   {TR['save_bk_auto'].format(count_seconds)}", end="", flush=True)
+                start_t = time.time()
+                while time.time() - start_t < count_seconds:
+                    rem = int(count_seconds - (time.time() - start_t)) + 1
+                    print(f"\r   {TR['save_bk_auto'].format(rem)}   ", end="", flush=True)
+                    if msvcrt.kbhit():
+                        msvcrt.getch(); skip_backup = True; break
+                    time.sleep(0.1)
+                print("")
+
+                if skip_backup:
+                    log(TR['save_bk_skip'])
+                else:
+                    log(TR['save_bk_start'])
                     try:
                         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
                         bk_folder_name = f"_storage_backup_{timestamp}"
-                        bk_dir = os.path.join(base_dir, bk_folder_name)
-                        
-                        shutil.copytree(storage_dir, bk_dir)
+                        shutil.copytree(storage_dir, os.path.join(base_dir, bk_folder_name))
                         log(f"{TR['save_bk_done']} {bk_folder_name}")
                     except Exception as e:
                         log(f"{TR['save_bk_err']} {e}")
 
-    except SystemExit:
-        pass 
-    except Exception as e:
-        log(f"\n❌ Unexpected Error: {e}")
-        traceback.print_exc()
+    except SystemExit: pass 
+    except Exception as e: log(f"\n❌ Unexpected Error: {e}"); traceback.print_exc()
     finally:
-        # === 强制清理临时文件 ===
+        # [双重保障] 最终清理
         if 'temp_extract_dir' in locals() and os.path.exists(temp_extract_dir):
-            print("")
-            log(TR['clean_temp'])
+            print(""); log(TR['clean_temp_final'])
             while True:
-                try:
-                    shutil.rmtree(temp_extract_dir, onerror=remove_readonly)
-                    break
-                except PermissionError:
-                    handle_permission_error()
-                except:
-                    break
-
+                try: shutil.rmtree(temp_extract_dir, onerror=remove_readonly); break
+                except PermissionError: handle_permission_error()
+                except: break
         pause_exit()
 
 if __name__ == "__main__":
