@@ -4,7 +4,9 @@ chcp 65001 >nul
 cls
 
 :: ================= 配置区域 =================
+:: 输出的 EXE 文件名 (英文，兼容性最好)
 set OUTPUT_NAME=DevilConnection_Localization_Tool
+:: Python 主程序文件名
 set PY_SCRIPT=TyranoV8_Patcher.py
 :: ===========================================
 
@@ -19,7 +21,7 @@ if not exist "Patch" (
     echo [Error] Patch folder not found!
     echo [错误] 当前目录下未找到“Patch”文件夹！
     echo.
-    :: 如果是 GHA 则不暂停直接退出（报错）
+    :: 如果不是 GHA 环境，则暂停
     if not "%GITHUB_ACTIONS%"=="true" pause
     exit /b 1
 )
@@ -52,6 +54,7 @@ echo [1/3] Building EXE...
 echo [1/3] 正在打包...
 echo ------------------------------------------
 
+:: --- PyInstaller 打包命令 ---
 pyinstaller -F --clean ^
     --distpath "dist" ^
     --workpath "build" ^
@@ -66,7 +69,6 @@ if %errorlevel% neq 0 (
     echo.
     echo [FAILED] Build failed.
     echo [失败] 打包错误。
-    :: 如果是 GHA，这里不暂停，直接以错误码退出，这样 GHA 会显示红叉
     if not "%GITHUB_ACTIONS%"=="true" pause
     exit /b 1
 )
@@ -87,5 +89,5 @@ echo ==========================================
 echo  - Output: dist\%OUTPUT_NAME%.exe
 echo.
 
-:: 只在非 GHA 环境下暂停，方便本地查看结果
+:: 本地运行时暂停，GHA 自动跳过
 if not "%GITHUB_ACTIONS%"=="true" pause

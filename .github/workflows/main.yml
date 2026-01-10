@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write # 允许发布 Release 和修改 Tag
+  contents: write
 
 jobs:
   build-and-release:
@@ -16,63 +16,49 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 优化 1: 增加缓存，第二次运行起速度会变快
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip' # 开启 pip 缓存
+          cache: 'pip'
 
       - name: Install PyInstaller
         run: pip install pyinstaller
 
-      # 优化 2: 生成友好的时间戳 (北京时间)
       - name: Generate Build Info
         id: date
         shell: bash
         run: |
-          # 获取当前时间 (UTC+8)
           echo "build_time=$(date -u -d '+8 hours' +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
 
-      # 确认你的脚本文件名是 Pack.cmd 还是 build.bat
-      # 这里沿用你代码里的 Pack.cmd
+      # 修正：直接调用 Pack.cmd
       - name: Run Pack Script
         shell: cmd
-        run: |
-          if exist Pack.cmd ( call Pack.cmd ) else ( call build.bat )
+        run: call Pack.cmd
 
-      # 优化 3: 强制更新本地 Tag，而不是删除远程 Release
-      # 这种方式比删除 Release 更安全，不会导致 Release ID 变化带来的 404
       - name: Update Nightly Tag
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          # 强制删除本地旧 tag (如果有)
-          git tag -d nightly 2>nul || echo "No local tag to delete"
-          # 创建指向当前 commit 的新 tag
+          git tag -d nightly 2>nul || echo "No local tag"
           git tag nightly
-          # 强制推送到远程 (覆盖旧 tag)
           git push origin nightly --force
 
-      # 优化 4: 使用 v2 版本，并开启覆盖模式
       - name: Release Nightly
         uses: softprops/action-gh-release@v2
         with:
           tag_name: nightly
           name: "最新测试补丁 (Nightly) - ${{ steps.date.outputs.build_time }}"
           body: |
-            ### 🚧 自动构建版本 (Auto Build)
-            
+            ### 🚧 自动构建版本
             **构建信息:**
             - 📅 时间: ${{ steps.date.outputs.build_time }} (CST)
             - #️⃣ 提交: ${{ github.sha }}
             
             **更新日志:**
             ${{ github.event.head_commit.message }}
-            
-            > 注意：这是自动生成的测试版本，可能包含未知 BUG。
           files: dist/*.exe
           prerelease: true
-          make_latest: true # 标记为最新发布
+          make_latest: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
