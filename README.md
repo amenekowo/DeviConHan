@@ -14,12 +14,15 @@
 **新版本**：采用全图形化界面 (GUI)，支持跨平台运行，集成了强大的存档管理与开发者工具。
 
 **✨ 核心功能：**
-* **跨平台支持**：完美支持 Windows、macOS 和 Linux 系统。
-* **全自动安装**：图形化一键安装补丁，自动移除游戏完整性校验 (Fuse)。
-* **存档管家**：
-    * 自动扫描游戏存档位置。
-    * **一键备份/还原**：支持创建带有时间戳的存档快照，可打包为 ZIP，随时回档。
-* **开发者工具箱**：内置 Asar 解包/打包工具，支持跨平台打包格式选择（Windows/Mac/Linux），方便汉化组或模组作者使用。
+
+| 功能 | 描述 |
+|------|------|
+| 🌍 **跨平台支持** | 完美支持 Windows、macOS 和 Linux 系统，一套工具遍天下 |
+| 🚀 **全自动补丁安装** | 图形化界面一键安装，自动移除游戏完整性校验 (Fuse)，小白也能用 |
+| 💾 **专业存档管理** | 自动扫描存档位置，支持一键备份/还原，带时间戳，可压缩为 ZIP |
+| 🛠️ **开发者工具箱** | 内置 Asar 解包/打包工具，支持跨平台格式选择，为汉化组和模组作者服务 |
+| 🔒 **操作保护** | 智能并发锁、备份前确认提示，多重保障确保数据安全 |
+| 🌐 **多语言支持** | 内置中文/英文/日文，运行时自由切换，无需重启 |
 
 **注意：本工具设计为“双模式”运行。如果没有内置补丁数据，它将自动启动为“通用工具箱模式”。**
 
@@ -28,12 +31,15 @@
 **Update**: Features a full Graphical User Interface (GUI), cross-platform support, and advanced save management tools.
 
 **✨ Key Features:**
-* **Cross-Platform**: Runs smoothly on Windows, macOS, and Linux.
-* **One-Click Patching**: GUI-based installer that automatically handles patching and removing integrity checks (Fuse).
-* **Save Manager**:
-    * Auto-detects save directories.
-    * **Backup & Restore**: Create timestamped snapshots (with ZIP support) and restore them instantly.
-* **Developer Toolbox**: Built-in Asar Extract/Pack tools with target platform selection (Windows/Mac/Linux), ideal for modders and translators.
+
+| Feature | Description |
+|---------|-------------|
+| 🌍 **Cross-Platform** | Seamlessly runs on Windows, macOS, and Linux with a unified interface |
+| 🚀 **One-Click Patching** | GUI-based automatic installation with Fuse removal—no technical knowledge required |
+| 💾 **Professional Save Manager** | Auto-detects saves, timestamped backups, ZIP compression, instant restore |
+| 🛠️ **Developer Toolbox** | Built-in Asar extract/pack with multi-platform target selection for modders |
+| 🔒 **Operation Safety** | Concurrency protection, confirmation prompts, and multi-layer safeguards |
+| 🌐 **Multi-Language** | Chinese/English/Japanese with runtime switching—no restart needed |
 
 **Note: This tool runs in "Dual Mode". If no patch data is embedded, it launches as a "Generic Toolbox".**
 
@@ -42,12 +48,15 @@
 **アップデート**: 完全なGUI、クロスプラットフォーム対応、そして強力なセーブデータ管理機能を搭載しました。
 
 **✨ 主な特徴:**
-* **マルチプラットフォーム**: Windows, macOS, Linux に完全対応。
-* **自動インストール**: GUIによるワンクリック導入。整合性チェック（Fuse）も自動解除します。
-* **セーブデータ管理**:
-    * セーブ場所を自動検出。
-    * **バックアップと復元**: タイムスタンプ付きのスナップショット（ZIP対応）を作成し、いつでも復元可能。
-* **開発者ツールボックス**: Asar 解凍/圧縮ツールを内蔵。ターゲットOS（Windows/Mac/Linux）を選択してパッケージ化できます。
+
+| 機能 | 説明 |
+|------|------|
+| 🌍 **マルチプラットフォーム対応** | Windows、macOS、Linux で完全サポート |
+| 🚀 **自動ワンクリック導入** | GUI による簡単インストール、Fuse 自動解除 |
+| 💾 **セーブデータ管理** | 自動検出、タイムスタンプ付きバックアップ、ZIP 圧縮対応 |
+| 🛠️ **開発者ツールボックス** | Asar 解凍/圧縮、マルチプラットフォーム対応 |
+| 🔒 **操作保護機能** | 並行実行保護、確認メッセージ、データ安全性多重保障 |
+| 🌐 **多言語サポート** | 中文/English/日本語、実行時切替可能 |
 
 **注意：本ツールは「デュアルモード」で動作します。パッチデータが内蔵されていない場合、「汎用ツールボックス」として起動します。**
 
@@ -84,25 +93,93 @@
 ## 💾 Save Manager / 存档管理 / セーブ管理
 
 ### 🇨🇳 功能介绍
-工具内置了专业的存档管理面板 (`Save Manager` 标签页)。
-* **自动扫描**：自动识别 `_storage` 或 `save` 文件夹。
-* **备份**：点击 **"➕ 新建备份"**，程序会创建一个带时间戳的文件夹（可选打包为 ZIP）。
-* **还原**：在列表中选择一个历史备份，点击 **"↩️ 还原选中"** 即可瞬间回档。
-* **安全**：还原前会自动提示确认，防止误操作覆盖当前进度。
+工具内置了**专业级存档管理系统**（`Save Manager` 标签页），让您再也不怕存档丢失：
+
+#### 🔄 工作流程
+```
+🎮 游戏运行 → 🔍 自动扫描 → 📋 列表显示 → 💾 一键备份 → ✅ 安全还原
+```
+
+#### 核心功能
+- **🔍 自动扫描**：智能识别 `_storage` 或 `save` 文件夹，开箱即用
+- **💾 快速备份**：点击 **\"📦 创建备份\"**，自动生成带**年月日时分秒**时间戳的快照
+  - 支持**文件夹备份**和 **ZIP 压缩备份**（节省空间）
+  - 备份类型在列表中清晰显示 `[ZIP]` 或 `[DIR]`
+- **↩️ 瞬间还原**：选中历史备份，点击 **\"还原选中\"** 一秒回档
+  - 还原前自动弹出确认框，防止误操作覆盖当前进度
+  - 异步操作，不卡顿游戏窗口
+- **🗑️ 灵活删除**：可随时清理不需要的旧备份，释放存储空间
+- **🔒 多重保护**：并发锁机制防止同时运行多个操作，确保数据完整性
 
 ### 🇺🇸 Features
-Includes a dedicated `Save Manager` tab.
-* **Auto-Scan**: Detects `_storage` or `save` folders automatically.
-* **Backup**: Click **"➕ Backup Now"** to create a timestamped snapshot (ZIP optional).
-* **Restore**: Select a backup from the list and click **"↩️ Restore Selected"** to roll back.
-* **Safety**: Confirmation prompts prevent accidental overwriting of current progress.
+A dedicated `Save Manager` tab with **enterprise-grade backup system**:
+
+#### 🔄 Workflow
+```
+🎮 Game Running → 🔍 Auto-Detect → 📋 List → 💾 Backup → ✅ Restore
+```
+
+#### Core Functions
+- **🔍 Smart Detection**：Automatically identifies `_storage` or `save` folders
+- **💾 Fast Backup**：Click **\"📦 Backup Now\"** to create timestamped snapshots
+  - Support both folder and ZIP-compressed backups
+  - Backup types displayed as `[ZIP]` or `[DIR]` in the list
+- **↩️ Instant Restore**：Select and restore in seconds with confirmation prompts
+  - Async operations, no freezing
+- **🗑️ Cleanup**：Delete old backups to free space
+- **🔒 Concurrency Protection**：Prevents simultaneous operations
 
 ### 🇯🇵 機能紹介
-専用の `Save Manager` タブを搭載しています。
-* **自動スキャン**: `_storage` や `save` フォルダを自動検出します。
-* **バックアップ**: **"➕ バックアップ作成"** をクリックすると、タイムスタンプ付きのバックアップを作成します（ZIP可）。
-* **復元**: リストからバックアップを選び、**"↩️ 復元"** をクリックするだけで巻き戻せます。
-* **安全性**: 復元前に確認メッセージが表示され、誤操作を防ぎます。
+専用の `Save Manager` タブで**企業レベルのバックアップシステム**を実装：
+
+#### 🔄 ワークフロー
+```
+🎮 ゲーム実行 → 🔍 自動検出 → 📋 リスト表示 → 💾 バックアップ → ✅ 復元
+```
+
+#### コア機能
+- **🔍 自動検出**：`_storage` または `save` フォルダを自動認識
+- **💾 高速バックアップ**：**\"📦 バックアップ作成\"** でタイムスタンプ付きスナップショット生成
+  - フォルダ・ZIP 圧縮の両対応
+  - リストに `[ZIP]` または `[DIR]` を表示
+- **↩️ 瞬時復元**：選択して復元、確認メッセージで誤操作防止
+  - 非同期処理でフリーズなし
+- **🗑️ 柔軟削除**：旧バックアップを削除してスペース節約
+- **🔒 並行実行保護**：複数操作の同時実行を防止
+
+---
+
+## ⚡ Advanced Features / 高级特性 / 高度な機能
+
+### 🇨🇳 最新优化（v2.0+）
+
+| 特性 | 说明 | 优势 |
+|------|------|------|
+| 🎛️ **配置持久化** | 平台选择和备份方式自动保存 | 无需每次重新配置 |
+| 📊 **双列备份列表** | 备份名称和类型分开显示 | 一目了然，管理更清晰 |
+| 🔄 **自动路径同步** | 解包完成后自动同步到打包源 | 加速工作流，减少人工操作 |
+| 🔐 **并发操作保护** | 智能锁机制防止同时执行 | 100% 避免数据冲突 |
+| 🌐 **国际化完全支持** | 全 UI 文本支持 CN/EN/JP | 全球用户友好 |
+
+### 🇺🇸 Latest Enhancements (v2.0+)
+
+| Feature | Description | Benefit |
+|---------|-------------|---------|
+| 🎛️ **Config Persistence** | Platform and backup preferences auto-saved | No reconfiguration needed |
+| 📊 **Dual-Column Backup List** | Separate backup name and type columns | Clear, organized management |
+| 🔄 **Auto Path Sync** | Extract completion auto-syncs to pack source | Streamlined workflow |
+| 🔐 **Concurrency Protection** | Intelligent lock prevents simultaneous ops | Zero data conflicts |
+| 🌐 **Full i18n Support** | Complete UI translation (CN/EN/JP) | Global user-friendly |
+
+### 🇯🇵 最新改善 (v2.0+)
+
+| 機能 | 説明 | メリット |
+|------|------|---------|
+| 🎛️ **設定永続化** | プラットフォームと方式を自動保存 | 毎回設定不要 |
+| 📊 **二列バックアップリスト** | 名前と型を分離表示 | 管理が明確 |
+| 🔄 **自動パス同期** | 解凍完了で自動同期 | ワークフロー加速 |
+| 🔐 **並行実行保護** | スマート排他制御 | データ衝突ゼロ |
+| 🌐 **完全多言語対応** | UI 完全翻訳（CN/EN/JP） | グローバル対応 |
 
 ---
 
@@ -110,52 +187,165 @@ Includes a dedicated `Save Manager` tab.
 
 ### 🇨🇳 构建指南 (Build)
 本项目包含一个智能构建脚本 `Pack.cmd`，可生成两种版本的程序：
-1. **补丁包 (Patcher)**：如果根目录下存在 `Patch` 文件夹，脚本会将资源打包进 EXE，生成“自动安装器”。
-2. **工具箱 (Toolbox)**：如果 `Patch` 文件夹为空或不存在，脚本会生成“通用工具箱”，仅包含解包/打包/存档管理功能。
 
-**步骤：**
-1. 克隆仓库，确保 `tools/` 目录完整（包含 `node.exe` 等）。
-2. 将汉化资源放入 `Patch` 文件夹（可选）。
-3. 运行 `Pack.cmd`。
-4. 在 `dist` 目录查看生成的 EXE。
+#### 📦 生成模式
 
-**技术特性：**
-* **混合 GUI/CLI**：基于 Tkinter 构建的现代化界面，支持高分屏。
-* **多语言架构**：代码内建 CN/EN/JP 字典，支持运行时切换语言。
-* **Asar 引擎**：
-  * **Windows**: 使用内置的独立 Node.js 运行时，零依赖。
-  * **Mac/Linux**: 自动调用系统的全局 Node.js 环境。
-* **智能打包**：打包时支持选择目标平台（Windows/Mac/Linux），自动适配 `unpack` 规则（排除 `.node`, `.dll`, `.so` 等二进制文件）。
+| 模式 | 触发条件 | 特点 | 用途 |
+|------|----------|------|------|
+| **自动安装器** (Patcher) | `Patch` 文件夹不为空 | 包含汉化资源，一键安装 | 汉化发布版 |
+| **通用工具箱** (Toolbox) | `Patch` 文件夹为空/不存在 | 仅含工具功能，跨项目可用 | 开发调试、通用工具 |
+
+#### 🔨 快速开始
+
+1. **克隆并准备**
+   ```bash
+   git clone <repo-url>
+   cd <repo-path>
+   # 确保 tools/ 目录完整（node.exe, bundled_asar 等）
+   ```
+
+2. **配置汉化资源**（可选）
+   ```
+   将汉化文件放入 Patch/ 文件夹：
+   Patch/
+   ├── data/
+   │   ├── others/    # 游戏脚本
+   │   └── scenario/   # 剧情文件
+   └── tyrano/
+       └── lang.js    # 语言配置
+   ```
+
+3. **构建**
+   ```bash
+   Pack.cmd
+   # 生成的可执行文件在 dist/ 目录
+   ```
+
+#### 🏗️ 技术架构
+
+**前端界面**
+- Tkinter GUI（跨平台原生界面）
+- 高分屏自适应支持
+- 运行时多语言切换（CN/EN/JP）
+
+**核心引擎**
+- **Windows**：内置独立 Node.js 运行时（零依赖）
+- **Mac/Linux**：自动调用系统全局 Node.js
+
+**Asar 打包智能系统**
+- 自动检测目标平台（Windows/Mac/Linux）
+- 智能选择 unpack 规则：
+  - Windows：`.node`, `.dll`, `.exe`
+  - Mac/Linux：`.node`, `.so`, `.dylib`, `.bin`
+- 确保跨平台兼容性
 
 ### 🇺🇸 Build Guide
-The intelligent `Pack.cmd` script generates two versions:
-1. **Patcher**: If `Patch` folder exists, assets are bundled into an "Auto-Installer".
-2. **Toolbox**: If `Patch` is empty, a "Generic Toolbox" is created (Extract/Pack/Save Manager only).
+Intelligent `Pack.cmd` script with **dual-mode generation**:
 
-**Steps:**
-1. Clone repo, ensure `tools/` is complete.
-2. Place translation assets in `Patch` folder (Optional).
-3. Run `Pack.cmd`.
-4. Check `dist` folder for output.
+#### 📦 Generation Modes
 
-**Technical Specs:**
-* **Hybrid GUI**: Modern Tkinter interface.
-* **Multi-Language**: Runtime language switching (CN/EN/JP).
-* **Asar Engine**:
-  * **Windows**: Uses bundled standalone Node.js.
-  * **Mac/Linux**: Invokes system global Node.js.
-* **Smart Packing**: Select target platform (Win/Mac/Lin) to automatically handle `unpack` patterns for binary files.
+| Mode | Condition | Features | Use Case |
+|------|-----------|----------|----------|
+| **Auto-Installer** | `Patch/` not empty | Bundled patch, one-click install | Release version |
+| **Generic Toolbox** | `Patch/` empty | Tools only, project-agnostic | Development, utilities |
+
+#### 🔨 Quick Start
+
+1. **Clone & Setup**
+   ```bash
+   git clone <repo-url>
+   cd <repo-path>
+   # Verify tools/ is complete (node.exe, bundled_asar, etc.)
+   ```
+
+2. **Add Translation Assets** (Optional)
+   ```
+   Place files in Patch/:
+   Patch/
+   ├── data/
+   │   ├── others/    # Game scripts
+   │   └── scenario/   # Story files
+   └── tyrano/
+       └── lang.js    # Language config
+   ```
+
+3. **Build**
+   ```bash
+   Pack.cmd
+   # Output in dist/
+   ```
+
+#### 🏗️ Technical Stack
+
+**Frontend**
+- Tkinter (Cross-platform native UI)
+- HiDPI support
+- Runtime language switching
+
+**Core Engine**
+- **Windows**: Bundled standalone Node.js (zero dependencies)
+- **Mac/Linux**: System global Node.js auto-detection
+
+**Smart Asar Packing**
+- Auto-detect target platform
+- Intelligent unpack patterns:
+  - Windows: `.node`, `.dll`, `.exe`
+  - Mac/Linux: `.node`, `.so`, `.dylib`, `.bin`
+- Cross-platform compatibility guaranteed
 
 ### 🇯🇵 ビルドガイド
-スマートな `Pack.cmd` スクリプトは、2つのバージョンを生成します：
-1. **パッチ (Patcher)**: `Patch` フォルダがある場合、リソースをバンドルした「自動インストーラー」を生成します。
-2. **ツールボックス (Toolbox)**: `Patch` がない場合、解凍/圧縮/セーブ管理のみの「汎用ツールボックス」を生成します。
+スマートな `Pack.cmd` スクリプトで**デュアルモード生成**：
 
-**手順:**
-1. リポジトリをクローンし、`tools/` を確認します。
-2. 翻訳リソースを `Patch` フォルダに入れます（任意）。
-3. `Pack.cmd` を実行します。
-4. `dist` フォルダを確認します。
+#### 📦 生成モード
+
+| モード | 条件 | 特徴 | 用途 |
+|--------|------|------|------|
+| **自動インストーラー** | `Patch/` が存在 | パッチ付属、ワンクリック導入 | リリース版 |
+| **汎用ツールボックス** | `Patch/` が空/不存在 | ツールのみ、再利用可能 | 開発・調試 |
+
+#### 🔨 クイックスタート
+
+1. **複製と準備**
+   ```bash
+   git clone <repo-url>
+   cd <repo-path>
+   # tools/ 完全確認（node.exe、bundled_asar など）
+   ```
+
+2. **翻訳リソース追加**（任意）
+   ```
+   Patch/ に配置：
+   Patch/
+   ├── data/
+   │   ├── others/    # ゲームスクリプト
+   │   └── scenario/   # ストーリー
+   └── tyrano/
+       └── lang.js    # 言語設定
+   ```
+
+3. **ビルド**
+   ```bash
+   Pack.cmd
+   # 出力は dist/
+   ```
+
+#### 🏗️ 技術構成
+
+**フロントエンド**
+- Tkinter（クロスプラットフォーム UI）
+- 高解像度対応
+- 実行時言語切替
+
+**コアエンジン**
+- **Windows**: 内蔵スタンドアロン Node.js（依存なし）
+- **Mac/Linux**: システムグローバル Node.js 自動検出
+
+**智能 Asar パッキング**
+- ターゲットプラットフォーム自動検出
+- インテリジェント unpack パターン：
+  - Windows: `.node`, `.dll`, `.exe`
+  - Mac/Linux: `.node`, `.so`, `.dylib`, `.bin`
+- クロスプラットフォーム互換性保証
 
 ---
 

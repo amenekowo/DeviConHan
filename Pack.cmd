@@ -30,6 +30,20 @@ if not exist "%ROOT%tools\node.exe" (
     exit /b 1
 )
 
+:: 1b. 检查 bundled_asar 文件夹是否存在
+if not exist "%ROOT%tools\bundled_asar" (
+    echo [Error] Folder missing: "%ROOT%tools\bundled_asar"
+    pause
+    exit /b 1
+)
+
+:: 1c. 检查 Python 脚本是否存在
+if not exist "%ROOT%%PY_SCRIPT%" (
+    echo [Error] Script missing: "%ROOT%%PY_SCRIPT%"
+    pause
+    exit /b 1
+)
+
 :: 2. 检查 Python
 python --version >nul 2>&1
 if %errorlevel% neq 0 (
@@ -76,8 +90,12 @@ if %errorlevel% neq 0 (
 echo.
 echo [2/2] Checking for Patch Data...
 
-if exist "%ROOT%Patch" (
+if not exist "%ROOT%Patch" (
+    echo - No Patch folder found. Skipped.
+) else (
     REM 检查 Patch 文件夹是否非空
+    setlocal enabledelayedexpansion
+    set "HAS_PATCH_FILES="
     for /D %%F in ("%ROOT%Patch\*") do set "HAS_PATCH_FILES=1"
     for %%F in ("%ROOT%Patch\*") do set "HAS_PATCH_FILES=1"
     
@@ -103,8 +121,6 @@ if exist "%ROOT%Patch" (
         )
         echo - Patcher build success.
     )
-) else (
-    echo - No Patch folder found. Skipped.
 )
 
 :: ========================================================
