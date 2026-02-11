@@ -1,93 +1,134 @@
 @echo off
+setlocal
 :: 切换编码防止乱码
 chcp 65001 >nul
+:: 强制进入脚本所在目录 (防止路径跑偏)
+cd /d "%~dp0"
 cls
 
 :: ================= 配置区域 =================
-:: 输出的 EXE 文件名 (英文，兼容性最好)
-set OUTPUT_NAME=DevilConnection_Localization_Tool
-:: Python 主程序文件名
+:: 获取当前脚本的绝对路径 (带反斜杠)
+set "ROOT=%~dp0"
+
+:: Python 脚本文件名
 set PY_SCRIPT=TyranoV8_Patcher.py
+
+:: 输出文件名
+set OUT_TOOL=Tyrano_Toolbox
+set OUT_PATCH=DevilConnection_Patch
 :: ===========================================
 
 echo ==========================================
-echo    Devil Connection Localization Packer
-echo      恶魔链接本地化工具 - 构建脚本
+echo    Tyrano Builder 
 echo ==========================================
 
-:: 1. 检查“Patch”文件夹
-if not exist "Patch" (
-    echo.
-    echo [Error] Patch folder not found!
-    echo [错误] 当前目录下未找到“Patch”文件夹！
-    echo.
-    :: 如果不是 GHA 环境，则暂停
-    if not "%GITHUB_ACTIONS%"=="true" pause
+:: 1. 检查 node.exe 是否存在 (使用绝对路径检测)
+if not exist "%ROOT%tools\node.exe" (
+    echo [Error] File missing: "%ROOT%tools\node.exe"
+    echo 请确认 tools 文件夹就在 Pack.cmd 旁边
+    pause
     exit /b 1
 )
 
-:: 2. 检查 PyInstaller
-pyinstaller --version >nul 2>&1
+:: 2. 检查 Python
+python --version >nul 2>&1
 if %errorlevel% neq 0 (
-    echo.
+    echo [Error] Python not found!
+    pause
+    exit /b 1
+)
+
+:: 3. 检查 PyInstaller (用 python -m 调用)
+python -m PyInstaller --version >nul 2>&1
+if %errorlevel% neq 0 (
     echo [Error] PyInstaller not found.
-    echo [错误] 未找到 PyInstaller，请先运行 pip install pyinstaller
-    echo.
-    if not "%GITHUB_ACTIONS%"=="true" pause
+    echo Please run: pip install pyinstaller
+    pause
     exit /b 1
 )
 
-:: 3. 检查依赖
-if exist "tools\bundled_asar\index.js" goto :FoundScript
-if exist "tools\bundled_asar\index.mjs" goto :FoundScript
-
-echo [ERROR] Dependency missing!
-echo [错误] 依赖文件丢失! (tools\bundled_asar\index.mjs)
+:: ========================================================
+:: 任务 A: 构建 [纯净工具箱] (Toolbox Mode)
+:: ========================================================
 echo.
-if not "%GITHUB_ACTIONS%"=="true" pause
-exit /b 1
-
-:FoundScript
-
-echo.
-echo [1/3] Building EXE...
-echo [1/3] 正在打包...
+echo [1/2] Building Toolbox...
 echo ------------------------------------------
 
-:: --- PyInstaller 打包命令 ---
-pyinstaller -F --clean ^
+if exist "dist" rd /s /q "dist"
+
+python -m PyInstaller -F --clean ^
     --distpath "dist" ^
-    --workpath "build" ^
-    --specpath "." ^
-    --add-data "tools/node.exe;tools" ^
-    --add-data "tools/bundled_asar;tools/bundled_asar" ^
-    --add-data "Patch;patch_data" ^
-    --name "%OUTPUT_NAME%" ^
-    %PY_SCRIPT%
+    --workpath "build_toolbox" ^
+    --add-data "%ROOT%tools\node.exe;tools" ^
+    --add-data "%ROOT%tools\bundled_asar;tools\bundled_asar" ^
+    --name "%OUT_TOOL%" ^
+    "%ROOT%%PY_SCRIPT%"
 
 if %errorlevel% neq 0 (
-    echo.
-    echo [FAILED] Build failed.
-    echo [失败] 打包错误。
-    if not "%GITHUB_ACTIONS%"=="true" pause
+    echo [Error] Toolbox build failed.
+    pause
     exit /b 1
 )
 
+:: ========================================================
+:: 任务 B: 构建 [汉化补丁] (Auto-Patcher Mode)
+:: ========================================================
 echo.
-echo [2/3] Cleaning up...
-echo [2/3] 正在清理临时文件...
-echo ------------------------------------------
+echo [2/2] Checking for Patch Data...
 
-if exist "build" rd /s /q "build"
-if exist "%OUTPUT_NAME%.spec" del /q "%OUTPUT_NAME%.spec"
-if exist "patch_data" rd /s /q "patch_data"
+if exist "%ROOT%Patch" (
+    REM 检查 Patch 文件夹是否非空
+    for /D %%F in ("%ROOT%Patch\*") do set "HAS_PATCH_FILES=1"
+    for %%F in ("%ROOT%Patch\*") do set "HAS_PATCH_FILES=1"
+    
+    if not defined HAS_PATCH_FILES (
+        echo - Warning: Patch folder is empty. Skipped.
+    ) else (
+        echo - Patch folder found. Building Patcher...
+        echo ------------------------------------------
+        
+        python -m PyInstaller -F --clean ^
+            --distpath "dist" ^
+            --workpath "build_patcher" ^
+            --add-data "%ROOT%tools\node.exe;tools" ^
+            --add-data "%ROOT%tools\bundled_asar;tools\bundled_asar" ^
+            --add-data "%ROOT%Patch;patch_data" ^
+            --name "%OUT_PATCH%" ^
+            "%ROOT%%PY_SCRIPT%"
+            
+        if %errorlevel% neq 0 (
+            echo [Error] Patcher build failed.
+            pause
+            exit /b 1
+        )
+        echo - Patcher build success.
+    )
+) else (
+    echo - No Patch folder found. Skipped.
+)
+
+:: ========================================================
+:: 收尾
+:: ========================================================
+echo.
+echo [Cleanup] Cleaning up...
+if exist "build_toolbox" rd /s /q "build_toolbox"
+if exist "build_patcher" rd /s /q "build_patcher"
+if exist "__pycache__" rd /s /q "__pycache__"
+REM 删除根目录生成的 spec 文件
+del /q *.spec >nul 2>&1
 
 echo.
 echo ==========================================
-echo [3/3] DONE! / 打包完成！
+echo    Build Complete!
 echo ==========================================
-echo  - Output: dist\%OUTPUT_NAME%.exe
 echo.
-
-:: 本地运行时暂停，GHA 自动跳过
+echo Generated files:
+if exist "dist\%OUT_TOOL%.exe" (
+    echo   - Toolbox: dist\%OUT_TOOL%.exe
+)
+if exist "dist\%OUT_PATCH%.exe" (
+    echo   - Patcher: dist\%OUT_PATCH%.exe
+)
+echo.
 if not "%GITHUB_ACTIONS%"=="true" pause
