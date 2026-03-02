@@ -2,7 +2,10 @@
 """
 Tyrano/Electron Universal GUI Tool (Cross-Platform Ver)
 Author: 呜咪 (KouzakiUmi)
-Modified: Fixed ConfigParser collision & removed DnD
+Modified: Fixed ConfigParser collision & removed DnD, Added argparse support
+
+This script provides a comprehensive patcher for Tyrano games with robust error handling,
+logging, and cross-platform compatibility.
 """
 
 import os
@@ -14,6 +17,8 @@ import stat
 import datetime
 import threading
 import zipfile
+import logging
+import argparse
 from configparser import ConfigParser
 
 # GUI Imports
@@ -29,13 +34,204 @@ AUTO_TARGET_EXE = "DevilConnection.exe"
 FUSE_SENTINEL = b'dL7pKGdnNz796PbbjQWNKmHXBZaB9tsX'
 BACKUP_PREFIX = "Backup_"
 
+# ================= 补丁检测函数 =================
+def has_embedded_patch():
+    """
+    检测是否包含内置汉化补丁
+    
+    Returns:
+        bool: 如果 Patch 目录存在返回 True
+    """
+    patch_dir = os.path.join(get_resource_path("."), "Patch")
+    return os.path.exists(patch_dir)
+
+# ================= 日志系统初始化 =================
+def setup_logging(log_dir=None, log_file="tyrano_patcher.log"):
+    """设置日志系统，支持控制台和文件输出"""
+    if log_dir is None:
+        log_dir = os.path.expanduser("~")
+    
+    log_path = os.path.join(log_dir, log_file)
+    
+    # 确保日志目录存在
+    try:
+        os.makedirs(os.path.dirname(log_path), exist_ok=True)
+    except Exception as e:
+        print(f"Warning: Could not create log directory: {e}")
+    
+    # 配置日志格式
+    formatter = logging.Formatter(
+        '%(asctime)s - %(levelname)-8s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+    
+    # 创建根logger
+    root_logger = logging.getLogger()
+    root_logger.setLevel(logging.DEBUG)
+    
+    # 清除已有的handler，避免重复
+    for handler in root_logger.handlers[:]:
+        root_logger.removeHandler(handler)
+    
+    # 控制台处理器
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setLevel(logging.INFO)
+    console_handler.setFormatter(formatter)
+    root_logger.addHandler(console_handler)
+    
+    # 文件处理器
+    try:
+        file_handler = logging.FileHandler(log_path, encoding='utf-8')
+        file_handler.setLevel(logging.DEBUG)
+        file_handler.setFormatter(formatter)
+        root_logger.addHandler(file_handler)
+    except Exception as e:
+        print(f"Warning: Could not create log file: {e}")
+    
+    return root_logger
+
+# 全局日志实例
+logger = setup_logging()
+
 # ================= 基础工具 =================
 def get_resource_path(relative_path):
-    try: base_path = sys._MEIPASS
-    except: base_path = os.path.abspath(".")
-    return os.path.join(base_path, relative_path)
+    """
+    获取资源路径（支持PyInstaller打包）
+    Args:
+        relative_path: 相对路径
+    Returns:
+        绝对路径
+    Raises:
+        FileNotFoundError: 如果文件不存在
+    """
+    try:
+        base_path = sys._MEIPASS
+    except AttributeError:
+        base_path = os.path.abspath(".")
+    
+    path = os.path.join(base_path, relative_path)
+    
+    # 验证文件存在性（对于必须的资源）
+    if not relative_path.startswith('patch_data') and not os.path.exists(path):
+        logger.warning(f"Resource path not found: {path}")
+    
+    return path
 
-HAS_EMBEDDED_PATCH = os.path.exists(get_resource_path('patch_data'))
+def validate_directory(path, must_exist=True, create_if_missing=False):
+    """
+    验证目录路径的有效性
+    
+    Args:
+        path: 要验证的路径
+        must_exist: 是否必须存在
+        create_if_missing: 不存在时是否创建
+        
+    Returns:
+        tuple: (bool, str) - (有效性, 错误信息)
+    """
+    if not path or not isinstance(path, str):
+        return False, "Invalid path: empty or not a string"
+    
+    # 规范化路径
+    path = os.path.abspath(path)
+    
+    if must_exist and not os.path.exists(path):
+        return False, f"Path does not exist: {path}"
+    
+    if not os.path.isdir(path):
+        return False, f"Path is not a directory: {path}"
+    
+    # 检查权限
+    if os.path.exists(path) and not os.access(path, os.W_OK):
+        return False, f"No write permission for: {path}"
+    
+    if create_if_missing and not os.path.exists(path):
+        try:
+            os.makedirs(path, exist_ok=True)
+        except Exception as e:
+            return False, f"Failed to create directory: {e}"
+    
+    return True, ""
+
+def validate_file(path, must_exist=True, allowed_extensions=None):
+    """
+    验证文件路径的有效性
+    
+    Args:
+        path: 要验证的路径
+        must_exist: 是否必须存在
+        allowed_extensions: 允许的扩展名列表（如 ['.asar', '.exe']）
+        
+    Returns:
+        tuple: (bool, str) - (有效性, 错误信息)
+    """
+    if not path or not isinstance(path, str):
+        return False, "Invalid file path"
+    
+    path = os.path.abspath(path)
+    
+    if must_exist and not os.path.exists(path):
+        return False, f"File does not exist: {path}"
+    
+    # 检查是否为文件
+    if os.path.exists(path) and not os.path.isfile(path):
+        return False, f"Path is not a file: {path}"
+    
+    # 检查扩展名
+    if allowed_extensions:
+        ext = os.path.splitext(path)[1].lower()
+        if ext not in [e.lower() for e in allowed_extensions]:
+            return False, f"Invalid extension. Allowed: {allowed_extensions}"
+    
+    return True, ""
+
+def normalize_path(path):
+    """规范化路径，处理各种边界情况"""
+    if not path:
+        return ""
+    try:
+        # 移除首尾空格
+        path = path.strip()
+        # 规范化路径分隔符
+        path = os.path.normpath(path)
+        # 转换为绝对路径
+        path = os.path.abspath(path)
+        return path
+    except Exception as e:
+        logger.error(f"Path normalization failed: {e}")
+        return ""
+
+# ================= 命令行参数解析 =================
+def parse_arguments():
+    """解析命令行参数"""
+    parser = argparse.ArgumentParser(
+        prog='TyranoV8_Patcher',
+        description='Tyrano Game Patcher - A tool for applying patches and managing game files',
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  %(prog)s                          # 启动GUI模式
+  %(prog)s --batch                  # 批量处理模式（无GUI）
+  %(prog)s --auto                   # 自动检测并应用补丁
+  %(prog)s --fuse "game.exe"        # 移除指定文件的Fuse校验
+  %(prog)s --log-file "custom.log"  # 使用自定义日志文件
+        """
+    )
+    
+    parser.add_argument('--batch', action='store_true',
+                        help='Run in batch mode (no GUI)')
+    parser.add_argument('--auto', action='store_true',
+                        help='Automatically detect and patch game')
+    parser.add_argument('--fuse', metavar='FILE',
+                        help='Remove fuse checksum from specified file')
+    parser.add_argument('--log-file', metavar='PATH',
+                        help='Custom log file path')
+    parser.add_argument('--verbose', '-v', action='store_true',
+                        help='Enable verbose output')
+    parser.add_argument('--quiet', '-q', action='store_true',
+                        help='Suppress non-error output')
+    
+    return parser.parse_args()
 
 # ================= 多语言字典 =================
 LANG_DICT = {
@@ -227,123 +423,368 @@ def detect_lang():
     try:
         if IS_WIN:
             import ctypes
-            lang = ctypes.windll.kernel32.GetUserDefaultUILanguage()
-            if lang == 2052: CURRENT_LANG_CODE = 'cn'
-            elif lang == 1041: CURRENT_LANG_CODE = 'jp'
-            else: CURRENT_LANG_CODE = 'en'
+            try:
+                lang = ctypes.windll.kernel32.GetUserDefaultUILanguage()
+                if lang == 2052: 
+                    CURRENT_LANG_CODE = 'cn'
+                elif lang == 1041: 
+                    CURRENT_LANG_CODE = 'jp'
+                else: 
+                    CURRENT_LANG_CODE = 'en'
+            except Exception as e:
+                logger.warning(f"Failed to get Windows UI language: {e}")
+                # 使用环境变量作为后备
+                detect_lang_fallback()
         else:
-            lang = os.environ.get('LANG', '').lower()
-            if 'zh' in lang: CURRENT_LANG_CODE = 'cn'
-            elif 'ja' in lang: CURRENT_LANG_CODE = 'jp'
-            else: CURRENT_LANG_CODE = 'en'
-    except:
+            detect_lang_fallback()
+    except Exception as e:
+        logger.error(f"Language detection error: {e}")
+        CURRENT_LANG_CODE = 'en'
+
+def detect_lang_fallback():
+    """使用环境变量检测语言（跨平台）"""
+    try:
+        lang = os.environ.get('LANG', '').lower()
+        if 'zh' in lang or 'cn' in lang or 'tw' in lang:
+            CURRENT_LANG_CODE = 'cn'
+        elif 'ja' in lang:
+            CURRENT_LANG_CODE = 'jp'
+        else:
+            CURRENT_LANG_CODE = 'en'
+    except Exception as e:
+        logger.warning(f"Language detection fallback failed: {e}")
         CURRENT_LANG_CODE = 'en'
 
 detect_lang() # 初始化检测
 
 def T(key):
+    """
+    多语言翻译函数
+    
+    Args:
+        key: 翻译键
+        
+    Returns:
+        对应语言的文本
+    """
     return LANG_DICT.get(CURRENT_LANG_CODE, LANG_DICT['en']).get(key, key)
+
+# ================= 异常类定义 =================
+class PatcherError(Exception):
+    """自定义异常类，用于区分不同类型的错误"""
+    pass
+
+class FileNotFoundError(PatcherError):
+    """文件未找到异常"""
+    pass
+
+class PermissionError(PatcherError):
+    """权限异常"""
+    pass
+
+class NodeNotFoundError(PatcherError):
+    """Node.js未找到异常"""
+    pass
 
 # ================= 核心逻辑类 (Worker) =================
 class CoreLogic:
     def __init__(self):
+        """
+        初始化核心逻辑
+        
+        Args:
+            log_callback: 日志回调函数，用于GUI模式
+            
+        Raises:
+            FileNotFoundError: 如果必要的资源文件不存在
+        """
         self.node_path = get_resource_path(os.path.join("tools", "node.exe"))
         self.script_path = self._find_script()
         
+        # 验证必要文件存在
+        if not os.path.exists(self.node_path):
+            raise FileNotFoundError(f"Node.js executable not found: {self.node_path}")
+            
+        if not self.script_path or not os.path.exists(self.script_path):
+            raise FileNotFoundError(f"Patcher script not found")
+        
         # 智能判断 Node 环境
         if IS_WIN and os.path.exists(self.node_path) and self.script_path:
-            self.mode = 'bundled' # Windows 使用内置 Node
+            self.mode = 'bundled'  # Windows 使用内置 Node
         else:
-            self.mode = 'system'  # Mac/Linux 或内置丢失时使用系统 Node
+            self.mode = 'system'   # Mac/Linux 或内置丢失时使用系统 Node
+        
+        logger.info(f"CoreLogic initialized. Mode: {self.mode}")
+        logger.debug(f"Node path: {self.node_path}")
+        logger.debug(f"Script path: {self.script_path}")
 
     def _find_script(self):
+        """
+        查找打包脚本
+        
+        Returns:
+            脚本文件路径，未找到返回None
+        """
         tools = get_resource_path("tools")
-        candidates = [os.path.join(tools, "bundled_asar", "index.mjs"), os.path.join(tools, "bundled_asar", "index.js")]
+        candidates = [
+            os.path.join(tools, "bundled_asar", "index.mjs"),
+            os.path.join(tools, "bundled_asar", "index.js")
+        ]
+        
         for p in candidates:
-            if os.path.exists(p): return p
+            if os.path.exists(p):
+                logger.debug(f"Found script: {p}")
+                return p
+        
+        logger.warning("No ASAR script found")
         return None
 
     def remove_readonly(self, func, path, excinfo):
-        try: os.chmod(path, stat.S_IWRITE); func(path)
-        except: pass
+        """删除只读属性的回调函数"""
+        try:
+            os.chmod(path, stat.S_IWRITE)
+            func(path)
+        except Exception as e:
+            logger.debug(f"Failed to remove readonly: {e}")
 
     def run_asar(self, action, src, dest, callback=None, unpack_pattern=None):
-        src, dest = os.path.abspath(src), os.path.abspath(dest)
+        """
+        执行ASAR操作（解包或打包）
         
+        Args:
+            action: 操作类型 ('extract' 或 'pack')
+            src: 源文件/目录路径
+            dest: 目标路径
+            callback: 回调函数，用于更新进度
+            unpack_pattern: 排除模式（仅打包时使用）
+            
+        Raises:
+            NodeNotFoundError: 如果Node.js未找到
+            PatcherError: 如果操作失败
+            
+        Returns:
+            bool: 操作是否成功
+        """
+        logger.info(f"Running ASAR {action} operation")
+        
+        # 验证输入参数
+        src = normalize_path(src)
+        dest = normalize_path(dest)
+        
+        if not src or not os.path.exists(src):
+            raise FileNotFoundError(f"Source path does not exist: {src}")
+            
+        if action == 'extract' and not os.path.isfile(src):
+            raise PatcherError(f"Source must be a file for extraction: {src}")
+        
+        # 设置默认排除模式
         if not unpack_pattern:
             unpack_pattern = "*.{node,dll,so,dylib,exe,bin}"
-
-        if self.mode == 'bundled':
-            cmd = [self.node_path, self.script_path, action, src, dest]
-            if action == 'pack': 
-                cmd.extend(['--unpack', unpack_pattern])
-            shell = False
-        else:
-            try:
-                subprocess.run(["node", "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-            except FileNotFoundError:
-                raise Exception(T('err_node_missing'))
-
-            if self.script_path:
-                cmd = ["node", self.script_path, action, src, dest]
-                if action == 'pack': cmd.extend(['--unpack', unpack_pattern])
+        
+        cmd = None
+        
+        try:
+            if self.mode == 'bundled':
+                cmd = [self.node_path, self.script_path, action, src, dest]
+                if action == 'pack': 
+                    cmd.extend(['--unpack', unpack_pattern])
                 shell = False
+                logger.debug(f"Using bundled Node.js: {self.node_path}")
             else:
+                # 验证Node.js可用性
+                try:
+                    result = subprocess.run(
+                        ["node", "--version"],
+                        stdout=subprocess.DEVNULL,
+                        stderr=subprocess.DEVNULL,
+                        timeout=5
+                    )
+                    if result.returncode != 0:
+                        raise NodeNotFoundError(T('err_node_missing'))
+                except subprocess.TimeoutExpired:
+                    raise NodeNotFoundError("Node.js response timeout")
+                except Exception as e:
+                    raise NodeNotFoundError(f"Failed to check Node.js: {e}")
+                
+                if self.script_path:
+                    cmd = ["node", self.script_path, action, src, dest]
+                    if action == 'pack':
+                        cmd.extend(['--unpack', unpack_pattern])
+                    shell = False
+                else:
+                    # 尝试使用全局asar命令
                     try:
-                        subprocess.run(["asar", "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-                    except FileNotFoundError:
-                        raise Exception(T('err_asar_cmd_missing'))
+                        subprocess.run(["asar", "--version"], 
+                                     stdout=subprocess.DEVNULL, 
+                                     stderr=subprocess.DEVNULL,
+                                     timeout=3)
+                    except (subprocess.TimeoutExpired, FileNotFoundError):
+                        raise NodeNotFoundError(T('err_asar_cmd_missing'))
+                    
                     p_arg = f'--unpack "{unpack_pattern}"' if action == 'pack' else ''
                     cmd = f'asar {action} "{src}" "{dest}" {p_arg}'
                     shell = True
-        
-        if callback: callback(f"Executing: {action}...")
-        
-        creationflags = 0
-        if IS_WIN:
-            creationflags = subprocess.CREATE_NO_WINDOW
-
-        proc = subprocess.run(
-            cmd, shell=shell, 
-            stdout=subprocess.PIPE, stderr=subprocess.STDOUT, 
-            text=True, encoding='utf-8', errors='replace',
-            creationflags=creationflags
-        )
-        if proc.returncode != 0: raise Exception(proc.stdout)
-        if callback: callback("Asar operation success.")
+            
+            # 执行命令
+            if callback:
+                callback(f"Executing: {action}...")
+            
+            creationflags = 0
+            if IS_WIN:
+                creationflags = subprocess.CREATE_NO_WINDOW
+            
+            logger.debug(f"Command: {' '.join(cmd) if isinstance(cmd, list) else cmd}")
+            
+            proc = subprocess.run(
+                cmd,
+                shell=shell,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT,
+                text=True,
+                encoding='utf-8',
+                errors='replace',
+                creationflags=creationflags,
+                timeout=300  # 5分钟超时
+            )
+            
+            if proc.returncode != 0:
+                error_msg = f"ASAR {action} failed with code {proc.returncode}"
+                if proc.stdout:
+                    logger.error(f"Output: {proc.stdout}")
+                raise PatcherError(error_msg)
+            
+            logger.info(f"ASAR {action} completed successfully")
+            if callback:
+                callback("Asar operation success.")
+            return True
+            
+        except subprocess.TimeoutExpired:
+            error_msg = f"Operation timed out after 300 seconds"
+            logger.error(error_msg)
+            raise PatcherError(error_msg)
+            
+        except Exception as e:
+            logger.exception(f"ASAR operation failed: {e}")
+            if isinstance(e, (NodeNotFoundError, FileNotFoundError)):
+                raise
+            raise PatcherError(str(e))
 
     def remove_fuse(self, exe_path, callback=None):
+        """
+        移除游戏可执行文件的Fuse完整性校验
+        
+        Args:
+            exe_path: 游戏可执行文件路径
+            callback: 回调函数
+            
+        Returns:
+            bool: 是否成功移除Fuse
+        """
+        logger.info(f"Attempting to remove Fuse from: {exe_path}")
+        
+        # 验证输入参数
         try:
-            if not os.path.exists(exe_path): return False
+            if not exe_path or not isinstance(exe_path, str):
+                logger.warning("Invalid executable path")
+                return False
+            
+            exe_path = normalize_path(exe_path)
+            
+            if not os.path.exists(exe_path):
+                logger.error(f"Executable file does not exist: {exe_path}")
+                return False
+                
+            if not os.path.isfile(exe_path):
+                logger.error(f"Not a file: {exe_path}")
+                return False
+            
+            # 检查文件大小
+            file_size = os.path.getsize(exe_path)
+            if file_size < 1024:
+                logger.warning(f"File too small to contain Fuse data: {file_size} bytes")
+                return False
+                
+        except Exception as e:
+            logger.error(f"Failed to validate executable path: {e}")
+            return False
+        
+        try:
+            # 移除只读属性
             os.chmod(exe_path, stat.S_IWRITE)
+            
             with open(exe_path, 'r+b') as f:
                 with mmap.mmap(f.fileno(), 0) as mm:
                     offset = mm.find(FUSE_SENTINEL)
-                    if offset == -1: return False
+                    
+                    if offset == -1:
+                        logger.info("Fuse sentinel not found - already removed or never present")
+                        return False
+                    
                     target = offset + 34 + 4
-                    if target < mm.size() and mm[target:target+1] == b'\x31':
+                    
+                    # 边界检查
+                    if target >= mm.size():
+                        logger.error(f"Target position {target} exceeds file size {mm.size()}")
+                        return False
+                    
+                    current_byte = mm[target:target+1]
+                    
+                    if current_byte == b'\x31':
                         mm[target:target+1] = b'\x30'
-                        if callback: callback("Fuse removed.")
+                        logger.info("Fuse checksum byte modified (0x31 -> 0x30)")
+                        if callback:
+                            callback("Fuse removed.")
                         return True
+                    elif current_byte == b'\x30':
+                        logger.info("Fuse already disabled")
+                        return True
+                    else:
+                        logger.warning(f"Unexpected byte at target position: {current_byte}")
+                        return False
+                        
+            logger.info("Fuse operation completed successfully")
             return True
+            
+        except mmap.error as e:
+            logger.error(f"MMap error: {e}")
+            return False
         except Exception as e:
-            if callback: callback(f"Fuse Error: {e}")
+            logger.exception(f"Failed to remove Fuse: {e}")
+            if callback:
+                callback(f"Fuse Error: {e}")
             return False
 
 # ================= GUI 界面类 =================
 class App(tk.Tk):
-    def __init__(self):
-        super().__init__()
-        self.core = CoreLogic()
-        self.current_save_dir = None
-        self.last_extracted_path = None # 记录上次解包路径
-        self.is_operating = False  # 操作锁，防止並发操作
-        self.var_plat = None  # 平台选择变量，初始化为 None
-        self.var_zip = None   # ZIP 备份变量，初始化为 None
+    def __init__(self, log_callback=None):
+        """
+        初始化GUI应用程序
         
-        # CHANGE 1: Renamed variable to avoid conflict with self.config() method
+        Args:
+            log_callback: 日志回调函数（用于批处理模式）
+        """
+        super().__init__()
+        
+        # 初始化属性
+        self.core = None
+        self.current_save_dir = None
+        self.last_extracted_path = None
+        self.is_operating = False
+        self.var_plat = None
+        self.var_zip = None
+        
+        try:
+            # 初始化核心逻辑（可能抛出异常）
+            self.core = CoreLogic()
+        except Exception as e:
+            logger.error(f"Failed to initialize CoreLogic: {e}")
+            messagebox.showerror("Initialization Error", str(e))
+            raise
+        
+        self.log_callback = log_callback  # 允许外部设置日志回调
         self.app_config = None 
         self.config_file = os.path.expanduser("~/.tyrano_patcher.ini")
+        
         self.load_config()        
         self.init_ui()
 
@@ -371,7 +812,7 @@ class App(tk.Tk):
         self.notebook = ttk.Notebook(self)
         self.notebook.pack(fill='both', expand=True, padx=5, pady=5)
         
-        if HAS_EMBEDDED_PATCH:
+        if has_embedded_patch():
             self.tab_patch = ttk.Frame(self.notebook)
             self.notebook.add(self.tab_patch, text=T('tab_main'))
             self._init_patch_ui()
@@ -393,41 +834,96 @@ class App(tk.Tk):
         self.progress.pack(fill='x', padx=5, pady=(0, 5))
 
     def load_config(self):
-        """Load user preferences from config file."""
-        # CHANGE 3: Use app_config instead of config
-        self.app_config = ConfigParser()
-        if os.path.exists(self.config_file):
-            try:
-                self.app_config.read(self.config_file)
-            except: pass
-    
-    def get_config_value(self, key, default):
-        """Get config value with default fallback."""
+        """
+        从配置文件加载用户偏好设置
+        
+        Returns:
+            bool: 是否成功加载配置
+        """
         try:
-            # CHANGE 4: Use app_config
-            if not hasattr(self, 'app_config') or not self.app_config:
-                return default
-            if key == 'use_zip':
-                return self.app_config.getboolean('preferences', key, fallback=default)
+            self.app_config = ConfigParser()
+            
+            if os.path.exists(self.config_file):
+                self.app_config.read(self.config_file, encoding='utf-8')
+                logger.debug(f"Loaded config from: {self.config_file}")
             else:
-                return self.app_config.get('preferences', key, fallback=default)
-        except:
+                logger.info(f"No existing config found at: {self.config_file}")
+                
+            return True
+            
+        except Exception as e:
+            logger.error(f"Failed to load config: {e}")
+            self.app_config = ConfigParser()  # 初始化空配置
+            return False
+    
+    def get_config_value(self, key, default=None):
+        """
+        获取配置值，支持类型转换和默认值
+        
+        Args:
+            key: 配置键名
+            default: 默认值
+            
+        Returns:
+            配置值或默认值
+        """
+        try:
+            if not hasattr(self, 'app_config') or self.app_config is None:
+                return default
+                
+            # 处理不同类型的配置值
+            if key in ['use_zip']:
+                return self.app_config.getboolean('preferences', key, fallback=bool(default))
+            elif key == 'platform':
+                return self.app_config.get('preferences', key, fallback=str(default) if default else 'win')
+            else:
+                # 其他字符串类型
+                return self.app_config.get('preferences', key, fallback=str(default) if default else '')
+                
+        except Exception as e:
+            logger.warning(f"Failed to get config value for '{key}': {e}")
             return default
     
     def save_config(self):
-        """Save user preferences to config file."""
+        """
+        保存用户偏好设置到配置文件
+        
+        Returns:
+            bool: 是否成功保存
+        """
         try:
-            # CHANGE 5: Use app_config
+            if not hasattr(self, 'app_config') or self.app_config is None:
+                logger.warning("Config object not initialized")
+                return False
+            
+            # 确保有preferences section
             if not self.app_config.has_section('preferences'):
                 self.app_config.add_section('preferences')
-            # Only save if variables are initialized
-            if hasattr(self, 'var_plat'):
-                self.app_config.set('preferences', 'platform', self.var_plat.get())
-            if hasattr(self, 'var_zip'):
-                self.app_config.set('preferences', 'use_zip', str(self.var_zip.get()))
-            with open(self.config_file, 'w') as f:
+            
+            # 只保存已初始化的变量
+            if hasattr(self, 'var_plat') and self.var_plat is not None:
+                value = self.var_plat.get()
+                self.app_config.set('preferences', 'platform', str(value))
+                
+            if hasattr(self, 'var_zip') and self.var_zip is not None:
+                value = self.var_zip.get()
+                self.app_config.set('preferences', 'use_zip', str(value).lower())
+            
+            # 确保目录存在
+            config_dir = os.path.dirname(self.config_file)
+            if config_dir and not os.path.exists(config_dir):
+                os.makedirs(config_dir, exist_ok=True)
+            
+            # 保存配置
+            with open(self.config_file, 'w', encoding='utf-8') as f:
                 self.app_config.write(f)
-        except: pass  # Silent fail for config save
+                
+            logger.debug(f"Config saved to: {self.config_file}")
+            return True
+            
+        except Exception as e:
+            logger.error(f"Failed to save config: {e}")
+            return False
 
     def change_lang(self, code):
         global CURRENT_LANG_CODE
@@ -435,38 +931,108 @@ class App(tk.Tk):
         self.init_ui()
 
     def log(self, msg):
+        """
+        在GUI中显示日志消息
+        
+        Args:
+            msg: 要显示的消息
+        """
+        # 同时写入标准日志系统
+        logger.info(msg)
+        
         def _update():
-            ts = datetime.datetime.now().strftime("%H:%M:%S")
-            self.log_area.config(state='normal')
-            self.log_area.insert(tk.END, f"[{ts}] {msg}\n")
-            self.log_area.see(tk.END)
-            self.log_area.config(state='disabled')
-        self.after(0, _update)
+            try:
+                ts = datetime.datetime.now().strftime("%H:%M:%S")
+                self.log_area.config(state='normal')
+                self.log_area.insert(tk.END, f"[{ts}] {msg}\n")
+                self.log_area.see(tk.END)
+                self.log_area.config(state='disabled')
+            except tk.TclError:
+                # GUI尚未就绪，静默忽略
+                pass
+        
+        # 使用after确保在主线程中更新GUI
+        try:
+            self.after(0, _update)
+        except tk.TclError:
+            # 如果GUI不可用，直接打印到控制台
+            print(f"[{datetime.datetime.now().strftime('%H:%M:%S')}] {msg}")
 
     def toggle_progress(self, running):
-        if running: self.progress.start(10)
-        else: self.progress.stop()
+        """
+        切换进度条状态
+        
+        Args:
+            running: True表示开始，False表示停止
+        """
+        try:
+            if running:
+                self.progress.start(10)
+            else:
+                self.progress.stop()
+        except tk.TclError:
+            # GUI尚未就绪，静默忽略
+            pass
 
     # ------------------ UI Components ------------------
     def _file_entry(self, parent, label, is_dir=False, ext=None):
+        """
+        创建文件选择器组件
+        
+        Args:
+            parent: 父容器
+            label: 标签文本
+            is_dir: 是否为目录选择
+            ext: 允许的文件扩展名
+            
+        Returns:
+            StringVar: 文件路径变量
+        """
         f = ttk.Frame(parent)
         f.pack(fill='x', pady=5)
-        ttk.Label(f, text=label, width=15).pack(side='left')
         
+        # 标签
+        label_widget = ttk.Label(f, text=label, width=15)
+        label_widget.pack(side='left')
+        
+        # 变量和输入框
         var = tk.StringVar()
-        entry = ttk.Entry(f, textvariable=var)
+        entry = ttk.Entry(f, textvariable=var, width=50)
         entry.pack(side='left', fill='x', expand=True, padx=5)
-        # CHANGE 6: Removed drag and drop setup call
         
         def _browse():
-            if is_dir: p = filedialog.askdirectory()
-            else:
-                types = [("All Files", "*.*")]
-                if ext: types.insert(0, ext)
-                p = filedialog.askopenfilename(filetypes=types)
-            if p: var.set(os.path.abspath(p))
-            
-        ttk.Button(f, text="...", width=4, command=_browse).pack(side='right')
+            try:
+                if is_dir:
+                    p = filedialog.askdirectory(
+                        title="Select Directory",
+                        initialdir=os.getcwd()
+                    )
+                else:
+                    types = [("All Files", "*.*")]
+                    if ext:
+                        # 确保扩展名格式正确
+                        if not isinstance(ext, (list, tuple)):
+                            ext_tuple = (ext,)
+                        else:
+                            ext_tuple = ext
+                        types.insert(0, ext_tuple)
+                    
+                    p = filedialog.askopenfilename(
+                        title="Select File",
+                        filetypes=types,
+                        initialdir=os.getcwd()
+                    )
+                
+                if p:
+                    var.set(os.path.abspath(p))
+            except Exception as e:
+                logger.error(f"File browser error: {e}")
+                messagebox.showerror("Error", str(e))
+        
+        # 浏览按钮
+        browse_btn = ttk.Button(f, text="...", width=4, command=_browse)
+        browse_btn.pack(side='right')
+        
         return var
 
     # CHANGE 7: Removed _setup_drag_drop method entirely
@@ -816,13 +1382,13 @@ class App(tk.Tk):
                 
                 self.core.run_asar('extract', asar, temp, callback=self.log)
                 self.log("Applying patch...")
-                shutil.copytree(get_resource_path("patch_data"), temp, dirs_exist_ok=True)
+                shutil.copytree(get_resource_path("Patch"), temp, dirs_exist_ok=True)
                 
                 self.core.run_asar('pack', temp, asar, callback=self.log, unpack_pattern="*.{node,dll,exe}")
                 shutil.rmtree(temp, onerror=self.core.remove_readonly)
                 
-                exe = os.path.join(base, AUTO_TARGET_EXE)
-                self.core.remove_fuse(exe, callback=self.log)
+                # Note: Fuse removal is now a manual operation in the Dev Tools tab
+                self.log("Patch applied successfully. (Fuse removal is now manual)")
                 
                 self.log(T('patch_done'))
                 messagebox.showinfo(T('title_success'), T('patch_done'))
@@ -835,9 +1401,206 @@ class App(tk.Tk):
                 self.toggle_progress(False)
         threading.Thread(target=_t, daemon=True).start()
 
-if __name__ == "__main__":
+def main():
+    """
+    主函数，处理命令行参数和启动GUI/批处理模式
+    
+    Returns:
+        int: 退出码 (0=成功, 非0=错误)
+    """
+    # 解析命令行参数
+    args = parse_arguments()
+    
+    # 如果有自定义日志文件，重新配置日志系统
+    if args.log_file:
+        try:
+            global logger
+            logger = setup_logging(log_dir=os.path.dirname(args.log_file) or os.getcwd(), 
+                                 log_file=os.path.basename(args.log_file))
+        except Exception as e:
+            print(f"Warning: Could not set custom log file: {e}")
+    
+    # 如果是批处理模式
+    if args.batch:
+        return batch_mode(args)
+    
+    # 如果使用了非GUI参数但没有--batch
+    if any([args.auto, args.fuse]):
+        logger.warning("Non-GUI arguments detected but --batch not specified. Starting GUI mode.")
+    
+    # 启动GUI模式
     try:
         app = App()
         app.mainloop()
+        return 0
     except Exception as e:
-        print(e)
+        logger.exception(f"Fatal error in main: {e}")
+        messagebox.showerror("Fatal Error", f"An unexpected error occurred:\n{str(e)}")
+        return 1
+
+def batch_mode(args):
+    """
+    批处理模式（无GUI）
+    
+    Args:
+        args: 命令行参数
+        
+    Returns:
+        int: 退出码
+    """
+    logger.info("Starting batch mode...")
+    
+    try:
+        # 初始化核心逻辑
+        core = CoreLogic()
+        
+        if args.auto:
+            return batch_auto_patch(core)
+        elif args.fuse:
+            return batch_remove_fuse(core, args.fuse)
+        else:
+            logger.error("No batch operation specified. Use --auto or --fuse.")
+            return 1
+            
+    except Exception as e:
+
+        logger.exception(f"Batch mode failed: {e}")
+        print(f"Error: {str(e)}")
+        return 1
+
+def batch_auto_patch(core):
+    """
+    批处理模式下的自动补丁安装
+    
+    Args:
+        core: CoreLogic实例
+        
+    Returns:
+        int: 退出码
+    """
+    logger.info("Starting auto patch in batch mode...")
+    
+    # 检查是否包含内置汉化补丁
+    patch_src = get_resource_path("Patch")
+    if not os.path.exists(patch_src):
+        logger.error(f"Embedded patch not found at {patch_src}")
+        print(f"Error: Embedded patch not found at {patch_src}")
+        return 1
+    
+    try:
+        base = os.path.abspath(".")
+        res = os.path.join(base, 'resources')
+        asar = os.path.join(res, 'app.asar')
+        bak = asar + ".bak"
+        
+        # 验证必要文件
+        if not os.path.exists(res):
+            logger.error("Resources folder not found")
+            print(f"Error: {str(T('err_res_missing'))}")
+            return 1
+        
+        if not os.path.exists(asar):
+            logger.error("app.asar not found")
+            print(f"Error: {str(T('err_asar_missing'))}")
+            return 1
+        
+        # 检查是否有备份，恢复或创建新备份
+        if os.path.exists(bak):
+            logger.info("Restoring from backup...")
+            if os.path.exists(asar):
+                os.remove(asar)
+            shutil.copy2(bak, asar)
+        else:
+            logger.info("Creating backup...")
+            shutil.copy2(asar, bak)
+        
+        # 解包ASAR
+        temp = os.path.join(base, "temp_patch")
+        if os.path.exists(temp):
+            shutil.rmtree(temp, onerror=core.remove_readonly)
+        
+        logger.info("Extracting ASAR...")
+        # 使用字符串回调来显示进度
+        def extract_callback(msg):
+            logger.info(f"Extract: {msg}")
+            print(msg)
+        core.run_asar('extract', asar, temp, callback=extract_callback)
+        
+        # 应用补丁
+        logger.info("Applying patch...")
+        patch_src = get_resource_path("Patch")
+        if os.path.exists(patch_src):
+            shutil.copytree(patch_src, temp, dirs_exist_ok=True)
+        else:
+            logger.warning(f"Patch data not found at {patch_src}")
+        
+        # 重新打包ASAR
+        logger.info("Repacking ASAR...")
+        # 使用字符串回调来显示进度
+        def pack_callback(msg):
+            logger.info(f"Pack: {msg}")
+            print(msg)
+        core.run_asar('pack', temp, asar, unpack_pattern="*.{node,dll,exe}", callback=pack_callback)
+        
+        # 清理临时文件
+        if os.path.exists(temp):
+            shutil.rmtree(temp, onerror=core.remove_readonly)
+        
+        # Note: Fuse removal is now a manual operation in the Dev Tools tab
+        logger.info("Patch applied successfully. (Fuse removal is now manual)")
+        
+        logger.info("Batch patch completed successfully")
+        print(f"✅ {str(T('patch_done'))}")
+        return 0
+        
+    except FileNotFoundError as e:
+        logger.exception(f"Auto patch failed: {e}")
+        print(f"❌ {str(T('err_asar_missing'))}")
+        print(f"Error details: {str(e)}")
+        return 1
+    except NodeNotFoundError as e:
+        logger.exception(f"Auto patch failed: {e}")
+        print(f"❌ {str(T('err_node_missing'))}")
+        print(f"Error details: {str(e)}")
+        return 1
+    except PatcherError as e:
+        logger.exception(f"Auto patch failed: {e}")
+        print(f"❌ Operation failed: {str(e)}")
+        return 1
+    except Exception as e:
+        logger.exception(f"Auto patch failed: {e}")
+        print(f"❌ Error: {str(e)}")
+        return 1
+
+def batch_remove_fuse(core, exe_path):
+    """
+    批处理模式下移除Fuse校验
+    
+    Args:
+        core: CoreLogic实例
+        exe_path: 可执行文件路径
+        
+    Returns:
+        int: 退出码
+    """
+    logger.info(f"Removing Fuse from {exe_path}...")
+    
+    try:
+        result = core.remove_fuse(exe_path)
+        if result:
+            logger.info("Fuse removed successfully")
+            print("✅ Fuse removed successfully!")
+            return 0
+        else:
+            logger.warning("Fuse was not found or already disabled")
+            print("Warning: Fuse was not found or already disabled")
+            return 0
+            
+    except Exception as e:
+        logger.exception(f"Failed to remove Fuse: {e}")
+        print(f"Error: {str(e)}")
+        return 1
+
+if __name__ == "__main__":
+    exit_code = main()
+    sys.exit(exit_code)
