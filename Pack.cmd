@@ -102,6 +102,7 @@ if not exist "%ROOT%Patch" (
     if not defined HAS_PATCH_FILES (
         echo - Warning: Patch folder is empty. Skipped.
     ) else (
+        
         echo - Patch folder found. Building Patcher...
         echo ------------------------------------------
         
@@ -110,7 +111,7 @@ if not exist "%ROOT%Patch" (
             --workpath "build_patcher" ^
             --add-data "%ROOT%tools\node.exe;tools" ^
             --add-data "%ROOT%tools\bundled_asar;tools\bundled_asar" ^
-            --add-data "%ROOT%Patch;patch_data" ^
+            --add-data "%ROOT%Patch;Patch" ^
             --name "%OUT_PATCH%" ^
             "%ROOT%%PY_SCRIPT%"
             
