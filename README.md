@@ -11,7 +11,7 @@
 
 ### 🇨🇳 中文
 本项目是《恶魔链接（でびるコネクション）》的非营利性个人本地化工具。
-**新版本**：采用全图形化界面 (GUI)，支持跨平台运行，集成了强大的存档管理与开发者工具。
+采用全图形化界面 (GUI)，支持跨平台运行，集成了强大的存档管理与开发者工具。
 
 **✨ 核心功能：**
 
@@ -28,7 +28,7 @@
 
 ### 🇺🇸 English
 **Devil Connection Localization Tool** is a non-profit, fan-made localization patcher.
-**Update**: Features a full Graphical User Interface (GUI), cross-platform support, and advanced save management tools.
+Features a full Graphical User Interface (GUI), cross-platform support, and advanced save management tools.
 
 **✨ Key Features:**
 
@@ -45,7 +45,7 @@
 
 ### 🇯🇵 日本語
 本プロジェクトは、ゲーム『でびるコネクション』の非営利・個人制作によるローカライズツールです。
-**アップデート**: 完全なGUI、クロスプラットフォーム対応、そして強力なセーブデータ管理機能を搭載しました。
+完全なGUI、クロスプラットフォーム対応、そして強力なセーブデータ管理機能を搭載しました。
 
 **✨ 主な特徴:**
 
