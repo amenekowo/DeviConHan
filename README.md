@@ -357,7 +357,7 @@ Intelligent `Pack.cmd` script with **dual-mode generation**:
 - **素材使用**：本补丁仅包含运行所需的翻译文件与代码，**不包含游戏本体**。
 - **版权归属**：游戏的所有权利（原作、设计、人物等）均归 **ばやちゃお** 所有。
   
-- **参考链接：** [原作者 Guideline](https://bayachao.com/devil-connection/guideline.html)
+- **参考链接：** [原作者 Guideline](https://bayachao.com/devil-connection/guideline)
 - **许可证**：[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)
   
 ### 🇺🇸 English
@@ -366,7 +366,7 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
 - **Assets**: Contains only necessary translation files and injection code. **Does not distribute the full game**.
 - **Ownership**: All rights to the original game, designs, and characters belong to **Bayachao**.
 
-**Reference:** [Author's Guideline](https://bayachao.com/devil-connection/guideline.html)
+**Reference:** [Author's Guideline](https://bayachao.com/devil-connection/guideline)
 - **License**: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
 ### 🇯🇵 日本語
@@ -375,5 +375,5 @@ This project strictly adheres to the "Derivative Works Guidelines" set by the or
 - **素材の利用**: 本パッチは翻訳および導入に必要なファイルのみを含んでおり、**ゲーム本体は含まれません**。
 - **権利の帰属**: 原作、デザイン、キャラクター等のすべての権利は **ばやちゃお** 様に帰属します。
 
-**参照リンク:** [二次創作ガイドライン](https://bayachao.com/devil-connection/guideline.html)
+**参照リンク:** [二次創作ガイドライン](https://bayachao.com/devil-connection/guideline)
 - **ライセンス**: [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja)
