@@ -11,10 +11,6 @@ echo "=========================================="
 echo "   Tyrano Builder - macOS Build"
 echo "=========================================="
 
-if [ ! -f "${ROOT}tools/node" ]; then
-    echo "[Error] File missing: ${ROOT}tools/node"
-    exit 1
-fi
 if [ ! -d "${ROOT}tools/bundled_asar" ]; then
     echo "[Error] Folder missing: ${ROOT}tools/bundled_asar"
     exit 1
