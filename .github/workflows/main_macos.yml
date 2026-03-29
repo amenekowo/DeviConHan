@@ -1,0 +1,69 @@
+name: Auto Build (Nightly macOS)
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install PyInstaller
+        run: pip install pyinstaller
+
+      - name: Generate Build Info
+        id: date
+        shell: bash
+        run: |
+          echo "build_time=$(TZ='Asia/Shanghai' date +'%Y-%m-%d %H:%M:%S')" >> $GITHUB_OUTPUT
+
+      - name: Run Pack Script
+        shell: bash
+        run: |
+          chmod +x pack.sh
+          ./pack.sh
+
+      - name: Update Nightly Tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag -d nightly 2>/dev/null || echo "No local tag"
+          git tag nightly
+          git push origin nightly --force
+
+      - name: Release Nightly
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: nightly
+          name: "最新测试补丁 (Nightly macOS) - ${{ steps.date.outputs.build_time }}"
+          body: |
+            ### 🚧 自动构建版本 (macOS)
+            **构建信息:**
+            - 📅 时间: ${{ steps.date.outputs.build_time }} (CST)
+            - #️⃣ 提交: ${{ github.sha }}
+            
+            **更新日志:**
+            ${{ github.event.head_commit.message }}
+          files: dist/*
+          prerelease: true
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
