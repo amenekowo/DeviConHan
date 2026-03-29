@@ -45,10 +45,12 @@ echo "------------------------------------------"
 
 [ -d "dist" ] && rm -rf "dist"
 
+# remove node binary for macos and linux
+#    --add-data "${ROOT}tools/node:tools" 
+
 python3 -m PyInstaller -F --clean \
     --distpath "dist" \
     --workpath "build_toolbox" \
-    --add-data "${ROOT}tools/node:tools" \
     --add-data "${ROOT}tools/bundled_asar:tools/bundled_asar" \
     --name "${OUT_TOOL}" \
     "${ROOT}${PY_SCRIPT}"
@@ -76,7 +78,6 @@ else
         python3 -m PyInstaller -F --clean \
             --distpath "dist" \
             --workpath "build_patcher" \
-            --add-data "${ROOT}tools/node:tools" \
             --add-data "${ROOT}tools/bundled_asar:tools/bundled_asar" \
             --add-data "${ROOT}Patch:Patch" \
             --name "${OUT_PATCH}" \
