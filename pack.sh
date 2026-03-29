@@ -3,12 +3,23 @@
 # config
 ROOT="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/"
 PY_SCRIPT="TyranoV8_Patcher.py"
-OUT_TOOL="Tyrano_Toolbox"
-OUT_PATCH="DevilConnection_Patch"
+
+# Detect OS and architecture
+OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+ARCH=$(uname -m)
+
+case "$ARCH" in
+    x86_64)  ARCH="x64" ;;
+    aarch64) ARCH="arm64" ;;
+    arm64)   ARCH="arm64" ;;
+esac
+
+OUT_TOOL="Tyrano_Toolbox_${OS}_${ARCH}"
+OUT_PATCH="DevilConnection_Patch_${OS}_${ARCH}"
 clear
 
 echo "=========================================="
-echo "   Tyrano Builder - macOS Build"
+echo "   Tyrano Builder - ${OS}_${ARCH} Build"
 echo "=========================================="
 
 if [ ! -d "${ROOT}tools/bundled_asar" ]; then
