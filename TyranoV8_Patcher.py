@@ -1394,6 +1394,17 @@ class App(tk.Tk):
                 self.var_ext_src.set(p)
                 self.log(f"Found: {p}")
                 return
+
+        # On macOS/Linux, search subdirectories
+        if IS_MAC or not IS_WIN:
+            self.log("Searching subdirectories for app.asar...")
+            for root, dirs, files in os.walk("."):
+                if "app.asar" in files:
+                    p = os.path.abspath(os.path.join(root, "app.asar"))
+                    self.var_ext_src.set(p)
+                    self.log(f"Found: {p}")
+                    return
+
         self.log("Not found.")
 
     def _auto_scan_exe(self):
